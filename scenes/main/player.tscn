@@ -21,6 +21,11 @@ height = 1.74
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2ck2"]
 transparency = 1
+blend_mode = 1
+no_depth_test = true
+disable_ambient_light = true
+disable_fog = true
+disable_specular_occlusion = true
 albedo_color = Color(0.99215686, 0.4745098, 0.5019608, 0.3529412)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2hlsy"]

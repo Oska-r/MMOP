@@ -203,3 +203,5 @@ volume_db = -30.0
 [connection signal="child_order_changed" from="NavigationRegion3D/World_flexible" to="NavigationRegion3D" method="_on_world_flexible_child_order_changed"]
 [connection signal="child_order_changed" from="NavigationRegion3D/World_flexible/Blocks" to="NavigationRegion3D" method="_on_world_flexible_child_order_changed"]
 [connection signal="timeout" from="NavigationRegion3D/Spawn/Timer" to="NavigationRegion3D" method="_on_timer_timeout"]
+
+[editable path="NavigationRegion3D/World_fixed"]

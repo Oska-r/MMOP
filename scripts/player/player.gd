@@ -4,21 +4,26 @@ extends CharacterBody3D
 @onready var interact_ray = head.get_node("Camera3D/InteractRay")
 @onready var attack_Area = head.get_node("Attack_Area")
 var mouse_captured : bool = false
+var input_enabled: bool = true
 
 var place_reach = 2.7
 var item_use_cooldown := 0.0
 var item_use_delay := 0.15
 
-var input_enabled: bool = true
+
 ## list of all Bodys in Attack_Area
 var targets : Array[Node3D]
 
 #attributes
 @export_category("attributes")
 @export var health_max := 100.0
-var health:= health_max
 @export var damage :=  30.0
-@export var damage_timer := 0.25
+@export var attack_interval := 0.25
+var damage_timer := 0.0
+var health:= health_max
+
+func _ready() -> void:
+		attack_Area.visible = false
 
 func check_interaction():
 	if interact_ray.is_colliding():
@@ -234,10 +239,19 @@ func is_input_enabled() -> bool:
 
 #region damage
 func handle_attack():
+	if damage_timer > 0:
+		return
 	targets = attack_Area.get_overlapping_bodies()
 	for body in targets:
 		if body.is_in_group("enemy"):
 			body.take_damage(damage)
+			damage_timer = attack_interval
+			attack_animation()
+
+func attack_animation():
+	attack_Area.visible = true
+	await get_tree().create_timer(0.2).timeout
+	attack_Area.visible = false
 	
 func take_damage(amount: int) -> void:
 	health -= amount
