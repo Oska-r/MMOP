@@ -11,7 +11,7 @@ var has_gravity : bool = true
 var can_jump : bool = true
 var can_sprint : bool = false
 var can_sneak: bool = true
-var can_freefly : bool = false
+var can_freefly : bool = true
 
 @export_group("Speeds")
 @export var look_speed : float = 0.002

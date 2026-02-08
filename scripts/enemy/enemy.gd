@@ -52,23 +52,32 @@ func update_movement() -> void:
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 
-
+## atteckes everything with take_damage funktion
+## dosn't attack other enemys
 func handle_damage() -> void:
 	if damage_timer > 0:
 		return
 	for body in bodies_in_damage_area:
-			if body != null and body.has_method("take_damage"):
-				body.take_damage(damage)
-				damage_timer = damage_interval
+		#don't apply damage to other enemys
+		if body.is_in_group("enemy"):
+			pass
+		elif body != null and body.has_method("take_damage"):
+			body.take_damage(damage)
+			damage_timer = damage_interval
 
+func take_damage(amount):
+	print("Gegener hat schaden genommen: " + str(amount))
+	health -= amount
+	if health <= 0:
+		call_deferred("die")
+
+## delete node
 func die():
 	queue_free()
 
+## TODO: adjust dif. sun damage vs. normal damage
 func sun_damage(amount):
-	health -= amount
-
-	if health <= 0:
-		call_deferred("die")
+	take_damage(amount)
 	
 # This function will be called from the Main scene.
 func initialize(start_position):

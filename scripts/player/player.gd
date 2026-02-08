@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var head: Node = get_node("Head")
 @onready var interact_ray = head.get_node("Camera3D/InteractRay")
+@onready var attack_Area = head.get_node("Attack_Area")
 var mouse_captured : bool = false
 
 var place_reach = 2.7
@@ -9,11 +10,15 @@ var item_use_cooldown := 0.0
 var item_use_delay := 0.15
 
 var input_enabled: bool = true
+## list of all Bodys in Attack_Area
+var targets : Array[Node3D]
 
 #attributes
-#Leben
-const health_max : float = 100
-var health: float = health_max
+@export_category("attributes")
+@export var health_max := 100.0
+var health:= health_max
+@export var damage :=  30.0
+@export var damage_timer := 0.25
 
 func check_interaction():
 	if interact_ray.is_colliding():
@@ -32,6 +37,10 @@ func _input(event):
 func _process(delta) -> void:
 	if item_use_cooldown > 0:
 		item_use_cooldown -= delta
+	if damage_timer > 0:
+		damage_timer -= delta
+	if Input.is_action_pressed("prime"):
+		handle_attack()
 
 
 ## Disables (if parameter is false) or enables (if parameter is true) all player input.
@@ -224,6 +233,12 @@ func is_input_enabled() -> bool:
 
 
 #region damage
+func handle_attack():
+	targets = attack_Area.get_overlapping_bodies()
+	for body in targets:
+		if body.is_in_group("enemy"):
+			body.take_damage(damage)
+	
 func take_damage(amount: int) -> void:
 	health -= amount
 	print("Spieler bekommt Schaden! Leben:", health)
