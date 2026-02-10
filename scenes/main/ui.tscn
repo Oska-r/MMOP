@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bv7nxdrmt0pwo"]
+
+[ext_resource type="Script" uid="uid://cxs6ms7xuck7p" path="res://scripts/UI/ui.gd" id="1_kiyfy"]
+[ext_resource type="Script" uid="uid://dl3mfoi35lg5w" path="res://scripts/UI/show_coordinates.gd" id="1_wq0v1"]
+[ext_resource type="PackedScene" uid="uid://laa6wkcpj3ws" path="res://scenes/UI/hotbar.tscn" id="2_kiyfy"]
+[ext_resource type="Texture2D" uid="uid://2lg3o2g67vdp" path="res://ressources/pictures/UI/crosshair.png" id="3_8334u"]
+[ext_resource type="PackedScene" uid="uid://equrnyrs8b8x" path="res://scenes/UI/pause_menu.tscn" id="4_m4jc5"]
+[ext_resource type="PackedScene" uid="uid://cq8sbte51hdu2" path="res://scenes/UI/inventory.tscn" id="5_a6y2o"]
+
+[node name="UI" type="CanvasLayer" unique_id=2045572628]
+script = ExtResource("1_kiyfy")
+
+[node name="Coordinates" type="RichTextLabel" parent="." unique_id=1339721439]
+offset_left = 2.0
+offset_right = 179.0
+offset_bottom = 110.0
+mouse_filter = 2
+text = "x: 0
+y: 0
+z: 0"
+scroll_active = false
+script = ExtResource("1_wq0v1")
+
+[node name="Hotbar" parent="." unique_id=439422052 node_paths=PackedStringArray("inventory") instance=ExtResource("2_kiyfy")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -55.0
+offset_right = 42.0
+offset_bottom = -15.0
+grow_vertical = 0
+inventory = NodePath("../Inventory")
+
+[node name="Crosshair" type="TextureRect" parent="." unique_id=438435868]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("3_8334u")
+
+[node name="PauseMenu" parent="." unique_id=1913560065 instance=ExtResource("4_m4jc5")]
+
+[node name="Inventory" parent="." unique_id=315312596 node_paths=PackedStringArray("hotbar") groups=["InventoryUI"] instance=ExtResource("5_a6y2o")]
+hotbar = NodePath("../Hotbar")

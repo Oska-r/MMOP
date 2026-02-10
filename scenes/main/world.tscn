@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://bao028iep5b5x"]
+
+[ext_resource type="PackedScene" uid="uid://bhq5ow250herw" path="res://scenes/main/enemy.tscn" id="1_iubku"]
+[ext_resource type="PackedScene" uid="uid://cjhvd857e0u7k" path="res://scenes/main/world_fixed.tscn" id="2_y2s00"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ouso4"]
+vertices = PackedVector3Array(120.84801, 0.5, -50.651993, 101.59801, 0.5, -97.90199, 100.09801, 0.5, -100.65199, 0.5980072, 0.5, -141.902, -0.4019928, 0.5, -141.902, 0.5980072, 0.5, -50.651993, -100.15199, 0.5, -100.65199, -120.90199, 0.5, -50.651993, -0.6519928, 0.5, -50.651993, -141.902, 0.5, -0.4019928, -141.902, 0.5, 0.5980072, -120.90199, 0.5, 50.598007, -50.651993, 0.5, 0.5980072, -50.651993, 0.5, -0.6519928, -36.151993, 0.5, -35.651993, -36.151993, 0.5, 35.598007, -0.6519928, 0.5, 50.598007, -34.651993, 0.5, 36.598007, 140.348, 0.5, 4.348007, 141.848, 0.5, 0.5980072, 141.848, 0.5, -0.6519928, 120.84801, 0.5, 50.598007, 50.598007, 0.5, -0.6519928, 50.598007, 0.5, 0.8480072, 36.098007, 0.5, 35.848007, 0.8480072, 0.5, 50.598007, 35.598007, 0.5, -36.151993, 36.598007, 0.5, -34.651993, -0.1519928, 1, -49.651993, -17.651993, 1, -42.151993, 3.0980072, 1, -42.151993, 6.848007, 1, -42.151993, 17.598007, 1, -42.151993, 3.0980072, 1, -39.901993, -23.151993, 1, -39.901993, 6.848007, 1, -39.901993, 23.098007, 1, -39.901993, 35.098007, 1, -35.151993, 0.3480072, 1, -1.9019928, 48.848007, 1, -1.9019928, -35.151993, 1, -35.151993, -48.651993, 1, -1.9019928, -0.4019928, 1, -1.9019928, -49.401993, 1, -0.1519928, -6.901993, 1, -0.1519928, 48.598007, 1, 2.0980072, 48.848007, 1, 1.8480072, 0.8480072, 1, 1.8480072, -4.151993, 1, 2.0980072, -4.151993, 1, -0.1519928, -1.6519928, 1, -1.1519928, -1.1519928, 1, 1.5980072, -1.9019928, 1, 0.3480072, 49.598007, 1, -0.1519928, 1.8480072, 1, -0.6519928, 1.8480072, 1, 0.8480072, -0.6519928, 4.5, 0.5980072, 0.0980072, 4.5, 0.8480072, 0.8480072, 4.5, 0.0980072, 0.5980072, 4.5, -0.6519928, -0.6519928, 4.5, -0.6519928, -0.4019928, 1, -0.4019928, -0.4019928, 1, 0.3480072, 0.3480072, 1, 0.3480072, 0.3480072, 1, -0.4019928, -48.651993, 1, 2.0980072, -6.901993, 1, 2.0980072, -43.651993, 1, 11.348007, -44.651993, 1, 11.598007, -44.651993, 1, 12.098007, -35.151993, 1, 35.098007, -45.901993, 1, 9.098007, -43.651993, 1, 9.598007, -0.1519928, 1, 49.598007, 35.098007, 1, 35.098007, -0.6519928, 0.5, 141.848, 0.5980072, 0.5, 141.848, 4.348007, 0.5, 140.348, 100.09801, 0.5, 100.59801, 101.09801, 0.5, 99.09801, -100.15199, 0.5, 100.59801)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 5), PackedInt32Array(2, 5, 3), PackedInt32Array(3, 5, 4), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 4), PackedInt32Array(4, 5, 8), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 7), PackedInt32Array(11, 7, 13), PackedInt32Array(11, 13, 12), PackedInt32Array(7, 8, 14), PackedInt32Array(7, 14, 13), PackedInt32Array(12, 15, 11), PackedInt32Array(17, 16, 11), PackedInt32Array(15, 17, 11), PackedInt32Array(20, 19, 18), PackedInt32Array(18, 21, 20), PackedInt32Array(20, 21, 0), PackedInt32Array(0, 21, 22), PackedInt32Array(22, 21, 23), PackedInt32Array(21, 25, 24), PackedInt32Array(21, 24, 23), PackedInt32Array(0, 26, 5), PackedInt32Array(27, 26, 0), PackedInt32Array(22, 27, 0), PackedInt32Array(30, 29, 28), PackedInt32Array(28, 32, 31), PackedInt32Array(28, 31, 30), PackedInt32Array(30, 33, 29), PackedInt32Array(29, 33, 34), PackedInt32Array(31, 32, 35), PackedInt32Array(35, 32, 36), PackedInt32Array(35, 36, 37), PackedInt32Array(35, 37, 33), PackedInt32Array(33, 37, 38), PackedInt32Array(38, 37, 39), PackedInt32Array(34, 33, 40), PackedInt32Array(40, 33, 42), PackedInt32Array(40, 42, 41), PackedInt32Array(38, 42, 33), PackedInt32Array(43, 41, 44), PackedInt32Array(44, 41, 42), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 48), PackedInt32Array(50, 49, 42), PackedInt32Array(42, 49, 44), PackedInt32Array(48, 51, 47), PackedInt32Array(49, 50, 52), PackedInt32Array(52, 51, 49), PackedInt32Array(49, 51, 48), PackedInt32Array(53, 46, 39), PackedInt32Array(39, 46, 54), PackedInt32Array(54, 46, 55), PackedInt32Array(46, 47, 55), PackedInt32Array(39, 54, 38), PackedInt32Array(57, 56, 58), PackedInt32Array(58, 56, 59), PackedInt32Array(59, 56, 60), PackedInt32Array(64, 63, 61), PackedInt32Array(61, 63, 62), PackedInt32Array(66, 65, 44), PackedInt32Array(44, 65, 43), PackedInt32Array(68, 67, 69), PackedInt32Array(69, 67, 70), PackedInt32Array(71, 65, 72), PackedInt32Array(72, 65, 66), PackedInt32Array(72, 66, 48), PackedInt32Array(70, 67, 72), PackedInt32Array(72, 48, 70), PackedInt32Array(70, 48, 73), PackedInt32Array(73, 48, 74), PackedInt32Array(74, 48, 45), PackedInt32Array(77, 76, 75), PackedInt32Array(79, 78, 21), PackedInt32Array(21, 78, 25), PackedInt32Array(25, 78, 77), PackedInt32Array(25, 77, 75), PackedInt32Array(11, 16, 80), PackedInt32Array(80, 16, 75), PackedInt32Array(16, 25, 75)]
+sample_partition_type = 1
+geometry_parsed_geometry_type = 1
+agent_radius = 0.4
+
+[sub_resource type="GDScript" id="GDScript_ouso4"]
+script/source = "extends NavigationRegion3D
+
+@export var worldEnvironment : WorldEnvironment
+@export var mob_scene: PackedScene
+@onready var blocks := $World_flexible/Blocks
+var bake_queued := false
+
+@export var sun_damage : int
+
+func _process(delta: float) -> void:
+	if is_day():
+		get_tree().call_group(\"enemy\", \"sun_damage\", sun_damage*delta)
+		
+
+func _ready():
+	pass
+
+func is_day():
+	return worldEnvironment.is_day
+
+func queue_bake():
+	if bake_queued:
+		return
+	bake_queued = true
+	call_deferred(\"_do_bake\")
+
+func _do_bake():
+	await get_tree().physics_frame
+	navigation_mesh = navigation_mesh.duplicate()
+	bake_navigation_mesh()
+	bake_queued = false
+
+func _on_world_flexible_child_order_changed() -> void:
+	queue_bake()
+
+
+func _on_timer_timeout() -> void:
+	if is_day():
+		return
+	spawn_mob()
+	
+
+func spawn_mob():
+	var mob = mob_scene.instantiate()
+	var mob_spawn_location = get_node(\"Spawn/SpawnPath/SpawnLocation\")
+	# offset -> enemys don't spawn in the same location
+	mob_spawn_location.progress_ratio = randf()
+	mob.initialize(mob_spawn_location.position)
+
+	# Spawn the mob by adding it to the Main scene.
+	add_child(mob)
+	
+"
+
+[sub_resource type="Curve3D" id="Curve3D_blune"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.1814599, 0, -48.85111, 0, 0, 0, 0, 0, 0, -34.03722, 0, -34.369457, 0, 0, 0, 0, 0, 0, -48.714573, 0, 0.073397286, 0, 0, 0, 0, 0, 0, -33.841526, 0, 33.73345, 0, 0, 0, 0, 0, 0, -0.1814599, 0, 47.82371, 0, 0, 0, 0, 0, 0, 34.0657, 0, 33.92915, 0, 0, 0, 0, 0, 0, 48.35165, 0, -0.1223005, 0, 0, 0, 0, 0, 0, 34.26138, 0, -34.369457),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" unique_id=2065206651]
+navigation_mesh = SubResource("NavigationMesh_ouso4")
+navigation_layers = 255
+script = SubResource("GDScript_ouso4")
+mob_scene = ExtResource("1_iubku")
+sun_damage = 10
+
+[node name="World_fixed" parent="." unique_id=828041261 instance=ExtResource("2_y2s00")]
+
+[node name="Chests" parent="World_fixed" index="2" unique_id=2055759188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.311822, 0.9, 0)
+
+[node name="World_flexible" type="Node3D" parent="." unique_id=576680200]
+
+[node name="Blocks" type="Node3D" parent="World_flexible" unique_id=1752560446]
+
+[node name="Spawn" type="Node" parent="." unique_id=1237675365]
+
+[node name="SpawnPath" type="Path3D" parent="Spawn" unique_id=1043013211]
+curve = SubResource("Curve3D_blune")
+debug_custom_color = Color(13.501688, 5.0975924, 8.011915, 1)
+
+[node name="SpawnLocation" type="PathFollow3D" parent="Spawn/SpawnPath" unique_id=1071882763]
+transform = Transform3D(-0.39327776, 0, 0.9194197, 0, 1, 0, -0.9194197, 0, -0.39327776, -0.1814599, 0, -48.85111)
+
+[node name="Timer" type="Timer" parent="Spawn" unique_id=293864880]
+wait_time = 2.0
+autostart = true
+
+[node name="Enemy" parent="." unique_id=1800269208 groups=["enemy"] instance=ExtResource("1_iubku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44078213, 0.31724524)
+
+[connection signal="child_order_changed" from="World_flexible" to="." method="_on_world_flexible_child_order_changed"]
+[connection signal="child_order_changed" from="World_flexible/Blocks" to="." method="_on_world_flexible_child_order_changed"]
+[connection signal="timeout" from="Spawn/Timer" to="." method="_on_timer_timeout"]
+
+[editable path="World_fixed"]

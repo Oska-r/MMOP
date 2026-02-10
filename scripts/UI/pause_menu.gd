@@ -1,6 +1,6 @@
 extends Control
 
-@export var player: CharacterBody3D
+@onready var player: CharacterBody3D = get_parent().player
 
 func _ready():
 	$AnimationPlayer.play("RESET")

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cdhogk0p63hmu"]
+
+[ext_resource type="Script" uid="uid://pl3n7g23c7ip" path="res://scripts/miscellaneous/world_environment.gd" id="1_hbh1y"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_ouso4"]
+
+[sub_resource type="Sky" id="Sky_ig7tw"]
+sky_material = SubResource("PhysicalSkyMaterial_ouso4")
+
+[sub_resource type="Environment" id="Environment_0xm2m"]
+background_mode = 2
+sky = SubResource("Sky_ig7tw")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" unique_id=1385874066 node_paths=PackedStringArray("sun_pivot", "moon_pivot")]
+environment = SubResource("Environment_0xm2m")
+script = ExtResource("1_hbh1y")
+moon_max_intensity = 0.02
+sun_pivot = NodePath("SunPivot")
+moon_pivot = NodePath("MoonPivot")
+time = 0.85
+
+[node name="SunPivot" type="Node3D" parent="." unique_id=1301585711]
+
+[node name="SunLight" type="DirectionalLight3D" parent="SunPivot" unique_id=577195447]
+shadow_enabled = true
+
+[node name="MoonPivot" type="Node3D" parent="." unique_id=1696461824]
+
+[node name="MoonLight" type="DirectionalLight3D" parent="MoonPivot" unique_id=1546017278]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 44.100002, 0)
+shadow_enabled = true

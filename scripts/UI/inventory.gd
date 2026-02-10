@@ -1,6 +1,6 @@
 extends Control
 
-@export var player:CharacterBody3D
+@onready var player: CharacterBody3D = get_parent().player
 @export var hotbar: Control
 @onready var chest: Control = get_node("Chest")
 @onready var crafting_table: Control = get_node("CraftingTable")

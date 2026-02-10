@@ -1,6 +1,6 @@
 extends Control
 
-@export var player:CharacterBody3D
+@onready var player:CharacterBody3D = get_parent().player
 @export var inventory: Control
 @onready var boxContainer: BoxContainer = $Slots
 
