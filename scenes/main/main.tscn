@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bdyigy4fvbvtr"]
 
 [ext_resource type="Script" uid="uid://o3eg7vjc47t7" path="res://scripts/main.gd" id="1_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://bao028iep5b5x" path="res://scenes/main/world.tscn" id="2_ow5a4"]
+[ext_resource type="PackedScene" uid="uid://bao028iep5b5x" path="res://scenes/world/world.tscn" id="2_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://scenes/main/player.tscn" id="2_tipki"]
-[ext_resource type="PackedScene" uid="uid://cdhogk0p63hmu" path="res://scenes/world_environment.tscn" id="4_ouso4"]
-[ext_resource type="PackedScene" uid="uid://bv7nxdrmt0pwo" path="res://scenes/main/ui.tscn" id="6_hujxm"]
+[ext_resource type="PackedScene" uid="uid://cdhogk0p63hmu" path="res://scenes/world/world_environment.tscn" id="4_ouso4"]
+[ext_resource type="PackedScene" uid="uid://bv7nxdrmt0pwo" path="res://scenes/UI/ui.tscn" id="6_hujxm"]
 [ext_resource type="AudioStream" uid="uid://chrw4bninhbgo" path="res://ressources/sounds/backgroundMusic.mp3" id="7_trceg"]
 
 [node name="Main" type="Node3D" unique_id=1623769975 node_paths=PackedStringArray("musicPlayer")]

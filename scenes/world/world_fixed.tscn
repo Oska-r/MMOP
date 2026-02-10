@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cjhvd857e0u7k"]
 
 [ext_resource type="PackedScene" uid="uid://dr1hqhhyvv47c" path="res://scenes/objects/oxygen_tank.tscn" id="1_br8mx"]
-[ext_resource type="PackedScene" uid="uid://cw5kx1y60l2vn" path="res://scenes/main/chests.tscn" id="2_blego"]
+[ext_resource type="PackedScene" uid="uid://cw5kx1y60l2vn" path="res://scenes/world/chests.tscn" id="2_blego"]
 [ext_resource type="PackedScene" uid="uid://cxpd0mkp6cky5" path="res://scenes/objects/crafting_table.tscn" id="3_42htb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_272bh"]
