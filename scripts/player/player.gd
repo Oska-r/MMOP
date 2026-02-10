@@ -140,7 +140,7 @@ func place_block(item) -> bool:
 	if not block_placeable(spawn_pos, blocks_root):
 		return false
 	
-	play_sound(item.sound)
+	Global.play_sound(item.sound)
 	var instance = item.scene.instantiate()
 	blocks_root.add_child(instance)
 	instance.global_transform.origin = spawn_pos
@@ -226,12 +226,6 @@ func use_selected_item(item) -> bool:
 	if item.scene:
 		return place_block(item)
 	return false
-
-func play_sound(sound) -> void:
-	var music_player = AudioStreamPlayer.new()
-	add_child(music_player)
-	music_player.stream = sound
-	music_player.play()
 
 func is_input_enabled() -> bool:
 	return input_enabled

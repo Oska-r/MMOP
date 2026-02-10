@@ -30,7 +30,7 @@ func _on_button_pressed(button: Button):
 
 	# 3. Consume ingredients
 	var remaining_to_consume = required_amount
-	crafting_sound.play()
+	Global.play_sound(crafting_sound)
 	
 	for coords in locations.keys():
 		if remaining_to_consume <= 0: break

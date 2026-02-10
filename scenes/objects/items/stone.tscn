@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bb4fk5cvhk80y"]
 
-[ext_resource type="Script" uid="uid://dudgagn82qdak" path="res://scripts/stone.gd" id="1_hxrs0"]
+[ext_resource type="Script" uid="uid://dudgagn82qdak" path="res://scripts/miscellaneous/stone.gd" id="1_hxrs0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_asons"]
 transparency = 1

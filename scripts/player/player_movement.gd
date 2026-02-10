@@ -117,12 +117,9 @@ func _physics_process(delta: float) -> void:
 
 	# Landing sounds
 	if not was_on_floor and player.is_on_floor():
-		landing.pitch_scale = randf_range(0.9, 1.1)
-		landing.play()
+		Global.play_sound(landing)
 	was_on_floor = player.is_on_floor()
 
-
-	
 ## Rotate us to look around.
 ## Base of controller rotates around y (left/right). Head rotates around x (up/down).
 ## Modifies look_rotation based on rot_input, then resets basis and rotates by look_rotation.

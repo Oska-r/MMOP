@@ -6,8 +6,8 @@ var is_open: bool = false
 
 @export var chest_items: Array[Item] = [null,null,null,null, null,null,null,null,null,null]
 
-@export var open_chest_sound: AudioStreamPlayer
-@export var close_chest_sound: AudioStreamPlayer
+@export var open_chest_sound: AudioStreamPlayer3D
+@export var close_chest_sound: AudioStreamPlayer3D
 
 # Configuration
 var open_angle: float = 110.0 # Degrees to swing back
@@ -49,13 +49,11 @@ func toggle_chest():
 		close_chest()
 
 func open_chest() -> void:
-	open_chest_sound.pitch_scale = randf_range(0.9, 1.1)
-	open_chest_sound.play()
+	Global.play_sound(open_chest_sound)
 	inventory.open_chest(self)
 
 func close_chest() -> void:
-	close_chest_sound.pitch_scale = randf_range(1.7, 1.9)
-	close_chest_sound.play()
+	Global.play_sound(close_chest_sound, 1.7, 1.9)
 	inventory.close_chest(self)
 
 func update(new_chest_items) -> void:

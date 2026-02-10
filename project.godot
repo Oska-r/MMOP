@@ -21,6 +21,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 [autoload]
 
 Item_ids="*res://items/inventory_items/item_ids.gd"
+Global="*uid://btmv6j1xic2h6"
 
 [display]
 
