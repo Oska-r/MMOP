@@ -1,5 +1,6 @@
 extends Node
 
+## Plays sound with randomized pitch to prevent sound fatigue. Accepts AudioStream, AudioStreamPlayer and AudioStreamPlayer3D.
 func play_sound(sound, min: float = 0.9, max: float = 1.1):
 	if sound is AudioStream:
 		var music_player = AudioStreamPlayer.new()

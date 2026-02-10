@@ -8,6 +8,7 @@ func _ready():
 		if child is Button:
 			child.pressed.connect(_on_button_pressed.bind(child))
 
+## On crafting button pressed. Handles wether player has required ressources, if yes uses ressources and gives crafted item.
 func _on_button_pressed(button: Button):
 	var recipe = button.recipe
 	var ingredient_id = recipe.ingredients.keys()[0]
@@ -50,7 +51,7 @@ func _on_button_pressed(button: Button):
 	
 	button.update_current_amount()
 
-## Searches for an existing stack of the same ID, or the first empty slot.
+## Searches for an existing stack of the same ID or the first empty slot.
 func find_stackable_or_empty(item_id) -> Vector2:
 	var first_empty = Vector2(-1, -1)
 	

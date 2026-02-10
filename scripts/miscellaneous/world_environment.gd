@@ -16,19 +16,20 @@ extends WorldEnvironment
 var is_day:bool
 
 ## Internal time tracking
-## 0 morning | 0.25 noon | 0.75 midnitht 
-@export var time := 0.0  # 0.0 - 1.0 represents full day cycle
+## 0 morning | 0.25 noon | 0.75 midnight 
+@export var time := 0.0 
 
 func _ready():
 	moon_light.light_color = moon_color
+
 func _process(delta):
-	# Advance time
 	time += delta / day_length_seconds
 	if time > 1.0:
 		time -= 1.0
 	
 	_update_lights()
 
+# Handles day night cycle.
 func _update_lights():
 	# Rotate sun
 	sun_pivot.rotation_degrees.x = - lerp(0,360,time)

@@ -56,6 +56,7 @@ func close_chest() -> void:
 	Global.play_sound(close_chest_sound, 1.7, 1.9)
 	inventory.close_chest(self)
 
+## Overwrites chest content with the new one when player changed items in the chest (called from inventory).
 func update(new_chest_items) -> void:
 	for i in chest_items.size():
 		chest_items[i] = new_chest_items[i]

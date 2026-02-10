@@ -25,13 +25,11 @@ func _physics_process(delta):
 	if damage_timer >= 0:
 		damage_timer -= delta
 
-
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	else:
 		velocity.y = 0
-
 
 func update_movement() -> void:
 	if player == null:
@@ -58,7 +56,7 @@ func handle_damage() -> void:
 	if damage_timer > 0:
 		return
 	for body in bodies_in_damage_area:
-		#don't apply damage to other enemys
+		# don't apply damage to other enemys
 		if body.is_in_group("enemy"):
 			pass
 		elif body != null and body.has_method("take_damage"):
@@ -78,16 +76,14 @@ func die():
 ## TODO: adjust dif. sun damage vs. normal damage
 func sun_damage(amount):
 	take_damage(amount)
-	
+
 # This function will be called from the Main scene.
 func initialize(start_position):
 	look_at_from_position(start_position, Vector3(0,0,0))
 
-
 func _on_body_entered(body):
 	if body is PhysicsBody3D:
 		bodies_in_damage_area.append(body)
-
 
 func _on_body_exited(body):
 	if body is PhysicsBody3D:

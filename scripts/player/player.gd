@@ -10,11 +10,10 @@ var place_reach = 2.7
 var item_use_cooldown := 0.0
 var item_use_delay := 0.15
 
-
-## list of all Bodys in Attack_Area
+## list of all bodys in Attack_Area
 var targets : Array[Node3D]
 
-#attributes
+# attributes
 @export_category("attributes")
 @export var health_max := 100.0
 @export var damage :=  30.0
@@ -25,18 +24,8 @@ var health:= health_max
 func _ready() -> void:
 		attack_Area.visible = false
 
-func check_interaction():
-	if interact_ray.is_colliding():
-		var collider = interact_ray.get_collider()
-		
-		# Check if the object we hit has the toggle_chest function
-		if collider.has_method("toggle_chest"):
-			collider.toggle_chest()
-		if collider.has_method("toggle_crafting_table"):
-			collider.toggle_crafting_table()
-
 func _input(event):
-	if event.is_action_pressed("interact"): # Create "interact" in Input Map (e.g., 'E' key)
+	if event.is_action_pressed("interact"):
 		check_interaction()
 
 func _process(delta) -> void:
@@ -47,8 +36,18 @@ func _process(delta) -> void:
 	if Input.is_action_pressed("prime"):
 		handle_attack()
 
+## Checks wether and with what the interaction ray is colliding with.
+func check_interaction():
+	if interact_ray.is_colliding():
+		var collider = interact_ray.get_collider()
+		
+		# Check if the object we hit has the toggle_chest function
+		if collider.has_method("toggle_chest"):
+			collider.toggle_chest()
+		if collider.has_method("toggle_crafting_table"):
+			collider.toggle_crafting_table()
 
-## Disables (if parameter is false) or enables (if parameter is true) all player input.
+## Disables (if parameter is false) or enables (if parameter is true) all player input (used for openend UIs).
 func enable_input(enable: bool) -> void:
 	input_enabled = enable
 	
@@ -56,7 +55,7 @@ func enable_input(enable: bool) -> void:
 	set_physics_process(enable)
 	set_process_input(enable)
 	set_process_unhandled_input(enable)
-
+	
 	if enable:
 		capture_mouse()
 	else:
@@ -115,7 +114,7 @@ func block_placeable(spawn_pos: Vector3, blocks_root: Node3D = null) -> bool:
 	
 	return has_support
 
-## Returns the blocks_root node
+## Returns the blocks_root node (node used for storing all placed blocks).
 func get_blocks_root(create_if_missing := false) -> Node3D:
 	var blocks_root := get_tree().current_scene.get_node_or_null(
 		"NavigationRegion3D/World_flexible/Blocks"
@@ -187,13 +186,14 @@ func show_preview(item) -> void:
 			# If names don't match logic (optional), you might want to rebuild
 			pass
 
+## Disables all collision from all children.
 func disable_collision_recursively(node: Node):
 	if node is CollisionShape3D or node is CollisionPolygon3D:
 		node.disabled = true
 	for child in node.get_children():
 		disable_collision_recursively(child)
 
-## Applies lower transparency to given node
+## Applies lower transparency to given node (used for displaying more transparent previews blocks).
 func apply_transparency(node: Node, alpha: float = 0.5) -> void:
 	if node is MeshInstance3D:
 		var mat: StandardMaterial3D = node.get_active_material(0)
@@ -232,6 +232,7 @@ func is_input_enabled() -> bool:
 
 
 #region damage
+
 func handle_attack():
 	if damage_timer > 0:
 		return
@@ -246,7 +247,7 @@ func attack_animation():
 	attack_Area.visible = true
 	await get_tree().create_timer(0.2).timeout
 	attack_Area.visible = false
-	
+
 func take_damage(amount: int) -> void:
 	health -= amount
 	print("Spieler bekommt Schaden! Leben:", health)
@@ -257,4 +258,5 @@ func take_damage(amount: int) -> void:
 func die():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://scenes/UI/end_screen.tscn")
+
 #endregion
