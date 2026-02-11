@@ -82,9 +82,6 @@ sun_damage = 10
 
 [node name="World_fixed" parent="." unique_id=828041261 instance=ExtResource("2_y2s00")]
 
-[node name="Chests" parent="World_fixed" index="2" unique_id=2055759188]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.311822, 0.9, 0)
-
 [node name="World_flexible" type="Node3D" parent="." unique_id=576680200]
 
 [node name="Blocks" type="Node3D" parent="World_flexible" unique_id=1752560446]
@@ -102,11 +99,6 @@ transform = Transform3D(-0.39327776, 0, 0.9194197, 0, 1, 0, -0.9194197, 0, -0.39
 wait_time = 2.0
 autostart = true
 
-[node name="Enemy" parent="." unique_id=1800269208 groups=["enemy"] instance=ExtResource("1_iubku")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44078213, 0.31724524)
-
 [connection signal="child_order_changed" from="World_flexible" to="." method="_on_world_flexible_child_order_changed"]
 [connection signal="child_order_changed" from="World_flexible/Blocks" to="." method="_on_world_flexible_child_order_changed"]
 [connection signal="timeout" from="Spawn/Timer" to="." method="_on_timer_timeout"]
-
-[editable path="World_fixed"]
