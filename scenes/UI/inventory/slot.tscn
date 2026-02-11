@@ -21,10 +21,10 @@ texture = ExtResource("2_0jp5n")
 
 [node name="TopLeft" type="RichTextLabel" parent="." unique_id=1542889745]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 2.0
-offset_right = 45.0
-offset_bottom = 42.0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 48.0
+offset_bottom = 44.0
 scale = Vector2(0.8, 0.8)
 theme_override_fonts/normal_font = ExtResource("1_4v6ba")
 scroll_active = false

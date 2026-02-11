@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cq8sbte51hdu2"]
 
 [ext_resource type="Script" uid="uid://cwbpprwwrx2rh" path="res://scripts/UI/inventory.gd" id="1_egg3t"]
+[ext_resource type="Texture2D" uid="uid://b5fp2om3kmjqo" path="res://ressources/pictures/UI/Inventory.png" id="2_ahcd1"]
 [ext_resource type="PackedScene" uid="uid://cocghnpcu6bpq" path="res://scenes/UI/inventory/slot.tscn" id="3_kpdmy"]
 [ext_resource type="PackedScene" uid="uid://40vsn8hlif6j" path="res://scenes/miscellaneous/crafting_recipe.tscn" id="3_lvvmf"]
 [ext_resource type="Script" uid="uid://dyb1bfd8gw2xv" path="res://scripts/crafting/crafting_table_inventory.gd" id="3_qjyq4"]
@@ -20,22 +21,23 @@ offset_right = 1155.0
 offset_bottom = 648.0
 color = Color(0.19607843, 0.19607843, 0.19607843, 0.84313726)
 
-[node name="Background_2" type="ColorRect" parent="." unique_id=1892083492]
+[node name="Background_3" type="ColorRect" parent="." unique_id=318219114]
 layout_mode = 0
 offset_left = 281.0
-offset_top = 147.99998
-offset_right = 840.0
-offset_bottom = 464.8805
+offset_top = 119.00001
+offset_right = 841.0
+offset_bottom = 461.77332
 scale = Vector2(1, 1.12)
-color = Color(0.19641912, 0.19641912, 0.19641912, 1)
+color = Color(0.16862746, 0.015686275, 0, 1)
 
-[node name="InventoryLabel" type="Label" parent="." unique_id=1894786357]
+[node name="Background_2" type="TextureRect" parent="." unique_id=1292276656]
 layout_mode = 0
-offset_left = 292.0
-offset_top = 163.0
-offset_right = 367.0
-offset_bottom = 186.0
-text = "Inventar"
+offset_left = 281.0
+offset_top = 119.00001
+offset_right = 841.0
+offset_bottom = 461.77332
+scale = Vector2(1, 1.12)
+texture = ExtResource("2_ahcd1")
 
 [node name="row_0" type="HBoxContainer" parent="." unique_id=1143610251]
 layout_mode = 1
@@ -368,24 +370,23 @@ row = 4
 index = 9
 
 [node name="Chest" type="Control" parent="." unique_id=2095524525]
-visible = false
 anchors_preset = 0
 
 [node name="Background_3" type="ColorRect" parent="Chest" unique_id=290342923]
 layout_mode = 0
 offset_left = 281.0
-offset_top = 61.0
+offset_top = 29.0
 offset_right = 840.0
-offset_bottom = 377.8805
+offset_bottom = 345.8805
 scale = Vector2(1, 0.27999997)
 color = Color(0.19641912, 0.19641912, 0.19641912, 1)
 
 [node name="row_5" type="HBoxContainer" parent="Chest" unique_id=593088301]
 layout_mode = 0
 offset_left = 291.0
-offset_top = 86.0
+offset_top = 54.0
 offset_right = 827.0
-offset_bottom = 138.0
+offset_bottom = 106.0
 
 [node name="Slot_0" parent="Chest/row_5" unique_id=212214653 node_paths=PackedStringArray("inventory_ui") instance=ExtResource("3_kpdmy")]
 layout_mode = 2
@@ -449,9 +450,9 @@ index = 9
 [node name="ChestLabel" type="Label" parent="Chest" unique_id=1493000842]
 layout_mode = 0
 offset_left = 292.0
-offset_top = 65.0
+offset_top = 33.0
 offset_right = 367.0
-offset_bottom = 88.0
+offset_bottom = 56.0
 text = "Kiste"
 
 [node name="CraftingTable" type="VBoxContainer" parent="." unique_id=981495428 node_paths=PackedStringArray("inventory", "crafting_sound")]
