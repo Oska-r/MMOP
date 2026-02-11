@@ -8,7 +8,6 @@ vertices = PackedVector3Array(120.84801, 0.5, -50.651993, 101.59801, 0.5, -97.90
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 5), PackedInt32Array(2, 5, 3), PackedInt32Array(3, 5, 4), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 4), PackedInt32Array(4, 5, 8), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 7), PackedInt32Array(11, 7, 13), PackedInt32Array(11, 13, 12), PackedInt32Array(7, 8, 14), PackedInt32Array(7, 14, 13), PackedInt32Array(12, 15, 11), PackedInt32Array(17, 16, 11), PackedInt32Array(15, 17, 11), PackedInt32Array(20, 19, 18), PackedInt32Array(18, 21, 20), PackedInt32Array(20, 21, 0), PackedInt32Array(0, 21, 22), PackedInt32Array(22, 21, 23), PackedInt32Array(21, 25, 24), PackedInt32Array(21, 24, 23), PackedInt32Array(0, 26, 5), PackedInt32Array(27, 26, 0), PackedInt32Array(22, 27, 0), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 31), PackedInt32Array(33, 32, 34), PackedInt32Array(34, 32, 31), PackedInt32Array(31, 28, 34), PackedInt32Array(37, 36, 35), PackedInt32Array(37, 35, 34), PackedInt32Array(34, 35, 38), PackedInt32Array(39, 33, 38), PackedInt32Array(38, 33, 34), PackedInt32Array(41, 40, 28), PackedInt32Array(42, 41, 28), PackedInt32Array(43, 42, 29), PackedInt32Array(29, 42, 28), PackedInt32Array(40, 41, 44), PackedInt32Array(44, 41, 45), PackedInt32Array(47, 46, 48), PackedInt32Array(48, 46, 49), PackedInt32Array(49, 44, 45), PackedInt32Array(36, 51, 35), PackedInt32Array(35, 51, 50), PackedInt32Array(49, 46, 50), PackedInt32Array(50, 51, 49), PackedInt32Array(48, 49, 45), PackedInt32Array(52, 47, 43), PackedInt32Array(43, 47, 48), PackedInt32Array(43, 48, 42), PackedInt32Array(54, 53, 55), PackedInt32Array(55, 53, 56), PackedInt32Array(56, 53, 57), PackedInt32Array(61, 60, 58), PackedInt32Array(58, 60, 59), PackedInt32Array(63, 62, 38), PackedInt32Array(38, 62, 39), PackedInt32Array(64, 62, 63), PackedInt32Array(64, 63, 50), PackedInt32Array(64, 50, 65), PackedInt32Array(65, 50, 66), PackedInt32Array(66, 50, 46), PackedInt32Array(69, 68, 67), PackedInt32Array(71, 70, 21), PackedInt32Array(21, 70, 25), PackedInt32Array(25, 70, 69), PackedInt32Array(25, 69, 67), PackedInt32Array(11, 16, 72), PackedInt32Array(72, 16, 67), PackedInt32Array(16, 25, 67)]
 sample_partition_type = 1
 geometry_parsed_geometry_type = 1
-agent_radius = 0.4
 
 [sub_resource type="GDScript" id="GDScript_ouso4"]
 script/source = "extends NavigationRegion3D
@@ -61,7 +60,7 @@ func spawn_mob():
 	mob.initialize(mob_spawn_location.position)
 
 	# Spawn the mob by adding it to the Main scene.
-	add_child(mob)
+	get_node(\"Spawn\").add_child(mob)
 	
 "
 
@@ -102,7 +101,7 @@ transform = Transform3D(-0.39327776, 0, 0.9194197, 0, 1, 0, -0.9194197, 0, -0.39
 wait_time = 2.0
 autostart = true
 
-[node name="Enemy" parent="." unique_id=1800269208 groups=["enemy"] instance=ExtResource("1_iubku")]
+[node name="Enemy" parent="Spawn" unique_id=1800269208 groups=["enemy"] instance=ExtResource("1_iubku")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44078213, 0.31724524)
 
 [connection signal="child_order_changed" from="World_flexible" to="." method="_on_world_flexible_child_order_changed"]

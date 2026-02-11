@@ -257,6 +257,6 @@ func take_damage(amount: int) -> void:
 
 func die():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	get_tree().change_scene_to_file("res://scenes/UI/end_screen.tscn")
+	get_tree().change_scene_to_file("res://scenes/UI/menus/end_screen.tscn")
 
 #endregion
