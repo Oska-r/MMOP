@@ -73,14 +73,13 @@ func release_mouse() -> void:
 
 #region placing blocks
 ## Calculates the position of where to spawn the block the player wants to place.
-func calculate_block_spawn_pos() -> Vector3:
+func calculate_block_spawn_pos(blocks_root: Node) -> Vector3:
 	var look_dir = -head.global_transform.basis.z.normalized()
-	var fallback_pos = head.global_transform.origin + look_dir * place_reach
-	var target = fallback_pos.snapped(Vector3.ONE)
+	var target = (head.global_transform.origin + look_dir * place_reach).snapped(Vector3.ONE)
 	
-	if interact_ray.is_colliding():
-		var spawn_pos = target + Vector3.UP
-		return spawn_pos
+	for block in blocks_root.get_children():
+		if block.global_position.is_equal_approx(target):
+			return target + Vector3.UP
 	
 	return target
 
@@ -94,8 +93,10 @@ func block_placeable(spawn_pos: Vector3, blocks_root: Node3D = null) -> bool:
 	if blocks_root == null:
 		return false 
 	
-	if spawn_pos.is_equal_approx(global_position.snapped(Vector3.ONE) + Vector3.DOWN):
-		return false
+	# prevent the player from stacking up
+	for i in range(place_reach):
+		if spawn_pos.is_equal_approx(global_position.snapped(Vector3.ONE) + (i * Vector3.DOWN)):
+			return false
 	
 	var has_support = false
 	
@@ -103,13 +104,9 @@ func block_placeable(spawn_pos: Vector3, blocks_root: Node3D = null) -> bool:
 	if spawn_pos.y == 1:
 		has_support = true
 	
+	
 	for child in blocks_root.get_children():
-		# 3. Check if a block ALREADY exists at this exact position (Prevent overlap)
-		if child.global_position.is_equal_approx(spawn_pos):
-			return false
-		
-		
-		if child.global_position.is_equal_approx(spawn_pos + Vector3.UP):
+		if spawn_pos.is_equal_approx(child.global_position + Vector3.UP):
 			has_support = true
 			break
 	
@@ -134,8 +131,8 @@ func get_blocks_root(create_if_missing := false) -> Node3D:
 
 ## Places (if possible) item/block in direction of looking.
 func place_block(item) -> bool:
-	var spawn_pos = calculate_block_spawn_pos()
 	var blocks_root = get_blocks_root(true)
+	var spawn_pos = calculate_block_spawn_pos(blocks_root)
 	
 	if not block_placeable(spawn_pos, blocks_root):
 		return false
@@ -159,8 +156,8 @@ func clear_preview() -> void:
 
 ## Updates the preview hologram
 func show_preview(item) -> void:
-	var spawn_pos = calculate_block_spawn_pos()
 	var blocks_root = get_blocks_root(false) # Don't create if missing, just get it
+	var spawn_pos = calculate_block_spawn_pos(blocks_root)
 	
 	if not block_placeable(spawn_pos, blocks_root):
 		clear_preview()
