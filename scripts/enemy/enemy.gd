@@ -64,7 +64,6 @@ func handle_damage() -> void:
 			damage_timer = damage_interval
 
 func take_damage(amount):
-	print("Gegener hat schaden genommen: " + str(amount))
 	health -= amount
 	if health <= 0:
 		call_deferred("die")

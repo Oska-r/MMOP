@@ -1,5 +1,7 @@
 extends WorldEnvironment
 
+signal day_started(day_count: int)
+
 # Day-night cycle settings
 @export var day_length_seconds := 90.0  # Duration of a full day in seconds
 @export var sun_max_intensity := 1.0
@@ -20,12 +22,15 @@ var is_day:bool
 @export var time := 0.0 
 
 func _ready():
+	day_started.emit()
 	moon_light.light_color = moon_color
 
 func _process(delta):
 	time += delta / day_length_seconds
 	if time > 1.0:
 		time -= 1.0
+		Global.advance_day()
+		day_started.emit()
 	
 	_update_lights()
 

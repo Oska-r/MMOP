@@ -20,6 +20,7 @@ radius = 0.61
 
 [node name="Enemy" type="CharacterBody3D" unique_id=1800269208]
 script = ExtResource("1_l1lbi")
+health = 500
 
 [node name="Body" type="MeshInstance3D" parent="." unique_id=601266304]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
