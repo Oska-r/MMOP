@@ -28,7 +28,7 @@ offset_top = 119.00001
 offset_right = 841.0
 offset_bottom = 461.77332
 scale = Vector2(1, 1.12)
-color = Color(0.16862746, 0.015686275, 0, 1)
+color = Color(1, 0.32156864, 0.15686275, 0.3764706)
 
 [node name="Background_2" type="TextureRect" parent="." unique_id=1292276656]
 layout_mode = 0

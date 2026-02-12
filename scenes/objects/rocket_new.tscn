@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://laaa0kfjc0my"]
+
+[ext_resource type="PackedScene" uid="uid://case33da0xjau" path="res://ressources/models/Rakete/Rakete.glb" id="1_fu0br"]
+
+[node name="Rocket" type="StaticBody3D" unique_id=1420707398]
+
+[node name="Rakete" parent="." unique_id=1515452468 instance=ExtResource("1_fu0br")]
