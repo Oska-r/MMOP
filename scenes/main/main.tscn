@@ -15,6 +15,7 @@ musicPlayer = NodePath("BackgroundMusic")
 worldEnvironment = NodePath("../WorldEnvironment")
 
 [node name="WorldEnvironment" parent="." unique_id=1385874066 instance=ExtResource("4_ouso4")]
+day_length_seconds = 30.0
 
 [node name="Player" parent="." unique_id=1560919245 instance=ExtResource("2_tipki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1936798, 0.65600634, 9.76694)
@@ -25,3 +26,5 @@ player = NodePath("../Player")
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1099075134]
 stream = ExtResource("7_trceg")
 volume_db = -30.0
+
+[connection signal="day_started" from="WorldEnvironment" to="World" method="_on_world_environment_day_started"]
