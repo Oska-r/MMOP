@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dadtbmuwb5fn5"]
+
+[ext_resource type="PackedScene" uid="uid://cc0c65i761qig" path="res://ressources/models/Spike/Spikes.glb" id="1_wta3d"]
+
+[node name="Spike" type="StaticBody3D" unique_id=1135206497]
+
+[node name="Spikes2" parent="." unique_id=2104879654 instance=ExtResource("1_wta3d")]

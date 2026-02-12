@@ -2,6 +2,7 @@ extends Node
 
 ## Plays sound with randomized pitch to prevent sound fatigue. Accepts AudioStream, AudioStreamPlayer and AudioStreamPlayer3D.
 func play_sound(sound, min_pitch: float = 0.9, max_pitch: float = 1.1):
+
 	if not sound:
 		return
 		
