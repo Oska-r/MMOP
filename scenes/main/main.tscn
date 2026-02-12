@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://scenes/main/player.tscn" id="2_tipki"]
 [ext_resource type="PackedScene" uid="uid://cdhogk0p63hmu" path="res://scenes/world/world_environment.tscn" id="4_ouso4"]
 [ext_resource type="PackedScene" uid="uid://bv7nxdrmt0pwo" path="res://scenes/UI/ui.tscn" id="6_hujxm"]
+[ext_resource type="Script" uid="uid://b5g2llc373ovo" path="res://scripts/UI/day_display.gd" id="7_hujxm"]
 [ext_resource type="AudioStream" uid="uid://chrw4bninhbgo" path="res://ressources/sounds/backgroundMusic.mp3" id="7_trceg"]
 
 [node name="Main" type="Node3D" unique_id=1623769975 node_paths=PackedStringArray("musicPlayer")]
@@ -15,16 +16,29 @@ musicPlayer = NodePath("BackgroundMusic")
 worldEnvironment = NodePath("../WorldEnvironment")
 
 [node name="WorldEnvironment" parent="." unique_id=1385874066 instance=ExtResource("4_ouso4")]
-day_length_seconds = 30.0
 
 [node name="Player" parent="." unique_id=1560919245 instance=ExtResource("2_tipki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1936798, 0.65600634, 9.76694)
 
 [node name="UI" parent="." unique_id=2045572628 node_paths=PackedStringArray("player") instance=ExtResource("6_hujxm")]
+visible = false
 player = NodePath("../Player")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1099075134]
 stream = ExtResource("7_trceg")
 volume_db = -30.0
 
+[node name="DayDisplay" type="RichTextLabel" parent="." unique_id=1356159983]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -61.5
+offset_right = 61.5
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 32
+horizontal_alignment = 1
+script = ExtResource("7_hujxm")
+
 [connection signal="day_started" from="WorldEnvironment" to="World" method="_on_world_environment_day_started"]
+[connection signal="day_started" from="WorldEnvironment" to="DayDisplay" method="_on_world_environment_day_started"]
