@@ -2,6 +2,9 @@ extends Node
 
 var day_count: int = 0
 
+func reset_day() -> void:
+	day_count = 0
+
 func advance_day():
 	day_count += 1
 
