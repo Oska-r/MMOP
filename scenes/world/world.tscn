@@ -42,9 +42,8 @@ func _do_bake():
 func _on_world_flexible_child_order_changed() -> void:
 	queue_bake()
 
-
-func _on_world_environment_day_started(day_count: int) -> void:
-	get_node(\"Spawn\").new_day(day_count)
+func _on_world_environment_day_started() -> void:
+	get_node(\"Spawn\").new_day()
 "
 
 [sub_resource type="Curve3D" id="Curve3D_blune"]

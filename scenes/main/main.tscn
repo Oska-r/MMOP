@@ -21,7 +21,6 @@ worldEnvironment = NodePath("../WorldEnvironment")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1936798, 0.65600634, 9.76694)
 
 [node name="UI" parent="." unique_id=2045572628 node_paths=PackedStringArray("player") instance=ExtResource("6_hujxm")]
-visible = false
 player = NodePath("../Player")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1099075134]

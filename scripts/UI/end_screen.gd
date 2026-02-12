@@ -1,7 +1,10 @@
 extends Control
 
+@onready var label: Label = get_node("VBoxContainer/Label")
+
 func _ready():
 	get_tree().paused = false
+	label.text = "Game Over!\nDu hast " + str(Global.day_count) + " Tage überlebt."
 	visible = true
 
 func _on_restart_pressed():

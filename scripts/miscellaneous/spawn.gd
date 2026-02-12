@@ -8,10 +8,10 @@ var enemy_speed: float = 3.0
 var enemy_damage: float = 10.0
 var enemy_health: float = 50.0
 
-func new_day(day_count: int) -> void:
-	timer.wait_time = calculate_wait_time(day_count)
-	calculate_enemy_stats(day_count)
-	print_day_stats(day_count)
+func new_day() -> void:
+	timer.wait_time = calculate_wait_time(Global.day_count)
+	calculate_enemy_stats(Global.day_count)
+	print_day_stats(Global.day_count)
 	
 
 var timer_wait_time: float = 5.0

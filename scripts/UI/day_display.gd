@@ -1,5 +1,5 @@
 extends RichTextLabel
 
 
-func _on_world_environment_day_started(day_count: int) -> void:
-	text = "Tag " + str(day_count)
+func _on_world_environment_day_started() -> void:
+	text = "Tag " + str(Global.day_count)
