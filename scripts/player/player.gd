@@ -73,44 +73,42 @@ func release_mouse() -> void:
 
 #region placing blocks
 ## Calculates the position of where to spawn the block the player wants to place.
-func calculate_block_spawn_pos() -> Vector3:
-	if interact_ray.is_colliding():
-		var hit_pos = interact_ray.get_collision_point()
-		var hit_normal = interact_ray.get_collision_normal()
-		
-		# Nudge into empty space
-		var spawn_pos = hit_pos + (hit_normal * 0.5)
-		
-		return Vector3(floor(spawn_pos.x), floor(spawn_pos.y), floor(spawn_pos.z))
-	
-	# Fallback if looking at nothing
+func calculate_block_spawn_pos(blocks_root: Node) -> Vector3:
 	var look_dir = -head.global_transform.basis.z.normalized()
-	var fallback_pos = head.global_transform.origin + look_dir * place_reach
-	return fallback_pos.snapped(Vector3.ONE)
+	var target = (head.global_transform.origin + look_dir * place_reach).snapped(Vector3.ONE)
+	
+	for block in blocks_root.get_children():
+		if block.global_position.is_equal_approx(target):
+			return target + Vector3.UP
+	
+	return target
 
 ## Returns true if the block has a supporting block beneath it or is on the ground.
 func block_placeable(spawn_pos: Vector3, blocks_root: Node3D = null) -> bool:
 	# 1. Prevent placing below or at ground level
 	if spawn_pos.y <= 0:
 		return false
-
+	
 	# 2. If blocks_root is null, we can't check neighbors, so we assume strictly false 
 	if blocks_root == null:
 		return false 
-
+	
+	# prevent the player from stacking up
+	for i in range(place_reach):
+		if spawn_pos.is_equal_approx(global_position.snapped(Vector3.ONE) + (i * Vector3.DOWN)):
+			return false
+	
 	var has_support = false
+	
 	# If it's on the first layer (y=1), it's supported by the floor.
 	if spawn_pos.y == 1:
 		has_support = true
-
+	
+	
 	for child in blocks_root.get_children():
-		# 3. Check if a block ALREADY exists at this exact position (Prevent overlap)
-		if child.global_position.is_equal_approx(spawn_pos):
-			return false
-		
-		# 4. Check if there is a block directly UNDERNEATH (y - 1)
-		if child.global_position.is_equal_approx(spawn_pos + Vector3.DOWN):
+		if spawn_pos.is_equal_approx(child.global_position + Vector3.UP):
 			has_support = true
+			break
 	
 	return has_support
 
@@ -133,9 +131,9 @@ func get_blocks_root(create_if_missing := false) -> Node3D:
 
 ## Places (if possible) item/block in direction of looking.
 func place_block(item) -> bool:
-	var spawn_pos = calculate_block_spawn_pos()
 	var blocks_root = get_blocks_root(true)
-
+	var spawn_pos = calculate_block_spawn_pos(blocks_root)
+	
 	if not block_placeable(spawn_pos, blocks_root):
 		return false
 	
@@ -145,7 +143,7 @@ func place_block(item) -> bool:
 	instance.global_transform.origin = spawn_pos
 	
 	# Force update the preview immediately so it doesn't show inside the new block
-	clear_preview() 
+	clear_preview()
 	return true
 
 var last_preview: Node3D = null
@@ -158,8 +156,8 @@ func clear_preview() -> void:
 
 ## Updates the preview hologram
 func show_preview(item) -> void:
-	var spawn_pos = calculate_block_spawn_pos()
 	var blocks_root = get_blocks_root(false) # Don't create if missing, just get it
+	var spawn_pos = calculate_block_spawn_pos(blocks_root)
 	
 	if not block_placeable(spawn_pos, blocks_root):
 		clear_preview()
@@ -229,7 +227,6 @@ func use_selected_item(item) -> bool:
 
 func is_input_enabled() -> bool:
 	return input_enabled
-
 
 #region damage
 

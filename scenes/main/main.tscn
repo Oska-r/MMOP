@@ -17,7 +17,7 @@ worldEnvironment = NodePath("../WorldEnvironment")
 [node name="WorldEnvironment" parent="." unique_id=1385874066 instance=ExtResource("4_ouso4")]
 
 [node name="Player" parent="." unique_id=1560919245 instance=ExtResource("2_tipki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1936798, 0.65600634, 9.76694)
 
 [node name="UI" parent="." unique_id=2045572628 node_paths=PackedStringArray("player") instance=ExtResource("6_hujxm")]
 player = NodePath("../Player")
