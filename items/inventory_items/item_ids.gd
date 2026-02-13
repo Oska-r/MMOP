@@ -3,12 +3,14 @@ class_name ItemIDs
 
 enum ItemID {
 	STONE,
-	WOOD
+	WOOD,
+	SPIKE
 }
 
 const ITEM_REGISTRY := {
 	ItemID.STONE: preload("res://items/inventory_items/blocks/stone.tres"),
-	ItemID.WOOD: preload("res://items/inventory_items/blocks/wood.tres")
+	ItemID.WOOD: preload("res://items/inventory_items/blocks/wood.tres"),
+	ItemID.SPIKE: preload("res://items/inventory_items/blocks/spike.tres")
 }
 
 static func get_item(id: ItemID) -> Item:

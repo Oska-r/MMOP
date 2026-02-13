@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dyftblke23t8b"]
+
+[ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="1_m1ld1"]
+[ext_resource type="PackedScene" uid="uid://dadtbmuwb5fn5" path="res://scenes/objects/items/spike.tscn" id="1_pp3y3"]
+
+[resource]
+script = ExtResource("1_m1ld1")
+scene = ExtResource("1_pp3y3")
+item_id = 1
+metadata/_custom_type_script = "uid://dwdabywcheuay"
