@@ -39,7 +39,7 @@ func queue_bake():
 func _do_bake():
 	await get_tree().physics_frame
 	navigation_mesh = navigation_mesh.duplicate()
-	bake_navigation_mesh()
+	call_deferred(\"bake_navigation_mesh\")
 	bake_queued = false
 
 func _on_world_flexible_child_order_changed() -> void:
