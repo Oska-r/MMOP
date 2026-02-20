@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cw5kx1y60l2vn" path="res://scenes/world/chests.tscn" id="2_blego"]
 [ext_resource type="PackedScene" uid="uid://cxpd0mkp6cky5" path="res://scenes/objects/crafting_table.tscn" id="3_42htb"]
 [ext_resource type="PackedScene" uid="uid://laaa0kfjc0my" path="res://scenes/objects/rocket_new.tscn" id="4_1hw7k"]
+[ext_resource type="PackedScene" uid="uid://d2rdqj4qck2i5" path="res://scenes/objects/items/spike.tscn" id="5_adh44"]
+[ext_resource type="PackedScene" uid="uid://b6ckjyay2utuw" path="res://scenes/objects/tree.tscn" id="6_ee6x1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_272bh"]
 albedo_color = Color(0, 0.54525805, 2.8878452e-07, 1)
@@ -56,3 +58,9 @@ aus und platzieren ihn mit Rechtsklick."
 
 [node name="Rocket" parent="." unique_id=1420707398 instance=ExtResource("4_1hw7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
+
+[node name="Spike" parent="." unique_id=1135206497 instance=ExtResource("5_adh44")]
+transform = Transform3D(0.375, 0, 0, 0, 0.375, 0, 0, 0, 0.375, 15.305114, 0.7950468, 0)
+
+[node name="Tree" parent="." unique_id=1104199821 instance=ExtResource("6_ee6x1")]
+transform = Transform3D(0.645, 0, 0, 0, 0.645, 0, 0, 0, 0.645, 0, 0, 10.639801)
