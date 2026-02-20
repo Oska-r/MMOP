@@ -9,16 +9,17 @@ extends CharacterBody3D
 @export var gravity: float = 9.8
 @export var damage_interval: float = 1.0
 @export var health: float = 30.0
+
 var damage_timer: float= 0.0
 var bodies_in_damage_area: Array[Node3D] = []
 var player_can_take_damage: bool = true
 
-var loot_table: Dictionary = {Item_ids.ItemID.OIL: 0.99}
+var loot_table: Dictionary = {Item_ids.ItemID.OIL: 0.1}
 
 func _ready() -> void:
 	randomize() # So that numbers between different executes are random.
 	add_to_group("enemy")
-	
+
 func _physics_process(delta) -> void:
 	apply_gravity(delta)
 	update_movement()
@@ -67,26 +68,23 @@ func handle_damage() -> void:
 			body.take_damage(damage)
 			damage_timer = damage_interval
 
-func take_damage(amount) -> void:
+func take_damage(amount, from_sun: bool = false) -> void:
 	health -= amount
 	if health <= 0:
-		call_deferred("die")
+		die(from_sun)
 
 ## Delete node and drop loot.
-func die() -> void:
-	var ran: float = randf()
-	print(ran)
-	
-	for item in loot_table:
-		var probability: float = loot_table[item]
-		if ran <= probability and not get_parent().get_parent().is_day():
-			player.drop(item)
+func die(from_sun: bool = false) -> void:
+	if not from_sun:
+		var roll := randf()
+		for item in loot_table:
+			if roll <= loot_table[item]:
+				player.drop(item)
 	
 	queue_free()
 
-## TODO: adjust dif. sun damage vs. normal damage
 func sun_damage(amount) -> void:
-	take_damage(amount)
+	take_damage(amount, true)
 
 # This function will be called from the Main scene.
 func initialize(start_position) -> void:

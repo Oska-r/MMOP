@@ -8,9 +8,9 @@
 [ext_resource type="Script" uid="uid://b5g2llc373ovo" path="res://scripts/UI/menus/day_display.gd" id="7_hujxm"]
 [ext_resource type="AudioStream" uid="uid://chrw4bninhbgo" path="res://ressources/sounds/backgroundMusic.mp3" id="7_trceg"]
 
-[node name="Main" type="Node3D" unique_id=1623769975 node_paths=PackedStringArray("musicPlayer")]
+[node name="Main" type="Node3D" unique_id=1623769975 node_paths=PackedStringArray("music_player")]
 script = ExtResource("1_o6xl0")
-musicPlayer = NodePath("BackgroundMusic")
+music_player = NodePath("BackgroundMusic")
 
 [node name="World" parent="." unique_id=2065206651 node_paths=PackedStringArray("worldEnvironment") instance=ExtResource("2_ow5a4")]
 worldEnvironment = NodePath("../WorldEnvironment")

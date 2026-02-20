@@ -100,6 +100,7 @@ autostart = true
 
 [node name="Enemy" parent="Spawn" unique_id=1800269208 groups=["enemy"] instance=ExtResource("1_iubku")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44078213, 0.31724524)
+health = 30.0
 
 [connection signal="child_order_changed" from="World_flexible" to="." method="_on_world_flexible_child_order_changed"]
 [connection signal="child_order_changed" from="World_flexible/Blocks" to="." method="_on_world_flexible_child_order_changed"]
