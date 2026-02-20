@@ -35,7 +35,7 @@ func _input(event) -> void:
 		else:
 			open_inventory()
 
-func drop(item: Item_ids.ItemID):
+func drop(item: Item_ids.ItemID) -> void:
 	var target = $CraftingTable.find_stackable_or_empty(item)
 	if target == Vector2(-1, -1):
 		print("Inventory full!")
@@ -95,7 +95,7 @@ func clear_inventory_slot(row: int, index: int) -> void:
 		count_label.text = ""
 
 ## Load a item (identified by ItemID) at specified row and specified index with specified count to the inventory.
-func load_item_to_inventory(item_id, row := 0, index := 0, count := 1) -> Item:
+func load_item_to_inventory(item_id: Item_ids.ItemID, row: int = 0, index: int = 0, count: int = 1) -> Item:
 	var original_item = inventory_items[row][index]
 	
 	if original_item and original_item.item_id != item_id:
@@ -182,12 +182,12 @@ func close_chest(opened_chest: StaticBody3D) -> void:
 	for i in chest_items.size():
 		clear_inventory_slot(5, i)
 
-func open_crafting_table():
+func open_crafting_table() -> void:
 	open_inventory()
 	crafting_table.show()
 	crafting_table.get_node("Wood").update_current_amount()
 
-func close_crafting_table():
+func close_crafting_table() -> void:
 	close_inventory()
 	crafting_table.hide()
 

@@ -2,7 +2,7 @@ extends Control
 
 @onready var player: CharacterBody3D = get_parent().player
 
-func _ready():
+func _ready() -> void:
 	$AnimationPlayer.play("RESET")
 	hide()
 
@@ -22,14 +22,14 @@ func _on_quit_pressed() -> void:
 	get_tree().quit()
 
 
-func resume():
+func resume() -> void:
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("blur")
 	hide()
 	
 	player.capture_mouse()
 
-func pause():
+func pause() -> void:
 	player.release_mouse()
 	get_tree().paused = true
 	show()

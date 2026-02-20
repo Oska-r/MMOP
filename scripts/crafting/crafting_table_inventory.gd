@@ -3,13 +3,13 @@ extends VBoxContainer
 @export var inventory: Control
 @export var crafting_sound: AudioStreamPlayer
 
-func _ready():
+func _ready() -> void:
 	for child in get_children():
 		if child is Button:
 			child.pressed.connect(_on_button_pressed.bind(child))
 
 ## On crafting button pressed. Handles wether player has required ressources, if yes uses ressources and gives crafted item.
-func _on_button_pressed(button: Button):
+func _on_button_pressed(button: Button) -> void:
 	var recipe = button.recipe
 	var ingredient_id = recipe.ingredients.keys()[0]
 	var required_amount = recipe.ingredients[ingredient_id]

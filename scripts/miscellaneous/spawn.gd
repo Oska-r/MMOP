@@ -44,7 +44,7 @@ func _on_timer_timeout() -> void:
 		return
 	spawn_mob()
 
-func apply_mob_stats(mob):
+func apply_mob_stats(mob) -> void:
 	mob.speed = enemy_speed
 	mob.damage = enemy_damage
 	mob.health = enemy_health
@@ -64,7 +64,7 @@ func print_day_stats(day_count: int) -> void:
 		enemy_health
 	])
 
-func spawn_mob():
+func spawn_mob() -> void:
 	var mob = mob_scene.instantiate()
 	apply_mob_stats(mob)
 	var mob_spawn_location = get_node("SpawnPath/SpawnLocation")

@@ -123,7 +123,7 @@ func _physics_process(delta: float) -> void:
 ## Rotate us to look around.
 ## Base of controller rotates around y (left/right). Head rotates around x (up/down).
 ## Modifies look_rotation based on rot_input, then resets basis and rotates by look_rotation.
-func rotate_look(rot_input : Vector2):
+func rotate_look(rot_input : Vector2) -> void:
 	look_rotation.x -= rot_input.y * look_speed
 	look_rotation.x = clamp(look_rotation.x, deg_to_rad(-90), deg_to_rad(90))
 	look_rotation.y -= rot_input.x * look_speed
@@ -132,11 +132,11 @@ func rotate_look(rot_input : Vector2):
 	head.transform.basis = Basis()
 	head.rotate_x(look_rotation.x)
 
-func enable_freefly():
+func enable_freefly() -> void:
 	collider.disabled = true
 	freeflying = true
 	player.velocity = Vector3.ZERO
 
-func disable_freefly():
+func disable_freefly() -> void:
 	collider.disabled = false
 	freeflying = false

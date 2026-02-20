@@ -4,14 +4,14 @@ extends CharacterBody3D
 @onready var damage_area: Area3D = $Damage_Area
 @onready var player = get_tree().get_first_node_in_group("player")
 
-@export var speed := 3.0
-@export var damage := 10
-@export var gravity := 9.8
-@export var damage_interval := 1.0
-@export var health := 30
-var damage_timer := 0.0
+@export var speed: float = 3.0
+@export var damage: float = 10.0
+@export var gravity: float = 9.8
+@export var damage_interval: float = 1.0
+@export var health: float = 30.0
+var damage_timer: float= 0.0
 var bodies_in_damage_area: Array[Node3D] = []
-var player_can_take_damage = true
+var player_can_take_damage: bool = true
 
 var loot_table: Dictionary = {Item_ids.ItemID.OIL: 0.99}
 
@@ -19,7 +19,7 @@ func _ready() -> void:
 	randomize() # So that numbers between different executes are random.
 	add_to_group("enemy")
 	
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	apply_gravity(delta)
 	update_movement()
 	handle_damage()
@@ -34,6 +34,7 @@ func apply_gravity(delta: float) -> void:
 	else:
 		velocity.y = 0
 
+## Sets velocity to 0.
 func update_movement() -> void:
 	if player == null:
 		velocity.x = 0
@@ -53,7 +54,7 @@ func update_movement() -> void:
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 
-## atteckes everything with take_damage funktion
+## attackes everything with take_damage funktion
 ## dosn't attack other enemys
 func handle_damage() -> void:
 	if damage_timer > 0:
@@ -66,13 +67,13 @@ func handle_damage() -> void:
 			body.take_damage(damage)
 			damage_timer = damage_interval
 
-func take_damage(amount):
+func take_damage(amount) -> void:
 	health -= amount
 	if health <= 0:
 		call_deferred("die")
 
-## delete node
-func die():
+## Delete node and drop loot.
+func die() -> void:
 	var ran: float = randf()
 	print(ran)
 	
@@ -84,17 +85,17 @@ func die():
 	queue_free()
 
 ## TODO: adjust dif. sun damage vs. normal damage
-func sun_damage(amount):
+func sun_damage(amount) -> void:
 	take_damage(amount)
 
 # This function will be called from the Main scene.
-func initialize(start_position):
+func initialize(start_position) -> void:
 	look_at_from_position(start_position, Vector3(0,0,0))
 
-func _on_body_entered(body):
+func _on_body_entered(body) -> void:
 	if body is PhysicsBody3D:
 		bodies_in_damage_area.append(body)
 
-func _on_body_exited(body):
+func _on_body_exited(body) -> void:
 	if body is PhysicsBody3D:
 		bodies_in_damage_area.erase(body)

@@ -1,31 +1,31 @@
 extends CharacterBody3D
 
 @onready var head: Node = get_node("Head")
-@onready var interact_ray = head.get_node("Camera3D/InteractRay")
-@onready var attack_Area = head.get_node("Attack_Area")
-@onready var inventory = get_parent().get_node("UI").get_node("Inventory")
-var mouse_captured : bool = false
+@onready var interact_ray: RayCast3D = head.get_node("Camera3D/InteractRay")
+@onready var attack_Area: Area3D = head.get_node("Attack_Area")
+@onready var inventory: Control = get_parent().get_node("UI").get_node("Inventory")
+var mouse_captured: bool = false
 var input_enabled: bool = true
 
-var place_reach = 2.7
-var item_use_cooldown := 0.0
-var item_use_delay := 0.15
+var place_reach: float = 2.7
+var item_use_cooldown: float = 0.0
+var item_use_delay: float = 0.15
 
 ## list of all bodys in Attack_Area
-var targets : Array[Node3D]
+var targets: Array[Node3D]
 
 # attributes
 @export_category("attributes")
-@export var health_max := 100.0
-@export var damage :=  30.0
-@export var attack_interval := 0.25
-var damage_timer := 0.0
-var health:= health_max
+@export var health_max: float = 100.0
+@export var damage: float =  30.0
+@export var attack_interval: float = 0.25
+var damage_timer: float = 0.0
+var health: float = health_max
 
 func _ready() -> void:
 		attack_Area.visible = false
 
-func _input(event):
+func _input(event) -> void:
 	if event.is_action_pressed("interact"):
 		check_interaction()
 
@@ -37,11 +37,11 @@ func _process(delta) -> void:
 	if Input.is_action_pressed("prime"):
 		handle_attack()
 
-func drop(item: Item_ids.ItemID):
+func drop(item: Item_ids.ItemID) -> void:
 	inventory.drop(item)
 
 ## Checks wether and with what the interaction ray is colliding with.
-func check_interaction():
+func check_interaction() -> void:
 	if interact_ray.is_colliding():
 		var collider = interact_ray.get_collider()
 		
@@ -189,7 +189,7 @@ func show_preview(item) -> void:
 			pass
 
 ## Disables all collision from all children.
-func disable_collision_recursively(node: Node):
+func disable_collision_recursively(node: Node) -> void:
 	if node is CollisionShape3D or node is CollisionPolygon3D:
 		node.disabled = true
 	for child in node.get_children():
@@ -234,7 +234,7 @@ func is_input_enabled() -> bool:
 
 #region damage
 
-func handle_attack():
+func handle_attack() -> void:
 	if damage_timer > 0:
 		return
 	targets = attack_Area.get_overlapping_bodies()
@@ -244,7 +244,7 @@ func handle_attack():
 			damage_timer = attack_interval
 			attack_animation()
 
-func attack_animation():
+func attack_animation() -> void:
 	attack_Area.visible = true
 	await get_tree().create_timer(0.2).timeout
 	attack_Area.visible = false
@@ -256,7 +256,7 @@ func take_damage(amount: int) -> void:
 	if health <= 0:
 		call_deferred("die")
 
-func die():
+func die() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://scenes/UI/menus/end_screen.tscn")
 

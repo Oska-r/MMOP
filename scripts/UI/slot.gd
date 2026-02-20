@@ -49,7 +49,7 @@ func _can_drop_data(_pos, data):
 	# We can drop if the data dictionary contains a row and index
 	return data is Dictionary and data.has("row") and data.has("index")
 
-func _drop_data(_pos, data):
+func _drop_data(_pos, data) -> void:
 	# If the item is dropped on itself, do nothing
 	if data.row == self.row and data.index == self.index:
 		return
