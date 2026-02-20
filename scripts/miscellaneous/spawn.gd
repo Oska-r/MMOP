@@ -32,7 +32,7 @@ func calculate_enemy_stats(day_count: int) -> void:
 	enemy_damage = scale_stat(10.0, max_damage,growth_rate, day_count)
 	enemy_health = scale_stat(50.0, max_health,growth_rate, day_count)
 
-func scale_stat(start_value: float, max_value: float, growth_rate:float, day_count: int) -> float:
+func scale_stat(start_value: float, max_value: float, growth_rate: float, day_count: int) -> float:
 	return max_value - (max_value - start_value) * exp(-growth_rate * day_count)
 
 func _process(delta: float) -> void:

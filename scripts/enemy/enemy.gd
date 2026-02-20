@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends DamageableEntity
 
 @onready var agent: NavigationAgent3D = $NavigationAgent3D
 @onready var damage_area: Area3D = $Damage_Area
@@ -6,9 +6,7 @@ extends CharacterBody3D
 
 @export var speed: float = 3.0
 @export var damage: float = 10.0
-@export var gravity: float = 9.8
 @export var damage_interval: float = 1.0
-@export var health: float = 30.0
 
 var damage_timer: float= 0.0
 var bodies_in_damage_area: Array[Node3D] = []
@@ -31,7 +29,7 @@ func _physics_process(delta) -> void:
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		velocity.y -= Global.gravity * delta
 	else:
 		velocity.y = 0
 
@@ -68,25 +66,24 @@ func handle_damage() -> void:
 			body.take_damage(damage)
 			damage_timer = damage_interval
 
-func take_damage(amount, from_sun: bool = false) -> void:
-	health -= amount
-	if health <= 0:
-		die(from_sun)
-
 ## Delete node and drop loot.
 func die(from_sun: bool = false) -> void:
-	if not from_sun:
-		var roll := randf()
-		for item in loot_table:
-			if roll <= loot_table[item]:
-				player.drop(item)
 	
-	queue_free()
+	if not from_sun:
+		calculate_loot()
+	
+	super.die(from_sun)
+
+func calculate_loot() -> void:
+	var roll: float = randf()
+	for item in loot_table:
+		if roll <= loot_table[item]:
+			player.drop(item)
 
 func sun_damage(amount) -> void:
 	take_damage(amount, true)
 
-# This function will be called from the Main scene.
+# This function is called from the main scene.
 func initialize(start_position) -> void:
 	look_at_from_position(start_position, Vector3(0,0,0))
 

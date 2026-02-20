@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends DamageableEntity
 
 @onready var head: Node = get_node("Head")
 @onready var interact_ray: RayCast3D = head.get_node("Camera3D/InteractRay")
@@ -16,11 +16,9 @@ var targets: Array[Node3D]
 
 # attributes
 @export_category("attributes")
-@export var health_max: float = 100.0
 @export var damage: float =  30.0
 @export var attack_interval: float = 0.25
 var damage_timer: float = 0.0
-var health: float = health_max
 
 func _ready() -> void:
 		attack_Area.visible = false
@@ -249,14 +247,7 @@ func attack_animation() -> void:
 	await get_tree().create_timer(0.2).timeout
 	attack_Area.visible = false
 
-func take_damage(amount: int) -> void:
-	health -= amount
-	print("Spieler bekommt Schaden! Leben:", health)
-
-	if health <= 0:
-		call_deferred("die")
-
-func die() -> void:
+func die(should_drop_loot: bool = false) -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://scenes/UI/menus/end_screen.tscn")
 
