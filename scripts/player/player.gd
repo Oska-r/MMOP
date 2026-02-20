@@ -3,6 +3,7 @@ extends CharacterBody3D
 @onready var head: Node = get_node("Head")
 @onready var interact_ray = head.get_node("Camera3D/InteractRay")
 @onready var attack_Area = head.get_node("Attack_Area")
+@onready var inventory = get_parent().get_node("UI").get_node("Inventory")
 var mouse_captured : bool = false
 var input_enabled: bool = true
 
@@ -35,6 +36,9 @@ func _process(delta) -> void:
 		damage_timer -= delta
 	if Input.is_action_pressed("prime"):
 		handle_attack()
+
+func drop(item: Item_ids.ItemID):
+	inventory.drop(item)
 
 ## Checks wether and with what the interaction ray is colliding with.
 func check_interaction():

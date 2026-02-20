@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o30by7r1www7"
-path="res://.godot/imported/wood_block.png-281bc3242c9d4729ee26c68e4a19f259.ctex"
+uid="uid://bcvhy1fxrneyo"
+path="res://.godot/imported/oil.png-b907de2f2c98e4b0320335fd9bc4f1e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ressources/pictures/items/wood_block.png"
-dest_files=["res://.godot/imported/wood_block.png-281bc3242c9d4729ee26c68e4a19f259.ctex"]
+source_file="res://ressources/pictures/items/oil.png"
+dest_files=["res://.godot/imported/oil.png-b907de2f2c98e4b0320335fd9bc4f1e9.ctex"]
 
 [params]
 

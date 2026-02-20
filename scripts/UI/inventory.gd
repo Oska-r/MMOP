@@ -35,6 +35,13 @@ func _input(event) -> void:
 		else:
 			open_inventory()
 
+func drop(item: Item_ids.ItemID):
+	var target = $CraftingTable.find_stackable_or_empty(item)
+	if target == Vector2(-1, -1):
+		print("Inventory full!")
+		return
+	load_item_to_inventory(item, int(target.x), int(target.y), 1)
+
 func swap_inventory_slots(originalRow: int, originalIndex: int, targetRow: int, targetIndex: int) -> void:
 	var item_a = inventory_items[originalRow][originalIndex]
 	var item_b = inventory_items[targetRow][targetIndex]
@@ -115,6 +122,10 @@ func load_item_to_inventory(item_id, row := 0, index := 0, count := 1) -> Item:
 	var count_label = slot_node.get_node("Count") as RichTextLabel
 	if count_label:
 		count_label.text = str(item.count)
+	
+	if row == 0:
+		hotbar.update_hotbar_ui()
+	
 	return item
 
 func change_count(number: int, row: int, index: int) -> void:

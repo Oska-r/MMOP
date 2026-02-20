@@ -13,7 +13,10 @@ var damage_timer := 0.0
 var bodies_in_damage_area: Array[Node3D] = []
 var player_can_take_damage = true
 
+var loot_table: Dictionary = {Item_ids.ItemID.OIL: 0.99}
+
 func _ready() -> void:
+	randomize() # So that numbers between different executes are random.
 	add_to_group("enemy")
 	
 func _physics_process(delta):
@@ -70,6 +73,14 @@ func take_damage(amount):
 
 ## delete node
 func die():
+	var ran: float = randf()
+	print(ran)
+	
+	for item in loot_table:
+		var probability: float = loot_table[item]
+		if ran <= probability and not get_parent().get_parent().is_day():
+			player.drop(item)
+	
 	queue_free()
 
 ## TODO: adjust dif. sun damage vs. normal damage
