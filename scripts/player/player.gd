@@ -26,7 +26,6 @@ func _ready() -> void:
 
 func _input(event):
 	if event.is_action_pressed("interact"):
-		die()
 		check_interaction()
 
 func _process(delta) -> void:
