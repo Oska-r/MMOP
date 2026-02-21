@@ -37,6 +37,8 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_008/StaticBody3D" index="0" unique_id=1486703578]
 shape = SubResource("ConvexPolygonShape3D_uh7n0")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sphere_002" parent_id_path=PackedInt32Array(316698967) index="0" unique_id=2027463036]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sphere_002" parent_id_path=PackedInt32Array(316698967) index="0" unique_id=603098852]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sphere_002/StaticBody3D" index="0" unique_id=2027463036]
 shape = SubResource("CylinderShape3D_upulf")
