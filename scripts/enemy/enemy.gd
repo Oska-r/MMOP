@@ -8,11 +8,16 @@ extends DamageableEntity
 @export var damage: float = 10.0
 @export var damage_interval: float = 1.0
 
+#damage
 var damage_timer: float= 0.0
 var bodies_in_damage_area: Array[Node3D] = []
 var player_can_take_damage: bool = true
 
 var loot_table: Dictionary = {Item_ids.ItemID.OIL: 0.1}
+
+#movement
+var player_position
+var oxygentank_position 
 
 func _ready() -> void:
 	randomize() # So that numbers between different executes are random.
@@ -33,14 +38,14 @@ func apply_gravity(delta: float) -> void:
 	else:
 		velocity.y = 0
 
-## Sets velocity to 0.
+## moves the enemey towards the target along the Navigationmap
 func update_movement() -> void:
 	if player == null:
 		velocity.x = 0
 		velocity.z = 0
 		return
 
-	agent.target_position = player.global_position
+	agent.target_position = find_target()
 
 	if agent.is_navigation_finished():
 		velocity.x = 0
@@ -66,6 +71,13 @@ func handle_damage() -> void:
 			body.take_damage(damage)
 			damage_timer = damage_interval
 
+## returns the "best target"
+func find_target():
+	player_position = player.global_position
+	
+	return player_position
+	
+	
 ## Delete node and drop loot.
 func die(from_sun: bool = false) -> void:
 	
