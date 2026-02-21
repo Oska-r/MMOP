@@ -2,6 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://bmtrchr2n52bw" path="res://ressources/models/Sauerstofftank/oxygentank_2.tscn" id="2_6skvo"]
 
-[node name="Oxygentank" type="AnimatableBody3D" unique_id=838330149]
+[node name="Oxygentank" type="AnimatableBody3D" unique_id=838330149 groups=["Damageable_World", "Oxygentank"]]
 
-[node name="Oxygentank3" parent="." unique_id=1328663118 instance=ExtResource("2_6skvo")]
+[node name="Oxygentank" parent="." unique_id=1328663118 instance=ExtResource("2_6skvo")]

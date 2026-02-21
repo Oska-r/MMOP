@@ -16,12 +16,15 @@ var player_can_take_damage: bool = true
 var loot_table: Dictionary = {Item_ids.ItemID.OIL: 0.1}
 
 #movement
-var player_position
-var oxygentank_position 
+var player_position : Vector3
+var oxygentank_position : Vector3
 
 func _ready() -> void:
 	randomize() # So that numbers between different executes are random.
 	add_to_group("enemy")
+	oxygentank_position = get_tree().get_first_node_in_group("Oxygentank").global_position
+	print(get_tree().get_nodes_in_group("Oxygentank"))
+	print(oxygentank_position)
 
 func _physics_process(delta) -> void:
 	apply_gravity(delta)
@@ -74,9 +77,14 @@ func handle_damage() -> void:
 ## returns the "best target"
 func find_target():
 	player_position = player.global_position
-	
-	return player_position
-	
+	var oxygen_distance = global_position.distance_to(oxygentank_position)
+	var player_distance = global_position.distance_to(player_position)
+	print(str(oxygentank_position) + " | " + str(player_position))
+	print(str(oxygen_distance) + " | " + str(player_distance))
+	if oxygen_distance < player_distance:
+		return oxygentank_position
+	else:
+		return player_position
 	
 ## Delete node and drop loot.
 func die(from_sun: bool = false) -> void:
