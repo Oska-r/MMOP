@@ -79,8 +79,7 @@ func find_target():
 	player_position = player.global_position
 	var oxygen_distance = global_position.distance_to(oxygentank_position)
 	var player_distance = global_position.distance_to(player_position)
-	print(str(oxygentank_position) + " | " + str(player_position))
-	print(str(oxygen_distance) + " | " + str(player_distance))
+	
 	if oxygen_distance < player_distance:
 		return oxygentank_position
 	else:

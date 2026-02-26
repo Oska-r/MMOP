@@ -40,7 +40,8 @@ materials/extract_path=""
 _subresources={
 "nodes": {
 "PATH:Rocket": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }
