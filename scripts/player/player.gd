@@ -48,6 +48,8 @@ func check_interaction() -> void:
 			collider.toggle_chest()
 		if collider.has_method("toggle_crafting_table"):
 			collider.toggle_crafting_table()
+		if collider.has_method("break_tree"):
+			collider.break_tree(damage)
 
 ## Disables (if parameter is false) or enables (if parameter is true) all player input (used for openend UIs).
 func enable_input(enable: bool) -> void:
@@ -236,8 +238,11 @@ func handle_attack() -> void:
 	if damage_timer > 0:
 		return
 	targets = attack_Area.get_overlapping_bodies()
+	
 	for body in targets:
-		if body.is_in_group("enemy"):
+		print("Current target " + str(body.get_groups()))
+		if body.is_in_group("Damageable_World"):
+			print("target found")
 			body.take_damage(damage)
 			damage_timer = attack_interval
 			attack_animation()
