@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("1_m1ld1")
+name = "Spike"
 icon = ExtResource("1_o7lms")
 scene = ExtResource("1_pp3y3")
 item_id = 1

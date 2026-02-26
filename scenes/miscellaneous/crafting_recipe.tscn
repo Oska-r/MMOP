@@ -15,7 +15,6 @@ script = ExtResource("1_v35ak")
 layout_mode = 0
 offset_right = 94.0
 offset_bottom = 23.0
-text = "Harter Stein"
 
 [node name="RecipeLabel" type="RichTextLabel" parent="." unique_id=117741044]
 layout_mode = 0

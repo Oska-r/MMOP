@@ -11,7 +11,7 @@ enum ItemID {
 const ITEM_REGISTRY := {
 	ItemID.STONE: preload("res://items/inventory_items/blocks/stone.tres"),
 	ItemID.WOOD: preload("res://items/inventory_items/blocks/wood.tres"),
-		ItemID.SPIKE: preload("res://items/inventory_items/blocks/spike.tres"),
+	ItemID.SPIKE: preload("res://items/inventory_items/blocks/spike.tres"),
 	ItemID.OIL: preload("res://items/inventory_items/oil.tres")
 }
 

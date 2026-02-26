@@ -15,7 +15,7 @@ var item_use_delay: float = 0.15
 var targets: Array[Node3D]
 
 # attributes
-@export_category("attributes")
+@export_category("Attributes")
 @export var damage: float =  30.0
 @export var attack_interval: float = 0.25
 var damage_timer: float = 0.0
@@ -242,7 +242,6 @@ func handle_attack() -> void:
 	for body in targets:
 		print("Current target " + str(body.get_groups()))
 		if body.is_in_group("Damageable_World"):
-			print("target found")
 			body.take_damage(damage)
 			damage_timer = attack_interval
 			attack_animation()

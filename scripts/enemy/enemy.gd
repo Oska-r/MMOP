@@ -39,7 +39,7 @@ func apply_gravity(delta: float) -> void:
 	else:
 		velocity.y = 0
 
-## moves the enemey towards the target along the Navigationmap
+## moves the enemey towards the target along the navigationmap
 func update_movement() -> void:
 	if player == null:
 		velocity.x = 0

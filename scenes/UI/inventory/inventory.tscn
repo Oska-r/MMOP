@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://cq8sbte51hdu2"]
 
 [ext_resource type="Script" uid="uid://cwbpprwwrx2rh" path="res://scripts/UI/inventory.gd" id="1_egg3t"]
-[ext_resource type="Texture2D" uid="uid://b5fp2om3kmjqo" path="res://ressources/pictures/UI/inventory.png" id="2_ahcd1"]
+[ext_resource type="Texture2D" uid="uid://b5fp2om3kmjqo" path="res://ressources/pictures/UI/Inventory.png" id="2_ahcd1"]
 [ext_resource type="PackedScene" uid="uid://cocghnpcu6bpq" path="res://scenes/UI/inventory/slot.tscn" id="3_kpdmy"]
 [ext_resource type="PackedScene" uid="uid://40vsn8hlif6j" path="res://scenes/miscellaneous/crafting_recipe.tscn" id="3_lvvmf"]
 [ext_resource type="Script" uid="uid://dyb1bfd8gw2xv" path="res://scripts/crafting/crafting_table_inventory.gd" id="3_qjyq4"]
-[ext_resource type="Resource" uid="uid://d3uqnkpo0g1hr" path="res://items/crafting/crafting_recipes/wood.tres" id="4_krngk"]
 [ext_resource type="AudioStream" uid="uid://cpad3gapdyd43" path="res://ressources/sounds/UI/crafting_sound.mp3" id="4_qjyq4"]
+[ext_resource type="Resource" uid="uid://cxpbguwg51xly" path="res://items/crafting/crafting_recipes/spikes.tres" id="7_ahcd1"]
 
 [node name="Inventory" type="Control" unique_id=315312596]
 layout_mode = 3
@@ -468,9 +468,9 @@ crafting_sound = NodePath("CraftingSound")
 [node name="CraftingSound" type="AudioStreamPlayer" parent="CraftingTable" unique_id=447807212]
 stream = ExtResource("4_qjyq4")
 
-[node name="Wood" parent="CraftingTable" unique_id=1373007955 instance=ExtResource("3_lvvmf")]
+[node name="Spikes" parent="CraftingTable" unique_id=1373007955 instance=ExtResource("3_lvvmf")]
 layout_mode = 2
 size_flags_vertical = 3
-recipe = ExtResource("4_krngk")
+recipe = ExtResource("7_ahcd1")
 
-[connection signal="pressed" from="CraftingTable/Wood" to="." method="_on_crafting_recipe_pressed"]
+[connection signal="pressed" from="CraftingTable/Spikes" to="." method="_on_crafting_recipe_pressed"]

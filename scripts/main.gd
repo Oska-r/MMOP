@@ -5,3 +5,4 @@ extends Node3D
 func _ready() -> void:
 	music_player.stream.loop = true
 	music_player.play()
+	Global.reset_day()

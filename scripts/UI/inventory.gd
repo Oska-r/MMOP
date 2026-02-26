@@ -149,6 +149,9 @@ func change_count(number: int, row: int, index: int) -> void:
 	var count_label = slot_node.get_node("Count") as RichTextLabel
 	if count_label:
 		count_label.text = str(item.count)
+	
+	if row == 0:
+		hotbar.update_hotbar_ui()
 
 func open_inventory() -> void:
 	hotbar.hide()
@@ -185,7 +188,7 @@ func close_chest(opened_chest: StaticBody3D) -> void:
 func open_crafting_table() -> void:
 	open_inventory()
 	crafting_table.show()
-	crafting_table.get_node("Wood").update_current_amount()
+	crafting_table.get_node("Spikes").update_current_amount()
 
 func close_crafting_table() -> void:
 	close_inventory()

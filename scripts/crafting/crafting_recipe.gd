@@ -42,6 +42,7 @@ func update_current_amount() -> void:
 		recipe_label.text = "[color=%s]%d[/color] / %d %s" % [color_code, total, required_amount, item_name]
 	# Get the resource from the registry using the ID stored in the recipe
 	var result_data = ItemIDs.get_item(recipe.result_item)
+	print(result_data)
 	
 	if result_data:
 		title.text = result_data.name 
