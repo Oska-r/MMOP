@@ -4,7 +4,7 @@ extends Control
 @export var inventory: Control
 @onready var boxContainer: BoxContainer = $Slots
 
-var selected_index := 0
+var selected_index: int = 0
 
 func _ready() -> void:
 	$Select.position = Vector2(0,0)

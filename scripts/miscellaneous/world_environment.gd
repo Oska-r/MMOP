@@ -1,11 +1,13 @@
 extends WorldEnvironment
 
+signal day_started(day_count: int)
+
 # Day-night cycle settings
-@export var day_length_seconds := 90.0  # Duration of a full day in seconds
-@export var sun_max_intensity := 1.0
-@export var moon_max_intensity := 0.05
-@export var sun_color := Color(1, 1, 0.9)
-@export var moon_color := Color(0.6, 0.7, 1)
+@export var day_length_seconds: float = 90.0  # Duration of a full day in seconds
+@export var sun_max_intensity: float = 1.0
+@export var moon_max_intensity: float = 0.05
+@export var sun_color: Color = Color(1, 1, 0.9)
+@export var moon_color: Color = Color(0.6, 0.7, 1)
 
 # References to lights
 @export var sun_pivot: Node3D
@@ -13,24 +15,27 @@ extends WorldEnvironment
 @export var moon_pivot: Node3D
 @onready var moon_light: DirectionalLight3D =  moon_pivot.get_node("MoonLight")
 
-var is_day:bool
+var is_day: bool
 
 ## Internal time tracking
 ## 0 morning | 0.25 noon | 0.75 midnight 
-@export var time := 0.0 
+@export var time: float = 0.0 
 
-func _ready():
+func _ready() -> void:
+	day_started.emit()
 	moon_light.light_color = moon_color
 
-func _process(delta):
+func _process(delta) -> void:
 	time += delta / day_length_seconds
 	if time > 1.0:
 		time -= 1.0
+		Global.advance_day()
+		day_started.emit()
 	
 	_update_lights()
 
 # Handles day night cycle.
-func _update_lights():
+func _update_lights() -> void:
 	# Rotate sun
 	sun_pivot.rotation_degrees.x = - lerp(0,360,time)
 	moon_pivot.rotation_degrees.x = sun_pivot.rotation_degrees.x - 180

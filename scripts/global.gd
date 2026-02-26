@@ -1,7 +1,16 @@
 extends Node
 
+var day_count: int = 0
+var gravity: float = 9.8
+
+func reset_day() -> void:
+	day_count = 0
+
+func advance_day() -> void:
+	day_count += 1
+
 ## Plays sound with randomized pitch to prevent sound fatigue. Accepts AudioStream, AudioStreamPlayer and AudioStreamPlayer3D.
-func play_sound(sound, min_pitch: float = 0.9, max_pitch: float = 1.1):
+func play_sound(sound, min_pitch: float = 0.9, max_pitch: float = 1.1) -> void:
 
 	if not sound:
 		return

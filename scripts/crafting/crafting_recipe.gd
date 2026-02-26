@@ -1,6 +1,6 @@
 extends Button
 
-@export var recipe: CraftingRecipe # Drag .tres file here in the Inspector
+@export var recipe: CraftingRecipe
 @onready var recipe_label: RichTextLabel = $RecipeLabel
 @onready var title: Label = $Title
 

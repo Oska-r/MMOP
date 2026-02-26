@@ -3,7 +3,7 @@ extends RichTextLabel
 @onready var player: Node3D = get_parent().player
 
 func _ready() -> void:
-	bbcode_enabled = true  # Enable BBCode for coloring
+	bbcode_enabled = true  # Enabled BBCode for coloring
 
 func _process(_delta: float) -> void:
 	if player:

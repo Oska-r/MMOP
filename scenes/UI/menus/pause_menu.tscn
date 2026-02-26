@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://equrnyrs8b8x"]
 
-[ext_resource type="Script" uid="uid://cusn8u58ybsc7" path="res://scripts/UI/pause_menu.gd" id="1_myx47"]
+[ext_resource type="Script" uid="uid://cusn8u58ybsc7" path="res://scripts/UI/menus/pause_menu.gd" id="1_myx47"]
 [ext_resource type="Shader" uid="uid://uqbe5rix8ke0" path="res://ressources/shader/pause_menu.gdshader" id="1_n87rw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_myx47"]

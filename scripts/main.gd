@@ -1,7 +1,7 @@
 extends Node3D
 
-@export var musicPlayer:AudioStreamPlayer
+@export var music_player: AudioStreamPlayer
 
 func _ready() -> void:
-	musicPlayer.stream.loop = true
-	musicPlayer.play()
+	music_player.stream.loop = true
+	music_player.play()

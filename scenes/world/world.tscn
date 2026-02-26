@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bhq5ow250herw" path="res://scenes/main/enemy.tscn" id="1_iubku"]
 [ext_resource type="PackedScene" uid="uid://cjhvd857e0u7k" path="res://scenes/world/world_fixed.tscn" id="2_y2s00"]
+[ext_resource type="Script" uid="uid://dpat5gxdjnuoh" path="res://scripts/miscellaneous/spawn.gd" id="3_1fp7r"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ouso4"]
 vertices = PackedVector3Array(120.84801, 0.5, -50.651993, 101.59801, 0.5, -97.90199, 100.09801, 0.5, -100.65199, 0.5980072, 0.5, -141.902, -0.4019928, 0.5, -141.902, 0.5980072, 0.5, -50.651993, -100.15199, 0.5, -100.65199, -120.90199, 0.5, -50.651993, -0.6519928, 0.5, -50.651993, -141.902, 0.5, -0.4019928, -141.902, 0.5, 0.5980072, -120.90199, 0.5, 50.598007, -50.651993, 0.5, 0.5980072, -50.651993, 0.5, -0.6519928, -36.151993, 0.5, -35.651993, -36.151993, 0.5, 35.598007, -0.6519928, 0.5, 50.598007, -34.651993, 0.5, 36.598007, 140.348, 0.5, 4.348007, 141.848, 0.5, 0.5980072, 141.848, 0.5, -0.6519928, 120.84801, 0.5, 50.598007, 50.598007, 0.5, -0.6519928, 50.598007, 0.5, 0.8480072, 36.098007, 0.5, 35.848007, 0.8480072, 0.5, 50.598007, 35.598007, 0.5, -36.151993, 36.598007, 0.5, -34.651993, 0.3480072, 1, -1.9019928, 48.848007, 1, -1.9019928, 35.098007, 1, -35.151993, -0.1519928, 1, -49.651993, -35.151993, 1, -35.151993, -48.651993, 1, -1.9019928, -0.4019928, 1, -1.9019928, -4.151993, 1, -0.1519928, -1.9019928, 1, -0.1519928, -1.6519928, 1, -1.1519928, -6.901993, 1, -0.1519928, -49.401993, 1, -0.1519928, 1.5980072, 1, -1.1519928, 2.3480072, 1, -1.1519928, 6.098007, 1, -1.1519928, 49.098007, 1, -1.1519928, 1.8480072, 1, 0.8480072, 2.3480072, 1, 1.0980072, 48.598007, 1, 2.0980072, 49.098007, 1, 1.0980072, 6.098007, 1, 1.0980072, 0.8480072, 1, 1.8480072, -4.151993, 1, 2.0980072, -1.1519928, 1, 1.5980072, 49.598007, 1, -0.1519928, -0.6519928, 4.5, 0.5980072, 0.0980072, 4.5, 0.8480072, 0.8480072, 4.5, 0.0980072, 0.5980072, 4.5, -0.6519928, -0.6519928, 4.5, -0.6519928, -0.4019928, 1, -0.4019928, -0.4019928, 1, 0.3480072, 0.3480072, 1, 0.3480072, 0.3480072, 1, -0.4019928, -48.651993, 1, 2.0980072, -6.901993, 1, 2.0980072, -35.151993, 1, 35.098007, -0.1519928, 1, 49.598007, 35.098007, 1, 35.098007, -0.6519928, 0.5, 141.848, 0.5980072, 0.5, 141.848, 4.348007, 0.5, 140.348, 100.09801, 0.5, 100.59801, 101.09801, 0.5, 99.09801, -100.15199, 0.5, 100.59801)
@@ -18,11 +19,6 @@ script/source = "extends NavigationRegion3D
 var bake_queued := false
 
 @export var sun_damage : int
-
-func _process(delta: float) -> void:
-	if is_day():
-		get_tree().call_group(\"enemy\", \"sun_damage\", sun_damage*delta)
-		
 
 func _ready():
 	pass
@@ -62,6 +58,8 @@ func spawn_mob():
 	# Spawn the mob by adding it to the Main scene.
 	get_node(\"Spawn\").add_child(mob)
 	
+func _on_world_environment_day_started() -> void:
+	get_node(\"Spawn\").new_day()
 "
 
 [sub_resource type="Curve3D" id="Curve3D_blune"]
@@ -86,6 +84,8 @@ sun_damage = 10
 [node name="Blocks" type="Node3D" parent="World_flexible" unique_id=1752560446]
 
 [node name="Spawn" type="Node" parent="." unique_id=1237675365]
+script = ExtResource("3_1fp7r")
+mob_scene = ExtResource("1_iubku")
 
 [node name="SpawnPath" type="Path3D" parent="Spawn" unique_id=1043013211]
 curve = SubResource("Curve3D_blune")
@@ -99,8 +99,9 @@ wait_time = 2.0
 autostart = true
 
 [node name="Enemy" parent="Spawn" unique_id=1800269208 groups=["enemy"] instance=ExtResource("1_iubku")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44078213, 0.31724524)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44078213, 20.020407)
 
 [connection signal="child_order_changed" from="World_flexible" to="." method="_on_world_flexible_child_order_changed"]
 [connection signal="child_order_changed" from="World_flexible/Blocks" to="." method="_on_world_flexible_child_order_changed"]
 [connection signal="timeout" from="Spawn/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Spawn/Timer" to="Spawn" method="_on_timer_timeout"]

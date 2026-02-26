@@ -14,7 +14,7 @@ var open_angle: float = 110.0 # Degrees to swing back
 var toggle_speed: float = 0.8  # Seconds the animation takes
 var inventory: Control
 
-func _ready():
+func _ready() -> void:
 	# Find the inventory automatically
 	inventory = get_tree().get_first_node_in_group("InventoryUI")
 	
@@ -27,8 +27,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if is_open and (event.is_action_pressed("inventory") or event.is_action_pressed("ui_cancel")):
 		toggle_chest()
 
-## ChatGPT Code
-func toggle_chest():
+## ChatGPT Code for animation.
+func toggle_chest() -> void:
 	is_open = not is_open
 	
 	# 1. Create the tween
