@@ -21,7 +21,7 @@ var bake_queued := false
 @export var sun_damage : int
 
 func _ready():
-	pass
+	queue_bake()
 
 func is_day():
 	return worldEnvironment.is_day

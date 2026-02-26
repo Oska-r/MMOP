@@ -39,8 +39,9 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "nodes": {
-"PATH:tree_001": {
-"generate/physics": true
+"PATH:Tree": {
+"generate/physics": true,
+"physics/shape_type": 2
 }
 }
 }

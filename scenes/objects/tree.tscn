@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6ckjyay2utuw"]
 
-[ext_resource type="PackedScene" uid="uid://bs5woclcc0htx" path="res://ressources/models/Tree1.glb" id="1_r6wkp"]
+[ext_resource type="PackedScene" uid="uid://bg1jgujl58113" path="res://ressources/models/Tree.glb" id="1_r6wkp"]
 
 [node name="Tree" type="StaticBody3D" unique_id=1104199821]
 
-[node name="Tree1" parent="." unique_id=1845729039 instance=ExtResource("1_r6wkp")]
+[node name="Tree2" parent="." unique_id=979929589 instance=ExtResource("1_r6wkp")]
