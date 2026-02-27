@@ -11,33 +11,12 @@ radius = 0.5444336
 
 [node name="Oxygentank2" unique_id=791852402 instance=ExtResource("1_upulf")]
 
-[node name="Oxygentank" parent="." index="0" unique_id=162886472]
-visible = false
-
-[node name="Circle_003" parent="." index="3" unique_id=45612793]
-visible = false
-
-[node name="Circle_004" parent="." index="4" unique_id=634745107]
-visible = false
-
-[node name="Cube_005" parent="." index="11" unique_id=1887638040]
-visible = false
-
-[node name="Plane_006" parent="." index="29" unique_id=238921257]
-visible = false
-
-[node name="Plane_007" parent="." index="30" unique_id=39330774]
-visible = false
-
-[node name="Plane_008" parent="." index="31" unique_id=7236246]
-visible = false
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Plane_008" index="0" unique_id=727144032]
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane_008" parent_id_path=PackedInt32Array(1060370917) index="0" unique_id=727144032]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_008/StaticBody3D" index="0" unique_id=1486703578]
 shape = SubResource("ConvexPolygonShape3D_uh7n0")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Sphere_002" parent_id_path=PackedInt32Array(316698967) index="0" unique_id=603098852]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sphere_002" parent_id_path=PackedInt32Array(1827622995) index="0" unique_id=603098852]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sphere_002/StaticBody3D" index="0" unique_id=2027463036]

@@ -65,11 +65,13 @@ func update_movement() -> void:
 func handle_damage() -> void:
 	if damage_timer > 0:
 		return
+	
 	for body in bodies_in_damage_area:
 		# don't apply damage to other enemys
 		if body.is_in_group("enemy"):
 			pass
 		elif body != null and body.has_method("take_damage"):
+			print_debug(body)
 			body.take_damage(damage)
 			damage_timer = damage_interval
 

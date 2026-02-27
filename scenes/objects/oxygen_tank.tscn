@@ -1,7 +1,31 @@
 [gd_scene format=3 uid="uid://dr1hqhhyvv47c"]
 
-[ext_resource type="PackedScene" uid="uid://bmtrchr2n52bw" path="res://ressources/models/Sauerstofftank/oxygentank_2.tscn" id="2_6skvo"]
+[ext_resource type="Script" uid="uid://dgh5bs8j3owty" path="res://scripts/miscellaneous/oxygen_tank.gd" id="1_gbipx"]
+[ext_resource type="PackedScene" uid="uid://b7t5jwpnx6vui" path="res://scenes/objects/oxygentank_model.tscn" id="2_gbipx"]
+[ext_resource type="Script" uid="uid://3f54wqp2pk5k" path="res://scripts/miscellaneous/damageable.gd" id="3_kkmc3"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_upulf"]
+height = 1.847
+radius = 0.5444336
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uh7n0"]
+points = PackedVector3Array(-0.50000006, -0.08333333, -0.50000006, -0.50000006, -0.08333333, 0.4999022, -0.50000006, 0, -0.50000006, 0.4999022, -0.08333333, -0.50000006, -0.50000006, 0, 0.4999022, 0.4999022, -0.08333333, 0.4999022, 0.4999022, 0, -0.50000006, 0.4999022, 0, 0.4999022)
 
 [node name="Oxygentank" type="AnimatableBody3D" unique_id=838330149 groups=["Damageable_World", "Oxygentank"]]
+script = ExtResource("1_gbipx")
 
-[node name="Oxygentank" parent="." unique_id=1328663118 instance=ExtResource("2_6skvo")]
+[node name="Oxygentank" parent="." unique_id=1859862531 instance=ExtResource("2_gbipx")]
+
+[node name="Tank" type="CollisionShape3D" parent="." unique_id=2027463036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.975, 0)
+shape = SubResource("CylinderShape3D_upulf")
+
+[node name="Base" type="CollisionShape3D" parent="." unique_id=1486703578]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.0030599437, 0.1, 0.004211644)
+shape = SubResource("ConvexPolygonShape3D_uh7n0")
+
+[node name="Components" type="Node" parent="." unique_id=832242650]
+
+[node name="Damageable" type="Node" parent="Components" unique_id=1389288148]
+script = ExtResource("3_kkmc3")
+max_health = 1.0

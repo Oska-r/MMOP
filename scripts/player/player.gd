@@ -273,4 +273,7 @@ func _on_died() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://scenes/UI/menus/end_screen.tscn")
 
+func die() -> void:
+	damageable.die()
+
 #endregion
