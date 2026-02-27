@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://b7dbwwcuym4cq"]
 
-[ext_resource type="Texture2D" uid="uid://bcvhy1fxrneyo" path="res://ressources/pictures/Items/oil.png" id="1_buut5"]
+[ext_resource type="Texture2D" uid="uid://bcvhy1fxrneyo" path="res://ressources/pictures/items/oil.png" id="1_buut5"]
 [ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="1_q5lot"]
 
 [resource]
 script = ExtResource("1_q5lot")
 name = "Öl"
 icon = ExtResource("1_buut5")
-item_id = 2
+item_id = 3
 metadata/_custom_type_script = "uid://dwdabywcheuay"

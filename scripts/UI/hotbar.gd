@@ -10,12 +10,12 @@ func _ready() -> void:
 	$Select.position = Vector2(0,0)
 
 func _process(_delta: float) -> void:
-	var item = inventory.get_hotbar_item(selected_index)
+	var item = inventory.get_hotbar_items()[selected_index]
 	if item and item.scene:
 		player.show_preview(item)
 
 func _unhandled_input(_event: InputEvent) -> void:
-	if not player.is_input_enabled():
+	if not player or not player.is_input_enabled():
 		return
 	
 	for i in range(10):
@@ -30,7 +30,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 			break
 	
 	if Input.is_action_pressed("use_item"):
-		var item = inventory.get_hotbar_item(selected_index)
+		var item = inventory.get_hotbar_items()[selected_index]
 		if item && player.try_to_use_item(item):
 			reduce_item_count(item)
 			update_hotbar_ui()

@@ -1,9 +1,13 @@
-extends DamageableEntity
+extends CharacterBody3D
 
 @onready var head: Node = get_node("Head")
 @onready var interact_ray: RayCast3D = head.get_node("Camera3D/InteractRay")
 @onready var attack_Area: Area3D = head.get_node("Attack_Area")
 @onready var inventory: Control = get_parent().get_node("UI").get_node("Inventory")
+@onready var damageable: Node = $Components/Damageable
+@onready var attack_timer: Timer = $AttackTimer
+
+var dead: bool = false
 var mouse_captured: bool = false
 var input_enabled: bool = true
 
@@ -21,13 +25,18 @@ var targets: Array[Node3D]
 var damage_timer: float = 0.0
 
 func _ready() -> void:
-		attack_Area.visible = false
+	attack_Area.visible = false
+	damageable.died.connect(_on_died)
+	attack_timer.timeout.connect(_on_attack_timer_timeout)
 
 func _input(event) -> void:
 	if event.is_action_pressed("interact"):
 		check_interaction()
 
 func _process(delta) -> void:
+	if dead:
+		return
+	
 	if item_use_cooldown > 0:
 		item_use_cooldown -= delta
 	if damage_timer > 0:
@@ -240,18 +249,27 @@ func handle_attack() -> void:
 	targets = attack_Area.get_overlapping_bodies()
 	
 	for body in targets:
-		print("Current target " + str(body.get_groups()))
 		if body.is_in_group("Damageable_World"):
 			body.take_damage(damage)
 			damage_timer = attack_interval
 			attack_animation()
 
 func attack_animation() -> void:
+	if not is_inside_tree():
+		return
+	
 	attack_Area.visible = true
-	await get_tree().create_timer(0.2).timeout
-	attack_Area.visible = false
+	attack_timer.start()
 
-func die(should_drop_loot: bool = false) -> void:
+func take_damage(damage: int) -> void:
+	damageable.take_damage(damage)
+
+func _on_attack_timer_timeout():
+	if is_instance_valid(attack_Area):
+		attack_Area.visible = false
+
+func _on_died() -> void:
+	dead = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://scenes/UI/menus/end_screen.tscn")
 

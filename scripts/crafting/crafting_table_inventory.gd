@@ -23,12 +23,12 @@ func _on_button_pressed(button: Button) -> void:
 		print("Not enough ingredients!")
 		return
 
-	# 2. Find where to put the result (Stack first, then Empty)
-	var target_slot = find_stackable_or_empty(result_id)
+	# 2. Find where to put the result
+	var target_slot = inventory.find_stackable_or_empty(result_id)
 	if target_slot == Vector2(-1, -1):
 		print("Inventory full!")
 		return
-
+	
 	# 3. Consume ingredients
 	var remaining_to_consume = required_amount
 	Global.play_sound(crafting_sound)
@@ -50,22 +50,3 @@ func _on_button_pressed(button: Button) -> void:
 	inventory.load_item_to_inventory(result_id, int(target_slot.x), int(target_slot.y), 1)
 	
 	button.update_current_amount()
-
-## Searches for an existing stack of the same ID or the first empty slot.
-func find_stackable_or_empty(item_id) -> Vector2:
-	var first_empty = Vector2(-1, -1)
-	
-	# Loop through player inventory (Rows 0-4)
-	for r in range(5):
-		for c in range(inventory.inventory_items[r].size()):
-			var item = inventory.inventory_items[r][c]
-			
-			# If we find the same item, return this coordinate immediately (Stacking)
-			if item != null and item.item_id == item_id:
-				return Vector2(r, c)
-			
-			# If we find an empty slot, remember the FIRST one we saw
-			if item == null and first_empty == Vector2(-1, -1):
-				first_empty = Vector2(r, c)
-				
-	return first_empty

@@ -1,5 +1,4 @@
-extends DamageableEntity
-
+extends CharacterBody3D
 @onready var agent: NavigationAgent3D = $NavigationAgent3D
 @onready var damage_area: Area3D = $Damage_Area
 @onready var player = get_tree().get_first_node_in_group("player")
@@ -8,12 +7,13 @@ extends DamageableEntity
 @export var damage: float = 10.0
 @export var damage_interval: float = 1.0
 
+@onready var damageable: Node = $Components/Damageable
+@onready var loot_table: Node = $Components/LootTable
+
 # Damage
 var damage_timer: float= 0.0
 var bodies_in_damage_area: Array[Node3D] = []
 var player_can_take_damage: bool = true
-
-var loot_table: Dictionary = {Item_ids.ItemID.OIL: 0.1}
 
 # Movement
 var player_position : Vector3
@@ -23,6 +23,7 @@ func _ready() -> void:
 	randomize() # So that numbers between different executes are random.
 	add_to_group("enemy")
 	oxygentank_position = get_tree().get_first_node_in_group("Oxygentank").global_position
+	damageable.died.connect(_on_died)
 
 func _physics_process(delta) -> void:
 	apply_gravity(delta)
@@ -82,22 +83,21 @@ func find_target():
 		return oxygentank_position
 	else:
 		return player_position
-	
+
 ## Delete node and drop loot.
-func die(from_sun: bool = false) -> void:
-	if not from_sun:
-		calculate_loot()
-	
-	super.die(from_sun)
+func _on_died() -> void:
+	if not died_from_sun:
+		loot_table.calculate_loot()
 
-func calculate_loot() -> void:
-	var roll: float = randf()
-	for item in loot_table:
-		if roll <= loot_table[item]:
-			player.drop(item)
+var died_from_sun: bool = false
 
-func sun_damage(amount) -> void:
-	take_damage(amount, true)
+func sun_damage(amount: float) -> void:
+	died_from_sun = true
+	damageable.take_damage(amount)
+
+func take_damage(damage: float) -> void:
+	died_from_sun = false
+	damageable.take_damage(damage)
 
 # This function is called from the main scene.
 func initialize(start_position) -> void:

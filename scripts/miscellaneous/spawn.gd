@@ -12,7 +12,6 @@ func new_day() -> void:
 	timer.wait_time = calculate_wait_time(Global.day_count)
 	calculate_enemy_stats(Global.day_count)
 	print_day_stats(Global.day_count)
-	
 
 var timer_wait_time: float = 5.0
 var min_wait_time: float = 1.0
@@ -47,7 +46,7 @@ func _on_timer_timeout() -> void:
 func apply_mob_stats(mob) -> void:
 	mob.speed = enemy_speed
 	mob.damage = enemy_damage
-	mob.health = enemy_health
+	mob.get_node("Components/Damageable").health = enemy_health
 
 func print_day_stats(day_count: int) -> void:
 	print("""

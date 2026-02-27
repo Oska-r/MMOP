@@ -31,7 +31,6 @@ func update_current_amount() -> void:
 	# 2. Get inventory data
 	var locations = inventory.inventory_contains(ingredient_id)
 	var total = inventory.get_total_from_locations(locations)
-	
 	# 3. Get item details for display
 	var item_data = ItemIDs.get_item(ingredient_id)
 	if item_data:
@@ -42,7 +41,6 @@ func update_current_amount() -> void:
 		recipe_label.text = "[color=%s]%d[/color] / %d %s" % [color_code, total, required_amount, item_name]
 	# Get the resource from the registry using the ID stored in the recipe
 	var result_data = ItemIDs.get_item(recipe.result_item)
-	print(result_data)
 	
 	if result_data:
 		title.text = result_data.name 

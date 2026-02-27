@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://c40cnjfmavs2y" path="res://ressources/sounds/player/jump.mp3" id="4_rm8fd"]
 [ext_resource type="AudioStream" uid="uid://1o10fnhinqcg" path="res://ressources/sounds/place.mp3" id="5_2jso2"]
 [ext_resource type="AudioStream" uid="uid://dmsdeo8wuunex" path="res://ressources/sounds/player/landing.mp3" id="6_fmh12"]
+[ext_resource type="Script" uid="uid://3f54wqp2pk5k" path="res://scripts/miscellaneous/damageable.gd" id="6_riacy"]
 [ext_resource type="Script" uid="uid://blvquebv4338o" path="res://scripts/player/player_movement.gd" id="7_fjrip"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
@@ -78,8 +79,16 @@ volume_db = -5.66
 [node name="Landing" type="AudioStreamPlayer" parent="SoundEffects" unique_id=1894450108]
 stream = ExtResource("6_fmh12")
 
-[node name="Scripts" type="Node" parent="." unique_id=569954831]
+[node name="AttackTimer" type="Timer" parent="." unique_id=1153083262]
+wait_time = 0.2
+one_shot = true
 
-[node name="Movement" type="Node" parent="Scripts" unique_id=1213419642 node_paths=PackedStringArray("player")]
+[node name="Components" type="Node" parent="." unique_id=78481381]
+
+[node name="Movement" type="Node" parent="Components" unique_id=1213419642 node_paths=PackedStringArray("player")]
 script = ExtResource("7_fjrip")
 player = NodePath("../..")
+
+[node name="Damageable" type="Node" parent="Components" unique_id=1072084799]
+script = ExtResource("6_riacy")
+max_health = 100.0

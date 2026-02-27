@@ -1,22 +1,14 @@
 extends StaticBody3D
 
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var damageable: Node = $Components/Damageable
+@onready var loot_table: Node = $Components/LootTable
 
-var health: int = 500
+func _ready() -> void:
+	damageable.took_damage.connect(_on_damaged)
 
-var loot_table: Dictionary = {Item_ids.ItemID.WOOD: 0.4}
+func _on_damaged(damage: float) -> void:
+	loot_table.calculate_loot()
 
 func take_damage(damage: int) -> void:
-	health -= damage
-	calculate_loot()
-	if health < 0:
-		die()
-
-func die() -> void:
-	queue_free()
-
-func calculate_loot() -> void:
-	var roll: float = randf()
-	for item in loot_table:
-		if roll <= loot_table[item]:
-			player.drop(item)
+	damageable.take_damage(damage)

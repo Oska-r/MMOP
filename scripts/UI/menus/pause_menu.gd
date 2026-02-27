@@ -7,7 +7,7 @@ func _ready() -> void:
 	hide()
 
 func _input(_event: InputEvent) -> void:
-	if not player.is_input_enabled():
+	if not player or not player.is_input_enabled():
 		return
 	if Input.is_action_just_pressed("ui_cancel") and !get_tree().paused:
 		player.clear_preview()

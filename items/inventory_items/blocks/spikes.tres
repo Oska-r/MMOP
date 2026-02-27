@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dyftblke23t8b"]
+
+[ext_resource type="Texture2D" uid="uid://d1wbujc744yc2" path="res://ressources/pictures/items/Spikes.png" id="1_donh2"]
+[ext_resource type="PackedScene" uid="uid://d2rdqj4qck2i5" path="res://scenes/objects/items/spikes.tscn" id="2_donh2"]
+[ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="3_qk50q"]
+
+[resource]
+script = ExtResource("3_qk50q")
+name = "Spikes"
+icon = ExtResource("1_donh2")
+scene = ExtResource("2_donh2")
+item_id = 2
+metadata/_custom_type_script = "uid://dwdabywcheuay"

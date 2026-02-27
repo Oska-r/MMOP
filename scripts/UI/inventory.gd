@@ -2,8 +2,9 @@ extends Control
 
 @onready var player: CharacterBody3D = get_parent().player
 @export var hotbar: Control
-@onready var chest: Control = get_node("Chest")
-@onready var crafting_table: Control = get_node("CraftingTable")
+@onready var chest: Control = $Chest
+@onready var crafting_table: Control = $CraftingTable
+@onready var main_inventory: Control = $MainInventory
 
 # row 0 for hotbar, row 6 for chests
 var inventory_items: Array[Array] = [
@@ -17,9 +18,6 @@ var inventory_items: Array[Array] = [
 
 func get_hotbar_items() -> Array:
 	return inventory_items[0]
-
-func get_hotbar_item(index: int) -> Item:
-	return inventory_items[0][index]
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -36,7 +34,7 @@ func _input(event) -> void:
 			open_inventory()
 
 func drop(item: Item_ids.ItemID) -> void:
-	var target = $CraftingTable.find_stackable_or_empty(item)
+	var target = find_stackable_or_empty(item)
 	if target == Vector2(-1, -1):
 		print("Inventory full!")
 		return
@@ -78,13 +76,7 @@ func swap_inventory_slots(originalRow: int, originalIndex: int, targetRow: int, 
 func clear_inventory_slot(row: int, index: int) -> void:
 	inventory_items[row][index] = null
 
-	var row_node
-	
-	if row < 5:
-		row_node = get_node("row_%d" % (row ))
-	else:
-		row_node = get_node("Chest/row_%d" % (row ))
-	var slot_node = row_node.get_child(index)
+	var slot_node = get_slot_node(row, index)
 
 	var icon_node = slot_node.get_node("Item") as TextureRect
 	if icon_node:
@@ -109,13 +101,7 @@ func load_item_to_inventory(item_id: Item_ids.ItemID, row: int = 0, index: int =
 	inventory_items[row][index] = item
 	item.count = count
 	
-	var row_node
-	
-	if row < 5:
-		row_node = get_node("row_%d" % (row ))
-	else:
-		row_node = get_node("Chest/row_%d" % (row ))
-	var slot_node = row_node.get_child(index)
+	var slot_node = get_slot_node(row, index)
 	var icon_node = slot_node.get_node("Item") as TextureRect
 	icon_node.texture = item.icon
 
@@ -139,19 +125,19 @@ func change_count(number: int, row: int, index: int) -> void:
 	if item.count <= 0:
 		clear_inventory_slot(row, index)
 		return
-
-	var row_node
-	if row < 5:
-		row_node = get_node("row_%d" % row)
-	else:
-		row_node = get_node("Chest/row_%d" % row)
-	var slot_node = row_node.get_child(index)
+	
+	var slot_node = get_slot_node(row, index)
+	
 	var count_label = slot_node.get_node("Count") as RichTextLabel
 	if count_label:
 		count_label.text = str(item.count)
 	
 	if row == 0:
 		hotbar.update_hotbar_ui()
+
+func get_slot_node(row: int, index: int) -> Node:
+	var path = "row_%d" % row if row < 5 else "Chest/row_%d" % row
+	return main_inventory.get_node(path).get_child(index)
 
 func open_inventory() -> void:
 	hotbar.hide()
@@ -195,10 +181,8 @@ func close_crafting_table() -> void:
 	crafting_table.hide()
 
 ## Returns the total amount of a specific item currently held in the inventory.
-## Update the first line to accept the Enum type
 func inventory_contains(target_id: ItemIDs.ItemID) -> Dictionary:
 	var locations = {}
-	
 	for row_index in range(inventory_items.size()):
 		var row = inventory_items[row_index]
 		for slot_index in range(row.size()):
@@ -208,7 +192,6 @@ func inventory_contains(target_id: ItemIDs.ItemID) -> Dictionary:
 			if item != null and item.item_id == target_id:
 				var coords = Vector2(row_index, slot_index)
 				locations[coords] = item.count
-				
 	return locations
 
 ## Takes the dictionary from inventory_contains and returns the total sum of items.
@@ -217,3 +200,22 @@ func get_total_from_locations(locations: Dictionary) -> int:
 	for count in locations.values():
 		sum += count
 	return sum
+
+## Searches for an existing stack of the same ID or the first empty slot.
+func find_stackable_or_empty(item_id) -> Vector2:
+	var first_empty = Vector2(-1, -1)
+	
+	# Loop through player inventory (Rows 0-4)
+	for r in range(5):
+		for c in range(inventory_items[r].size()):
+			var item = inventory_items[r][c]
+			
+			# If we find the same item, return this coordinate immediately (Stacking)
+			if item != null and item.item_id == item_id:
+				return Vector2(r, c)
+			
+			# If we find an empty slot, remember the FIRST one we saw
+			if item == null and first_empty == Vector2(-1, -1):
+				first_empty = Vector2(r, c)
+				
+	return first_empty

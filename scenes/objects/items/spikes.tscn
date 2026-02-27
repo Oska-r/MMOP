@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://d2rdqj4qck2i5"]
 
-[ext_resource type="PackedScene" uid="uid://ep4jrg2fud64" path="res://ressources/models/Spikes.glb" id="1_wta3d"]
+[ext_resource type="PackedScene" uid="uid://ep4jrg2fud64" path="res://ressources/models/Spikes.glb" id="1_bg2ou"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4yjv5"]
 size = Vector3(9.979643, 10.083445, 16.799997)
 
-[node name="Spike" type="StaticBody3D" unique_id=1473667852]
+[node name="Spikes" type="StaticBody3D" unique_id=1473667852]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
-[node name="Spikes2" parent="." unique_id=1549917056 instance=ExtResource("1_wta3d")]
+[node name="Spikes2" parent="." unique_id=1549917056 instance=ExtResource("1_bg2ou")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1189786821]
