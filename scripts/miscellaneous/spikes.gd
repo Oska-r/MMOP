@@ -23,5 +23,5 @@ func _physics_process(delta: float) -> void:
 	for body in bodies_inside.keys():
 		bodies_inside[body] += delta
 		if bodies_inside[body] >= damage_interval:
-			body.take_damage(damage)
+			body.take_damage_from_spike(damage)
 			bodies_inside[body] = 0.0

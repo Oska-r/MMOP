@@ -92,17 +92,21 @@ func find_target():
 
 ## Delete node and drop loot.
 func _on_died() -> void:
-	if not died_from_sun:
+	if not drop_loot:
 		loot_table.calculate_loot()
 
-var died_from_sun: bool = false
+var drop_loot: bool = false
+
+func take_damage_from_spike(damage: int) -> void:
+	drop_loot = false
+	damageable.take_damage(damage)
 
 func sun_damage(amount: float) -> void:
-	died_from_sun = true
+	drop_loot = false
 	damageable.take_damage(amount)
 
 func take_damage(damage: float) -> void:
-	died_from_sun = false
+	drop_loot = true
 	damageable.take_damage(damage)
 
 # Put updating label here to avoid redundancy
