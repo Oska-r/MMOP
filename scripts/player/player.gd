@@ -24,10 +24,13 @@ var targets: Array[Node3D]
 @export var attack_interval: float = 0.25
 var damage_timer: float = 0.0
 
+signal player_health_changed(current_health: float, max_health: float)
+
 func _ready() -> void:
 	attack_Area.visible = false
 	damageable.died.connect(_on_died)
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
+	emit_signal("player_health_changed", get_health(), get_max_health())
 
 func _input(event) -> void:
 	if event.is_action_pressed("interact"):
@@ -264,6 +267,7 @@ func attack_animation() -> void:
 
 func take_damage(damage: int) -> void:
 	damageable.take_damage(damage)
+	emit_signal("player_health_changed", get_health(), get_max_health())
 
 func _on_attack_timer_timeout():
 	if is_instance_valid(attack_Area):
@@ -278,3 +282,9 @@ func die() -> void:
 	damageable.die()
 
 #endregion
+
+func get_max_health() -> float:
+	return damageable.max_health
+
+func get_health() -> float:
+	return damageable.health

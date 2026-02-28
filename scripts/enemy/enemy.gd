@@ -2,6 +2,7 @@ extends CharacterBody3D
 @onready var agent: NavigationAgent3D = $NavigationAgent3D
 @onready var damage_area: Area3D = $Damage_Area
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var oxygen_tank = get_tree().get_first_node_in_group("Oxygentank")
 
 @export var speed: float = 3.0
 @export var damage: float = 10.0
@@ -19,12 +20,12 @@ var player_can_take_damage: bool = true
 
 # Movement
 var player_position : Vector3
-var oxygentank_position : Vector3
+var oxygen_tank_position : Vector3
 
 func _ready() -> void:
 	randomize() # So that numbers between different executes are random.
 	add_to_group("enemy")
-	oxygentank_position = get_tree().get_first_node_in_group("Oxygentank").global_position
+	oxygen_tank_position = oxygen_tank.global_position
 	damageable.died.connect(_on_died)
 	damageable.took_damage.connect(_took_damage)
 	Global.update_health_display(health_label, damageable)
@@ -74,18 +75,18 @@ func handle_damage() -> void:
 		# don't apply damage to other enemys
 		if body.is_in_group("enemy"):
 			pass
-		elif body != null and body.has_method("take_damage"):
+		elif body != null and ((body == player) or (body == oxygen_tank)):
 			body.take_damage(damage)
 			damage_timer = damage_interval
 
 ## returns the "best target"
 func find_target():
 	player_position = player.global_position
-	var oxygen_distance = global_position.distance_to(oxygentank_position)
+	var oxygen_distance = global_position.distance_to(oxygen_tank_position)
 	var player_distance = global_position.distance_to(player_position)
 	
 	if oxygen_distance < player_distance:
-		return oxygentank_position
+		return oxygen_tank_position
 	else:
 		return player_position
 

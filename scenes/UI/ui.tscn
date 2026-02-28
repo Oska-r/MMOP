@@ -6,14 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://2lg3o2g67vdp" path="res://ressources/pictures/UI/crosshair.png" id="3_8334u"]
 [ext_resource type="PackedScene" uid="uid://equrnyrs8b8x" path="res://scenes/UI/menus/pause_menu.tscn" id="4_m4jc5"]
 [ext_resource type="PackedScene" uid="uid://cq8sbte51hdu2" path="res://scenes/UI/inventory/inventory.tscn" id="5_a6y2o"]
+[ext_resource type="PackedScene" uid="uid://biqse8axf1eui" path="res://scenes/UI/health_display.tscn" id="7_35jxk"]
 
 [node name="UI" type="CanvasLayer" unique_id=2045572628]
 script = ExtResource("1_kiyfy")
 
 [node name="Coordinates" type="RichTextLabel" parent="." unique_id=1339721439]
-offset_left = 2.0
-offset_right = 179.0
-offset_bottom = 110.0
+offset_left = 1066.0
+offset_right = 1152.0
+offset_bottom = 93.0
 mouse_filter = 2
 text = "x: 0
 y: 0
@@ -49,6 +50,10 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_8334u")
 
 [node name="PauseMenu" parent="." unique_id=1913560065 instance=ExtResource("4_m4jc5")]
+visible = false
 
 [node name="Inventory" parent="." unique_id=315312596 node_paths=PackedStringArray("hotbar") groups=["InventoryUI"] instance=ExtResource("5_a6y2o")]
+visible = false
 hotbar = NodePath("../Hotbar")
+
+[node name="HealthDisplay" parent="." unique_id=214072852 instance=ExtResource("7_35jxk")]

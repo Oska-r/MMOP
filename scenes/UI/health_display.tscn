@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://biqse8axf1eui"]
+
+[ext_resource type="Script" uid="uid://bsee1kqoj1cwf" path="res://scripts/UI/health_display.gd" id="1_tmj0p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tmj0p"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 0, 0, 0.84313726)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[node name="HealthDisplay" type="Control" unique_id=214072852]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_tmj0p")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=585602225]
+layout_mode = 0
+offset_right = 198.0
+offset_bottom = 27.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_tmj0p")
+show_percentage = false
+
+[node name="HealthNumber" type="Label" parent="HealthBar" unique_id=1889026042]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -17.5
+offset_right = 17.5
+offset_bottom = 23.0
+grow_horizontal = 2

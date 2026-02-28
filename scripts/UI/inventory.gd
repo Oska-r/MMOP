@@ -136,8 +136,8 @@ func change_count(number: int, row: int, index: int) -> void:
 		hotbar.update_hotbar_ui()
 
 func get_slot_node(row: int, index: int) -> Node:
-	var path = "row_%d" % row if row < 5 else "Chest/row_%d" % row
-	return main_inventory.get_node(path).get_child(index)
+	var path = "MainInventory/row_%d" % row if row < 5 else "Chest/row_%d" % row
+	return get_node(path).get_child(index)
 
 func open_inventory() -> void:
 	hotbar.hide()
