@@ -39,6 +39,7 @@ enabled=PackedStringArray()
 InventoryUI=""
 damagable_by_enemy=""
 damagable_by_player=""
+damagable_by_spikes=""
 
 [input]
 

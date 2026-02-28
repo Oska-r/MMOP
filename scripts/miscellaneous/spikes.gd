@@ -1,0 +1,30 @@
+extends StaticBody3D
+
+@export var damage: float = 30.0
+@export var damage_interval: float = 0.5  # seconds between damage ticks
+
+# Keeps track of bodies currently inside the area
+var bodies_inside := {}
+
+func _ready():
+	$Area3D.body_entered.connect(_on_body_entered)
+	$Area3D.body_exited.connect(_on_body_exited)
+
+func _on_body_entered(body: Node3D) -> void:
+	if body.is_in_group("damagable_by_spikes"):
+		body.take_damage(damage)  # initial hit
+		bodies_inside[body] = 0.0  # start timer for interval damage
+
+func _on_body_exited(body: Node3D) -> void:
+	bodies_inside.erase(body)
+
+func _physics_process(delta: float) -> void:
+	# Loop through bodies inside the spike area
+	for body in bodies_inside.keys():
+		bodies_inside[body] += delta
+		if bodies_inside[body] >= damage_interval:
+			if body.is_valid():  # make sure the body still exists
+				body.take_damage(damage)
+				bodies_inside[body] = 0.0
+			else:
+				bodies_inside.erase(body)

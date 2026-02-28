@@ -1,17 +1,27 @@
 [gd_scene format=3 uid="uid://d2rdqj4qck2i5"]
 
+[ext_resource type="Script" uid="uid://cnpw1o63yeqbo" path="res://scripts/miscellaneous/spikes.gd" id="1_4ay1g"]
 [ext_resource type="ArrayMesh" uid="uid://cq24eo0lx5ukw" path="res://ressources/meshs/spikes.tres" id="1_bg2ou"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2u5lu"]
-size = Vector3(9.979643, 10.083445, 16.799997)
+size = Vector3(12.940801, 10.083445, 19.336266)
 
 [node name="Spikes" type="StaticBody3D" unique_id=1566048860]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+script = ExtResource("1_4ay1g")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=29766919]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1407787174]
+transform = Transform3D(0.9999995, 0, 0, 0, 0.9999995, 0, 0, 0, 0.9999995, -0.04194545, 4.97269, 0.7421246)
 shape = SubResource("BoxShape3D_2u5lu")
 
-[node name="Spikes" type="MeshInstance3D" parent="." unique_id=781995715]
+[node name="Area3D" type="Area3D" parent="." unique_id=2007839268]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, -0.04194545, 4.97269, 0.7421246)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=29766919]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0.29668924, 0, -0.70438766)
+shape = SubResource("BoxShape3D_2u5lu")
+
+[node name="Spikes" type="MeshInstance3D" parent="." unique_id=781995715 groups=["damagable_by_enemy"]]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, -5)
 mesh = ExtResource("1_bg2ou")
 skeleton = NodePath("")
