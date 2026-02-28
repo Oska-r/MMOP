@@ -23,8 +23,5 @@ func _physics_process(delta: float) -> void:
 	for body in bodies_inside.keys():
 		bodies_inside[body] += delta
 		if bodies_inside[body] >= damage_interval:
-			if body.is_valid():  # make sure the body still exists
-				body.take_damage(damage)
-				bodies_inside[body] = 0.0
-			else:
-				bodies_inside.erase(body)
+			body.take_damage(damage)
+			bodies_inside[body] = 0.0
