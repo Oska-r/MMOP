@@ -48,11 +48,7 @@ func apply_mob_stats(mob) -> void:
 	mob.damage = enemy_damage
 	mob.get_node("Components/Damageable").max_health = enemy_health
 
-var i = 0
-
 func spawn_mob() -> void:
-	i += 1
-	print("Spawning mob ", i)
 	var mob = mob_scene.instantiate()
 	apply_mob_stats(mob)
 	var mob_spawn_location = get_node("SpawnPath/SpawnLocation")

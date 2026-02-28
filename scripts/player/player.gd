@@ -253,7 +253,7 @@ func handle_attack() -> void:
 	targets = attack_Area.get_overlapping_bodies()
 	
 	for body in targets:
-		if body.is_in_group("Damageable_World"):
+		if body.is_in_group("damagable_by_player"):
 			body.take_damage(damage)
 			damage_timer = attack_interval
 			attack_animation()

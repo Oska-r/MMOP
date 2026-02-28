@@ -75,7 +75,7 @@ func handle_damage() -> void:
 		# don't apply damage to other enemys
 		if body.is_in_group("enemy"):
 			pass
-		elif body != null and ((body == player) or (body == oxygen_tank)):
+		elif body != null and body.is_in_group("damagable_by_enemy"):
 			body.take_damage(damage)
 			damage_timer = damage_interval
 

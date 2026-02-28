@@ -31,10 +31,14 @@ window/size/always_on_top=true
 
 project/assembly_name="MMOP"
 
+
+enabled=PackedStringArray()
+
 [global_group]
 
-Damageable_World=""
 InventoryUI=""
+damagable_by_enemy=""
+damagable_by_player=""
 
 [input]
 

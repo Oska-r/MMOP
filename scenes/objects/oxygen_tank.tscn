@@ -12,7 +12,7 @@ radius = 0.5444336
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uh7n0"]
 points = PackedVector3Array(-0.50000006, -0.08333333, -0.50000006, -0.50000006, -0.08333333, 0.4999022, -0.50000006, 0, -0.50000006, 0.4999022, -0.08333333, -0.50000006, -0.50000006, 0, 0.4999022, 0.4999022, -0.08333333, 0.4999022, 0.4999022, 0, -0.50000006, 0.4999022, 0, 0.4999022)
 
-[node name="Oxygentank" type="StaticBody3D" unique_id=1610524823 groups=["Damageable_World", "Oxygentank"]]
+[node name="Oxygentank" type="StaticBody3D" unique_id=1610524823 groups=["Oxygentank", "damagable_by_enemy"]]
 script = ExtResource("1_gbipx")
 
 [node name="Oxygentank" parent="." unique_id=1859862531 instance=ExtResource("2_gbipx")]
@@ -31,7 +31,7 @@ shape = SubResource("ConvexPolygonShape3D_uh7n0")
 script = ExtResource("3_kkmc3")
 max_health = 500.0
 
-[node name="HealthLabel" type="Label3D" parent="." unique_id=322202667]
+[node name="HealthLabel" type="Label3D" parent="." unique_id=322202667 groups=["damagable_by_enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
 text = "1/1"
 script = ExtResource("4_kkmc3")
