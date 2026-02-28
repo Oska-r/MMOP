@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://be0ekd1x7lcxe" path="res://scripts/enemy/enemy.gd" id="1_l1lbi"]
 [ext_resource type="Script" uid="uid://3f54wqp2pk5k" path="res://scripts/miscellaneous/damageable.gd" id="2_s007n"]
 [ext_resource type="Script" uid="uid://cex520s86u2lf" path="res://scripts/miscellaneous/loot_table.gd" id="3_5wnaa"]
+[ext_resource type="Script" uid="uid://c3r63pxf6h435" path="res://scripts/miscellaneous/rotating_label.gd" id="4_0xiny"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1lcwq"]
 albedo_color = Color(1.353256, 0, 0, 1)
@@ -46,13 +47,18 @@ debug_path_custom_color = Color(0.91764706, 0.16078432, 0.42745098, 1)
 
 [node name="Damageable" type="Node" parent="Components" unique_id=1513974300]
 script = ExtResource("2_s007n")
-max_health = 100.0
+max_health = 300.0
 
 [node name="LootTable" type="Node" parent="Components" unique_id=1233624004]
 script = ExtResource("3_5wnaa")
 loot_table = Dictionary[int, float]({
 3: 1.0
 })
+
+[node name="HealthLabel" type="Label3D" parent="." unique_id=1348097330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+text = "1"
+script = ExtResource("4_0xiny")
 
 [connection signal="body_entered" from="Damage_Area" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Damage_Area" to="." method="_on_body_exited"]

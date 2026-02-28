@@ -41,23 +41,6 @@ func _do_bake():
 func _on_world_flexible_child_order_changed() -> void:
 	queue_bake()
 
-
-func _on_timer_timeout() -> void:
-	if is_day():
-		return
-	spawn_mob()
-	
-
-func spawn_mob():
-	var mob = mob_scene.instantiate()
-	var mob_spawn_location = get_node(\"Spawn/SpawnPath/SpawnLocation\")
-	# offset -> enemys don't spawn in the same location
-	mob_spawn_location.progress_ratio = randf()
-	mob.initialize(mob_spawn_location.position)
-
-	# Spawn the mob by adding it to the Main scene.
-	get_node(\"Spawn\").add_child(mob)
-	
 func _on_world_environment_day_started() -> void:
 	get_node(\"Spawn\").new_day()
 "
@@ -98,11 +81,8 @@ transform = Transform3D(-0.39327776, 0, 0.9194197, 0, 1, 0, -0.9194197, 0, -0.39
 wait_time = 2.0
 autostart = true
 
-[node name="Enemy" parent="Spawn" unique_id=1800269208 groups=["enemy"] instance=ExtResource("1_iubku")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44078213, 20.020407)
-
-[node name="Enemy2" parent="Spawn" unique_id=423852414 groups=["enemy"] instance=ExtResource("1_iubku")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.716463, 0.44078213, 20.020407)
+[node name="Enemy" parent="." unique_id=1800269208 instance=ExtResource("1_iubku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12964392, 0.5, 4.5966005)
 
 [connection signal="child_order_changed" from="World_flexible" to="." method="_on_world_flexible_child_order_changed"]
 [connection signal="child_order_changed" from="World_flexible/Blocks" to="." method="_on_world_flexible_child_order_changed"]

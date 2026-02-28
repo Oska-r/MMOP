@@ -18,13 +18,13 @@ albedo_color = Color(0, 0.7735731, 1, 1)
 transform = Transform3D(2.305, 0, 0, 0, 2.305, 0, 0, 0, 2.305, 0, 0, 0)
 
 [node name="OxygenTankLabel" type="Label3D" parent="Oxygentank" unique_id=364488713]
-transform = Transform3D(0.43383947, 0, 0, 0, 0.43383947, 0, 0, 0, 0.43383947, 0, 2.4693522, 0)
+transform = Transform3D(0.43383947, 0, 0, 0, 0.43383947, 0, 0, 0, 0.43383947, 0, 2.7664297, 0)
 text = "Beschütze!
 ↓"
 font_size = 128
 
-[node name="ChestLabel3" type="Label3D" parent="Oxygentank" unique_id=1784416077]
-transform = Transform3D(0.43383938, 0, 0, 0, 0.43383947, 0, 0, 0, 0.43383938, 0, 0.92873853, 0.7419561)
+[node name="InstructionLabel" type="Label3D" parent="Oxygentank" unique_id=1784416077]
+transform = Transform3D(0.43383938, 0, 0, 0, 0.43383947, 0, 0, 0, 0.43383938, -2.197918, 0.92873853, 0.7419561)
 text = "Drücke Tab um das Inventar zu öffnen"
 
 [node name="Floor" type="CSGCylinder3D" parent="." unique_id=1296897026]

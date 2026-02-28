@@ -9,8 +9,8 @@ signal took_damage(damage: float)
 
 # returns wether entity dies from that damage tick
 func take_damage(damage: float) -> bool:
-	emit_signal("took_damage", damage)
 	health -= damage
+	emit_signal("took_damage", damage)
 	if health <= 0:
 		die()
 		return true

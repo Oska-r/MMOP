@@ -27,7 +27,7 @@ var max_health: float = 200.0
 var growth_rate: float = 0.12
 
 func calculate_enemy_stats(day_count: int) -> void:
-	enemy_speed = scale_stat(3.0, max_speed,growth_rate ,day_count)
+	enemy_speed = scale_stat(3.0, max_speed,growth_rate, day_count)
 	enemy_damage = scale_stat(10.0, max_damage,growth_rate, day_count)
 	enemy_health = scale_stat(50.0, max_health,growth_rate, day_count)
 
@@ -46,7 +46,22 @@ func _on_timer_timeout() -> void:
 func apply_mob_stats(mob) -> void:
 	mob.speed = enemy_speed
 	mob.damage = enemy_damage
-	mob.get_node("Components/Damageable").health = enemy_health
+	mob.get_node("Components/Damageable").max_health = enemy_health
+
+var i = 0
+
+func spawn_mob() -> void:
+	i += 1
+	print("Spawning mob ", i)
+	var mob = mob_scene.instantiate()
+	apply_mob_stats(mob)
+	var mob_spawn_location = get_node("SpawnPath/SpawnLocation")
+	
+	mob_spawn_location.progress_ratio = randf()
+	mob.initialize(mob_spawn_location.position)
+	
+	# Spawn the mob by adding it to the Main scene.
+	add_child(mob)
 
 func print_day_stats(day_count: int) -> void:
 	print("""
@@ -62,14 +77,3 @@ func print_day_stats(day_count: int) -> void:
 		enemy_damage,
 		enemy_health
 	])
-
-func spawn_mob() -> void:
-	var mob = mob_scene.instantiate()
-	apply_mob_stats(mob)
-	var mob_spawn_location = get_node("SpawnPath/SpawnLocation")
-	# offset -> enemys don't spawn in the same location
-	mob_spawn_location.progress_ratio = randf()
-	mob.initialize(mob_spawn_location.position)
-	
-	# Spawn the mob by adding it to the Main scene.
-	add_child(mob)

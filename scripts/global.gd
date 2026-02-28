@@ -11,7 +11,6 @@ func advance_day() -> void:
 
 ## Plays sound with randomized pitch to prevent sound fatigue. Accepts AudioStream, AudioStreamPlayer and AudioStreamPlayer3D.
 func play_sound(sound, min_pitch: float = 0.9, max_pitch: float = 1.1) -> void:
-
 	if not sound:
 		return
 		
@@ -27,3 +26,6 @@ func play_sound(sound, min_pitch: float = 0.9, max_pitch: float = 1.1) -> void:
 	
 	player.pitch_scale = randf_range(min_pitch, max_pitch)
 	player.play()
+
+func update_health_display(label: Label3D, damageable: Node) -> void:
+	label.text = str(int(round(damageable.health))) + "/" + str(int(round(damageable.max_health)))

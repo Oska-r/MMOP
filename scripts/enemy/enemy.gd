@@ -10,6 +10,8 @@ extends CharacterBody3D
 @onready var damageable: Node = $Components/Damageable
 @onready var loot_table: Node = $Components/LootTable
 
+@onready var health_label: Label3D = $HealthLabel
+
 # Damage
 var damage_timer: float= 0.0
 var bodies_in_damage_area: Array[Node3D] = []
@@ -24,6 +26,8 @@ func _ready() -> void:
 	add_to_group("enemy")
 	oxygentank_position = get_tree().get_first_node_in_group("Oxygentank").global_position
 	damageable.died.connect(_on_died)
+	damageable.took_damage.connect(_took_damage)
+	Global.update_health_display(health_label, damageable)
 
 func _physics_process(delta) -> void:
 	apply_gravity(delta)
@@ -46,17 +50,17 @@ func update_movement() -> void:
 		velocity.x = 0
 		velocity.z = 0
 		return
-
+	
 	agent.target_position = find_target()
-
+	
 	if agent.is_navigation_finished():
 		velocity.x = 0
 		velocity.z = 0
 		return
-
+	
 	var next_pos = agent.get_next_path_position()
 	var direction = (next_pos - global_position).normalized()
-
+	
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 
@@ -71,7 +75,6 @@ func handle_damage() -> void:
 		if body.is_in_group("enemy"):
 			pass
 		elif body != null and body.has_method("take_damage"):
-			print_debug(body)
 			body.take_damage(damage)
 			damage_timer = damage_interval
 
@@ -100,6 +103,10 @@ func sun_damage(amount: float) -> void:
 func take_damage(damage: float) -> void:
 	died_from_sun = false
 	damageable.take_damage(damage)
+
+# Put updating label here to avoid redundancy
+func _took_damage(damage: int) -> void:
+	Global.update_health_display(health_label, damageable)
 
 # This function is called from the main scene.
 func initialize(start_position) -> void:

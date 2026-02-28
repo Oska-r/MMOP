@@ -151,6 +151,7 @@ func place_block(item) -> bool:
 		return false
 	
 	Global.play_sound(item.sound)
+	
 	var instance = item.scene.instantiate()
 	blocks_root.add_child(instance)
 	instance.global_transform.origin = spawn_pos
@@ -179,6 +180,7 @@ func show_preview(item) -> void:
 	# If no preview exists or item changed, create a new one
 	if not last_preview: # Simplified check; we usually queue_free on item switch anyway
 		var instance = item.scene.instantiate() as Node3D
+		
 		get_tree().current_scene.add_child(instance)
 		instance.global_transform.origin = spawn_pos
 	
