@@ -4,9 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cw5kx1y60l2vn" path="res://scenes/world/chests.tscn" id="2_blego"]
 [ext_resource type="PackedScene" uid="uid://cxpd0mkp6cky5" path="res://scenes/objects/crafting_table.tscn" id="3_42htb"]
 [ext_resource type="PackedScene" uid="uid://laaa0kfjc0my" path="res://scenes/objects/rocket_new.tscn" id="4_1hw7k"]
-[ext_resource type="PackedScene" uid="uid://bhq5ow250herw" path="res://scenes/main/enemy.tscn" id="6_5wiho"]
 [ext_resource type="PackedScene" uid="uid://cdyfn30iynu3m" path="res://scenes/objects/tree.tscn" id="6_ee6x1"]
-[ext_resource type="PackedScene" uid="uid://d2rdqj4qck2i5" path="res://scenes/objects/items/spikes.tscn" id="7_5wiho"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_272bh"]
 albedo_color = Color(0, 0.54525805, 2.8878452e-07, 1)
@@ -62,18 +60,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
 
 [node name="Tree2" parent="." unique_id=566767812 groups=["damagable_by_player"] instance=ExtResource("6_ee6x1")]
 transform = Transform3D(0.49023035, -0.080653176, 0, 0.09835753, 0.4019889, 0, 0, 0, 0.41, -9.063943, 3.477993, 6.2867136)
-
-[node name="Enemy" parent="." unique_id=1800269208 instance=ExtResource("6_5wiho")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8340281, 0.54008853, 21.415068)
-
-[node name="Spikes" parent="." unique_id=1566048860 instance=ExtResource("7_5wiho")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.591054, 0.50000024, 21.545042)
-
-[node name="Spikes2" parent="." unique_id=2123595706 instance=ExtResource("7_5wiho")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -3.6451015, 0.5, 21.189583)
-
-[node name="Spikes4" parent="." unique_id=375145088 instance=ExtResource("7_5wiho")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.84135675, 0.35266495, 23.372345)
-
-[node name="Spikes3" parent="." unique_id=1564409995 instance=ExtResource("7_5wiho")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -1.0211449, 0.5, 17.710516)
