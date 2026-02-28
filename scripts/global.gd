@@ -29,3 +29,15 @@ func play_sound(sound, min_pitch: float = 0.9, max_pitch: float = 1.1) -> void:
 
 func update_health_display(label: Label3D, damageable: Node) -> void:
 	label.text = str(int(round(damageable.health))) + "/" + str(int(round(damageable.max_health)))
+
+func rotate(object: Node, angle: int):
+	var camera = get_viewport().get_camera_3d()
+
+	if camera:
+		# Make the label look at the camera
+		object.look_at(camera.global_transform.origin, Vector3.UP)
+		# Correct for flipping
+		object.rotate_y(deg_to_rad(angle))
+		# Keep label upright
+		object.rotation.x = 0
+		object.rotation.z = 0

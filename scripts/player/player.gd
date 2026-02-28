@@ -11,7 +11,7 @@ var dead: bool = false
 var mouse_captured: bool = false
 var input_enabled: bool = true
 
-var place_reach: float = 2.7
+var place_reach: float = 4.0
 var item_use_cooldown: float = 0.0
 var item_use_delay: float = 0.15
 
@@ -156,6 +156,8 @@ func place_block(item) -> bool:
 	blocks_root.add_child(instance)
 	instance.global_transform.origin = spawn_pos
 	
+	Global.rotate(instance, 270)
+	
 	# Force update the preview immediately so it doesn't show inside the new block
 	clear_preview()
 	return true
@@ -193,11 +195,8 @@ func show_preview(item) -> void:
 	else:
 		# Preview exists, just move it
 		last_preview.global_transform.origin = spawn_pos
-		
-		# Verify name matches (in case you swapped items fast)
-		if last_preview.name != item.scene.resource_name:
-			# If names don't match logic (optional), you might want to rebuild
-			pass
+	
+	Global.rotate(last_preview, 270)
 
 ## Disables all collision from all children.
 func disable_collision_recursively(node: Node) -> void:
