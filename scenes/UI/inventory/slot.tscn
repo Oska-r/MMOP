@@ -19,17 +19,6 @@ offset_right = 50.0
 offset_bottom = 52.0
 texture = ExtResource("2_0jp5n")
 
-[node name="TopLeft" type="RichTextLabel" parent="." unique_id=1542889745]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 4.0
-offset_right = 48.0
-offset_bottom = 44.0
-scale = Vector2(0.8, 0.8)
-theme_override_fonts/normal_font = ExtResource("1_4v6ba")
-scroll_active = false
-autowrap_mode = 0
-
 [node name="Item" type="TextureRect" parent="." unique_id=889700171]
 layout_mode = 0
 offset_left = 5.0
@@ -38,12 +27,25 @@ offset_right = 45.0
 offset_bottom = 45.0
 expand_mode = 2
 
+[node name="TopLeft" type="RichTextLabel" parent="." unique_id=1542889745]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 48.0
+offset_bottom = 44.0
+scale = Vector2(0.8, 0.8)
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_4v6ba")
+scroll_active = false
+autowrap_mode = 0
+
 [node name="Count" type="RichTextLabel" parent="." unique_id=1758714902]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 30.0
 offset_right = 47.0
 offset_bottom = 47.0
+mouse_filter = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("1_4v6ba")
 theme_override_font_sizes/normal_font_size = 11

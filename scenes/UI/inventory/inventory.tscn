@@ -23,12 +23,16 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Backgrounds" type="Control" parent="MainInventory" unique_id=2013244700]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Background" type="ColorRect" parent="MainInventory/Backgrounds" unique_id=1090957599]
 layout_mode = 1
@@ -520,10 +524,17 @@ text = "Kiste"
 
 [node name="CraftingTable" type="Container" parent="." unique_id=1348940414 node_paths=PackedStringArray("inventory", "crafting_sound")]
 layout_mode = 1
-offset_left = 860.0
-offset_top = 171.0
-offset_right = 1052.0
-offset_bottom = 306.0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -321.0
+offset_top = -67.0
+offset_right = -129.0
+offset_bottom = 68.0
+grow_horizontal = 0
+grow_vertical = 2
 script = ExtResource("3_qjyq4")
 inventory = NodePath("..")
 crafting_sound = NodePath("CraftingSound")

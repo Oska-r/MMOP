@@ -25,7 +25,6 @@ Global="*uid://btmv6j1xic2h6"
 
 [display]
 
-window/size/mode=3
 window/size/always_on_top=true
 
 [dotnet]
