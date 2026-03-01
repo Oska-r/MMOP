@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d2rdqj4qck2i5"]
 
-[ext_resource type="Script" uid="uid://cnpw1o63yeqbo" path="res://scripts/miscellaneous/spikes.gd" id="1_4ay1g"]
+[ext_resource type="Script" uid="uid://cnpw1o63yeqbo" path="res://scripts/objects/spikes.gd" id="1_4ay1g"]
 [ext_resource type="ArrayMesh" uid="uid://cq24eo0lx5ukw" path="res://ressources/meshs/spikes.tres" id="1_bg2ou"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2u5lu"]

@@ -1,11 +1,10 @@
 extends StaticBody3D
 
 @onready var requirements_display: Label3D = $RequirementsDisplay
+@onready var crafting: Node = $Components/Crafting
 
 var tier: int = 0
-var upgrade_requirements = [
-	[{Item_ids.ItemID.WOOD: 4}],
-	[{Item_ids.ItemID.OIL: 4}]
+@export var upgrade_requirements: Array[CraftingRecipe] = [
 ]
 
 @onready var damageable: Node = $Components/Damageable
@@ -28,26 +27,62 @@ func get_requirements():
 	return {tier + 1: upgrade_requirements[tier]}
 
 func display_requirements(on: bool) -> void:
+	if tier + 1 >= upgrade_requirements.size():
+		requirements_display.text = "Höchstes Tier erreicht"
+	
+	requirements_display.visible = on
 	if not on:
-		requirements_display.visible = false
 		return
 
-	var tier_text = "Tier " + str(tier + 1)
-	var tier_requirements = upgrade_requirements[tier][0]  # list of dicts
+	# Check if tier exists
+	if tier >= upgrade_requirements.size():
+		requirements_display.text = "Keine Anforderungen"
+		return
+
+	var recipe: CraftingRecipe = upgrade_requirements[tier]
+
+	var tier_text = "Tier %d" % (tier + 1)
 	var requirements_list := []
 
-	# Build a readable list
-	for item_id in tier_requirements.keys():
-		var amount = tier_requirements[item_id]
-		var item_name = ItemIDs.get_item_name(item_id)
-		requirements_list.append("%dx %s" % [amount, item_name])
+	for item_id in recipe.ingredients.keys():
+		var required_amount = recipe.ingredients[item_id]
 
-	# Join with commas using String.join()
+		# Get player's current amount
+		var total = 0
+		if is_instance_valid(crafting):
+			var locations = crafting.inventory.inventory_contains(item_id)
+			total = crafting.inventory.get_total_from_locations(locations)
+
+		# Get item name
+		var item_name = ItemIDs.get_item_name(item_id)
+
+		# Format as "current / required ItemName"
+		var ingredient_text = "%d / %d %s" % [total, required_amount, item_name]
+		requirements_list.append(ingredient_text)
+
+	# Join ingredients with commas
 	var requirements_text = "Benötigt: " + String(", ").join(requirements_list)
 
 	# Combine with tier and hint
 	var full_text = "%s\n%s\nDrücke E zum Upgraden" % [tier_text, requirements_text]
 
-	# Set label text and show
+	# Set label
 	requirements_display.text = full_text
-	requirements_display.visible = true
+
+# Call this from the player input when "interact" (E) is pressed
+func try_craft_current_tier() -> void:
+	# Check if tier exists
+	if tier + 1 >= upgrade_requirements.size():
+		requirements_display.text = "Höchstes Tier erreicht"
+		return
+	
+	var recipe: CraftingRecipe = upgrade_requirements[tier]
+	
+	if not crafting.craft(recipe):
+		return
+	
+	# Advance to next tier
+	tier += 1
+	
+	# Update the requirements display
+	display_requirements(true)

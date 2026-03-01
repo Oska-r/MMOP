@@ -40,7 +40,7 @@ texture = ExtResource("3_8334u")
 [node name="PauseMenu" parent="." unique_id=1913560065 instance=ExtResource("4_m4jc5")]
 visible = false
 
-[node name="Inventory" parent="." unique_id=315312596 node_paths=PackedStringArray("hotbar") groups=["InventoryUI"] instance=ExtResource("5_a6y2o")]
+[node name="Inventory" parent="." unique_id=315312596 node_paths=PackedStringArray("hotbar") groups=["inventory"] instance=ExtResource("5_a6y2o")]
 visible = false
 hotbar = NodePath("../Hotbar")
 

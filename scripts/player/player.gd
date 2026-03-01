@@ -88,6 +88,12 @@ func check_interaction() -> void:
 func _input(event) -> void:
 	if event.is_action_pressed("interact"):
 		check_interaction()
+	if event.is_action_pressed("interact_e"):
+		if not interact_ray.is_colliding():
+			return
+		var collider = interact_ray.get_collider()
+		if collider.has_method("try_craft_current_tier"):
+				collider.try_craft_current_tier()
 
 ## Disables (if parameter is false) or enables (if parameter is true) all player input (used for openend UIs).
 func enable_input(enable: bool) -> void:

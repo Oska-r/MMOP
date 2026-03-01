@@ -41,3 +41,7 @@ func rotate(object: Node, angle: int):
 		# Keep label upright
 		object.rotation.x = 0
 		object.rotation.z = 0
+
+func format_amount_text(current: int, required: int, item_name: String) -> String:
+	var color = "green" if current >= required else "red"
+	return "[color=%s]%d[/color] / %d %s" % [color, current, required, item_name]

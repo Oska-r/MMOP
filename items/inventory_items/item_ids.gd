@@ -5,14 +5,17 @@ enum ItemID {
 	STONE,
 	WOOD,
 	SPIKE,
-	OIL
+	OIL,
+	NONE
 }
 
 const ITEM_REGISTRY := {
 	ItemID.STONE: preload("res://items/inventory_items/blocks/stone.tres"),
 	ItemID.WOOD: preload("res://items/inventory_items/blocks/wood.tres"),
 	ItemID.SPIKE: preload("res://items/inventory_items/blocks/spikes.tres"),
-	ItemID.OIL: preload("res://items/inventory_items/oil.tres")
+	ItemID.OIL: preload("res://items/inventory_items/oil.tres"),
+	ItemID.NONE: preload("res://items/inventory_items/none.tres"),
+
 }
 
 static func get_item(id: ItemID) -> Item:

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bhq5ow250herw"]
 
 [ext_resource type="Script" uid="uid://be0ekd1x7lcxe" path="res://scripts/enemy/enemy.gd" id="1_l1lbi"]
-[ext_resource type="Script" uid="uid://3f54wqp2pk5k" path="res://scripts/miscellaneous/damageable.gd" id="2_s007n"]
-[ext_resource type="Script" uid="uid://cex520s86u2lf" path="res://scripts/miscellaneous/loot_table.gd" id="3_5wnaa"]
-[ext_resource type="Script" uid="uid://c3r63pxf6h435" path="res://scripts/miscellaneous/rotating_label.gd" id="4_0xiny"]
+[ext_resource type="Script" uid="uid://3f54wqp2pk5k" path="res://scripts/components/damageable.gd" id="2_s007n"]
+[ext_resource type="Script" uid="uid://cex520s86u2lf" path="res://scripts/components/loot_table.gd" id="3_5wnaa"]
+[ext_resource type="Script" uid="uid://c3r63pxf6h435" path="res://scripts/components/rotating_label.gd" id="4_0xiny"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1lcwq"]
 albedo_color = Color(1.353256, 0, 0, 1)
