@@ -19,3 +19,9 @@ static func get_item(id: ItemID) -> Item:
 	if ITEM_REGISTRY.has(id):
 		return ITEM_REGISTRY[id].duplicate()
 	return null
+
+static func get_item_name(id: ItemID) -> String:
+	var item_res := get_item(id)
+	if item_res != null:
+		return item_res.name
+	return "Unknown Item"

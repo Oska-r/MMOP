@@ -30,8 +30,6 @@ window/size/always_on_top=true
 [dotnet]
 
 project/assembly_name="MMOP"
-
-
 enabled=PackedStringArray()
 
 [global_group]
@@ -40,6 +38,7 @@ InventoryUI=""
 damagable_by_enemy=""
 damagable_by_player=""
 damagable_by_spikes=""
+placable_surface=""
 
 [input]
 

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bv7nxdrmt0pwo"]
 
 [ext_resource type="Script" uid="uid://cxs6ms7xuck7p" path="res://scripts/UI/ui.gd" id="1_kiyfy"]
-[ext_resource type="Script" uid="uid://dl3mfoi35lg5w" path="res://scripts/UI/show_coordinates.gd" id="1_wq0v1"]
 [ext_resource type="PackedScene" uid="uid://laa6wkcpj3ws" path="res://scenes/UI/inventory/hotbar.tscn" id="2_kiyfy"]
 [ext_resource type="Texture2D" uid="uid://2lg3o2g67vdp" path="res://ressources/pictures/UI/crosshair.png" id="3_8334u"]
 [ext_resource type="PackedScene" uid="uid://equrnyrs8b8x" path="res://scenes/UI/menus/pause_menu.tscn" id="4_m4jc5"]
@@ -10,17 +9,6 @@
 
 [node name="UI" type="CanvasLayer" unique_id=2045572628]
 script = ExtResource("1_kiyfy")
-
-[node name="Coordinates" type="RichTextLabel" parent="." unique_id=1339721439]
-offset_left = 1066.0
-offset_right = 1152.0
-offset_bottom = 93.0
-mouse_filter = 2
-text = "x: 0
-y: 0
-z: 0"
-scroll_active = false
-script = ExtResource("1_wq0v1")
 
 [node name="Hotbar" parent="." unique_id=439422052 node_paths=PackedStringArray("inventory") instance=ExtResource("2_kiyfy")]
 anchors_preset = 2

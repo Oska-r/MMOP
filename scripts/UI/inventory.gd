@@ -20,6 +20,7 @@ func get_hotbar_items() -> Array:
 	return inventory_items[0]
 
 func _ready() -> void:
+	load_item_to_inventory(Item_ids.ItemID.SPIKE,0,0,30)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	hide()
 	chest.hide()

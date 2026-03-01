@@ -2,10 +2,13 @@ extends CharacterBody3D
 
 @onready var head: Node = get_node("Head")
 @onready var interact_ray: RayCast3D = head.get_node("Camera3D/InteractRay")
+@onready var place_ray: RayCast3D = $Head/Camera3D/PlaceRay
 @onready var attack_Area: Area3D = head.get_node("Attack_Area")
-@onready var inventory: Control = get_parent().get_node("UI").get_node("Inventory")
+@onready var UI: CanvasLayer = get_parent().get_node("UI")
+@onready var inventory: Control = UI.get_node("Inventory")
 @onready var damageable: Node = $Components/Damageable
 @onready var attack_timer: Timer = $AttackTimer
+@onready var oxygen_tank = get_tree().get_first_node_in_group("Oxygentank")
 
 var dead: bool = false
 var mouse_captured: bool = false
@@ -32,9 +35,7 @@ func _ready() -> void:
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	emit_signal("player_health_changed", get_health(), get_max_health())
 
-func _input(event) -> void:
-	if event.is_action_pressed("interact"):
-		check_interaction()
+var looking_at_tank: bool = false  # track previous frame
 
 func _process(delta) -> void:
 	if dead:
@@ -46,6 +47,25 @@ func _process(delta) -> void:
 		damage_timer -= delta
 	if Input.is_action_pressed("prime"):
 		handle_attack()
+	
+	# Check if the interact ray is hitting something
+	if interact_ray.is_colliding():
+		var collider = interact_ray.get_collider()
+		
+		if collider == oxygen_tank:
+			if not looking_at_tank:
+				oxygen_tank.display_requirements(true)
+				looking_at_tank = true
+		else:
+			# player looked at something else
+			if looking_at_tank:
+				oxygen_tank.display_requirements(false)
+				looking_at_tank = false
+	else:
+		# player looked at nothing
+		if looking_at_tank:
+			oxygen_tank.display_requirements(false)
+			looking_at_tank = false
 
 func drop(item: Item_ids.ItemID) -> void:
 	inventory.drop(item)
@@ -62,6 +82,12 @@ func check_interaction() -> void:
 			collider.toggle_crafting_table()
 		if collider.has_method("break_tree"):
 			collider.break_tree(damage)
+
+
+#region input
+func _input(event) -> void:
+	if event.is_action_pressed("interact"):
+		check_interaction()
 
 ## Disables (if parameter is false) or enables (if parameter is true) all player input (used for openend UIs).
 func enable_input(enable: bool) -> void:
@@ -87,46 +113,39 @@ func release_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	mouse_captured = false
 
+func is_input_enabled() -> bool:
+	return input_enabled
+
+#endregion
+
 #region placing blocks
 ## Calculates the position of where to spawn the block the player wants to place.
-func calculate_block_spawn_pos(blocks_root: Node) -> Vector3:
-	var look_dir = -head.global_transform.basis.z.normalized()
-	var target = (head.global_transform.origin + look_dir * place_reach).snapped(Vector3.ONE)
+func calculate_block_spawn_pos() -> Vector3:
+	if not place_ray.is_colliding():
+		return Vector3.ZERO
 	
-	for block in blocks_root.get_children():
-		if block.global_position.is_equal_approx(target):
-			return target + Vector3.UP
+	var collider = place_ray.get_collider()
 	
-	return target
-
-## Returns true if the block has a supporting block beneath it or is on the ground.
-func block_placeable(spawn_pos: Vector3, blocks_root: Node3D = null) -> bool:
-	# 1. Prevent placing below or at ground level
-	if spawn_pos.y <= 0:
-		return false
-	
-	# 2. If blocks_root is null, we can't check neighbors, so we assume strictly false 
-	if blocks_root == null:
-		return false 
-	
-	# prevent the player from stacking up
-	for i in range(place_reach):
-		if spawn_pos.is_equal_approx(global_position.snapped(Vector3.ONE) + (i * Vector3.DOWN)):
-			return false
-	
-	var has_support = false
-	
-	# If it's on the first layer (y=1), it's supported by the floor.
-	if spawn_pos.y == 1:
-		has_support = true
+	# Only allow placement if the hit object is in the "floor" group
+	if not collider.is_in_group("placable_surface"):
+		return Vector3.ZERO
 	
 	
-	for child in blocks_root.get_children():
-		if spawn_pos.is_equal_approx(child.global_position + Vector3.UP):
-			has_support = true
-			break
+	var hit_position = place_ray.get_collision_point()
 	
-	return has_support
+	# Start slightly above the hit point
+	var from = hit_position + Vector3.UP * 2.0
+	var to = hit_position + Vector3.DOWN * 10.0
+	
+	var space_state = get_world_3d().direct_space_state
+	var query = PhysicsRayQueryParameters3D.create(from, to)
+	query.collide_with_areas = false
+	
+	var result = space_state.intersect_ray(query)
+	if result:
+		return result.position
+	
+	return Vector3.ZERO
 
 ## Returns the blocks_root node (node used for storing all placed blocks).
 func get_blocks_root(create_if_missing := false) -> Node3D:
@@ -148,9 +167,9 @@ func get_blocks_root(create_if_missing := false) -> Node3D:
 ## Places (if possible) item/block in direction of looking.
 func place_block(item) -> bool:
 	var blocks_root = get_blocks_root(true)
-	var spawn_pos = calculate_block_spawn_pos(blocks_root)
+	var spawn_pos = calculate_block_spawn_pos()
 	
-	if not block_placeable(spawn_pos, blocks_root):
+	if not spawn_pos:
 		return false
 	
 	Global.play_sound(item.sound)
@@ -175,10 +194,9 @@ func clear_preview() -> void:
 
 ## Updates the preview hologram
 func show_preview(item) -> void:
-	var blocks_root = get_blocks_root(false) # Don't create if missing, just get it
-	var spawn_pos = calculate_block_spawn_pos(blocks_root)
+	var spawn_pos = calculate_block_spawn_pos()
 	
-	if not block_placeable(spawn_pos, blocks_root):
+	if not spawn_pos:
 		clear_preview()
 		return
 	
@@ -229,6 +247,7 @@ func apply_transparency(node: Node, alpha: float = 0.5) -> void:
 			apply_transparency(child, alpha)
 #endregion
 
+#region using items
 ## Uses item if use is not on cooldown.
 func try_to_use_item(item) -> bool:
 	if item_use_cooldown <= 0:
@@ -241,9 +260,7 @@ func use_selected_item(item) -> bool:
 	if item.scene:
 		return place_block(item)
 	return false
-
-func is_input_enabled() -> bool:
-	return input_enabled
+#endregion
 
 #region damage
 
@@ -283,8 +300,10 @@ func die() -> void:
 
 #endregion
 
+#region getter_and_stter
 func get_max_health() -> float:
 	return damageable.max_health
 
 func get_health() -> float:
 	return damageable.health
+#endregion

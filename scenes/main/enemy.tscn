@@ -19,7 +19,7 @@ height = 1.8
 radius = 0.4
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5wnaa"]
-radius = 0.61
+radius = 0.7080078
 
 [node name="Enemy" type="CharacterBody3D" unique_id=1800269208 groups=["Damageable_World", "damagable_by_player", "damagable_by_spikes"]]
 script = ExtResource("1_l1lbi")
@@ -47,7 +47,7 @@ debug_path_custom_color = Color(0.91764706, 0.16078432, 0.42745098, 1)
 
 [node name="Damageable" type="Node" parent="Components" unique_id=1513974300]
 script = ExtResource("2_s007n")
-max_health = 300.0
+max_health = 1000.0
 
 [node name="LootTable" type="Node" parent="Components" unique_id=1233624004]
 script = ExtResource("3_5wnaa")
