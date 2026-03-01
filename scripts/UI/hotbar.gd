@@ -2,12 +2,10 @@ extends Control
 
 @onready var player:CharacterBody3D = get_parent().player
 @export var inventory: Control
-@onready var boxContainer: BoxContainer = $Slots
+@onready var boxContainer: BoxContainer = $Background/Slots
+@export var select: TextureRect
 
 var selected_index: int = 0
-
-func _ready() -> void:
-	$Select.position = Vector2(0,0)
 
 func _process(_delta: float) -> void:
 	var item = inventory.get_hotbar_items()[selected_index]
@@ -42,8 +40,17 @@ func load_item_to_hotbar(item_id, index := 0, count := 1) -> void:
 
 ## Updates the position of the selection icon in the hotbar.
 func update_selection_position() -> void:
-	var target_position = Vector2(selected_index * 54, 0)
-	$Select.position = target_position
+	select.get_parent().remove_child(select)
+	get_slot_node(selected_index).add_child(select)
+	select.position = Vector2.ZERO
+
+func get_slot_node(index: int) -> Node:
+	var target_name = "Slot" + str(index)
+	for child in boxContainer.get_children():
+		if child.name == target_name:
+			return child
+	print_debug("Slot not found: " + target_name)
+	return null
 
 ## Reduces mentioned item count and removes it if needed from the hotbar.
 func reduce_item_count(item: Item) -> void:

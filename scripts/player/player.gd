@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var interact_ray: RayCast3D = head.get_node("Camera3D/InteractRay")
 @onready var place_ray: RayCast3D = $Head/Camera3D/PlaceRay
 @onready var attack_Area: Area3D = head.get_node("Attack_Area")
-@onready var UI: CanvasLayer = get_parent().get_node("UI")
+@onready var UI: Control = get_parent().get_node("UI")
 @onready var inventory: Control = UI.get_node("Inventory")
 @onready var damageable: Node = $Components/Damageable
 @onready var attack_timer: Timer = $AttackTimer
@@ -30,6 +30,7 @@ var damage_timer: float = 0.0
 signal player_health_changed(current_health: float, max_health: float)
 
 func _ready() -> void:
+	capture_mouse()
 	attack_Area.visible = false
 	damageable.died.connect(_on_died)
 	attack_timer.timeout.connect(_on_attack_timer_timeout)

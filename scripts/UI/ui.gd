@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 @export var player: CharacterBody3D
 @onready var health_display: Control = $HealthDisplay

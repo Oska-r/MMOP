@@ -12,12 +12,9 @@ var is_open: bool = false
 # Configuration
 var open_angle: float = 110.0 # Degrees to swing back
 var toggle_speed: float = 0.8  # Seconds the animation takes
-var inventory: Control
+@onready var inventory: Control = get_tree().get_first_node_in_group("inventory")
 
 func _ready() -> void:
-	# Find the inventory automatically
-	inventory = get_tree().get_first_node_in_group("InventoryUI")
-	
 	# Keep your duplication logic
 	for i in range(chest_items.size()):
 		if chest_items[i] is Item:

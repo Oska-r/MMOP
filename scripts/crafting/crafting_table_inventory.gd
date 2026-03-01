@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends Container
 
 @export var inventory: Control
 @export var crafting_sound: AudioStreamPlayer

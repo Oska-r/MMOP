@@ -12,7 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xrqkv")
-select = NodePath("Background/Slots/Slot0/Select")
+select = NodePath("Background/Slots/Slot1/Select")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1228913672]
 layout_mode = 1
@@ -40,50 +40,49 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 
-[node name="Slot0" parent="Background/Slots" unique_id=1120847920 instance=ExtResource("1_mjyg7")]
+[node name="Slot1" parent="Background/Slots" unique_id=1120847920 instance=ExtResource("1_mjyg7")]
 layout_mode = 2
 slot_identification = "1"
 
-[node name="Select" type="TextureRect" parent="Background/Slots/Slot0" unique_id=430553270]
+[node name="Select" type="TextureRect" parent="Background/Slots/Slot1" unique_id=430553270]
 texture_filter = 1
 layout_mode = 0
-offset_left = 54.0
-offset_right = 104.0
+offset_right = 50.0
 offset_bottom = 52.0
 texture = ExtResource("2_3lmyj")
 
-[node name="Slot1" parent="Background/Slots" unique_id=579205429 instance=ExtResource("1_mjyg7")]
+[node name="Slot2" parent="Background/Slots" unique_id=579205429 instance=ExtResource("1_mjyg7")]
 layout_mode = 2
 slot_identification = "2"
 
-[node name="Slot2" parent="Background/Slots" unique_id=1272368267 instance=ExtResource("1_mjyg7")]
+[node name="Slot3" parent="Background/Slots" unique_id=1272368267 instance=ExtResource("1_mjyg7")]
 layout_mode = 2
 slot_identification = "3"
 
-[node name="Slot3" parent="Background/Slots" unique_id=1462033922 instance=ExtResource("1_mjyg7")]
+[node name="Slot4" parent="Background/Slots" unique_id=1462033922 instance=ExtResource("1_mjyg7")]
 layout_mode = 2
 slot_identification = "4"
 
-[node name="Slot4" parent="Background/Slots" unique_id=512154647 instance=ExtResource("1_mjyg7")]
+[node name="Slot5" parent="Background/Slots" unique_id=512154647 instance=ExtResource("1_mjyg7")]
 layout_mode = 2
 slot_identification = "5"
 
-[node name="Slot5" parent="Background/Slots" unique_id=1315744036 instance=ExtResource("1_mjyg7")]
+[node name="Slot6" parent="Background/Slots" unique_id=1315744036 instance=ExtResource("1_mjyg7")]
 layout_mode = 2
 slot_identification = "6"
 
-[node name="Slot6" parent="Background/Slots" unique_id=4015295 instance=ExtResource("1_mjyg7")]
+[node name="Slot7" parent="Background/Slots" unique_id=4015295 instance=ExtResource("1_mjyg7")]
 layout_mode = 2
 slot_identification = "7"
 
-[node name="Slot7" parent="Background/Slots" unique_id=1717075908 instance=ExtResource("1_mjyg7")]
+[node name="Slot8" parent="Background/Slots" unique_id=1717075908 instance=ExtResource("1_mjyg7")]
 layout_mode = 2
 slot_identification = "8"
 
-[node name="Slot8" parent="Background/Slots" unique_id=222749109 instance=ExtResource("1_mjyg7")]
+[node name="Slot9" parent="Background/Slots" unique_id=222749109 instance=ExtResource("1_mjyg7")]
 layout_mode = 2
 slot_identification = "9"
 
-[node name="Slot9" parent="Background/Slots" unique_id=755594795 instance=ExtResource("1_mjyg7")]
+[node name="Slot10" parent="Background/Slots" unique_id=755594795 instance=ExtResource("1_mjyg7")]
 layout_mode = 2
 slot_identification = "0"

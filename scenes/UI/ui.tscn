@@ -7,22 +7,30 @@
 [ext_resource type="PackedScene" uid="uid://cq8sbte51hdu2" path="res://scenes/UI/inventory/inventory.tscn" id="5_a6y2o"]
 [ext_resource type="PackedScene" uid="uid://biqse8axf1eui" path="res://scenes/UI/health_display.tscn" id="7_35jxk"]
 
-[node name="UI" type="CanvasLayer" unique_id=2045572628]
+[node name="UI" type="Control" unique_id=238773024]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_kiyfy")
 
 [node name="Hotbar" parent="." unique_id=439422052 node_paths=PackedStringArray("inventory") instance=ExtResource("2_kiyfy")]
-anchors_preset = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = -55.0
-offset_right = 42.0
-offset_bottom = -15.0
+anchor_right = 0.5
+offset_top = -31.0
+offset_bottom = -31.0
 grow_vertical = 0
 inventory = NodePath("../Inventory")
 
 [node name="Crosshair" type="TextureRect" parent="." unique_id=438435868]
 texture_filter = 1
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -38,10 +46,12 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_8334u")
 
 [node name="PauseMenu" parent="." unique_id=1913560065 instance=ExtResource("4_m4jc5")]
-visible = false
+layout_mode = 1
 
 [node name="Inventory" parent="." unique_id=315312596 node_paths=PackedStringArray("hotbar") groups=["inventory"] instance=ExtResource("5_a6y2o")]
-visible = false
+layout_mode = 1
+anchors_preset = 15
 hotbar = NodePath("../Hotbar")
 
 [node name="HealthDisplay" parent="." unique_id=214072852 instance=ExtResource("7_35jxk")]
+layout_mode = 0
