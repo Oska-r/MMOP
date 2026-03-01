@@ -2,7 +2,8 @@ extends Button
 
 @export var recipe: CraftingRecipe
 @onready var recipe_label: RichTextLabel = $Container/RecipeLabel
-@onready var title: Label = $Container/Title
+@onready var title: Label = $Container/HBoxContainer/Title
+@onready var texture_icon = $Container/HBoxContainer/TextureIcon
 
 @onready var inventory: Control = get_tree().get_first_node_in_group("inventory")
 
@@ -38,5 +39,6 @@ func update_current_amount() -> void:
 	var result_data = ItemIDs.get_item(recipe.result_item)
 	if result_data:
 		title.text = result_data.name 
+	texture_icon.texture = result_data.icon
 	
 	disabled = total < required_amount

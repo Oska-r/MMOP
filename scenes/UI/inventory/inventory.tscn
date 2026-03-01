@@ -549,11 +549,3 @@ alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 recipe = ExtResource("7_ahcd1")
-
-[node name="Spikes2" parent="CraftingTable/Recipes" unique_id=799557746 instance=ExtResource("3_lvvmf")]
-layout_mode = 2
-size_flags_vertical = 3
-recipe = ExtResource("7_ahcd1")
-
-[connection signal="pressed" from="CraftingTable/Recipes/Spikes" to="." method="_on_crafting_recipe_pressed"]
-[connection signal="pressed" from="CraftingTable/Recipes/Spikes2" to="." method="_on_crafting_recipe_pressed"]

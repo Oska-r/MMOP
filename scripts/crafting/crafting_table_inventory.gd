@@ -5,7 +5,7 @@ extends ReferenceRect
 @onready var crafting: Node = $Components/Crafting
 
 func _ready() -> void:
-	for child in get_children():
+	for child in $Recipes.get_children():
 		if child is Button:
 			child.pressed.connect(_on_button_pressed.bind(child))
 
