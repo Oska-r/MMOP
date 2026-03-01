@@ -6,7 +6,7 @@ extends Control
 @onready var crafting_table: Control = $CraftingTable
 @onready var main_inventory: Control = $MainInventory
 
-# row 0 for hotbar, row 6 for chests
+# row 0 for hotbar, row 5 for chests
 var inventory_items: Array[Array] = [
 	[null, null, null, null, null, null, null, null, null, null],
 	[null, null, null, null, null, null, null, null, null, null],
@@ -181,7 +181,7 @@ func close_chest(opened_chest: StaticBody3D) -> void:
 func open_crafting_table() -> void:
 	open_inventory()
 	crafting_table.show()
-	crafting_table.get_node("Spikes").update_current_amount()
+	crafting_table.get_node("Recipes/Spikes").update_current_amount()
 
 func close_crafting_table() -> void:
 	close_inventory()
@@ -194,7 +194,6 @@ func inventory_contains(target_id: ItemIDs.ItemID) -> Dictionary:
 		var row = inventory_items[row_index]
 		for slot_index in range(row.size()):
 			var item = row[slot_index]
-			
 			# Now we are comparing int to int (the enum values)
 			if item != null and item.item_id == target_id:
 				var coords = Vector2(row_index, slot_index)

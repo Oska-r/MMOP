@@ -3,6 +3,10 @@ extends Node
 var day_count: int = 0
 var gravity: float = 9.8
 
+func _ready() -> void:
+	await get_tree().process_frame  # wait until the first frame
+	DisplayServer.window_set_min_size(Vector2i(1070, 600))
+
 func reset_day() -> void:
 	day_count = 0
 

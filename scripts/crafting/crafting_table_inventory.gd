@@ -1,4 +1,4 @@
-extends Container
+extends ReferenceRect
 
 @export var inventory: Control
 @export var crafting_sound: AudioStreamPlayer

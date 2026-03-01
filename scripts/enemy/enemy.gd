@@ -92,7 +92,7 @@ func find_target():
 
 ## Delete node and drop loot.
 func _on_died() -> void:
-	if not drop_loot:
+	if drop_loot:
 		loot_table.calculate_loot()
 
 var drop_loot: bool = false

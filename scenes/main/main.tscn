@@ -20,8 +20,6 @@ worldEnvironment = NodePath("../WorldEnvironment")
 
 [node name="UI" parent="." unique_id=2045572628 node_paths=PackedStringArray("player") instance=ExtResource("6_hujxm")]
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
 player = NodePath("../Player")
 
 [node name="Player" parent="." unique_id=1560919245 groups=["damagable_by_enemy"] instance=ExtResource("2_tipki")]

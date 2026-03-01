@@ -1,8 +1,8 @@
 extends Button
 
 @export var recipe: CraftingRecipe
-@onready var recipe_label: RichTextLabel = $RecipeLabel
-@onready var title: Label = $Title
+@onready var recipe_label: RichTextLabel = $Container/RecipeLabel
+@onready var title: Label = $Container/Title
 
 @onready var inventory: Control = get_tree().get_first_node_in_group("inventory")
 

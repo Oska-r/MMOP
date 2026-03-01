@@ -31,7 +31,7 @@ func display_requirements(on: bool) -> void:
 	if not on:
 		return
 
-	if tier > upgrade_requirements.size():
+	if tier - 1 > upgrade_requirements.size():
 		requirements_display.text = "Höchste Stufe erreicht"
 		return
 
@@ -75,7 +75,7 @@ func display_requirements(on: bool) -> void:
 # Call this from the player input when "interact" (E) is pressed
 func try_craft_current_tier() -> void:
 	# Check if tier exists
-	if tier > upgrade_requirements.size():
+	if tier - 1 > upgrade_requirements.size():
 		requirements_display.text = "Höchste Stufe erreicht"
 		return
 	

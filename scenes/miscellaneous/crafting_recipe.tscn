@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cpose8tnuy8uo" path="res://scripts/crafting/crafting_recipe.gd" id="1_v35ak"]
 
 [node name="CraftingRecipe" type="Button" unique_id=799557746]
+custom_minimum_size = Vector2(100, 80)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -11,16 +12,17 @@ grow_vertical = 2
 toggle_mode = true
 script = ExtResource("1_v35ak")
 
-[node name="Title" type="Label" parent="." unique_id=1618661926]
+[node name="Container" type="VBoxContainer" parent="." unique_id=1033250334]
 layout_mode = 0
-offset_right = 94.0
-offset_bottom = 23.0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="RecipeLabel" type="RichTextLabel" parent="." unique_id=117741044]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 23.0
-offset_right = 103.0
-offset_bottom = 46.0
+[node name="Title" type="Label" parent="Container" unique_id=1618661926]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="RecipeLabel" type="RichTextLabel" parent="Container" unique_id=117741044]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
 theme_override_font_sizes/normal_font_size = 14
 text = "0"

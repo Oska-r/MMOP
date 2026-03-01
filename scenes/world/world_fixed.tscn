@@ -56,3 +56,9 @@ aus und platzieren ihn mit Rechtsklick."
 
 [node name="Tree2" parent="." unique_id=566767812 groups=["damagable_by_player"] instance=ExtResource("6_ee6x1")]
 transform = Transform3D(0.3921843, -0.07868603, 0, 0.07868603, 0.3921843, 0, 0, 0, 0.4, -16.028225, 2.9960704, 6.2867136)
+
+[node name="Tree3" parent="." unique_id=563508832 groups=["damagable_by_player"] instance=ExtResource("6_ee6x1")]
+transform = Transform3D(0.3921843, -0.07868603, 0, 0.07868603, 0.3921843, 0, 0, 0, 0.4, -9.397204, 2.9960704, -3.9417753)
+
+[node name="Tree4" parent="." unique_id=1435733278 groups=["damagable_by_player"] instance=ExtResource("6_ee6x1")]
+transform = Transform3D(0.3921843, -0.07868603, 0, 0.07868603, 0.3921843, 0, 0, 0, 0.4, -18.864319, 2.9960704, -3.9417753)

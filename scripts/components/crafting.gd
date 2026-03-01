@@ -3,41 +3,50 @@ extends Node
 @onready var inventory: Control = get_tree().get_first_node_in_group("inventory")
 
 func craft(recipe: CraftingRecipe) -> bool:
-	var ingredient_id = recipe.ingredients.keys()[0]
-	var required_amount = recipe.ingredients[ingredient_id]
-	var result_id = recipe.result_item
-	
-	# 1. Check ingredients
-	var locations = inventory.inventory_contains(ingredient_id)
-	var total = inventory.get_total_from_locations(locations)
-	
-	if total < required_amount:
-		print("Not enough ingredients!")
-		return false
+	# 1. Check if player has enough of each ingredient
+	for ingredient_id in recipe.ingredients.keys():
+		var required_amount = recipe.ingredients[ingredient_id]
+		var locations = inventory.inventory_contains(ingredient_id)
+		var total = inventory.get_total_from_locations(locations)
+		if total < required_amount:
+			print("Not enough of item:", ItemIDs.get_item_name(ingredient_id))
+			return false
 
 	# 2. Find where to put the result
+	var result_id = recipe.result_item
 	var target_slot = inventory.find_stackable_or_empty(result_id)
 	if target_slot == Vector2(-1, -1):
 		print("Inventory full!")
 		return false
-	
-	# 3. Consume ingredients
-	var remaining_to_consume = required_amount
-	
-	for coords in locations.keys():
-		if remaining_to_consume <= 0: break
-		var row = int(coords.x)
-		var col = int(coords.y)
-		var amount_in_slot = locations[coords]
+
+	# 3. Consume each ingredient safely
+	for ingredient_id in recipe.ingredients.keys():
+		var required_amount = recipe.ingredients[ingredient_id]
+		var remaining_to_consume = required_amount
 		
-		if amount_in_slot <= remaining_to_consume:
-			remaining_to_consume -= amount_in_slot
-			inventory.clear_inventory_slot(row, col)
-		else:
-			inventory.change_count(-remaining_to_consume, row, col)
-			remaining_to_consume = 0
-	
-	# 4. Add the item (load_item_to_inventory handles both new and existing stacks)
-	if not result_id == Item_ids.ItemID.NONE:
+		# Create a **stable list** of coordinates and counts
+		var locations_dict = inventory.inventory_contains(ingredient_id)
+		var slots := []
+		for coords in locations_dict.keys():
+			slots.append({ "coords": coords, "count": locations_dict[coords] })
+		
+		for slot_data in slots:
+			if remaining_to_consume <= 0:
+				break
+			var coords: Vector2 = slot_data["coords"]
+			var row = int(coords.x)
+			var col = int(coords.y)
+			var amount_in_slot = slot_data["count"]
+			
+			if amount_in_slot <= remaining_to_consume:
+				remaining_to_consume -= amount_in_slot
+				inventory.clear_inventory_slot(row, col)
+			else:
+				inventory.change_count(-remaining_to_consume, row, col)
+				remaining_to_consume = 0
+
+	# 4. Add the crafted item
+	if result_id != ItemIDs.ItemID.NONE:
 		inventory.load_item_to_inventory(result_id, int(target_slot.x), int(target_slot.y), 1)
+	inventory.hotbar.update_hotbar_ui()
 	return true
