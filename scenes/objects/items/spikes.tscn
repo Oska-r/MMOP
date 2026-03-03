@@ -10,7 +10,7 @@ size = Vector3(9.05748, 10.083445, 15.878012)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ay1g"]
 size = Vector3(12.717487, 10.083445, 18.204931)
 
-[node name="Spikes" type="StaticBody3D" unique_id=1566048860 groups=["damagable_by_enemy"]]
+[node name="Spikes" type="StaticBody3D" unique_id=1566048860 groups=["damagable_by_enemy", "damagable_by_player"]]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 script = ExtResource("1_4ay1g")
 
