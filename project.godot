@@ -68,6 +68,7 @@ damagable_by_player=""
 damagable_by_spikes=""
 placable_surface=""
 inventory=""
+player=""
 
 [input]
 

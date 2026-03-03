@@ -304,6 +304,10 @@ func _on_attack_timer_timeout():
 func _on_died() -> void:
 	dead = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	# Use call_deferred to delay the scene change
+	call_deferred("_change_to_end_screen")
+
+func _change_to_end_screen() -> void:
 	get_tree().change_scene_to_file("res://scenes/UI/menus/end_screen.tscn")
 
 func die() -> void:

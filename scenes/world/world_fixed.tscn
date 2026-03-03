@@ -2,31 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dr1hqhhyvv47c" path="res://scenes/objects/oxygen_tank.tscn" id="1_br8mx"]
 [ext_resource type="PackedScene" uid="uid://cw5kx1y60l2vn" path="res://scenes/world/chests.tscn" id="2_blego"]
-[ext_resource type="Texture2D" uid="uid://c4ggdp0kg5wjk" path="res://addons/simplegrasstextured/textures/grassbushcc008.png" id="3_1q4oq"]
 [ext_resource type="PackedScene" uid="uid://cxpd0mkp6cky5" path="res://scenes/objects/crafting_table.tscn" id="3_42htb"]
-[ext_resource type="MultiMesh" uid="uid://cprfrgufcbox0" path="res://ressources/meshs/grass.tres" id="3_va0ml"]
-[ext_resource type="Script" uid="uid://2juaclm8gc1n" path="res://addons/simplegrasstextured/grass.gd" id="4_va0ml"]
-[ext_resource type="PackedScene" uid="uid://cdyfn30iynu3m" path="res://scenes/objects/tree.tscn" id="6_ee6x1"]
-
-[sub_resource type="Gradient" id="Gradient_5wiho"]
-colors = PackedColorArray(0.44313726, 0.6509804, 0.043137256, 1, 0, 0.25882354, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_1q4oq"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_va0ml"]
-width = 2056
-height = 2056
-noise = SubResource("FastNoiseLite_1q4oq")
-color_ramp = SubResource("Gradient_5wiho")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mpuy"]
-metallic_specular = 0.0
-detail_enabled = true
-detail_albedo = SubResource("NoiseTexture2D_va0ml")
-uv1_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vw27"]
-albedo_color = Color(0, 0.7735731, 1, 1)
+[ext_resource type="PackedScene" uid="uid://bkjoqiq310tq5" path="res://scenes/world/island.tscn" id="5_adh44"]
 
 [node name="World_fixed" type="Node" unique_id=828041261]
 
@@ -42,38 +19,6 @@ font_size = 128
 [node name="InstructionLabel" type="Label3D" parent="Oxygentank" unique_id=1784416077]
 transform = Transform3D(0.43383938, 0, 0, 0, 0.43383947, 0, 0, 0, 0.43383938, -2.197918, 0.92873853, 0.7419561)
 text = "Drücke Tab um das Inventar zu öffnen"
-
-[node name="Floor" type="CSGCylinder3D" parent="." unique_id=1296897026 groups=["placable_surface"]]
-use_collision = true
-radius = 75.26953
-height = 1.0
-material = SubResource("StandardMaterial3D_7mpuy")
-
-[node name="SimpleGrassTextured" type="MultiMeshInstance3D" parent="Floor" unique_id=1264276054]
-multimesh = ExtResource("3_va0ml")
-script = ExtResource("4_va0ml")
-texture_albedo = ExtResource("3_1q4oq")
-grass_strength = 0.5
-sgt_radius = 10.0
-sgt_density = 122
-sgt_scale = 1.0
-sgt_rotation = 0.0
-sgt_rotation_rand = 1.0
-sgt_dist_min = 0.25
-sgt_follow_normal = false
-sgt_slope = Vector2(0, 45)
-sgt_tool_shape = {
-"airbrush": 1,
-"eraser": 0,
-"pencil": 1
-}
-metadata/_custom_type_script = "uid://2juaclm8gc1n"
-metadata/SimpleGrassTextured = "2.0.5"
-
-[node name="Sea" type="CSGCylinder3D" parent="." unique_id=827864961]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-radius = 142.402
-material = SubResource("StandardMaterial3D_5vw27")
 
 [node name="Chests" parent="." unique_id=2055759188 instance=ExtResource("2_blego")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.690972, 0.9, 0)
@@ -92,37 +37,5 @@ transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -5, 0.9, -2)
 text = "Wähle einen Block in der Hotbar per Hotkey
 aus und platzieren ihn mit Rechtsklick."
 
-[node name="Forest" type="Node" parent="." unique_id=1027841239]
-
-[node name="Tree" parent="Forest" unique_id=563508832 instance=ExtResource("6_ee6x1")]
-transform = Transform3D(0.98061466, -0.19594614, 0, 0.19594614, 0.98061466, 0, 0, 0, 1, -6.1550026, 6.948861, 56.925514)
-
-[node name="Tree2" parent="Forest" unique_id=477211816 instance=ExtResource("6_ee6x1")]
-transform = Transform3D(-0.9221244, 0.18425861, -0.34019902, 0.19594613, 0.98061466, -9.73258e-09, 0.33360416, -0.06666069, -0.94035345, -24.182568, 6.948861, 56.925514)
-
-[node name="Tree8" parent="Forest" unique_id=1531659499 instance=ExtResource("6_ee6x1")]
-transform = Transform3D(-0.95040417, 0.18990947, 0.24630551, 0.19594611, 0.98061466, -3.256075e-08, -0.24153079, 0.048262578, -0.96919227, -24.182568, 6.948861, 32.154903)
-
-[node name="Tree9" parent="Forest" unique_id=196393835 instance=ExtResource("6_ee6x1")]
-transform = Transform3D(-0.95040417, 0.18990947, 0.24630551, 0.19594611, 0.98061466, -3.256075e-08, -0.24153079, 0.048262578, -0.96919227, -36.304474, 6.948861, 19.434555)
-
-[node name="Tree10" parent="Forest" unique_id=1088059083 instance=ExtResource("6_ee6x1")]
-transform = Transform3D(-0.87010807, 0.17386474, -0.46117568, 0.19594616, 0.98061466, -3.74485e-08, 0.45223564, -0.09036563, -0.88730884, -18.551014, 6.948861, 19.434555)
-
-[node name="Tree11" parent="Forest" unique_id=1872105145 instance=ExtResource("6_ee6x1")]
-transform = Transform3D(-0.87010807, 0.17386474, -0.46117568, 0.19594616, 0.98061466, -3.74485e-08, 0.45223564, -0.09036563, -0.88730884, -9.337015, 6.948861, 37.953537)
-
-[node name="Tree3" parent="Forest" unique_id=1410516004 instance=ExtResource("6_ee6x1")]
-transform = Transform3D(0.61044693, -0.12197934, 0.78260815, 0.19594613, 0.98061466, 1.5118864e-08, -0.76743704, 0.15334903, 0.6225146, -42.034363, 6.948861, 43.081463)
-
-[node name="Tree4" parent="Forest" unique_id=2096254445 instance=ExtResource("6_ee6x1")]
-transform = Transform3D(-0.11869145, 0.023716886, 0.9926479, 0.19594614, 0.98061466, 7.212817e-09, -0.97340506, 0.19450553, -0.12103781, -52.35166, 6.948861, 23.80651)
-
-[node name="Tree5" parent="Forest" unique_id=967025210 instance=ExtResource("6_ee6x1")]
-transform = Transform3D(-0.69726104, 0.1393265, 0.70314664, 0.19594613, 0.98061466, -6.363938e-09, -0.6895159, 0.13777886, -0.7110449, -61.28012, 6.948861, 6.5618763)
-
-[node name="Tree6" parent="Forest" unique_id=1802246625 instance=ExtResource("6_ee6x1")]
-transform = Transform3D(0.4926918, -0.098449536, 0.86461693, 0.19594616, 0.98061466, -2.1261968e-08, -0.84785604, 0.16941838, 0.50243163, -35.76419, 6.948861, 31.785719)
-
-[node name="Tree7" parent="Forest" unique_id=839763514 instance=ExtResource("6_ee6x1")]
-transform = Transform3D(-0.3964583, 0.07922021, -0.9146283, 0.19594616, 0.98061466, 2.1108423e-08, 0.896898, -0.17921789, -0.4042957, -35.76419, 6.948861, 6.8048153)
+[node name="Island" parent="." unique_id=991186403 instance=ExtResource("5_adh44")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
