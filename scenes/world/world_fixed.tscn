@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cjhvd857e0u7k"]
 
-[ext_resource type="PackedScene" uid="uid://dr1hqhhyvv47c" path="res://scenes/objects/oxygen_tank.tscn" id="1_br8mx"]
+[ext_resource type="PackedScene" uid="uid://dr1hqhhyvv47c" path="res://scenes/objects/oxygen_tank/oxygen_tank.tscn" id="1_br8mx"]
 [ext_resource type="PackedScene" uid="uid://cw5kx1y60l2vn" path="res://scenes/world/chests.tscn" id="2_blego"]
 [ext_resource type="PackedScene" uid="uid://cxpd0mkp6cky5" path="res://scenes/objects/crafting_table.tscn" id="3_42htb"]
-[ext_resource type="PackedScene" uid="uid://bkjoqiq310tq5" path="res://scenes/world/island.tscn" id="5_adh44"]
+[ext_resource type="PackedScene" uid="uid://bkjoqiq310tq5" path="res://scenes/world/island/island.tscn" id="5_adh44"]
 
 [node name="World_fixed" type="Node" unique_id=828041261]
 

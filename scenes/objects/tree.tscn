@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cdyfn30iynu3m"]
 
-[ext_resource type="Script" uid="uid://dmb6uojrhf8qj" path="res://scripts/objects/tree.gd" id="1_5qchx"]
+[ext_resource type="Script" uid="uid://dmb6uojrhf8qj" path="res://scripts/world/tree.gd" id="1_5qchx"]
 [ext_resource type="ArrayMesh" uid="uid://b5jw0c8m216ig" path="res://ressources/meshs/tree_mesh.tres" id="1_eogu4"]
 [ext_resource type="Script" uid="uid://3f54wqp2pk5k" path="res://scripts/components/damageable.gd" id="3_eogu4"]
 [ext_resource type="Script" uid="uid://cex520s86u2lf" path="res://scripts/components/loot_table.gd" id="4_7yu6v"]

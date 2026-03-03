@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cdhogk0p63hmu"]
 
-[ext_resource type="Script" uid="uid://pl3n7g23c7ip" path="res://scripts/miscellaneous/world_environment.gd" id="1_hbh1y"]
+[ext_resource type="Script" uid="uid://pl3n7g23c7ip" path="res://scripts/world/world_environment.gd" id="1_hbh1y"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_ouso4"]
 

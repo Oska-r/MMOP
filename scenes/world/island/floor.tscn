@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bojdfx3xuyugm"]
 
-[ext_resource type="Material" uid="uid://4v0toykg4o0s" path="res://ressources/shader/grass_material.tres" id="1_aqeiv"]
+[ext_resource type="Material" uid="uid://4v0toykg4o0s" path="res://ressources/materials/grass_material.tres" id="1_aqeiv"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7t6ee"]
 height = 0.001
@@ -12,7 +12,7 @@ top_radius = 100.0
 bottom_radius = 100.0
 height = 1.0
 
-[node name="Floor" type="StaticBody3D" unique_id=67147618]
+[node name="Floor" type="StaticBody3D" unique_id=67147618 groups=["placable_surface"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1558477855]
 shape = SubResource("CylinderShape3D_7t6ee")

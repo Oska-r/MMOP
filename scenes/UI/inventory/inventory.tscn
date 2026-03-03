@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cq8sbte51hdu2"]
 
-[ext_resource type="Script" uid="uid://cwbpprwwrx2rh" path="res://scripts/UI/inventory.gd" id="1_egg3t"]
+[ext_resource type="Script" uid="uid://cwbpprwwrx2rh" path="res://scripts/UI/inventory/inventory.gd" id="1_egg3t"]
 [ext_resource type="Texture2D" uid="uid://b5fp2om3kmjqo" path="res://ressources/pictures/UI/inventory.png" id="2_ahcd1"]
 [ext_resource type="PackedScene" uid="uid://cocghnpcu6bpq" path="res://scenes/UI/inventory/slot.tscn" id="3_kpdmy"]
 [ext_resource type="PackedScene" uid="uid://40vsn8hlif6j" path="res://scenes/miscellaneous/crafting_recipe.tscn" id="3_lvvmf"]

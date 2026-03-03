@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://daihim8foo2aj"]
 
-[ext_resource type="Script" uid="uid://ckkd6f5slvwq6" path="res://scenes/world/sea.gd" id="1_aak4g"]
+[ext_resource type="Script" uid="uid://ckkd6f5slvwq6" path="res://scripts/world/sea.gd" id="1_aak4g"]
 
 [sub_resource type="Gradient" id="Gradient_8hn0b"]
 offsets = PackedFloat32Array(0.010958904, 0.99731904)
@@ -27,8 +27,12 @@ bottom_radius = 0.0
 height = 0.001
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_51whp"]
-height = 0.8
-radius = 250.0
+height = 0.3
+radius = 200.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_aak4g"]
+height = 0.5
+radius = 200.0
 
 [node name="Sea" type="StaticBody3D" unique_id=1181779365]
 script = ExtResource("1_aak4g")
@@ -41,7 +45,7 @@ shape = SubResource("CylinderShape3D_51whp")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=284405787]
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" unique_id=662389517]
-shape = SubResource("CylinderShape3D_51whp")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=114973411]
+shape = SubResource("CylinderShape3D_aak4g")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

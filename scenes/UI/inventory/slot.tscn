@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cocghnpcu6bpq"]
 
 [ext_resource type="FontFile" uid="uid://668qia6pd6v4" path="res://ressources/fonts/Arena-rvwaK.ttf" id="1_4v6ba"]
-[ext_resource type="Script" uid="uid://dr2qp8v6l5t2r" path="res://scripts/UI/slot.gd" id="1_ic0fu"]
+[ext_resource type="Script" uid="uid://dr2qp8v6l5t2r" path="res://scripts/UI/inventory/slot.gd" id="1_ic0fu"]
 [ext_resource type="Texture2D" uid="uid://bg7jbty15uoi3" path="res://ressources/pictures/UI/InventoryFrame.png" id="2_0jp5n"]
 
 [node name="Slot" type="Control" unique_id=212214653]

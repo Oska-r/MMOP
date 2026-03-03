@@ -11,6 +11,8 @@ var tier: int = 0
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var health_label: Label3D = $HealthLabel
 
+@export var rocket_scene: PackedScene
+
 func _ready() -> void:
 	update_oxygen_tank(tier)
 	damageable.died.connect(_on_died)
@@ -32,7 +34,7 @@ func display_requirements(on: bool) -> void:
 	if not on:
 		return
 
-	if tier - 1 > upgrade_requirements.size():
+	if tier >= upgrade_requirements.size():
 		requirements_display.text = "Höchste Stufe erreicht"
 		return
 
@@ -76,7 +78,7 @@ func display_requirements(on: bool) -> void:
 # Call this from the player input when "interact" (E) is pressed
 func try_craft_current_tier() -> void:
 	# Check if tier exists
-	if tier - 1 > upgrade_requirements.size():
+	if tier >= upgrade_requirements.size():
 		requirements_display.text = "Höchste Stufe erreicht"
 		return
 	
@@ -93,16 +95,10 @@ func try_craft_current_tier() -> void:
 	# Update the requirements display
 	display_requirements(true)
 
-
 func update_oxygen_tank(tier: int) -> void:
-	if tier == 0:
-		for child in $Oxygentank.get_children():
-			if child.name == "Oxygentank":
-				continue
-			child.visible = false
-	
-	if tier == 1:
-		for child in $Oxygentank.get_children():
-			if child.name == "Oxygentank":
-				pass
-			child.visible = true
+	if tier == upgrade_requirements.size():
+		spawn_rocket()
+
+func spawn_rocket() -> void:
+	var rocket_instance = rocket_scene.instantiate()
+	add_child(rocket_instance)

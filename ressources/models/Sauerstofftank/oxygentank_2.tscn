@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bmtrchr2n52bw"]
 
-[ext_resource type="PackedScene" uid="uid://cbhfactubep3m" path="res://ressources/models/Sauerstofftank/Oxygentank.glb" id="1_upulf"]
+[ext_resource type="PackedScene" uid="uid://cbhfactubep3m" path="res://ressources/models/sauerstofftank/Oxygentank.glb" id="1_upulf"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uh7n0"]
 points = PackedVector3Array(-0.50000006, -0.08333333, -0.50000006, -0.50000006, -0.08333333, 0.4999022, -0.50000006, 0, -0.50000006, 0.4999022, -0.08333333, -0.50000006, -0.50000006, 0, 0.4999022, 0.4999022, -0.08333333, 0.4999022, 0.4999022, 0, -0.50000006, 0.4999022, 0, 0.4999022)

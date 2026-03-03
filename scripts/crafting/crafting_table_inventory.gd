@@ -2,7 +2,7 @@ extends ReferenceRect
 
 @export var inventory: Control
 @export var crafting_sound: AudioStreamPlayer
-@onready var crafting: Node = $Components/Crafting
+@onready var crafting: Node  = $Components/Crafting
 
 func _ready() -> void:
 	for child in $Recipes.get_children():
