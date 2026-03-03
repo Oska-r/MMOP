@@ -13,7 +13,7 @@ transform = Transform3D(0.58836883, -0.11756769, 0, 0.11756769, 0.58836883, 0, 0
 script = ExtResource("1_5qchx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=881562496]
-transform = Transform3D(1, 0, 0, -1.4901161e-08, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
+transform = Transform3D(1, 1.4901161e-08, 0, -1.4901161e-08, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_r6wkp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1918297551]
