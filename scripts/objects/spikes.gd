@@ -3,6 +3,8 @@ extends StaticBody3D
 @export var damage: float = 30.0
 @export var damage_interval: float = 0.5  # seconds between damage ticks
 
+@onready var damageable: Node = $Components/Damageable
+
 # Keeps track of bodies currently inside the area
 var bodies_inside := {}
 
@@ -17,6 +19,9 @@ func _on_body_entered(body: Node3D) -> void:
 
 func _on_body_exited(body: Node3D) -> void:
 	bodies_inside.erase(body)
+
+func take_damage(damage: float) -> void:
+	damageable.take_damage(damage)
 
 func _physics_process(delta: float) -> void:
 	# Loop through bodies inside the spike area

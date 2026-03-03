@@ -12,6 +12,7 @@ var tier: int = 0
 @onready var health_label: Label3D = $HealthLabel
 
 func _ready() -> void:
+	update_oxygen_tank(tier)
 	damageable.died.connect(_on_died)
 	Global.update_health_display(health_label, damageable)
 	display_requirements(false)
@@ -87,5 +88,21 @@ func try_craft_current_tier() -> void:
 	# Advance to next tier
 	tier += 1
 	
+	update_oxygen_tank(tier)
+	
 	# Update the requirements display
 	display_requirements(true)
+
+
+func update_oxygen_tank(tier: int) -> void:
+	if tier == 0:
+		for child in $Oxygentank.get_children():
+			if child.name == "Oxygentank":
+				continue
+			child.visible = false
+	
+	if tier == 1:
+		for child in $Oxygentank.get_children():
+			if child.name == "Oxygentank":
+				pass
+			child.visible = true

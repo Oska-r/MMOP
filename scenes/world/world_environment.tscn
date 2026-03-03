@@ -24,6 +24,7 @@ time = 0.85
 [node name="SunPivot" type="Node3D" parent="." unique_id=1301585711]
 
 [node name="SunLight" type="DirectionalLight3D" parent="SunPivot" unique_id=577195447]
+shadow_enabled = true
 
 [node name="MoonPivot" type="Node3D" parent="." unique_id=1696461824]
 

@@ -8,6 +8,30 @@
 
 config_version=5
 
+[SimpleGrassTextured]
+
+Shortcuts/airbrush_tool=Object(Shortcut,"resource_local_to_scene":false,"resource_name":"","events":[Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":true,"keycode":68,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+],"script":null)
+
+Shortcuts/pencil_tool=Object(Shortcut,"resource_local_to_scene":false,"resource_name":"","events":[Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":true,"keycode":66,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+],"script":null)
+
+Shortcuts/eraser_tool=Object(Shortcut,"resource_local_to_scene":false,"resource_name":"","events":[Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":true,"keycode":88,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+],"script":null)
+
+Shortcuts/radius_increment=Object(Shortcut,"resource_local_to_scene":false,"resource_name":"","events":[Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":true,"keycode":93,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+],"script":null)
+
+Shortcuts/radius_decrement=Object(Shortcut,"resource_local_to_scene":false,"resource_name":"","events":[Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":true,"keycode":91,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+],"script":null)
+
+Shortcuts/density_increment=Object(Shortcut,"resource_local_to_scene":false,"resource_name":"","events":[Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":true,"keycode":61,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+],"script":null)
+
+Shortcuts/density_decrement=Object(Shortcut,"resource_local_to_scene":false,"resource_name":"","events":[Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":true,"keycode":45,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+],"script":null)
+
+
 [animation]
 
 compatibility/default_parent_skeleton_in_mesh_instance_3d=true
@@ -22,6 +46,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 Item_ids="*res://items/inventory_items/item_ids.gd"
 Global="*uid://btmv6j1xic2h6"
+SimpleGrass="*uid://bfq0snth8sj3h"
 
 [display]
 
@@ -31,6 +56,10 @@ window/size/always_on_top=true
 
 project/assembly_name="MMOP"
 enabled=PackedStringArray()
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/simplegrasstextured/plugin.cfg")
 
 [global_group]
 
@@ -171,3 +200,46 @@ interact_e={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+
+[shader_globals]
+
+sgt_legacy_renderer={
+"type": "int",
+"value": 0
+}
+sgt_player_position={
+"type": "vec3",
+"value": Vector3(1000000, 1000000, 1000000)
+}
+sgt_player_mov={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
+sgt_normal_displacement={
+"type": "sampler2D",
+"value": "res://addons/simplegrasstextured/images/normal.png"
+}
+sgt_motion_texture={
+"type": "sampler2D",
+"value": "res://addons/simplegrasstextured/images/motion.png"
+}
+sgt_wind_direction={
+"type": "vec3",
+"value": Vector3(1, 0, 0)
+}
+sgt_wind_movement={
+"type": "vec3",
+"value": Vector2(0, 0)
+}
+sgt_wind_strength={
+"type": "float",
+"value": 0.15
+}
+sgt_wind_turbulence={
+"type": "float",
+"value": 1.0
+}
+sgt_wind_pattern={
+"type": "sampler2D",
+"value": "res://addons/simplegrasstextured/images/wind_pattern.png"
+}

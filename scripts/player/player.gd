@@ -30,7 +30,6 @@ var damage_timer: float = 0.0
 signal player_health_changed(current_health: float, max_health: float)
 
 func _ready() -> void:
-	capture_mouse()
 	attack_Area.visible = false
 	damageable.died.connect(_on_died)
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
@@ -235,23 +234,28 @@ func disable_collision_recursively(node: Node) -> void:
 
 ## Applies lower transparency to given node (used for displaying more transparent previews blocks).
 func apply_transparency(node: Node, alpha: float = 0.5) -> void:
-	if node is MeshInstance3D:
-		var mat: StandardMaterial3D = node.get_active_material(0)
-		if mat:
-			mat = mat.duplicate() as StandardMaterial3D
-			node.set_surface_override_material(0, mat)
-			mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-			mat.flags_transparent = true
-			var color = mat.albedo_color
-			color.a = alpha
-			mat.albedo_color = color
-
-	if node is CollisionShape3D:
-		node.disabled = true
-
 	for child in node.get_children():
+		if child is MeshInstance3D:
+			var mesh = child.mesh
+			if mesh:
+				for i in range(mesh.get_surface_count()):
+					var mat: StandardMaterial3D = child.get_active_material(i)
+					if mat:
+						mat = mat.duplicate() as StandardMaterial3D
+						child.set_surface_override_material(i, mat)
+						mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+						mat.flags_transparent = true
+						var color = mat.albedo_color
+						color.a = alpha
+						mat.albedo_color = color
+		
+		if child is CollisionShape3D:
+			child.disabled = true
+		
+		# Recursive call for nested children
 		if child is Node3D:
 			apply_transparency(child, alpha)
+
 #endregion
 
 #region using items
