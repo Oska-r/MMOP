@@ -7,6 +7,9 @@ extends Control
 
 var selected_index: int = 0
 
+func _ready() -> void:
+	update_selection_position()
+
 func _process(_delta: float) -> void:
 	var item = inventory.get_hotbar_items()[selected_index]
 	if item and item.scene:

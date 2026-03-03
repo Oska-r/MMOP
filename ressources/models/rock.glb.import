@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ep4jrg2fud64"
-path="res://.godot/imported/Spikes.glb-e9b5dd36d0ef733176be3ff04b1bfccb.scn"
+uid="uid://dc1gjhqcnsps"
+path="res://.godot/imported/rock.glb-e5381a7cdace651683e860193256906f.scn"
 
 [deps]
 
-source_file="res://ressources/models/Spikes.glb"
-dest_files=["res://.godot/imported/Spikes.glb-e9b5dd36d0ef733176be3ff04b1bfccb.scn"]
+source_file="res://ressources/models/rock.glb"
+dest_files=["res://.godot/imported/rock.glb-e5381a7cdace651683e860193256906f.scn"]
 
 [params]
 
@@ -37,6 +37,12 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Rock Type1 01/Rock Type1 01 mesh": {
+"generate/physics": true
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
