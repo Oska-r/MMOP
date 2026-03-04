@@ -10,6 +10,14 @@
 [ext_resource type="Script" uid="uid://brlk3nbeeodmj" path="res://scripts/components/crafting.gd" id="8_s8njh"]
 [ext_resource type="Script" uid="uid://bmtjonaqm2qjx" path="res://items/crafting/crafting_recipe.gd" id="9_41ady"]
 
+[sub_resource type="Resource" id="Resource_41ady"]
+script = ExtResource("9_41ady")
+result_item = 6
+ingredients = Dictionary[int, int]({
+1: 4
+})
+metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
+
 [sub_resource type="Resource" id="Resource_day8s"]
 script = ExtResource("9_41ady")
 result_item = 5
@@ -559,6 +567,11 @@ layout_mode = 2
 size_flags_vertical = 3
 recipe = ExtResource("7_ahcd1")
 
+[node name="Furnace" parent="CraftingTable/Recipes" unique_id=799557746 instance=ExtResource("3_lvvmf")]
+layout_mode = 2
+size_flags_vertical = 3
+recipe = SubResource("Resource_41ady")
+
 [node name="Furnace" type="ReferenceRect" parent="." unique_id=620784737 node_paths=PackedStringArray("inventory", "crafting_sound")]
 layout_mode = 1
 anchors_preset = 4
@@ -589,7 +602,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Iron" parent="Furnace/Recipes" unique_id=799557746 instance=ExtResource("3_lvvmf")]
+[node name="Iron" parent="Furnace/Recipes" unique_id=1474470101 instance=ExtResource("3_lvvmf")]
 layout_mode = 2
 size_flags_vertical = 3
 recipe = SubResource("Resource_day8s")

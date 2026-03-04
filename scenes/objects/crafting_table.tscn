@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://biwb0lk1b8ml0" path="res://scripts/objects/crafting_table.gd" id="1_pdger"]
 [ext_resource type="Material" uid="uid://dhcdd2kwlnlnd" path="res://ressources/materials/brown_material.tres" id="2_dys40"]
+[ext_resource type="Script" uid="uid://3f54wqp2pk5k" path="res://scripts/components/damageable.gd" id="3_qa5it"]
+[ext_resource type="Script" uid="uid://cex520s86u2lf" path="res://scripts/components/loot_table.gd" id="4_5mpyi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pdger"]
 material = ExtResource("2_dys40")
@@ -10,11 +12,24 @@ size = Vector3(2, 1, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_pwjbn"]
 size = Vector3(2, 1, 1)
 
-[node name="CraftingTable" type="StaticBody3D" unique_id=117519311]
+[node name="CraftingTable" type="StaticBody3D" unique_id=117519311 groups=["damagable_by_player"]]
 script = ExtResource("1_pdger")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1297854770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_pdger")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1415588626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_pwjbn")
+
+[node name="Components" type="Node" parent="." unique_id=120204077]
+
+[node name="Damageable" type="Node" parent="Components" unique_id=1187222004]
+script = ExtResource("3_qa5it")
+
+[node name="LootTable" type="Node" parent="Components" unique_id=2064830885]
+script = ExtResource("4_5mpyi")
+loot_table = Dictionary[int, float]({
+8: 1.0
+})

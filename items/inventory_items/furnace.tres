@@ -1,7 +1,13 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://doqvd0qw5dij3"]
 
+[ext_resource type="Texture2D" uid="uid://bsdnbld12fcwr" path="res://ressources/pictures/items/furnace.png" id="1_w50gg"]
 [ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="1_xpkvr"]
+[ext_resource type="PackedScene" uid="uid://ntl4dbj8jvbg" path="res://scenes/objects/furnace.tscn" id="2_ocm1t"]
 
 [resource]
 script = ExtResource("1_xpkvr")
+name = "Ofen"
+icon = ExtResource("1_w50gg")
+scene = ExtResource("2_ocm1t")
+item_id = 6
 metadata/_custom_type_script = "uid://dwdabywcheuay"

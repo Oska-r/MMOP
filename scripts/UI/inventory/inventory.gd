@@ -183,7 +183,8 @@ func close_chest(opened_chest: StaticBody3D) -> void:
 func open_crafting_table() -> void:
 	open_inventory()
 	crafting_table.show()
-	crafting_table.get_node("Recipes/Spikes").update_current_amount()
+	crafting_table.get_node("Recipes/Spikes").update_current_amount()#
+	crafting_table.get_node("Recipes/Furnace").update_current_amount()
 
 func close_crafting_table() -> void:
 	close_inventory()

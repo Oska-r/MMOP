@@ -25,7 +25,7 @@ text = "Drücke Tab um das Inventar zu öffnen"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.690972, 0.9, 0)
 
 [node name="CraftingTable" parent="." unique_id=117519311 instance=ExtResource("3_42htb")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -12.985314, 0.9, 1)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -12.985, 0.5, 1)
 
 [node name="CraftingTableLabel" type="Label3D" parent="CraftingTable" unique_id=700314737]
 transform = Transform3D(0.9999999, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, 0.9999999, 0, 3.2249587, 0)
