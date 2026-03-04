@@ -16,11 +16,11 @@ size = Vector3(2, 1, 1)
 script = ExtResource("1_pdger")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1297854770]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_pdger")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1415588626]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_pwjbn")
 
 [node name="Components" type="Node" parent="." unique_id=120204077]
