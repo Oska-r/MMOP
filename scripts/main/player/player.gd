@@ -80,9 +80,8 @@ func check_interaction() -> void:
 			collider.toggle_chest()
 		if collider.has_method("toggle_crafting_table"):
 			collider.toggle_crafting_table()
-		if collider.has_method("break_tree"):
-			collider.break_tree(damage)
-
+		if collider.has_method("toggle_furnace"):
+			collider.toggle_furnace()
 
 #region input
 func _input(event) -> void:
@@ -308,7 +307,7 @@ func _on_died() -> void:
 	call_deferred("_change_to_end_screen")
 
 func _change_to_end_screen() -> void:
-	get_tree().change_scene_to_file("res://scenes/UI/menus/end_screen.tscn")
+	get_viewport().get_tree().change_scene_to_file("res://scenes/UI/menus/end_screen.tscn")
 
 func die() -> void:
 	damageable.die()

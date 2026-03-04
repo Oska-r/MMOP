@@ -5,6 +5,7 @@ extends Control
 @onready var chest: Control = $Chest
 @onready var crafting_table: Control = $CraftingTable
 @onready var main_inventory: Control = $MainInventory
+@onready var furnace: Control = $Furnace
 
 # row 0 for hotbar, row 5 for chests
 var inventory_items: Array[Array] = [
@@ -25,6 +26,7 @@ func _ready() -> void:
 	hide()
 	chest.hide()
 	crafting_table.hide()
+	furnace.hide()
 
 func _input(event) -> void:
 	if event.is_action_pressed("inventory"):
@@ -181,11 +183,21 @@ func close_chest(opened_chest: StaticBody3D) -> void:
 func open_crafting_table() -> void:
 	open_inventory()
 	crafting_table.show()
-	crafting_table.get_node("Recipes/Spikes").update_current_amount()
+	crafting_table.get_node("Recipes/Spikes").update_current_amount()#
+	crafting_table.get_node("Recipes/Furnace").update_current_amount()
 
 func close_crafting_table() -> void:
 	close_inventory()
 	crafting_table.hide()
+
+func open_furnace() -> void:
+	open_inventory()
+	furnace.show()
+	furnace.get_node("Recipes/Iron").update_current_amount()
+
+func close_furnace() -> void:
+	close_inventory()
+	furnace.hide()
 
 ## Returns the total amount of a specific item currently held in the inventory.
 func inventory_contains(target_id: ItemIDs.ItemID) -> Dictionary:

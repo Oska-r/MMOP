@@ -2,9 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://bojdfx3xuyugm" path="res://scenes/world/island/floor.tscn" id="1_7t6ee"]
 [ext_resource type="PackedScene" uid="uid://daihim8foo2aj" path="res://scenes/world/island/sea.tscn" id="2_c77fi"]
-[ext_resource type="MultiMesh" uid="uid://bdl2msavscgiu" path="res://ressources/meshs/grass_mesh.tres" id="3_aqh1w"]
-[ext_resource type="Texture2D" uid="uid://c4ggdp0kg5wjk" path="res://addons/simplegrasstextured/textures/grassbushcc008.png" id="4_5xyjb"]
-[ext_resource type="Script" uid="uid://2juaclm8gc1n" path="res://addons/simplegrasstextured/grass.gd" id="5_8iq4n"]
 [ext_resource type="PackedScene" uid="uid://1jvqajr23cos" path="res://scenes/world/island/forest.tscn" id="6_5xyjb"]
 [ext_resource type="PackedScene" uid="uid://dypy1jy1hdwu1" path="res://scenes/objects/rock.tscn" id="7_ynh53"]
 
@@ -14,26 +11,6 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="Floor" parent="." unique_id=67147618 instance=ExtResource("1_7t6ee")]
-
-[node name="SimpleGrassTextured" type="MultiMeshInstance3D" parent="Floor" unique_id=1984989221]
-multimesh = ExtResource("3_aqh1w")
-script = ExtResource("5_8iq4n")
-texture_albedo = ExtResource("4_5xyjb")
-sgt_radius = 10.0
-sgt_density = 58
-sgt_scale = 1.0
-sgt_rotation = 0.0
-sgt_rotation_rand = 1.0
-sgt_dist_min = 0.25
-sgt_follow_normal = false
-sgt_slope = Vector2(0, 45)
-sgt_tool_shape = {
-"airbrush": 1,
-"eraser": 0,
-"pencil": 1
-}
-metadata/_custom_type_script = "uid://2juaclm8gc1n"
-metadata/SimpleGrassTextured = "2.0.5"
 
 [node name="Forest" parent="." unique_id=1630664851 instance=ExtResource("6_5xyjb")]
 

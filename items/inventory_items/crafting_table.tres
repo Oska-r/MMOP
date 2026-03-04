@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://cykkfdki1hbtr"]
+
+[ext_resource type="Texture2D" uid="uid://bodscpyk7kaku" path="res://ressources/pictures/items/crafting_table.png" id="1_7ld50"]
+[ext_resource type="PackedScene" uid="uid://cxpd0mkp6cky5" path="res://scenes/objects/crafting_table.tscn" id="1_hfafi"]
+[ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="1_wrccq"]
+
+[resource]
+script = ExtResource("1_wrccq")
+name = "Werkbank"
+icon = ExtResource("1_7ld50")
+scene = ExtResource("1_hfafi")
+metadata/_custom_type_script = "uid://dwdabywcheuay"

@@ -17,12 +17,12 @@ func take_damage(damage: int) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if is_open and (event.is_action_pressed("inventory") or event.is_action_pressed("ui_cancel")):
-		toggle_crafting_table()
+		toggle_furnace()
 
-func toggle_crafting_table():
+func toggle_furnace():
 	is_open = not is_open
 	
 	if is_open:
-		inventory.open_crafting_table()
+		inventory.open_furnace()
 	else:
-		inventory.close_crafting_table()
+		inventory.close_furnace()

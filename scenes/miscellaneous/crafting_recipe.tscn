@@ -21,7 +21,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -50.0
 offset_top = -42.0
-offset_right = 50.0
+offset_right = 97.0
 offset_bottom = 42.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -38,6 +38,7 @@ layout_mode = 2
 [node name="TextureIcon" type="TextureRect" parent="Container/HBoxContainer" unique_id=60036930]
 custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
+expand_mode = 1
 
 [node name="RecipeLabel" type="RichTextLabel" parent="Container" unique_id=117741044]
 custom_minimum_size = Vector2(100, 30)

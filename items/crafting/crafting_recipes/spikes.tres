@@ -6,6 +6,6 @@
 script = ExtResource("1_ob8pe")
 result_item = 2
 ingredients = Dictionary[int, int]({
-1: 4
+0: 4
 })
 metadata/_custom_type_script = "uid://bmtjonaqm2qjx"

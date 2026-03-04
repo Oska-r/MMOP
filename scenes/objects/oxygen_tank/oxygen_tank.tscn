@@ -16,6 +16,35 @@ ingredients = Dictionary[int, int]({
 })
 metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
 
+[sub_resource type="Resource" id="Resource_fe8re"]
+script = ExtResource("2_qdb88")
+result_item = 4
+ingredients = Dictionary[int, int]({
+0: 10,
+1: 10
+})
+metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
+
+[sub_resource type="Resource" id="Resource_vx1k4"]
+script = ExtResource("2_qdb88")
+result_item = 4
+ingredients = Dictionary[int, int]({
+0: 25,
+1: 25,
+3: 10
+})
+metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
+
+[sub_resource type="Resource" id="Resource_jinhm"]
+script = ExtResource("2_qdb88")
+result_item = 4
+ingredients = Dictionary[int, int]({
+0: 100,
+1: 100,
+3: 50
+})
+metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_upulf"]
 height = 1.847
 radius = 0.5444336
@@ -25,7 +54,7 @@ points = PackedVector3Array(-0.50000006, -0.08333333, -0.50000006, -0.50000006, 
 
 [node name="Oxygentank" type="StaticBody3D" unique_id=1610524823 groups=["Oxygentank", "damagable_by_enemy"]]
 script = ExtResource("1_gbipx")
-upgrade_requirements = Array[ExtResource("2_qdb88")]([SubResource("Resource_qdb88")])
+upgrade_requirements = Array[ExtResource("2_qdb88")]([SubResource("Resource_qdb88"), SubResource("Resource_fe8re"), SubResource("Resource_vx1k4"), SubResource("Resource_jinhm")])
 rocket_scene = ExtResource("3_1lc3u")
 
 [node name="Oxygentank" parent="." unique_id=1859862531 instance=ExtResource("2_gbipx")]
