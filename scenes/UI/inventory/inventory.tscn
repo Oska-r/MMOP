@@ -18,6 +18,14 @@ ingredients = Dictionary[int, int]({
 })
 metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
 
+[sub_resource type="Resource" id="Resource_2rku5"]
+script = ExtResource("9_41ady")
+result_item = 8
+ingredients = Dictionary[int, int]({
+1: 10
+})
+metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
+
 [sub_resource type="Resource" id="Resource_day8s"]
 script = ExtResource("9_41ady")
 result_item = 6
@@ -572,6 +580,11 @@ recipe = ExtResource("7_ahcd1")
 layout_mode = 2
 size_flags_vertical = 3
 recipe = SubResource("Resource_41ady")
+
+[node name="CraftingTable" parent="CraftingTable/Recipes" unique_id=2088357050 instance=ExtResource("3_lvvmf")]
+layout_mode = 2
+size_flags_vertical = 3
+recipe = SubResource("Resource_2rku5")
 
 [node name="Furnace" type="ReferenceRect" parent="." unique_id=620784737 node_paths=PackedStringArray("inventory", "crafting_sound")]
 layout_mode = 1

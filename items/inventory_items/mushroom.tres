@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://li2x358r2urs"]
+
+[ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="1_7rjgu"]
+[ext_resource type="Texture2D" uid="uid://buu83icxj3thy" path="res://ressources/pictures/items/mushroom.png" id="1_xnaaj"]
+
+[resource]
+script = ExtResource("1_7rjgu")
+name = "Pilz"
+icon = ExtResource("1_xnaaj")
+item_id = 9
+metadata/_custom_type_script = "uid://dwdabywcheuay"

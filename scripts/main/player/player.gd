@@ -37,7 +37,7 @@ func _ready() -> void:
 	
 	damageable.took_damage.connect(_took_damage)
 
-var looking_at_tank: bool = false  # track previous frame
+var current_looked_at: Node = null
 
 func _process(delta) -> void:
 	if dead:
@@ -50,24 +50,27 @@ func _process(delta) -> void:
 	if Input.is_action_pressed("prime"):
 		handle_attack()
 	
-	# Check if the interact ray is hitting something
+	# Check what the interact ray is hitting
+	var collider = null
 	if interact_ray.is_colliding():
-		var collider = interact_ray.get_collider()
-		
-		if collider == oxygen_tank:
-			if not looking_at_tank:
-				oxygen_tank.display_requirements(true)
-				looking_at_tank = true
-		else:
-			# player looked at something else
-			if looking_at_tank:
-				oxygen_tank.display_requirements(false)
-				looking_at_tank = false
+		collider = interact_ray.get_collider()
+	
+	if collider != null:
+		print_debug(collider, " detected")
+	
+	# Handle looking at objects with display_requirements()
+	if collider != null and collider.has_method("display_requirements"):
+		if current_looked_at != collider:
+			# Player looked at a new object
+			if current_looked_at != null:
+				current_looked_at.display_requirements(false)
+			collider.display_requirements(true)
+			current_looked_at = collider
 	else:
-		# player looked at nothing
-		if looking_at_tank:
-			oxygen_tank.display_requirements(false)
-			looking_at_tank = false
+		# Player looked at nothing or a non-interactive object
+		if current_looked_at != null:
+			current_looked_at.display_requirements(false)
+			current_looked_at = null
 
 func drop(item: Item_ids.ItemID) -> void:
 	inventory.drop(item)
@@ -93,8 +96,11 @@ func _input(event) -> void:
 		if not interact_ray.is_colliding():
 			return
 		var collider = interact_ray.get_collider()
+		
 		if collider.has_method("try_craft_current_tier"):
 				collider.try_craft_current_tier()
+		if collider.has_method("pickup_mushroom"):
+			collider.pickup_mushroom()
 
 ## Disables (if parameter is false) or enables (if parameter is true) all player input (used for openend UIs).
 func enable_input(enable: bool) -> void:
@@ -275,7 +281,6 @@ func use_selected_item(item) -> bool:
 #endregion
 
 #region damage
-
 func handle_attack() -> void:
 	if damage_timer > 0:
 		return
@@ -314,7 +319,7 @@ func die() -> void:
 
 #endregion
 
-#region getter_and_stter
+#region getter_and_setter
 func get_max_health() -> float:
 	return damageable.max_health
 
