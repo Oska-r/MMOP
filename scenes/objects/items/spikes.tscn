@@ -9,21 +9,21 @@
 size = Vector3(9.05748, 10.083445, 15.878012)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ay1g"]
-size = Vector3(12.717487, 10.083445, 18.204931)
+size = Vector3(15.963002, 10.083445, 20.164148)
 
 [node name="Spikes" type="StaticBody3D" unique_id=1566048860 groups=["damagable_by_enemy", "damagable_by_player"]]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 script = ExtResource("1_4ay1g")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1407787174]
-transform = Transform3D(0.99999946, 0, 0, 0, 0.99999946, 0, 0, 0, 0.99999946, 0.115564704, 4.97269, 0.8266376)
+transform = Transform3D(0.99999946, 0, 0, 0, 0.99999946, 0, 0, 0, 0.99999946, 0, 5, 0)
 shape = SubResource("BoxShape3D_2u5lu")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=2007839268]
 transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, -0.04194545, 4.97269, 0.7421246)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=29766919]
-transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0.12856731, 0, -0.05207187)
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0)
 shape = SubResource("BoxShape3D_4ay1g")
 
 [node name="Spikes" type="MeshInstance3D" parent="." unique_id=781995715]
