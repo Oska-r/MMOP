@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ntl4dbj8jvbg"]
+
+[ext_resource type="Script" uid="uid://bipemliwia0fc" path="res://scripts/objects/furnace.gd" id="1_sjjya"]
+[ext_resource type="Script" uid="uid://3f54wqp2pk5k" path="res://scripts/components/damageable.gd" id="2_yyg2b"]
+[ext_resource type="Script" uid="uid://cex520s86u2lf" path="res://scripts/components/loot_table.gd" id="3_njbdr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4y863"]
+size = Vector3(2.25, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sjjya"]
+size = Vector3(2.25, 1, 0.56)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jdhxq"]
+size = Vector3(2.25, 1.7, 1)
+
+[node name="Furnace" type="StaticBody3D" unique_id=1024828007 groups=["damagable_by_player"]]
+script = ExtResource("1_sjjya")
+
+[node name="Base" type="MeshInstance3D" parent="." unique_id=974811011]
+mesh = SubResource("BoxMesh_4y863")
+
+[node name="Top" type="MeshInstance3D" parent="." unique_id=1060779192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.69732034, -0.22502458)
+mesh = SubResource("BoxMesh_sjjya")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1805939180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0056152344, 0.35308838, 0)
+shape = SubResource("BoxShape3D_jdhxq")
+
+[node name="Components" type="Node" parent="." unique_id=1381336941]
+
+[node name="Damageable" type="Node" parent="Components" unique_id=422503271]
+script = ExtResource("2_yyg2b")
+max_health = 100.0
+
+[node name="LootTable" type="Node" parent="Components" unique_id=1083001571]
+script = ExtResource("3_njbdr")
+loot_table = Dictionary[int, float]({
+1: 0.7
+})

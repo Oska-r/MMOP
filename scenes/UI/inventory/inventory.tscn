@@ -1,13 +1,22 @@
 [gd_scene format=3 uid="uid://cq8sbte51hdu2"]
 
 [ext_resource type="Script" uid="uid://cwbpprwwrx2rh" path="res://scripts/UI/inventory/inventory.gd" id="1_egg3t"]
-[ext_resource type="Texture2D" uid="uid://b5fp2om3kmjqo" path="res://ressources/pictures/UI/inventory.png" id="2_ahcd1"]
+[ext_resource type="Texture2D" uid="uid://b5fp2om3kmjqo" path="res://ressources/pictures/UI/Inventory.png" id="2_ahcd1"]
 [ext_resource type="PackedScene" uid="uid://cocghnpcu6bpq" path="res://scenes/UI/inventory/slot.tscn" id="3_kpdmy"]
 [ext_resource type="PackedScene" uid="uid://40vsn8hlif6j" path="res://scenes/miscellaneous/crafting_recipe.tscn" id="3_lvvmf"]
 [ext_resource type="Script" uid="uid://dyb1bfd8gw2xv" path="res://scripts/crafting/crafting_table_inventory.gd" id="3_qjyq4"]
 [ext_resource type="AudioStream" uid="uid://cpad3gapdyd43" path="res://ressources/sounds/UI/crafting_sound.mp3" id="4_qjyq4"]
 [ext_resource type="Resource" uid="uid://cxpbguwg51xly" path="res://items/crafting/crafting_recipes/spikes.tres" id="7_ahcd1"]
 [ext_resource type="Script" uid="uid://brlk3nbeeodmj" path="res://scripts/components/crafting.gd" id="8_s8njh"]
+[ext_resource type="Script" uid="uid://bmtjonaqm2qjx" path="res://items/crafting/crafting_recipe.gd" id="9_41ady"]
+
+[sub_resource type="Resource" id="Resource_day8s"]
+script = ExtResource("9_41ady")
+result_item = 5
+ingredients = Dictionary[int, int]({
+4: 1
+})
+metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
 
 [node name="Inventory" type="Control" unique_id=315312596]
 layout_mode = 3
@@ -549,3 +558,38 @@ alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 recipe = ExtResource("7_ahcd1")
+
+[node name="Furnace" type="ReferenceRect" parent="." unique_id=620784737 node_paths=PackedStringArray("inventory", "crafting_sound")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -195.5
+offset_right = 296.0
+offset_bottom = 195.5
+grow_vertical = 2
+script = ExtResource("3_qjyq4")
+inventory = NodePath("..")
+crafting_sound = NodePath("CraftingSound")
+
+[node name="CraftingSound" type="AudioStreamPlayer" parent="Furnace" unique_id=1841311989]
+stream = ExtResource("4_qjyq4")
+
+[node name="Components" type="Node" parent="Furnace" unique_id=770316678]
+
+[node name="Crafting" type="Node" parent="Furnace/Components" unique_id=52021565]
+script = ExtResource("8_s8njh")
+
+[node name="Recipes" type="FlowContainer" parent="Furnace" unique_id=1793197884]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Iron" parent="Furnace/Recipes" unique_id=799557746 instance=ExtResource("3_lvvmf")]
+layout_mode = 2
+size_flags_vertical = 3
+recipe = SubResource("Resource_day8s")

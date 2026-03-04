@@ -80,9 +80,8 @@ func check_interaction() -> void:
 			collider.toggle_chest()
 		if collider.has_method("toggle_crafting_table"):
 			collider.toggle_crafting_table()
-		if collider.has_method("break_tree"):
-			collider.break_tree(damage)
-
+		if collider.has_method("toggle_furnace"):
+			collider.toggle_furnace()
 
 #region input
 func _input(event) -> void:

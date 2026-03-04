@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cw5kx1y60l2vn" path="res://scenes/world/chests.tscn" id="2_blego"]
 [ext_resource type="PackedScene" uid="uid://cxpd0mkp6cky5" path="res://scenes/objects/crafting_table.tscn" id="3_42htb"]
 [ext_resource type="PackedScene" uid="uid://bkjoqiq310tq5" path="res://scenes/world/island/island.tscn" id="5_adh44"]
+[ext_resource type="PackedScene" uid="uid://ntl4dbj8jvbg" path="res://scenes/objects/furnace.tscn" id="5_ee6x1"]
 
 [node name="World_fixed" type="Node" unique_id=828041261]
 
@@ -39,3 +40,6 @@ aus und platzieren ihn mit Rechtsklick."
 
 [node name="Island" parent="." unique_id=991186403 instance=ExtResource("5_adh44")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Furnace" parent="." unique_id=1024828007 instance=ExtResource("5_ee6x1")]
+transform = Transform3D(0.92181575, 0, 0.38762832, 0, 1, 0, -0.38762832, 0, 0.92181575, -8, 1, -2)

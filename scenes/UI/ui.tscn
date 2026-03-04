@@ -50,7 +50,6 @@ layout_mode = 1
 
 [node name="Inventory" parent="." unique_id=315312596 node_paths=PackedStringArray("hotbar") groups=["inventory"] instance=ExtResource("5_a6y2o")]
 layout_mode = 1
-anchors_preset = 15
 hotbar = NodePath("../Hotbar")
 
 [node name="HealthDisplay" parent="." unique_id=214072852 instance=ExtResource("7_35jxk")]

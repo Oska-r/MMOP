@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1wbujc744yc2"
-path="res://.godot/imported/Spikes.png-b9bc91b30f567091fc4d0b51856825cd.ctex"
+uid="uid://c5d3ocb0qcwda"
+path="res://.godot/imported/smelted_iron.png-fda07a391366023aaa60f374f70113d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ressources/pictures/items/Spikes.png"
-dest_files=["res://.godot/imported/Spikes.png-b9bc91b30f567091fc4d0b51856825cd.ctex"]
+source_file="res://ressources/pictures/items/smelted_iron.png"
+dest_files=["res://.godot/imported/smelted_iron.png-fda07a391366023aaa60f374f70113d9.ctex"]
 
 [params]
 

@@ -10,5 +10,4 @@ name = "Holz"
 icon = ExtResource("1_ivep5")
 count = 5
 scene = ExtResource("2_o5wu7")
-item_id = 1
 metadata/_custom_type_script = "uid://dwdabywcheuay"

@@ -7,6 +7,7 @@ enum ItemID {
 	SPIKE,
 	OIL,
 	IRON,
+	SMELTED_IRON,
 	NONE
 }
 
@@ -16,6 +17,7 @@ const ITEM_REGISTRY := {
 	ItemID.SPIKE: preload("res://items/inventory_items/blocks/spikes.tres"),
 	ItemID.OIL: preload("res://items/inventory_items/oil.tres"),
 	ItemID.IRON: preload("res://items/inventory_items/iron.tres"),
+	ItemID.SMELTED_IRON: preload("res://items/inventory_items/smelted_iron.tres"),
 	ItemID.NONE: preload("res://items/inventory_items/none.tres")
 }
 

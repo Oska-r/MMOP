@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://b1ks8vcv2a2r8"]
 
-[ext_resource type="Texture2D" uid="uid://cs8xdhvc1uxw6" path="res://ressources/pictures/Items/Raw_iron.png" id="1_sjqaq"]
+[ext_resource type="Texture2D" uid="uid://cs8xdhvc1uxw6" path="res://ressources/pictures/items/Raw_iron.png" id="1_sjqaq"]
 [ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="1_wyory"]
 
 [resource]
 script = ExtResource("1_wyory")
-name = "Eisen"
+name = "Rohes Eisen"
 icon = ExtResource("1_sjqaq")
 item_id = 4
 metadata/_custom_type_script = "uid://dwdabywcheuay"

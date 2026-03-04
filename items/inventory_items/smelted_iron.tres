@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://o17ajo4w8r4f"]
+
+[ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="1_27kxn"]
+[ext_resource type="Texture2D" uid="uid://c5d3ocb0qcwda" path="res://ressources/pictures/items/smelted_iron.png" id="1_nxetp"]
+
+[resource]
+script = ExtResource("1_27kxn")
+name = "Eisen"
+icon = ExtResource("1_nxetp")
+item_id = 5
+metadata/_custom_type_script = "uid://dwdabywcheuay"
