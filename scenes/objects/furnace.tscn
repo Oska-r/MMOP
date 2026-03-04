@@ -37,5 +37,5 @@ max_health = 100.0
 [node name="LootTable" type="Node" parent="Components" unique_id=1083001571]
 script = ExtResource("3_njbdr")
 loot_table = Dictionary[int, float]({
-1: 0.7
+2: 0.5
 })

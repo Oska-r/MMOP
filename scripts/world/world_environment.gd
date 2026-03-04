@@ -29,7 +29,7 @@ func _process(delta) -> void:
 	time += delta / day_length_seconds
 	if time > 1.0:
 		time -= 1.0
-		Global.advance_day()
+		GlobalGameState.advance_day()
 		day_started.emit()
 	
 	_update_lights()

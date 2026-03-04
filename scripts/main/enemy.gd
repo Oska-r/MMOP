@@ -29,7 +29,7 @@ func _ready() -> void:
 	oxygen_tank_position = oxygen_tank.global_position
 	damageable.died.connect(_on_died)
 	damageable.took_damage.connect(_took_damage)
-	Global.update_health_display(health_label, damageable)
+	UIHelper.update_health_display(health_label, damageable)
 
 func _physics_process(delta) -> void:
 	apply_gravity(delta)
@@ -42,7 +42,7 @@ func _physics_process(delta) -> void:
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
-		velocity.y -= Global.gravity * delta
+		velocity.y -= GlobalGameState.gravity * delta
 	else:
 		velocity.y = 0
 
@@ -94,7 +94,7 @@ func _on_died(source: Node) -> void:
 		loot_table.calculate_loot()
 
 func _took_damage(damage: int, source: Node) -> void:
-	Global.update_health_display(health_label, damageable)
+	UIHelper.update_health_display(health_label, damageable)
 
 # This function is called from the main scene.
 func initialize(start_position) -> void:

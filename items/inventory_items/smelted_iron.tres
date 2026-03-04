@@ -7,5 +7,5 @@
 script = ExtResource("1_27kxn")
 name = "Eisen"
 icon = ExtResource("1_nxetp")
-item_id = 5
+item_id = 6
 metadata/_custom_type_script = "uid://dwdabywcheuay"

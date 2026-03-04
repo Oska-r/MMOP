@@ -9,4 +9,5 @@ script = ExtResource("1_wrccq")
 name = "Werkbank"
 icon = ExtResource("1_7ld50")
 scene = ExtResource("1_hfafi")
+item_id = 8
 metadata/_custom_type_script = "uid://dwdabywcheuay"

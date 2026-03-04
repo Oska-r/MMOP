@@ -12,9 +12,9 @@ var bodies_inside := {}
 func _ready():
 	$Area3D.body_entered.connect(_on_body_entered)
 	$Area3D.body_exited.connect(_on_body_exited)
-	damageable.died.connect(_on_died)
+	damageable.took_damage.connect(_took_damage)
 
-func _on_died() -> void:
+func _took_damage(damge: int, source: Node) -> void:
 	loot_table.calculate_loot()
 
 func _on_body_entered(body: Node3D) -> void:
@@ -25,13 +25,10 @@ func _on_body_entered(body: Node3D) -> void:
 func _on_body_exited(body: Node3D) -> void:
 	bodies_inside.erase(body)
 
-func take_damage(damage: float) -> void:
-	damageable.take_damage(damage)
-
 func _physics_process(delta: float) -> void:
 	# Loop through bodies inside the spike area
 	for body in bodies_inside.keys():
 		bodies_inside[body] += delta
 		if bodies_inside[body] >= damage_interval:
-			body.take_damage_from_spike(damage)
+			DamageSystem.apply_damage(body, damage, self)
 			bodies_inside[body] = 0.0

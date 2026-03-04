@@ -44,9 +44,11 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 [autoload]
 
-Item_ids="*res://items/inventory_items/item_ids.gd"
-Global="*uid://btmv6j1xic2h6"
+Item_ids="*res://items/item_ids.gd"
+UIHelper="*uid://btmv6j1xic2h6"
 SimpleGrass="*uid://bfq0snth8sj3h"
+GlobalGameState="*uid://dwhqhjdilhcbq"
+SoundManager="*uid://earqa4y18n1j"
 
 [display]
 

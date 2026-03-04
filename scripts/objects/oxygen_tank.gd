@@ -16,14 +16,14 @@ var tier: int = 0
 func _ready() -> void:
 	update_oxygen_tank(tier)
 	damageable.died.connect(_on_died)
-	Global.update_health_display(health_label, damageable)
+	damageable.took_damage.connect(_took_damage)
+	UIHelper.update_health_display(health_label, damageable)
 	display_requirements(false)
 
-func take_damage(damage: float) -> void:
-	damageable.take_damage(damage)
-	Global.update_health_display(health_label, damageable)
+func _took_damage(damage: float, source: Node) -> void:
+	UIHelper.update_health_display(health_label, damageable)
 
-func _on_died() -> void:
+func _on_died(source: Node) -> void:
 	player.die()
 
 func get_requirements():

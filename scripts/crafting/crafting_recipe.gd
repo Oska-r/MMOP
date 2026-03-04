@@ -19,26 +19,40 @@ func _ready() -> void:
 
 ## Updates the items the player currently has for the recipe.
 func update_current_amount() -> void:
-	if not recipe or not inventory: 
+	if not recipe or not inventory:
 		return
 	
-	# 1. Get ingredient data (taking first item in the recipe for now)
-	var ingredient_id = recipe.ingredients.keys()[0]
-	var required_amount = recipe.ingredients[ingredient_id]
+	var display_text := ""
 	
-	# 2. Get inventory data
-	var locations = inventory.inventory_contains(ingredient_id)
-	var total = inventory.get_total_from_locations(locations)
+	# Loop through all ingredients in the recipe
+	for ingredient_id in recipe.ingredients.keys():
+		var required_amount = recipe.ingredients[ingredient_id]
+		
+		# Get total amount from inventory
+		var locations = inventory.inventory_contains(ingredient_id)
+		var total = inventory.get_total_from_locations(locations)
+		
+		# Get item details
+		var item_data = ItemIDs.get_item(ingredient_id)
+		if item_data:
+			# Append each ingredient's info to the display text
+			display_text += UIHelper.format_amount_text(total, required_amount, item_data.name) + "\n"
 	
-	# 3. Get item details for display
-	var item_data = ItemIDs.get_item(ingredient_id)
-	if item_data:
-		recipe_label.text = Global.format_amount_text(total, required_amount, item_data.name)
+	# Update the recipe label with all ingredients
+	recipe_label.text = display_text.strip_edges()  # remove trailing newline
 	
-	# 4. Show the result item name
+	# Show the result item name and icon
 	var result_data = ItemIDs.get_item(recipe.result_item)
 	if result_data:
 		title.text = result_data.name 
-	texture_icon.texture = result_data.icon
+		texture_icon.texture = result_data.icon
 	
-	disabled = total < required_amount
+	# Disable if any ingredient is insufficient
+	var all_sufficient = true
+	for ingredient_id in recipe.ingredients.keys():
+		var required_amount = recipe.ingredients[ingredient_id]
+		var total = inventory.get_total_from_locations(inventory.inventory_contains(ingredient_id))
+		if total < required_amount:
+			all_sufficient = false
+			break
+	disabled = not all_sufficient

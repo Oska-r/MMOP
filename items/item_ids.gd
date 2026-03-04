@@ -2,26 +2,26 @@ extends Node
 class_name ItemIDs
 
 enum ItemID {
+	NONE,
 	WOOD,
 	STONE,
-	SPIKE,
+	SPIKES,
 	OIL,
-	IRON,
+	RAW_IRON,
 	SMELTED_IRON,
 	FURNACE,
-	NONE,
 	CRAFTING_TABLE
 }
 
 const ITEM_REGISTRY := {
+	ItemID.NONE: preload("res://items/inventory_items/none.tres"),
 	ItemID.WOOD: preload("res://items/inventory_items/blocks/wood.tres"),
 	ItemID.STONE: preload("res://items/inventory_items/blocks/stone.tres"),
-	ItemID.SPIKE: preload("res://items/inventory_items/blocks/spikes.tres"),
+	ItemID.SPIKES: preload("res://items/inventory_items/blocks/spikes.tres"),
 	ItemID.OIL: preload("res://items/inventory_items/oil.tres"),
-	ItemID.IRON: preload("res://items/inventory_items/iron.tres"),
+	ItemID.RAW_IRON: preload("res://items/inventory_items/raw_iron.tres"),
 	ItemID.SMELTED_IRON: preload("res://items/inventory_items/smelted_iron.tres"),
 	ItemID.FURNACE: preload("res://items/inventory_items/furnace.tres"),
-	ItemID.NONE: preload("res://items/inventory_items/none.tres"),
 	ItemID.CRAFTING_TABLE: preload("res://items/inventory_items/crafting_table.tres")
 }
 

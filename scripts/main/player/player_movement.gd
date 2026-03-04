@@ -117,7 +117,7 @@ func _physics_process(delta: float) -> void:
 
 	# Landing sounds
 	if not was_on_floor and player.is_on_floor():
-		Global.play_sound(landing)
+		SoundManager.play_sound(landing)
 	was_on_floor = player.is_on_floor()
 
 ## Rotate us to look around.

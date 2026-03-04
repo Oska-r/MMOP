@@ -1,4 +1,4 @@
 extends Label3D
 
 func _process(delta):
-	Global.rotate(self, 180)
+	UIHelper.rotate(self, 180)

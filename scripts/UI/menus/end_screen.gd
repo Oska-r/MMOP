@@ -4,8 +4,8 @@ extends Control
 
 func _ready() -> void:
 	get_tree().paused = false
-	var unit = "Tage" if Global.day_count != 1 else "Tag"
-	label.text = "Game Over!\nDu hast %d %s überlebt." % [Global.day_count, unit]
+	var unit = "Tage" if GlobalGameState.day_count != 1 else "Tag"
+	label.text = "Game Over!\nDu hast %d %s überlebt." % [GlobalGameState.day_count, unit]
 	visible = true
 
 func _on_restart_pressed() -> void:
@@ -16,7 +16,7 @@ func _on_quit_pressed() -> void:
 	get_tree().quit()
 
 func _on_neustart_pressed() -> void:
-	Global.reset_day()
+	GlobalGameState.reset_day()
 	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
 
 func _on_button_pressed() -> void:

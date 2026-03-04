@@ -9,9 +9,9 @@ var enemy_damage: float = 10.0
 var enemy_health: float = 50.0
 
 func new_day() -> void:
-	timer.wait_time = calculate_wait_time(Global.day_count)
-	calculate_enemy_stats(Global.day_count)
-	print_day_stats(Global.day_count)
+	timer.wait_time = calculate_wait_time(GlobalGameState.day_count)
+	calculate_enemy_stats(GlobalGameState.day_count)
+	print_day_stats(GlobalGameState.day_count)
 
 var timer_wait_time: float = 5.0
 var min_wait_time: float = 1.0
@@ -36,7 +36,8 @@ func scale_stat(start_value: float, max_value: float, growth_rate: float, day_co
 
 func _process(delta: float) -> void:
 	if world.is_day():
-		get_tree().call_group("enemy", "sun_damage", world.sun_damage * delta)
+		for enemy in get_tree().get_nodes_in_group("enemy"):
+			DamageSystem.apply_damage(self, world.sun_damage * delta, self)
 
 func _on_timer_timeout() -> void:
 	if world.is_day():

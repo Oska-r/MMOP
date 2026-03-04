@@ -9,5 +9,5 @@ script = ExtResource("3_qk50q")
 name = "Spikes"
 icon = ExtResource("1_donh2")
 scene = ExtResource("2_donh2")
-item_id = 2
+item_id = 3
 metadata/_custom_type_script = "uid://dwdabywcheuay"

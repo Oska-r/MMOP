@@ -179,13 +179,13 @@ func place_block(item) -> bool:
 	if not spawn_pos:
 		return false
 	
-	Global.play_sound(item.sound)
+	SoundManager.play_sound(item.sound)
 	
 	var instance = item.scene.instantiate()
 	blocks_root.add_child(instance)
 	instance.global_transform.origin = spawn_pos
 	
-	Global.rotate(instance, 270)
+	UIHelper.rotate(instance, 270)
 	
 	# Force update the preview immediately so it doesn't show inside the new block
 	clear_preview()
@@ -224,7 +224,7 @@ func show_preview(item) -> void:
 		# Preview exists, just move it
 		last_preview.global_transform.origin = spawn_pos
 	
-	Global.rotate(last_preview, 270)
+	UIHelper.rotate(last_preview, 270)
 
 ## Disables all collision from all children.
 func disable_collision_recursively(node: Node) -> void:
@@ -304,7 +304,6 @@ func _on_attack_timer_timeout():
 func _on_died() -> void:
 	dead = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	# Use call_deferred to delay the scene change
 	call_deferred("_change_to_end_screen")
 
 func _change_to_end_screen() -> void:

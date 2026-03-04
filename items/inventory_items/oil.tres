@@ -7,5 +7,5 @@
 script = ExtResource("1_q5lot")
 name = "Öl"
 icon = ExtResource("1_buut5")
-item_id = 3
+item_id = 4
 metadata/_custom_type_script = "uid://dwdabywcheuay"
