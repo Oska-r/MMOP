@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cc0c65i761qig"
-path="res://.godot/imported/Spikes.glb-ae3d15634ef8e63da3cd28c271f16407.scn"
+path="res://.godot/imported/Spikes.glb-0b1bf569d5e207f885ddcc486744aea9.scn"
 
 [deps]
 
-source_file="res://ressources/models/spike/Spikes.glb"
-dest_files=["res://.godot/imported/Spikes.glb-ae3d15634ef8e63da3cd28c271f16407.scn"]
+source_file="res://ressources/models/Spike/Spikes.glb"
+dest_files=["res://.godot/imported/Spikes.glb-0b1bf569d5e207f885ddcc486744aea9.scn"]
 
 [params]
 

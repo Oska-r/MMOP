@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://case33da0xjau"
-path="res://.godot/imported/Rakete.glb-46d3e4c1f638525268a56ff45bdd25da.scn"
+path="res://.godot/imported/Rakete.glb-c74b721e25afdedf5a57c1fa2f542ab6.scn"
 
 [deps]
 
-source_file="res://ressources/models/rakete/Rakete.glb"
-dest_files=["res://.godot/imported/Rakete.glb-46d3e4c1f638525268a56ff45bdd25da.scn"]
+source_file="res://ressources/models/Rakete/Rakete.glb"
+dest_files=["res://.godot/imported/Rakete.glb-c74b721e25afdedf5a57c1fa2f542ab6.scn"]
 
 [params]
 
