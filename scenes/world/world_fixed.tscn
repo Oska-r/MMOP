@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bkjoqiq310tq5" path="res://scenes/world/island/island.tscn" id="5_adh44"]
 [ext_resource type="PackedScene" uid="uid://dr230symovhoe" path="res://scenes/objects/chest.tscn" id="5_ee6x1"]
 [ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="6_5wiho"]
-[ext_resource type="Script" uid="uid://dudgagn82qdak" path="res://scripts/objects/items/stone.gd" id="7_1q4oq"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_va0ml"]
 load_path = "res://.godot/imported/wood_block.png-281bc3242c9d4729ee26c68e4a19f259.ctex"
@@ -31,7 +30,7 @@ _bundled = {
 "node_ids": PackedInt32Array(800659260, 2141835005, 391328780),
 "node_paths": [NodePath("."), NodePath(".")],
 "nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 2, 0, 3, 1, 0, 1073741824, 0, 5, 4, -1, 1, 6, 2, 0, 1073741825, 0, 8, 7, -1, 1, 9, 3, 0),
-"variants": [ExtResource("7_1q4oq"), 20.0, SubResource("BoxMesh_kxjt8"), SubResource("BoxShape3D_asons")],
+"variants": [ 20.0, SubResource("BoxMesh_kxjt8"), SubResource("BoxShape3D_asons")],
 "version": 3
 }
 
@@ -66,7 +65,7 @@ _bundled = {
 "node_ids": PackedInt32Array(800659260, 2141835005, 391328780),
 "node_paths": [NodePath("."), NodePath(".")],
 "nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 2, 0, 3, 1, 0, 1073741824, 0, 5, 4, -1, 1, 6, 2, 0, 1073741825, 0, 8, 7, -1, 1, 9, 3, 0),
-"variants": [ExtResource("7_1q4oq"), 20.0, SubResource("BoxMesh_n4y3v"), SubResource("BoxShape3D_p15kb")],
+"variants": [20.0, SubResource("BoxMesh_n4y3v"), SubResource("BoxShape3D_p15kb")],
 "version": 3
 }
 
