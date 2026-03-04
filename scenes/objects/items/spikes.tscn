@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cnpw1o63yeqbo" path="res://scripts/objects/items/spikes.gd" id="1_4ay1g"]
 [ext_resource type="ArrayMesh" uid="uid://cq24eo0lx5ukw" path="res://ressources/meshs/spikes.tres" id="1_bg2ou"]
 [ext_resource type="Script" uid="uid://3f54wqp2pk5k" path="res://scripts/components/damageable.gd" id="3_wweuy"]
+[ext_resource type="Script" uid="uid://cex520s86u2lf" path="res://scripts/components/loot_table.gd" id="4_tsoic"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2u5lu"]
 size = Vector3(9.05748, 10.083445, 15.878012)
@@ -35,3 +36,9 @@ skeleton = NodePath("")
 [node name="Damageable" type="Node" parent="Components" unique_id=863016388]
 script = ExtResource("3_wweuy")
 max_health = 100.0
+
+[node name="LootTable" type="Node" parent="Components" unique_id=1292478420]
+script = ExtResource("4_tsoic")
+loot_table = Dictionary[int, float]({
+1: 1.0
+})

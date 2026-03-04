@@ -2,20 +2,21 @@ extends Node
 class_name ItemIDs
 
 enum ItemID {
-	STONE,
 	WOOD,
+	STONE,
 	SPIKE,
 	OIL,
+	IRON,
 	NONE
 }
 
 const ITEM_REGISTRY := {
-	ItemID.STONE: preload("res://items/inventory_items/blocks/stone.tres"),
 	ItemID.WOOD: preload("res://items/inventory_items/blocks/wood.tres"),
+	ItemID.STONE: preload("res://items/inventory_items/blocks/stone.tres"),
 	ItemID.SPIKE: preload("res://items/inventory_items/blocks/spikes.tres"),
 	ItemID.OIL: preload("res://items/inventory_items/oil.tres"),
-	ItemID.NONE: preload("res://items/inventory_items/none.tres"),
-
+	ItemID.IRON: preload("res://items/inventory_items/iron.tres"),
+	ItemID.NONE: preload("res://items/inventory_items/none.tres")
 }
 
 static func get_item(id: ItemID) -> Item:

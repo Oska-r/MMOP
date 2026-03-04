@@ -14,7 +14,7 @@ extends CharacterBody3D
 @onready var health_label: Label3D = $HealthLabel
 
 # Damage
-var damage_timer: float= 0.0
+var damage_timer: float = 0.0
 var bodies_in_damage_area: Array[Node3D] = []
 var player_can_take_damage: bool = true
 
