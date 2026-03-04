@@ -19,7 +19,7 @@ func _on_died() -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("damagable_by_spikes"):
-		body.take_damage(damage)  # initial hit
+		DamageSystem.apply_damage(body, damage, self)
 		bodies_inside[body] = 0.0  # start timer for interval damage
 
 func _on_body_exited(body: Node3D) -> void:

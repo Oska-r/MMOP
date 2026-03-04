@@ -52,7 +52,7 @@ radius = 0.5444336
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uh7n0"]
 points = PackedVector3Array(-0.50000006, -0.08333333, -0.50000006, -0.50000006, -0.08333333, 0.4999022, -0.50000006, 0, -0.50000006, 0.4999022, -0.08333333, -0.50000006, -0.50000006, 0, 0.4999022, 0.4999022, -0.08333333, 0.4999022, 0.4999022, 0, -0.50000006, 0.4999022, 0, 0.4999022)
 
-[node name="Oxygentank" type="StaticBody3D" unique_id=1610524823 groups=["Oxygentank", "damagable_by_enemy"]]
+[node name="Oxygentank" type="StaticBody3D" unique_id=1610524823 groups=["damagable_by_enemy", "oxygen_tank"]]
 script = ExtResource("1_gbipx")
 upgrade_requirements = Array[ExtResource("2_qdb88")]([SubResource("Resource_qdb88"), SubResource("Resource_fe8re"), SubResource("Resource_vx1k4"), SubResource("Resource_jinhm")])
 rocket_scene = ExtResource("3_1lc3u")

@@ -34,6 +34,8 @@ func _ready() -> void:
 	damageable.died.connect(_on_died)
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	emit_signal("player_health_changed", get_health(), get_max_health())
+	
+	damageable.took_damage.connect(_took_damage)
 
 var looking_at_tank: bool = false  # track previous frame
 
@@ -281,7 +283,7 @@ func handle_attack() -> void:
 	
 	for body in targets:
 		if body.is_in_group("damagable_by_player"):
-			body.take_damage(damage)
+			DamageSystem.apply_damage(body, damage, self)
 			damage_timer = attack_interval
 			attack_animation()
 
@@ -292,8 +294,7 @@ func attack_animation() -> void:
 	attack_Area.visible = true
 	attack_timer.start()
 
-func take_damage(damage: int) -> void:
-	damageable.take_damage(damage)
+func _took_damage(damage: int, soruce: Node):
 	emit_signal("player_health_changed", get_health(), get_max_health())
 
 func _on_attack_timer_timeout():

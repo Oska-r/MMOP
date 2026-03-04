@@ -1,8 +1,9 @@
 extends CharacterBody3D
+
 @onready var agent: NavigationAgent3D = $NavigationAgent3D
 @onready var damage_area: Area3D = $Damage_Area
 @onready var player = get_tree().get_first_node_in_group("player")
-@onready var oxygen_tank = get_tree().get_first_node_in_group("Oxygentank")
+@onready var oxygen_tank = get_tree().get_first_node_in_group("oxygen_tank")
 
 @export var speed: float = 3.0
 @export var damage: float = 10.0
@@ -72,11 +73,8 @@ func handle_damage() -> void:
 		return
 	
 	for body in bodies_in_damage_area:
-		# don't apply damage to other enemys
-		if body.is_in_group("enemy"):
-			pass
-		elif body != null and body.is_in_group("damagable_by_enemy"):
-			body.take_damage(damage)
+		if body.is_in_group("damagable_by_enemy"):
+			DamageSystem.apply_damage(body, damage, self)
 			damage_timer = damage_interval
 
 ## returns the "best target"
@@ -91,26 +89,11 @@ func find_target():
 		return player_position
 
 ## Delete node and drop loot.
-func _on_died() -> void:
-	if drop_loot:
+func _on_died(source: Node) -> void:
+	if source == player:
 		loot_table.calculate_loot()
 
-var drop_loot: bool = false
-
-func take_damage_from_spike(damage: int) -> void:
-	drop_loot = false
-	damageable.take_damage(damage)
-
-func sun_damage(amount: float) -> void:
-	drop_loot = false
-	damageable.take_damage(amount)
-
-func take_damage(damage: float) -> void:
-	drop_loot = true
-	damageable.take_damage(damage)
-
-# Put updating label here to avoid redundancy
-func _took_damage(damage: int) -> void:
+func _took_damage(damage: int, source: Node) -> void:
 	Global.update_health_display(health_label, damageable)
 
 # This function is called from the main scene.
