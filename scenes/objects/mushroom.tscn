@@ -97,7 +97,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_f1cua")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gh33d"]
-radius = 0.23677939
+radius = 0.2
 
 [node name="Mushroom" type="StaticBody3D" unique_id=1959654397]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
@@ -108,11 +108,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.342, 0)
 mesh = SubResource("ArrayMesh_xyanh")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=155718641]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
-shape = SubResource("SphereShape3D_gh33d")
-
 [node name="Label3D" type="Label3D" parent="." unique_id=1242683970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6133032, 0)
+visible = false
 text = "Dürcke E zum Aufsammeln"
 script = ExtResource("2_gh33d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=69014228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+shape = SubResource("SphereShape3D_gh33d")

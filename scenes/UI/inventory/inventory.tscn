@@ -6,9 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://40vsn8hlif6j" path="res://scenes/miscellaneous/crafting_recipe.tscn" id="3_lvvmf"]
 [ext_resource type="Script" uid="uid://dyb1bfd8gw2xv" path="res://scripts/crafting/crafting_table_inventory.gd" id="3_qjyq4"]
 [ext_resource type="AudioStream" uid="uid://cpad3gapdyd43" path="res://ressources/sounds/UI/crafting_sound.mp3" id="4_qjyq4"]
-[ext_resource type="Resource" uid="uid://cxpbguwg51xly" path="res://items/crafting/crafting_recipes/spikes.tres" id="7_ahcd1"]
 [ext_resource type="Script" uid="uid://brlk3nbeeodmj" path="res://scripts/components/crafting.gd" id="8_s8njh"]
 [ext_resource type="Script" uid="uid://bmtjonaqm2qjx" path="res://items/crafting/crafting_recipe.gd" id="9_41ady"]
+
+[sub_resource type="Resource" id="Resource_s8njh"]
+script = ExtResource("9_41ady")
+result_item = 3
+ingredients = Dictionary[int, int]({
+1: 20
+})
+metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
 
 [sub_resource type="Resource" id="Resource_41ady"]
 script = ExtResource("9_41ady")
@@ -23,6 +30,23 @@ script = ExtResource("9_41ady")
 result_item = 8
 ingredients = Dictionary[int, int]({
 1: 10
+})
+metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
+
+[sub_resource type="Resource" id="Resource_nwm8m"]
+script = ExtResource("9_41ady")
+result_item = 10
+ingredients = Dictionary[int, int]({
+1: 10
+})
+metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
+
+[sub_resource type="Resource" id="Resource_2g5f6"]
+script = ExtResource("9_41ady")
+result_item = 11
+ingredients = Dictionary[int, int]({
+4: 1,
+6: 1
 })
 metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
 
@@ -546,8 +570,8 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -296.0
-offset_top = -179.0
-offset_bottom = 212.0
+offset_top = -321.0
+offset_bottom = 325.0
 grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("3_qjyq4")
@@ -564,9 +588,15 @@ script = ExtResource("8_s8njh")
 
 [node name="Recipes" type="FlowContainer" parent="CraftingTable" unique_id=319448415]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -283.0
+offset_right = 90.0
+offset_bottom = 283.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -574,9 +604,9 @@ alignment = 1
 [node name="Spikes" parent="CraftingTable/Recipes" unique_id=1373007955 instance=ExtResource("3_lvvmf")]
 layout_mode = 2
 size_flags_vertical = 3
-recipe = ExtResource("7_ahcd1")
+recipe = SubResource("Resource_s8njh")
 
-[node name="Furnace" parent="CraftingTable/Recipes" unique_id=799557746 instance=ExtResource("3_lvvmf")]
+[node name="Furnace" parent="CraftingTable/Recipes" unique_id=410143978 instance=ExtResource("3_lvvmf")]
 layout_mode = 2
 size_flags_vertical = 3
 recipe = SubResource("Resource_41ady")
@@ -585,6 +615,16 @@ recipe = SubResource("Resource_41ady")
 layout_mode = 2
 size_flags_vertical = 3
 recipe = SubResource("Resource_2rku5")
+
+[node name="Wall" parent="CraftingTable/Recipes" unique_id=799557746 instance=ExtResource("3_lvvmf")]
+layout_mode = 2
+size_flags_vertical = 3
+recipe = SubResource("Resource_nwm8m")
+
+[node name="Lantern" parent="CraftingTable/Recipes" unique_id=1832433858 instance=ExtResource("3_lvvmf")]
+layout_mode = 2
+size_flags_vertical = 3
+recipe = SubResource("Resource_2g5f6")
 
 [node name="Furnace" type="ReferenceRect" parent="." unique_id=620784737 node_paths=PackedStringArray("inventory", "crafting_sound")]
 layout_mode = 1

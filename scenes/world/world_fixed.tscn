@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bkjoqiq310tq5" path="res://scenes/world/island/island.tscn" id="5_adh44"]
 [ext_resource type="PackedScene" uid="uid://dr230symovhoe" path="res://scenes/objects/chest.tscn" id="5_ee6x1"]
 [ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="6_5wiho"]
-[ext_resource type="PackedScene" uid="uid://c1cvi5ha62drp" path="res://scenes/objects/lantern.tscn" id="8_1q4oq"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ee6x1"]
 
@@ -70,6 +69,3 @@ transform = Transform3D(-0.43761796, 0.89916104, 0, -0.89916104, -0.43761796, 0,
 [node name="Chest" parent="." unique_id=684924033 instance=ExtResource("5_ee6x1")]
 transform = Transform3D(-0.9983317, 0, 0.057738274, 0, 1, 0, -0.057738274, 0, -0.9983317, 37.46776, 0.9006103, -51.97395)
 chest_items = Array[ExtResource("6_5wiho")]([SubResource("Resource_1q4oq"), null, null, null, null, null, null])
-
-[node name="Lantern" parent="." unique_id=2023370505 instance=ExtResource("8_1q4oq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3616195, 0.63290405, 2.799077)

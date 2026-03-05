@@ -5,6 +5,30 @@
 [ext_resource type="Script" uid="uid://3f54wqp2pk5k" path="res://scripts/components/damageable.gd" id="3_eogu4"]
 [ext_resource type="Script" uid="uid://cex520s86u2lf" path="res://scripts/components/loot_table.gd" id="4_7yu6v"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mbbxw"]
+radius = 0.52246094
+height = 3.419159
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lg7fn"]
+radius = 0.61621094
+height = 4.135023
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_03oh1"]
+radius = 0.36572266
+height = 3.030826
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0v8c2"]
+radius = 0.37060547
+height = 3.1375046
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_edpnc"]
+radius = 0.74560547
+height = 3.9190521
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1pa56"]
+radius = 0.6123047
+height = 4.912651
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7yu6v"]
 radius = 1.8242188
 height = 13.330566
@@ -13,11 +37,36 @@ height = 13.330566
 transform = Transform3D(0.58836883, -0.11756769, 0, 0.11756769, 0.58836883, 0, 0, 0, 0.6, 0, 0, 0)
 script = ExtResource("1_5qchx")
 
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=724554530]
+transform = Transform3D(0.5585849, -0.8294474, 0, 0.8294474, 0.5585849, 0, 0, 0, 0.99999946, -2.4837892, -5.7714143, 0.036848772)
+shape = SubResource("CapsuleShape3D_mbbxw")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="." unique_id=1910620975]
+transform = Transform3D(0.21457475, -0.0053680316, 0.97669244, 0.8981875, 0.39391774, -0.19516236, -0.3836888, 0.91913027, 0.08934628, -5.4003887, -5.0356674, -3.0516648)
+shape = SubResource("CapsuleShape3D_lg7fn")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="." unique_id=874673004]
+transform = Transform3D(-0.026169568, 0.9992143, 0.029771905, 0.9996408, 0.026334241, -0.005146144, -0.0059260894, 0.029626446, -0.9995429, -7.688653, -4.8562403, -0.10302254)
+shape = SubResource("CapsuleShape3D_03oh1")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=765660330]
+transform = Transform3D(0.19685921, 0.03706892, -0.9797303, 0.9017279, 0.38543802, 0.19576938, 0.38488224, -0.9219889, 0.042451065, -5.7406263, -5.1617026, 3.5679123)
+shape = SubResource("CapsuleShape3D_0v8c2")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=856934417]
+transform = Transform3D(0.18123496, 0.34675753, -0.9202787, 0.35563174, 0.84933877, 0.39006352, 0.91688645, -0.39797306, 0.03061225, -5.2332263, -3.8566208, 2.0548112)
+shape = SubResource("CapsuleShape3D_edpnc")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="." unique_id=87868403]
+transform = Transform3D(-0.02262063, 0.7718715, -0.635376, 0.31554368, 0.60856473, 0.72806674, 0.948642, -0.18401906, -0.2573248, -1.5443859, -1.498378, -0.14756057)
+shape = SubResource("CapsuleShape3D_1pa56")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=514455291]
 transform = Transform3D(0.94765705, 0.31929, 0, -0.31929, 0.94765705, 0, 0, 0, 0.99999976, -3.2150264, 0.9520003, 0.04891014)
 shape = SubResource("CapsuleShape3D_7yu6v")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1918297551]
+transform = Transform3D(1, -2.9802322e-08, 0, 2.9802322e-08, 1, 0, 0, 0, 0.9999998, -0.0064708665, -0.011091314, 0.0008145967)
 mesh = ExtResource("1_eogu4")
 
 [node name="Components" type="Node" parent="." unique_id=245844749]

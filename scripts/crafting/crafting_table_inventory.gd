@@ -13,4 +13,8 @@ func _ready() -> void:
 func _on_button_pressed(button: Button) -> void:
 	if crafting.craft(button.recipe):
 		SoundManager.play_sound(crafting_sound)
-		button.update_current_amount()
+		update_ui()
+
+func update_ui() -> void:
+	for child in get_node("Recipes").get_children():
+		child.update_current_amount()

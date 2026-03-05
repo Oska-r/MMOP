@@ -21,11 +21,11 @@ texture = ExtResource("2_0jp5n")
 
 [node name="Item" type="TextureRect" parent="." unique_id=889700171]
 layout_mode = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 45.0
-offset_bottom = 45.0
-expand_mode = 2
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 42.0
+offset_bottom = 44.0
+expand_mode = 4
 
 [node name="TopLeft" type="RichTextLabel" parent="." unique_id=1542889745]
 layout_mode = 0

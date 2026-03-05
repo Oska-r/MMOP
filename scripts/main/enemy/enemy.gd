@@ -33,9 +33,6 @@ func _ready() -> void:
 	damageable.died.connect(_on_died)
 	damageable.took_damage.connect(_took_damage)
 	UIHelper.update_health_display(health_label, damageable)
-	
-	print_debug(type, " enemy spawned")
-
 
 func _physics_process(delta) -> void:
 	apply_gravity(delta)

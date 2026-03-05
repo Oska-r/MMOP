@@ -11,5 +11,4 @@ func pickup_mushroom() -> void:
 	queue_free()
 
 func display_requirements(on: bool) -> void:
-	print_debug("Mushroom displayed")
 	label.visible = on
