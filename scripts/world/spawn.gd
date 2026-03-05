@@ -34,6 +34,39 @@ func calculate_enemy_stats(day_count: int) -> void:
 func scale_stat(start_value: float, max_value: float, growth_rate: float, day_count: int) -> float:
 	return max_value - (max_value - start_value) * exp(-growth_rate * day_count)
 
+func apply_mob_stats(mob) -> void:
+	
+	var mat := mob.get_node("Body").material_override.duplicate() as StandardMaterial3D
+	var body = mob.get_node("Body")
+	body.material_override = mat
+
+	var collision_shape = mob.get_node("CollisionShape3D")
+
+	var color := mat.albedo_color
+	var scale_factor := 1.0
+
+	match mob.type:
+		EnemyTypes.EnemyType.NORMAL:
+			pass
+
+		EnemyTypes.EnemyType.SMALL:
+			enemy_speed *= 1.5
+			mat.albedo_color = color.lightened(0.25)
+			scale_factor = 0.7
+
+		EnemyTypes.EnemyType.BIG:
+			enemy_health *= 1.5
+			mat.albedo_color = color.darkened(0.25)
+			scale_factor = 1.5
+
+	# Apply scaling
+	body.scale = Vector3.ONE * scale_factor
+	collision_shape.scale = Vector3.ONE * scale_factor
+	
+	mob.speed = enemy_speed
+	mob.damage = enemy_damage
+	mob.get_node("Components/Damageable").max_health = enemy_health
+
 func _process(delta: float) -> void:
 	if world.is_day():
 		for enemy in get_tree().get_nodes_in_group("enemy"):
@@ -43,11 +76,6 @@ func _on_timer_timeout() -> void:
 	if world.is_day():
 		return
 	spawn_mob()
-
-func apply_mob_stats(mob) -> void:
-	mob.speed = enemy_speed
-	mob.damage = enemy_damage
-	mob.get_node("Components/Damageable").max_health = enemy_health
 
 func spawn_mob() -> void:
 	var mob = mob_scene.instantiate()

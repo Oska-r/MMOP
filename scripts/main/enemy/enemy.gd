@@ -23,6 +23,8 @@ var player_can_take_damage: bool = true
 var player_position : Vector3
 var oxygen_tank_position : Vector3
 
+var type: EnemyTypes.EnemyType
+
 func _ready() -> void:
 	randomize() # So that numbers between different executes are random.
 	add_to_group("enemy")
@@ -30,6 +32,13 @@ func _ready() -> void:
 	damageable.died.connect(_on_died)
 	damageable.took_damage.connect(_took_damage)
 	UIHelper.update_health_display(health_label, damageable)
+	
+	randomize_type()
+	print_debug(type, " enemy spawned")
+
+func randomize_type() -> void:
+	var random_type = randi() % EnemyTypes.EnemyType.size()
+	type = random_type
 
 func _physics_process(delta) -> void:
 	apply_gravity(delta)
