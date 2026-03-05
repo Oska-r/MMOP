@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c1cvi5ha62drp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bst75"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bst75"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Lantern" type="StaticBody3D" unique_id=2023370505]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1620609282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1704235, 0)
+light_energy = 6.5
+omni_range = 15.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=449274666]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_bst75")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2141982822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_bst75")

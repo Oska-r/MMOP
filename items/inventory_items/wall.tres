@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bumj4jm14pj3d"]
+
+[ext_resource type="PackedScene" uid="uid://d0mtvvrhmsiw4" path="res://scenes/objects/wall.tscn" id="1_81oie"]
+[ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="1_nsox3"]
+[ext_resource type="Texture2D" uid="uid://ckhwyfmh36bhr" path="res://ressources/materials/grass_noise.tres" id="1_q7s3w"]
+
+[resource]
+script = ExtResource("1_nsox3")
+name = "Wand"
+icon = ExtResource("1_q7s3w")
+scene = ExtResource("1_81oie")
+item_id = 10
+metadata/_custom_type_script = "uid://dwdabywcheuay"

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://d0mtvvrhmsiw4"]
+
+[ext_resource type="Script" uid="uid://3f54wqp2pk5k" path="res://scripts/components/damageable.gd" id="1_2yst1"]
+[ext_resource type="Script" uid="uid://badcft1s7fdt1" path="res://scripts/objects/wall.gd" id="1_rt6j4"]
+[ext_resource type="Script" uid="uid://cex520s86u2lf" path="res://scripts/components/loot_table.gd" id="2_rt6j4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_my1am"]
+size = Vector3(5, 3, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_my1am"]
+albedo_color = Color(0.74959445, 0.385429, 0.22602159, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y1upl"]
+size = Vector3(5, 3, 0.5)
+
+[node name="Wall" type="StaticBody3D" unique_id=1420939592 groups=["damagable_by_enemy", "damagable_by_player"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_rt6j4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=969890947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("BoxMesh_my1am")
+surface_material_override/0 = SubResource("StandardMaterial3D_my1am")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=629583668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_y1upl")
+
+[node name="Components" type="Node" parent="." unique_id=1260009937]
+
+[node name="Damageable" type="Node" parent="Components" unique_id=210917224]
+script = ExtResource("1_2yst1")
+max_health = 100.0
+
+[node name="LootTable" type="Node" parent="Components" unique_id=1717322306]
+script = ExtResource("2_rt6j4")
+loot_table = Dictionary[int, float]({
+1: 0.3
+})
