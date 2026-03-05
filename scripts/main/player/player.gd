@@ -304,16 +304,13 @@ func _on_attack_timer_timeout():
 	if is_instance_valid(attack_Area):
 		attack_Area.visible = false
 
-func _on_died() -> void:
+func _on_died(source: Node) -> void:
 	dead = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	call_deferred("_change_to_end_screen")
+	_change_to_end_screen()
 
 func _change_to_end_screen() -> void:
 	get_viewport().get_tree().change_scene_to_file("res://scenes/UI/menus/end_screen.tscn")
-
-func die() -> void:
-	damageable.die()
 
 #endregion
 

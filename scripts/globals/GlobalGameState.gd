@@ -1,6 +1,6 @@
 extends Node
 
-var day_count: int = 0
+var day_count: int = 1
 var gravity: float = 9.8
 
 func reset_day() -> void:

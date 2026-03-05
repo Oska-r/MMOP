@@ -564,14 +564,11 @@ text = "Kiste"
 
 [node name="CraftingTable" type="ReferenceRect" parent="." unique_id=1397895332 node_paths=PackedStringArray("inventory", "crafting_sound")]
 layout_mode = 1
-anchors_preset = 6
+anchors_preset = 11
 anchor_left = 1.0
-anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -296.0
-offset_top = -321.0
-offset_bottom = 325.0
 grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("3_qjyq4")
@@ -628,12 +625,9 @@ recipe = SubResource("Resource_2g5f6")
 
 [node name="Furnace" type="ReferenceRect" parent="." unique_id=620784737 node_paths=PackedStringArray("inventory", "crafting_sound")]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -195.5
-offset_right = 296.0
-offset_bottom = 195.5
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 294.0
 grow_vertical = 2
 script = ExtResource("3_qjyq4")
 inventory = NodePath("..")

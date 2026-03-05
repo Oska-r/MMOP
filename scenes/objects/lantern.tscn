@@ -1,11 +1,17 @@
 [gd_scene format=3 uid="uid://c1cvi5ha62drp"]
 
+[ext_resource type="Material" uid="uid://dhcdd2kwlnlnd" path="res://ressources/materials/brown_material.tres" id="1_443ya"]
+[ext_resource type="Script" uid="uid://decm1v7kfcixf" path="res://scripts/objects/lantern.gd" id="1_eua1y"]
+[ext_resource type="Script" uid="uid://3f54wqp2pk5k" path="res://scripts/components/damageable.gd" id="3_mf0wr"]
+[ext_resource type="Script" uid="uid://cex520s86u2lf" path="res://scripts/components/loot_table.gd" id="4_8ndn5"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_bst75"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_bst75"]
 size = Vector3(0.5, 0.5, 0.5)
 
-[node name="Lantern" type="StaticBody3D" unique_id=2023370505]
+[node name="Lantern" type="StaticBody3D" unique_id=2023370505 groups=["damagable_by_player"]]
+script = ExtResource("1_eua1y")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1620609282]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1704235, 0)
@@ -13,9 +19,21 @@ light_energy = 6.5
 omni_range = 15.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=449274666]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.2, 0)
 shape = SubResource("BoxShape3D_bst75")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2141982822]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 mesh = SubResource("BoxMesh_bst75")
+surface_material_override/0 = ExtResource("1_443ya")
+
+[node name="Components" type="Node" parent="." unique_id=1871396557]
+
+[node name="Damageable" type="Node" parent="Components" unique_id=217118549]
+script = ExtResource("3_mf0wr")
+
+[node name="LootTable" type="Node" parent="Components" unique_id=855979969]
+script = ExtResource("4_8ndn5")
+loot_table = Dictionary[int, float]({
+11: 1.0
+})
