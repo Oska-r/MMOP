@@ -5,7 +5,7 @@ extends CharacterBody3D
 
 @onready var agent: NavigationAgent3D = $NavigationAgent3D
 @onready var damage_area: Area3D = $Damage_Area
-@onready var health_label: Label3D = $HealthLabel
+@onready var health_label: Label3D = $Body/HealthLabel
 
 @onready var damageable: Node = $Components/Damageable
 @onready var loot_table: Node = $Components/LootTable
@@ -34,12 +34,8 @@ func _ready() -> void:
 	damageable.took_damage.connect(_took_damage)
 	UIHelper.update_health_display(health_label, damageable)
 	
-	randomize_type()
 	print_debug(type, " enemy spawned")
 
-func randomize_type() -> void:
-	var random_type = randi() % EnemyTypes.EnemyType.size()
-	type = random_type as EnemyTypes.EnemyType
 
 func _physics_process(delta) -> void:
 	apply_gravity(delta)

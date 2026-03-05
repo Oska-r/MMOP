@@ -35,37 +35,41 @@ func scale_stat(start_value: float, max_value: float, passed_growth_rate: float,
 	return max_value - (max_value - start_value) * exp(passed_growth_rate * day_count)
 
 func apply_mob_stats(mob) -> void:
-	
-	var mat: StandardMaterial3D = mob.get_node("Body").material_override.duplicate()
 	var body: MeshInstance3D = mob.get_node("Body")
-	body.material_override = mat
-
+	var mat: StandardMaterial3D = body.material_override.duplicate()
 	var collision_shape: CollisionShape3D = mob.get_node("CollisionShape3D")
 
 	var color: Color = mat.albedo_color
 	var scale_factor: float = 1.0
-
+	
+	randomize_type(mob)
+	
 	match mob.type:
 		EnemyTypes.EnemyType.NORMAL:
 			pass
 		
 		EnemyTypes.EnemyType.SMALL:
 			enemy_speed *= 1.5
-			mat.albedo_color = color.lightened(0.25)
+			mat.albedo_color = color.lightened(1)
 			scale_factor = 0.7
 		
 		EnemyTypes.EnemyType.BIG:
 			enemy_health *= 1.5
-			mat.albedo_color = color.darkened(0.25)
+			mat.albedo_color = color.darkened(1)
 			scale_factor = 1.5
 	
 	# Apply scaling
 	body.scale = Vector3.ONE * scale_factor
 	collision_shape.scale = Vector3.ONE * scale_factor
+	body.material_override = mat
 	
 	mob.speed = enemy_speed
 	mob.damage = enemy_damage
 	mob.get_node("Components/Damageable").max_health = enemy_health
+
+func randomize_type(mob) -> void:
+	var random_type = randi() % EnemyTypes.EnemyType.size()
+	mob.type = random_type as EnemyTypes.EnemyType
 
 func _process(delta: float) -> void:
 	if world.is_day():
