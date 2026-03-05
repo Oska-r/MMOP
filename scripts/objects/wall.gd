@@ -6,5 +6,5 @@ extends StaticBody3D
 func _ready() -> void:
 	damageable.took_damage.connect(_took_damage)
 
-func _took_damage(damge: int, source: Node) -> void:
+func _took_damage(_damage: int, _source: Node) -> void:
 	loot_table.calculate_loot()

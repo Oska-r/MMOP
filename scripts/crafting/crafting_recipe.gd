@@ -8,7 +8,6 @@ extends Button
 @onready var inventory: Control = get_tree().get_first_node_in_group("inventory")
 
 func _ready() -> void:
-	# Connects the mouse filter fix
 	recipe_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 	# For color changing
@@ -22,7 +21,7 @@ func update_current_amount() -> void:
 	if not recipe or not inventory:
 		return
 	
-	var display_text := ""
+	var display_text = ""
 	
 	# Loop through all ingredients in the recipe
 	for ingredient_id in recipe.ingredients.keys():
@@ -35,11 +34,11 @@ func update_current_amount() -> void:
 		# Get item details
 		var item_data = ItemIDs.get_item(ingredient_id)
 		if item_data:
-			# Append each ingredient's info to the display text
+			# Append each ingredients info to the display text
 			display_text += UIHelper.format_amount_text(total, required_amount, item_data.name) + "\n"
 	
 	# Update the recipe label with all ingredients
-	recipe_label.text = display_text.strip_edges()  # remove trailing newline
+	recipe_label.text = display_text.strip_edges()
 	
 	# Show the result item name and icon
 	var result_data = ItemIDs.get_item(recipe.result_item)
@@ -55,4 +54,5 @@ func update_current_amount() -> void:
 		if total < required_amount:
 			all_sufficient = false
 			break
+	
 	disabled = not all_sufficient

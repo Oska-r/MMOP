@@ -11,7 +11,7 @@ func craft(recipe: CraftingRecipe) -> bool:
 		if total < required_amount:
 			print("Not enough of item:", ItemIDs.get_item_name(ingredient_id))
 			return false
-
+	
 	# 2. Find where to put the result
 	var result_id = recipe.result_item
 	var target_slot = inventory.find_stackable_or_empty(result_id)
@@ -19,14 +19,14 @@ func craft(recipe: CraftingRecipe) -> bool:
 		print("Inventory full!")
 		return false
 
-	# 3. Consume each ingredient safely
+	# 3. Consume each ingredient
 	for ingredient_id in recipe.ingredients.keys():
 		var required_amount = recipe.ingredients[ingredient_id]
 		var remaining_to_consume = required_amount
 		
-		# Create a **stable list** of coordinates and counts
+		# Create a list of coordinates and counts
 		var locations_dict = inventory.inventory_contains(ingredient_id)
-		var slots := []
+		var slots = []
 		for coords in locations_dict.keys():
 			slots.append({ "coords": coords, "count": locations_dict[coords] })
 		
@@ -44,9 +44,10 @@ func craft(recipe: CraftingRecipe) -> bool:
 			else:
 				inventory.change_count(-remaining_to_consume, row, col)
 				remaining_to_consume = 0
-
+	
 	# 4. Add the crafted item
 	if result_id != ItemIDs.ItemID.NONE:
 		inventory.load_item_to_inventory(result_id, int(target_slot.x), int(target_slot.y), 1)
 	inventory.hotbar.update_hotbar_ui()
+	
 	return true

@@ -4,7 +4,6 @@ func _ready() -> void:
 	await get_tree().process_frame  # wait until the first frame
 	DisplayServer.window_set_min_size(Vector2i(1070, 600))
 
-
 func update_health_display(label: Label3D, damageable: Node) -> void:
 	label.text = str(int(round(damageable.health))) + "/" + str(int(round(damageable.max_health)))
 

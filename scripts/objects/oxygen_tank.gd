@@ -20,10 +20,10 @@ func _ready() -> void:
 	UIHelper.update_health_display(health_label, damageable)
 	display_requirements(false)
 
-func _took_damage(damage: float, source: Node) -> void:
+func _took_damage(_damage: float, _source: Node) -> void:
 	UIHelper.update_health_display(health_label, damageable)
 
-func _on_died(source: Node) -> void:
+func _on_died(_source: Node) -> void:
 	player.die()
 
 func get_requirements():
@@ -95,8 +95,8 @@ func try_craft_current_tier() -> void:
 	# Update the requirements display
 	display_requirements(true)
 
-func update_oxygen_tank(tier: int) -> void:
-	if tier == upgrade_requirements.size():
+func update_oxygen_tank(next_tier: int) -> void:
+	if next_tier == upgrade_requirements.size():
 		spawn_rocket()
 
 func spawn_rocket() -> void:

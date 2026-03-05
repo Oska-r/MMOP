@@ -4,7 +4,7 @@ extends Node
 func play_sound(sound, min_pitch: float = 0.9, max_pitch: float = 1.1) -> void:
 	if not sound:
 		return
-		
+	
 	var player = sound
 	
 	if sound is AudioStream:

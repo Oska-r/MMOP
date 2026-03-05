@@ -1,14 +1,17 @@
 extends CharacterBody3D
 
-@onready var head: Node = get_node("Head")
-@onready var interact_ray: RayCast3D = head.get_node("Camera3D/InteractRay")
-@onready var place_ray: RayCast3D = $Head/Camera3D/PlaceRay
-@onready var attack_Area: Area3D = head.get_node("Attack_Area")
 @onready var UI: Control = get_parent().get_node("UI")
 @onready var inventory: Control = UI.get_node("Inventory")
+@onready var oxygen_tank = get_tree().get_first_node_in_group("Oxygentank")
+
+@onready var head: Node = $Head
+@onready var place_ray: RayCast3D = head.get_node("Camera3D/PlaceRay")
+@onready var interact_ray: RayCast3D = head.get_node("Camera3D/InteractRay")
+@onready var attack_Area: Area3D = head.get_node("Attack_Area")
+
 @onready var damageable: Node = $Components/Damageable
 @onready var attack_timer: Timer = $AttackTimer
-@onready var oxygen_tank = get_tree().get_first_node_in_group("Oxygentank")
+
 
 var dead: bool = false
 var mouse_captured: bool = false
@@ -18,10 +21,9 @@ var place_reach: float = 4.0
 var item_use_cooldown: float = 0.0
 var item_use_delay: float = 0.15
 
-## list of all bodys in Attack_Area
+## List of all bodys in Attack_Area
 var targets: Array[Node3D]
 
-# attributes
 @export_category("Attributes")
 @export var damage: float =  30.0
 @export var attack_interval: float = 0.25
@@ -54,9 +56,6 @@ func _process(delta) -> void:
 	var collider = null
 	if interact_ray.is_colliding():
 		collider = interact_ray.get_collider()
-	
-	if collider != null:
-		print_debug(collider, " detected")
 	
 	# Handle looking at objects with display_requirements()
 	if collider != null and collider.has_method("display_requirements"):
@@ -139,10 +138,9 @@ func calculate_block_spawn_pos() -> Vector3:
 	
 	var collider = place_ray.get_collider()
 	
-	# Only allow placement if the hit object is in the "floor" group
+	# Only allow placement if the hit object is in the "placable_surface" group
 	if not collider.is_in_group("placable_surface"):
 		return Vector3.ZERO
-	
 	
 	var hit_position = place_ray.get_collision_point()
 	
@@ -162,12 +160,12 @@ func calculate_block_spawn_pos() -> Vector3:
 
 ## Returns the blocks_root node (node used for storing all placed blocks).
 func get_blocks_root(create_if_missing := false) -> Node3D:
-	var blocks_root := get_tree().current_scene.get_node_or_null(
+	var blocks_root = get_tree().current_scene.get_node_or_null(
 		"World/World_flexible/Blocks"
 	) as Node3D
 	
 	if blocks_root == null and create_if_missing:
-		var parent := get_tree().current_scene.get_node(
+		var parent = get_tree().current_scene.get_node(
 			"WorldWorld_flexible"
 		) as Node3D
 		
@@ -299,7 +297,7 @@ func attack_animation() -> void:
 	attack_Area.visible = true
 	attack_timer.start()
 
-func _took_damage(damage: int, soruce: Node):
+func _took_damage(_passed_damage: int, _source: Node):
 	emit_signal("player_health_changed", get_health(), get_max_health())
 
 func _on_attack_timer_timeout():

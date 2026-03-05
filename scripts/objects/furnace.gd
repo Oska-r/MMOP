@@ -9,7 +9,7 @@ var is_open: bool = false
 func _ready() -> void:
 	damageable.took_damage.connect(_on_damaged)
 
-func _on_damaged(damage: float, source: Node) -> void:
+func _on_damaged(_damage: float, _source: Node) -> void:
 	loot_table.calculate_loot()
 
 func _unhandled_input(event: InputEvent) -> void:

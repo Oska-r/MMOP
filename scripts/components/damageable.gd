@@ -7,7 +7,7 @@ class_name Damageable
 signal died(source: Node)
 signal took_damage(damage: float, source: Node)
 
-# returns wether entity dies from that damage tick
+## Returns wether entity dies from that damage tick
 func take_damage(damage: float, source: Node) -> bool:
 	health -= damage
 	emit_signal("took_damage", damage, source)

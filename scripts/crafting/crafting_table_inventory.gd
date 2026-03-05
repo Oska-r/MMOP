@@ -11,6 +11,6 @@ func _ready() -> void:
 
 ## On crafting button pressed. Handles wether player has required ressources, if yes uses ressources and gives crafted item.
 func _on_button_pressed(button: Button) -> void:
-	crafting.craft(button.recipe)
-	SoundManager.play_sound(crafting_sound)
-	button.update_current_amount()
+	if crafting.craft(button.recipe):
+		SoundManager.play_sound(crafting_sound)
+		button.update_current_amount()

@@ -31,34 +31,34 @@ func calculate_enemy_stats(day_count: int) -> void:
 	enemy_damage = scale_stat(10.0, max_damage,growth_rate, day_count)
 	enemy_health = scale_stat(50.0, max_health,growth_rate, day_count)
 
-func scale_stat(start_value: float, max_value: float, growth_rate: float, day_count: int) -> float:
-	return max_value - (max_value - start_value) * exp(-growth_rate * day_count)
+func scale_stat(start_value: float, max_value: float, passed_growth_rate: float, day_count: int) -> float:
+	return max_value - (max_value - start_value) * exp(passed_growth_rate * day_count)
 
 func apply_mob_stats(mob) -> void:
 	
-	var mat := mob.get_node("Body").material_override.duplicate() as StandardMaterial3D
-	var body = mob.get_node("Body")
+	var mat: StandardMaterial3D = mob.get_node("Body").material_override.duplicate()
+	var body: MeshInstance3D = mob.get_node("Body")
 	body.material_override = mat
 
-	var collision_shape = mob.get_node("CollisionShape3D")
+	var collision_shape: CollisionShape3D = mob.get_node("CollisionShape3D")
 
-	var color := mat.albedo_color
-	var scale_factor := 1.0
+	var color: Color = mat.albedo_color
+	var scale_factor: float = 1.0
 
 	match mob.type:
 		EnemyTypes.EnemyType.NORMAL:
 			pass
-
+		
 		EnemyTypes.EnemyType.SMALL:
 			enemy_speed *= 1.5
 			mat.albedo_color = color.lightened(0.25)
 			scale_factor = 0.7
-
+		
 		EnemyTypes.EnemyType.BIG:
 			enemy_health *= 1.5
 			mat.albedo_color = color.darkened(0.25)
 			scale_factor = 1.5
-
+	
 	# Apply scaling
 	body.scale = Vector3.ONE * scale_factor
 	collision_shape.scale = Vector3.ONE * scale_factor

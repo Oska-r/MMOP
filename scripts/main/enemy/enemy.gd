@@ -1,18 +1,19 @@
 extends CharacterBody3D
 
-@onready var agent: NavigationAgent3D = $NavigationAgent3D
-@onready var damage_area: Area3D = $Damage_Area
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var oxygen_tank = get_tree().get_first_node_in_group("oxygen_tank")
 
-@export var speed: float = 3.0
-@export var damage: float = 10.0
-@export var damage_interval: float = 1.0
+@onready var agent: NavigationAgent3D = $NavigationAgent3D
+@onready var damage_area: Area3D = $Damage_Area
+@onready var health_label: Label3D = $HealthLabel
 
 @onready var damageable: Node = $Components/Damageable
 @onready var loot_table: Node = $Components/LootTable
 
-@onready var health_label: Label3D = $HealthLabel
+@export_category("Attributes")
+@export var speed: float = 3.0
+@export var damage: float = 10.0
+@export var damage_interval: float = 1.0
 
 # Damage
 var damage_timer: float = 0.0
@@ -38,7 +39,7 @@ func _ready() -> void:
 
 func randomize_type() -> void:
 	var random_type = randi() % EnemyTypes.EnemyType.size()
-	type = random_type
+	type = random_type as EnemyTypes.EnemyType
 
 func _physics_process(delta) -> void:
 	apply_gravity(delta)
@@ -55,7 +56,7 @@ func apply_gravity(delta: float) -> void:
 	else:
 		velocity.y = 0
 
-## moves the enemey towards the target along the navigationmap
+## Moves the enemy towards the target along the Navigationmap.
 func update_movement() -> void:
 	if player == null:
 		velocity.x = 0
@@ -75,8 +76,7 @@ func update_movement() -> void:
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 
-## attackes everything with take_damage funktion
-## dosn't attack other enemys
+## Attackes everything in group "attackable_by_enemy" with take_damage function.
 func handle_damage() -> void:
 	if damage_timer > 0:
 		return
@@ -86,7 +86,7 @@ func handle_damage() -> void:
 			DamageSystem.apply_damage(body, damage, self)
 			damage_timer = damage_interval
 
-## returns the "best target"
+## Returns the best target.
 func find_target():
 	player_position = player.global_position
 	var oxygen_distance = global_position.distance_to(oxygen_tank_position)
@@ -102,7 +102,7 @@ func _on_died(source: Node) -> void:
 	if source == player:
 		loot_table.calculate_loot()
 
-func _took_damage(damage: int, source: Node) -> void:
+func _took_damage(_damage_taken: int, _source: Node) -> void:
 	UIHelper.update_health_display(health_label, damageable)
 
 # This function is called from the main scene.
