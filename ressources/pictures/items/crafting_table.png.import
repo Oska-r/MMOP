@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bodscpyk7kaku"
-path="res://.godot/imported/crafting_table.png-bc83e9d6af1897e0781c30917d70dfe3.ctex"
+path="res://.godot/imported/crafting_table.png-fccfbf4e45b127049f1ea72fa391b297.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ressources/pictures/items/crafting_table.png"
-dest_files=["res://.godot/imported/crafting_table.png-bc83e9d6af1897e0781c30917d70dfe3.ctex"]
+source_file="res://ressources/pictures/Items/crafting_table.png"
+dest_files=["res://.godot/imported/crafting_table.png-fccfbf4e45b127049f1ea72fa391b297.ctex"]
 
 [params]
 
