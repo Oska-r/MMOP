@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cc0c65i761qig"
-path="res://.godot/imported/Spikes.glb-ae3d15634ef8e63da3cd28c271f16407.scn"
+uid="uid://boi3pm74e8ste"
+path="res://.godot/imported/Grass.glb-6d5c1b54e460acc95191fc3c2b3569ce.scn"
 
 [deps]
 
-source_file="res://ressources/models/spike/Spikes.glb"
-dest_files=["res://.godot/imported/Spikes.glb-ae3d15634ef8e63da3cd28c271f16407.scn"]
+source_file="res://ressources/models/Grass.glb"
+dest_files=["res://.godot/imported/Grass.glb-6d5c1b54e460acc95191fc3c2b3569ce.scn"]
 
 [params]
 

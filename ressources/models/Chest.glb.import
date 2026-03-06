@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dt87tbeftrkhx"
-path="res://.godot/imported/Mushrooms.glb-aec9d97b0275b9d07b4656a4d2bb4863.scn"
+uid="uid://dqneblea41mn"
+path="res://.godot/imported/Chest.glb-1f11b43305c0ec3ab523d226de5aece0.scn"
 
 [deps]
 
-source_file="res://ressources/models/Mushrooms.glb"
-dest_files=["res://.godot/imported/Mushrooms.glb-aec9d97b0275b9d07b4656a4d2bb4863.scn"]
+source_file="res://ressources/models/Chest.glb"
+dest_files=["res://.godot/imported/Chest.glb-1f11b43305c0ec3ab523d226de5aece0.scn"]
 
 [params]
 

@@ -5,7 +5,7 @@ extends CharacterBody3D
 
 @onready var agent: NavigationAgent3D = $NavigationAgent3D
 @onready var damage_area: Area3D = $Damage_Area
-@onready var health_label: Label3D = $Body/HealthLabel
+@onready var health_label: Label3D = $Armature/HealthLabel
 
 @onready var damageable: Node = $Components/Damageable
 @onready var loot_table: Node = $Components/LootTable
@@ -66,6 +66,11 @@ func update_movement() -> void:
 		velocity.x = 0
 		velocity.z = 0
 		return
+	
+	if velocity != Vector3.ZERO:
+		$AnimationPlayer.play("ArmatureAction")
+	else:
+		$AnimationPlayer.play("Take 001")
 	
 	var next_pos = agent.get_next_path_position()
 	var direction = (next_pos - global_position).normalized()

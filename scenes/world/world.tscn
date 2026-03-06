@@ -83,9 +83,6 @@ transform = Transform3D(-0.39327776, 0, 0.9194197, 0, 1, 0, -0.9194197, 0, -0.39
 wait_time = 2.0
 autostart = true
 
-[node name="Enemy" parent="." unique_id=1800269208 instance=ExtResource("1_iubku")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.112696, 1.5703173, -23.736141)
-
 [connection signal="child_order_changed" from="World_flexible" to="." method="_on_world_flexible_child_order_changed"]
 [connection signal="child_order_changed" from="World_flexible/Blocks" to="." method="_on_world_flexible_child_order_changed"]
 [connection signal="timeout" from="Spawn/Timer" to="Spawn" method="_on_timer_timeout"]

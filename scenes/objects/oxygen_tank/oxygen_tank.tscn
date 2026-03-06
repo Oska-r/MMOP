@@ -10,7 +10,6 @@
 
 [sub_resource type="Resource" id="Resource_qdb88"]
 script = ExtResource("2_qdb88")
-result_item = 4
 ingredients = Dictionary[int, int]({
 1: 4
 })
@@ -18,30 +17,27 @@ metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
 
 [sub_resource type="Resource" id="Resource_fe8re"]
 script = ExtResource("2_qdb88")
-result_item = 4
 ingredients = Dictionary[int, int]({
-0: 10,
-1: 10
+1: 10,
+2: 10
 })
 metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
 
 [sub_resource type="Resource" id="Resource_vx1k4"]
 script = ExtResource("2_qdb88")
-result_item = 4
 ingredients = Dictionary[int, int]({
-0: 25,
 1: 25,
-3: 10
+2: 25,
+4: 10
 })
 metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
 
 [sub_resource type="Resource" id="Resource_jinhm"]
 script = ExtResource("2_qdb88")
-result_item = 4
 ingredients = Dictionary[int, int]({
-0: 100,
-1: 100,
-3: 50
+2: 50,
+4: 25,
+6: 25
 })
 metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
 

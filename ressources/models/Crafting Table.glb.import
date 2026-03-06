@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cc0c65i761qig"
-path="res://.godot/imported/Spikes.glb-ae3d15634ef8e63da3cd28c271f16407.scn"
+uid="uid://c6576uw7ffxen"
+path="res://.godot/imported/Crafting Table.glb-57f114dab8860a45d1836c847872a6f5.scn"
 
 [deps]
 
-source_file="res://ressources/models/spike/Spikes.glb"
-dest_files=["res://.godot/imported/Spikes.glb-ae3d15634ef8e63da3cd28c271f16407.scn"]
+source_file="res://ressources/models/Crafting Table.glb"
+dest_files=["res://.godot/imported/Crafting Table.glb-57f114dab8860a45d1836c847872a6f5.scn"]
 
 [params]
 
