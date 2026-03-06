@@ -19,7 +19,7 @@ var is_day: bool
 
 ## Internal time tracking
 ## 0 morning | 0.25 noon | 0.75 midnight 
-@export var time: float = 0.0 
+@export var time: float = 0.0
 
 func _ready() -> void:
 	day_started.emit()

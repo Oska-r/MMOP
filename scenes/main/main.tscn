@@ -17,7 +17,8 @@ transform = Transform3D(0.9999999, 0, -0.0004886922, 0, 1, 0, 0.0004886922, 0, 0
 worldEnvironment = NodePath("../WorldEnvironment")
 
 [node name="WorldEnvironment" parent="." unique_id=1385874066 instance=ExtResource("4_ouso4")]
-time = 0.75
+day_length_seconds = 180.0
+time = 0.0
 
 [node name="UI" parent="." unique_id=2045572628 node_paths=PackedStringArray("player") instance=ExtResource("6_hujxm")]
 anchors_preset = -1

@@ -16,6 +16,7 @@ radius = 0.445
 height = 1.74
 
 [sub_resource type="BoxMesh" id="BoxMesh_riacy"]
+size = Vector3(0.5, 0.5, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2ck2"]
 transparency = 1
@@ -58,12 +59,12 @@ target_position = Vector3(0, 0, -7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.139536, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Attack_Area" unique_id=1386481877]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0456026, -1.5606861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1506758, -1.5606861)
 mesh = SubResource("BoxMesh_riacy")
 surface_material_override/0 = SubResource("StandardMaterial3D_q2ck2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Attack_Area" unique_id=1037535722]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0456026, -1.5606861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1506758, -1.5606861)
 shape = SubResource("ConvexPolygonShape3D_2hlsy")
 
 [node name="SoundEffects" type="Node" parent="." unique_id=1602734604]

@@ -52,6 +52,7 @@ SoundManager="*uid://earqa4y18n1j"
 
 [display]
 
+window/size/mode=3
 window/size/always_on_top=true
 
 [dotnet]

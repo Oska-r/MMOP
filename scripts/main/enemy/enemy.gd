@@ -35,6 +35,10 @@ func _ready() -> void:
 	UIHelper.update_health_display(health_label, damageable)
 
 func _physics_process(delta) -> void:
+	
+	if not is_inside_tree():
+		return
+	
 	apply_gravity(delta)
 	update_movement()
 	handle_damage()
@@ -85,9 +89,12 @@ func find_target():
 	var oxygen_distance = global_position.distance_to(oxygen_tank_position)
 	var player_distance = global_position.distance_to(player_position)
 	
+	
 	if oxygen_distance < player_distance:
+		UIHelper.rotate(self, 90, oxygen_tank)
 		return oxygen_tank_position
 	else:
+		UIHelper.rotate(self, 90)
 		return player_position
 
 ## Delete node and drop loot.

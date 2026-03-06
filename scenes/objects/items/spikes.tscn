@@ -12,7 +12,7 @@ size = Vector3(9.05748, 10.083445, 15.878012)
 size = Vector3(15.963002, 10.083445, 20.164148)
 
 [node name="Spikes" type="StaticBody3D" unique_id=1566048860 groups=["damagable_by_enemy", "damagable_by_player"]]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 script = ExtResource("1_4ay1g")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1407787174]

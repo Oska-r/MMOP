@@ -1,11 +1,43 @@
 [gd_scene format=3 uid="uid://cjhvd857e0u7k"]
 
 [ext_resource type="PackedScene" uid="uid://dr1hqhhyvv47c" path="res://scenes/objects/oxygen_tank/oxygen_tank.tscn" id="1_br8mx"]
+[ext_resource type="Script" uid="uid://bmtjonaqm2qjx" path="res://items/crafting/crafting_recipe.gd" id="2_5wiho"]
 [ext_resource type="PackedScene" uid="uid://cxpd0mkp6cky5" path="res://scenes/objects/crafting_table.tscn" id="3_42htb"]
 [ext_resource type="PackedScene" uid="uid://laaa0kfjc0my" path="res://scenes/objects/rocket.tscn" id="4_adh44"]
 [ext_resource type="PackedScene" uid="uid://bkjoqiq310tq5" path="res://scenes/world/island/island.tscn" id="5_adh44"]
 [ext_resource type="PackedScene" uid="uid://dr230symovhoe" path="res://scenes/objects/chest.tscn" id="5_ee6x1"]
 [ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="6_5wiho"]
+
+[sub_resource type="Resource" id="Resource_va0ml"]
+script = ExtResource("2_5wiho")
+ingredients = Dictionary[int, int]({
+1: 4
+})
+metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
+
+[sub_resource type="Resource" id="Resource_7mpuy"]
+script = ExtResource("2_5wiho")
+ingredients = Dictionary[int, int]({
+1: 10
+})
+metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
+
+[sub_resource type="Resource" id="Resource_fndrv"]
+script = ExtResource("2_5wiho")
+ingredients = Dictionary[int, int]({
+1: 25,
+2: 25,
+4: 10
+})
+metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
+
+[sub_resource type="Resource" id="Resource_7rgu1"]
+script = ExtResource("2_5wiho")
+ingredients = Dictionary[int, int]({
+4: 25,
+6: 10
+})
+metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ee6x1"]
 
@@ -46,6 +78,7 @@ metadata/_custom_type_script = "uid://dwdabywcheuay"
 
 [node name="Oxygentank" parent="." unique_id=838330149 instance=ExtResource("1_br8mx")]
 transform = Transform3D(2.305, 0, 0, 0, 2.305, 0, 0, 0, 2.305, 0, 0.14937317, 0)
+upgrade_requirements = Array[ExtResource("2_5wiho")]([SubResource("Resource_va0ml"), SubResource("Resource_7mpuy"), SubResource("Resource_fndrv"), SubResource("Resource_7rgu1")])
 
 [node name="OxygenTankLabel" type="Label3D" parent="Oxygentank" unique_id=364488713]
 transform = Transform3D(0.43383947, 0, 0, 0, 0.43383947, 0, 0, 0, 0.43383947, 0, 2.7664297, 0)

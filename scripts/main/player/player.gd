@@ -26,7 +26,7 @@ var targets: Array[Node3D]
 
 @export_category("Attributes")
 @export var damage: float =  30.0
-@export var attack_interval: float = 0.25
+@export var attack_interval: float = 0.5
 var damage_timer: float = 0.0
 
 signal player_health_changed(current_health: float, max_health: float)
@@ -304,7 +304,7 @@ func _on_attack_timer_timeout():
 	if is_instance_valid(attack_Area):
 		attack_Area.visible = false
 
-func _on_died(source: Node) -> void:
+func _on_died(_source: Node) -> void:
 	dead = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	_change_to_end_screen()

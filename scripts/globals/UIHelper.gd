@@ -7,17 +7,15 @@ func _ready() -> void:
 func update_health_display(label: Label3D, damageable: Node) -> void:
 	label.text = str(int(round(damageable.health))) + "/" + str(int(round(damageable.max_health)))
 
-func rotate(object: Node, angle: int):
-	var camera = get_viewport().get_camera_3d()
-
-	if camera:
+func rotate(object: Node, angle: int, target = get_viewport().get_camera_3d()):
+	
+	if target:
 		# Make the label look at the camera
-		object.look_at(camera.global_transform.origin, Vector3.UP)
+		object.look_at(target.global_transform.origin, Vector3.UP)
 		# Correct for flipping
 		object.rotate_y(deg_to_rad(angle))
-		# Keep label upright
+		# Keep it upright
 		object.rotation.x = 0
-		object.rotation.z = 0
 
 func format_amount_text(current: int, required: int, item_name: String) -> String:
 	var color = "green" if current >= required else "red"
