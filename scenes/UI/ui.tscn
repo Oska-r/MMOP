@@ -5,7 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://2lg3o2g67vdp" path="res://ressources/pictures/UI/crosshair.png" id="3_8334u"]
 [ext_resource type="PackedScene" uid="uid://equrnyrs8b8x" path="res://scenes/UI/menus/pause_menu.tscn" id="4_m4jc5"]
 [ext_resource type="PackedScene" uid="uid://cq8sbte51hdu2" path="res://scenes/UI/inventory/inventory.tscn" id="5_a6y2o"]
+[ext_resource type="AudioStream" uid="uid://c2vo40wpif3l8" path="res://ressources/sounds/sword slash.mp3" id="5_tpnoy"]
 [ext_resource type="PackedScene" uid="uid://biqse8axf1eui" path="res://scenes/UI/health_display.tscn" id="7_35jxk"]
+[ext_resource type="PackedScene" uid="uid://bw6rj1a2wymft" path="res://scenes/UI/slashing_animation.tscn" id="7_tpnoy"]
 
 [node name="UI" type="Control" unique_id=238773024]
 layout_mode = 3
@@ -28,7 +30,29 @@ offset_bottom = -31.0
 grow_vertical = 0
 inventory = NodePath("../Inventory")
 
-[node name="Crosshair" type="TextureRect" parent="." unique_id=438435868]
+[node name="Inventory" parent="." unique_id=315312596 node_paths=PackedStringArray("hotbar") groups=["inventory"] instance=ExtResource("5_a6y2o")]
+layout_mode = 1
+hotbar = NodePath("../Hotbar")
+
+[node name="HealthDisplay" parent="." unique_id=214072852 instance=ExtResource("7_35jxk")]
+layout_mode = 0
+
+[node name="Crosshair" type="Control" parent="." unique_id=2073512263]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CrosshairTexture" type="TextureRect" parent="Crosshair" unique_id=438435868]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -36,21 +60,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -48.0
-offset_right = -16.0
-offset_bottom = -16.0
+offset_left = -31.0
+offset_top = -31.0
+offset_right = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
 texture = ExtResource("3_8334u")
 
+[node name="AnimatedSprite2D" parent="Crosshair" unique_id=63086566 instance=ExtResource("7_tpnoy")]
+scale = Vector2(3, 3)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Crosshair" unique_id=1290647888]
+stream = ExtResource("5_tpnoy")
+
 [node name="PauseMenu" parent="." unique_id=1913560065 instance=ExtResource("4_m4jc5")]
 layout_mode = 1
 
-[node name="Inventory" parent="." unique_id=315312596 node_paths=PackedStringArray("hotbar") groups=["inventory"] instance=ExtResource("5_a6y2o")]
-layout_mode = 1
-hotbar = NodePath("../Hotbar")
-
-[node name="HealthDisplay" parent="." unique_id=214072852 instance=ExtResource("7_35jxk")]
-layout_mode = 0
+[connection signal="animation_finished" from="Crosshair/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

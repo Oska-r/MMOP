@@ -24,7 +24,7 @@ func _took_damage(_damage: float, _source: Node) -> void:
 	UIHelper.update_health_display(health_label, damageable)
 
 func _on_died(_source: Node) -> void:
-	player.die()
+	player.get_node("Components/Damageable").die(self)
 
 func get_requirements():
 	return {tier + 1: upgrade_requirements[tier]}

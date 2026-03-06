@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://dmsdeo8wuunex" path="res://ressources/sounds/player/landing.mp3" id="6_fmh12"]
 [ext_resource type="Script" uid="uid://3f54wqp2pk5k" path="res://scripts/components/damageable.gd" id="6_riacy"]
 [ext_resource type="Script" uid="uid://blvquebv4338o" path="res://scripts/main/player/player_movement.gd" id="7_fjrip"]
+[ext_resource type="AudioStream" uid="uid://c4liiatw341vn" path="res://ressources/sounds/hurt sound.mp3" id="8_u2d4w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iof21"]
 albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
@@ -55,15 +56,15 @@ target_position = Vector3(0, 0, -3)
 [node name="PlaceRay" type="RayCast3D" parent="Head/Camera3D" unique_id=178702509]
 target_position = Vector3(0, 0, -7)
 
-[node name="Attack_Area" type="Area3D" parent="Head" unique_id=775839480]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.139536, 0)
+[node name="Attack_Area" type="Area3D" parent="Head/Camera3D" unique_id=775839480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Attack_Area" unique_id=1386481877]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1506758, -1.5606861)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera3D/Attack_Area" unique_id=1386481877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -1.5)
 mesh = SubResource("BoxMesh_riacy")
 surface_material_override/0 = SubResource("StandardMaterial3D_q2ck2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Attack_Area" unique_id=1037535722]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Camera3D/Attack_Area" unique_id=1037535722]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1506758, -1.5606861)
 shape = SubResource("ConvexPolygonShape3D_2hlsy")
 
@@ -93,3 +94,6 @@ player = NodePath("../..")
 [node name="Damageable" type="Node" parent="Components" unique_id=1072084799]
 script = ExtResource("6_riacy")
 max_health = 100.0
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=300984507]
+stream = ExtResource("8_u2d4w")

@@ -21,7 +21,6 @@ func _on_resume_pressed() -> void:
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 
-
 func resume() -> void:
 	get_tree().paused = false
 	$AnimationPlayer.play_backwards("blur")

@@ -7,11 +7,12 @@ extends CharacterBody3D
 @onready var head: Node = $Head
 @onready var place_ray: RayCast3D = head.get_node("Camera3D/PlaceRay")
 @onready var interact_ray: RayCast3D = head.get_node("Camera3D/InteractRay")
-@onready var attack_Area: Area3D = head.get_node("Attack_Area")
+@onready var attack_Area: Area3D = head.get_node("Camera3D/Attack_Area")
 
 @onready var damageable: Node = $Components/Damageable
 @onready var attack_timer: Timer = $AttackTimer
 
+@onready var hurt_sound = $HurtSound
 
 var dead: bool = false
 var mouse_captured: bool = false
@@ -288,7 +289,8 @@ func handle_attack() -> void:
 		if body.is_in_group("damagable_by_player"):
 			DamageSystem.apply_damage(body, damage, self)
 			damage_timer = attack_interval
-			attack_animation()
+			UI.on_attacked()
+			#attack_animation()
 
 func attack_animation() -> void:
 	if not is_inside_tree():
@@ -298,6 +300,7 @@ func attack_animation() -> void:
 	attack_timer.start()
 
 func _took_damage(_passed_damage: int, _source: Node):
+	hurt_sound.play()
 	emit_signal("player_health_changed", get_health(), get_max_health())
 
 func _on_attack_timer_timeout():

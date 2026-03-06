@@ -43,11 +43,8 @@ func spawn_mob() -> void:
 	add_child(mob)
 
 func apply_mob_stats(mob) -> void:
-	var body: MeshInstance3D = mob.get_node("Body")
-	var mat: StandardMaterial3D = body.material_override.duplicate()
+	var body: Node3D = mob.get_node("Armature")
 	var collision_shape: CollisionShape3D = mob.get_node("CollisionShape3D")
-	
-	var color: Color = mat.albedo_color
 	var scale_factor: float = 1.0
 	
 	randomize_type(mob)
@@ -62,18 +59,15 @@ func apply_mob_stats(mob) -> void:
 		
 		EnemyTypes.EnemyType.SMALL:
 			mob.speed *= 1.5
-			mat.albedo_color = color.lightened(1)
 			scale_factor = 0.7
 		
 		EnemyTypes.EnemyType.BIG:
 			enemy_health *= 1.5
-			mat.albedo_color = color.darkened(1)
 			scale_factor = 1.5
 	
-	# Apply scaling
-	body.scale = Vector3.ONE * scale_factor
-	collision_shape.scale = Vector3.ONE * scale_factor
-	body.material_override = mat
+	# Apply scaling relative to the base scale
+	body.scale *= scale_factor
+	collision_shape.scale *= scale_factor
 
 func randomize_type(mob) -> void:
 	var random_type = randi() % EnemyTypes.EnemyType.size()
