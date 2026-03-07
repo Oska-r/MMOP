@@ -2,24 +2,23 @@ extends WorldEnvironment
 
 signal day_started(day_count: int)
 
-# Day-night cycle settings
-@export var day_length_seconds: float = 90.0  # Duration of a full day in seconds
-@export var sun_max_intensity: float = 1.0
-@export var moon_max_intensity: float = 0.05
-@export var sun_color: Color = Color(1, 1, 0.9)
-@export var moon_color: Color = Color(0.6, 0.7, 1)
-
-# References to lights
-@export var sun_pivot: Node3D
-@onready var sun_light: DirectionalLight3D = sun_pivot.get_node("SunLight")
-@export var moon_pivot: Node3D
-@onready var moon_light: DirectionalLight3D =  moon_pivot.get_node("MoonLight")
-
-var is_day: bool
-
-## Internal time tracking
+@export_category("Time")
+@export var day_length_seconds: float = 180.0
 ## 0 morning | 0.25 noon | 0.75 midnight 
 @export var time: float = 0.0
+var is_day: bool
+
+@export_category("Sun")
+@export var sun_max_intensity: float = 1.0
+@export var sun_color: Color = Color(1, 1, 0.9)
+@export var sun_pivot: Node3D
+@onready var sun_light: DirectionalLight3D = sun_pivot.get_node("SunLight")
+
+@export_category("Moon")
+@export var moon_max_intensity: float = 0.05
+@export var moon_color: Color = Color(0.6, 0.7, 1)
+@export var moon_pivot: Node3D
+@onready var moon_light: DirectionalLight3D =  moon_pivot.get_node("MoonLight")
 
 func _ready() -> void:
 	day_started.emit()
@@ -36,7 +35,7 @@ func _process(delta) -> void:
 
 # Handles day night cycle.
 func _update_lights() -> void:
-	# Rotate sun
+	# Rotates sun and moon
 	sun_pivot.rotation_degrees.x = - lerp(0,360,time)
 	moon_pivot.rotation_degrees.x = sun_pivot.rotation_degrees.x - 180
 	# Sun height factor: 0 = below horizon, 1 = overhead
@@ -45,12 +44,9 @@ func _update_lights() -> void:
 	# Sun intensity
 	sun_light.light_energy = sun_max_intensity * sun_height_factor
 	
-	# Moon intensity: stronger at night, weaker when sun is up
-	var moon_height_factor = 1.0 - sun_height_factor  # complementary to sun
+	# Moon intensity: stronger at night, weaker when sun is up, complementary to sun
+	var moon_height_factor = 1.0 - sun_height_factor
 	moon_light.light_energy = moon_max_intensity * moon_height_factor
-	
-	var min_ambient = 0.1
-	moon_light.light_energy = max(moon_light.light_energy, min_ambient)
 	
 	# Sunrise/sunset color for sun
 	var sunrise_color = Color(1, 0.7, 0.5)

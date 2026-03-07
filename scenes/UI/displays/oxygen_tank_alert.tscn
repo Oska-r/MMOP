@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://o4b8gmqokcp8"]
+
+[ext_resource type="Script" uid="uid://blprarf34caql" path="res://scripts/UI/oxygen_tank_alert.gd" id="1_vo3vx"]
+
+[node name="OxygenTankAlert" type="RichTextLabel" unique_id=67815155]
+custom_minimum_size = Vector2(350, 80)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "Achtung der Sauerstofftank wird angegriffen"
+horizontal_alignment = 1
+script = ExtResource("1_vo3vx")
+
+[node name="HideTimer" type="Timer" parent="." unique_id=1443636493]
+wait_time = 3.0
+one_shot = true

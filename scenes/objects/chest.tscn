@@ -131,6 +131,12 @@ shadow_mesh = SubResource("ArrayMesh_4nsg6")
 [sub_resource type="BoxShape3D" id="BoxShape3D_hxfd3"]
 size = Vector3(1, 1.0996826, 2.090088)
 
+[sub_resource type="BoxMesh" id="BoxMesh_acra8"]
+size = Vector3(1.02, 0.17, 2.005)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pev8c"]
+albedo_color = Color(0.2627451, 0.1882353, 0.09411765, 1)
+
 [node name="Chest" type="StaticBody3D" unique_id=684924033 node_paths=PackedStringArray("open_chest_sound", "close_chest_sound")]
 script = ExtResource("1_bas4e")
 open_chest_sound = NodePath("OpenChest")
@@ -142,6 +148,7 @@ mesh = SubResource("ArrayMesh_pev8c")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=146804805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6091602, 0)
 shape = SubResource("BoxShape3D_hxfd3")
 
 [node name="OpenChest" type="AudioStreamPlayer3D" parent="." unique_id=1963801511]
@@ -150,3 +157,8 @@ stream = ExtResource("2_acra8")
 [node name="CloseChest" type="AudioStreamPlayer3D" parent="." unique_id=501139876]
 stream = ExtResource("3_pev8c")
 pitch_scale = 1.8
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=592760496]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.032, 0.466, 0.006)
+mesh = SubResource("BoxMesh_acra8")
+surface_material_override/0 = SubResource("StandardMaterial3D_pev8c")

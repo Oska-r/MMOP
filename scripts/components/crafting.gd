@@ -14,7 +14,7 @@ func craft(recipe: CraftingRecipe) -> bool:
 	
 	# 2. Find where to put the result
 	var result_id = recipe.result_item
-	var target_slot = inventory.find_stackable_or_empty(result_id)
+	var target_slot = inventory.slot_to_put_in(result_id)
 	if target_slot == Vector2(-1, -1):
 		print("Inventory full!")
 		return false

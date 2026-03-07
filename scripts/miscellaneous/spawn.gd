@@ -1,35 +1,36 @@
 extends Node
 
-@onready var world: NavigationRegion3D = get_parent()
 @export var mob_scene: PackedScene
-@onready var timer: Timer = get_node("Timer")
+
+@onready var world: NavigationRegion3D = get_parent()
+@onready var timer: Timer = $Timer
+
+@export_category("Minimum Stats")
+@export var min_enemy_speed:float = 3.0
+@export var min_enemy_damage:float = 10.0
+@export var min_enemy_health: float = 50.0
+
+@export_category("Maximum Stats")
+@export var max_speed: float = 8.0
+@export var max_damage: float = 40.0
+@export var max_health: float = 200.0
+
+@export_category("Growth rate")
+@export var growth_rate: float = 0.12
+
+var current_enemy_speed: float = min_enemy_speed
+var current_enemy_damage: float = min_enemy_damage
+var current_enemy_health: float = min_enemy_health
 
 func _process(delta: float) -> void:
 	if world.is_day():
 		for enemy in get_tree().get_nodes_in_group("enemy"):
 			DamageSystem.apply_damage(self, world.sun_damage * delta, self)
 
-var timer_wait_time: float = 5.0
-var min_wait_time: float = 1.0
-@export var timer_decay_rate: float = 0.15
-
-func calculate_wait_time(day_count: int) -> float:
-	return scale_stat(timer_wait_time, min_wait_time, timer_decay_rate, day_count)
-
 func _on_timer_timeout() -> void:
 	if world.is_day():
 		return
 	spawn_mob()
-
-var enemy_speed: float = 3.0
-var enemy_damage: float = 10.0
-var enemy_health: float = 50.0
-
-var max_speed: float = 8.0
-var max_damage: float = 40.0
-var max_health: float = 200.0
-
-var growth_rate: float = 0.12
 
 func spawn_mob() -> void:
 	var mob = mob_scene.instantiate()
@@ -49,9 +50,9 @@ func apply_mob_stats(mob) -> void:
 	
 	randomize_type(mob)
 	
-	mob.speed = enemy_speed
-	mob.damage = enemy_damage
-	mob.get_node("Components/Damageable").max_health = enemy_health
+	mob.speed = current_enemy_speed
+	mob.damage = current_enemy_damage
+	mob.get_node("Components/Damageable").max_health = current_enemy_health
 	
 	match mob.type:
 		EnemyTypes.EnemyType.NORMAL:
@@ -62,7 +63,7 @@ func apply_mob_stats(mob) -> void:
 			scale_factor = 0.7
 		
 		EnemyTypes.EnemyType.BIG:
-			enemy_health *= 1.5
+			mob.get_node("Components/Damageable").max_health *= 1.5
 			scale_factor = 1.5
 	
 	# Apply scaling relative to the base scale
@@ -73,21 +74,16 @@ func randomize_type(mob) -> void:
 	var random_type = randi() % EnemyTypes.EnemyType.size()
 	mob.type = random_type as EnemyTypes.EnemyType
 
+## Called from NavigationRegion3D.
 func new_day() -> void:
-	timer.wait_time = calculate_wait_time(GlobalGameState.day_count)
+	timer.calculate_wait_time(GlobalGameState.day_count)
 	calculate_enemy_stats(GlobalGameState.day_count)
 	print_day_stats(GlobalGameState.day_count)
 
 func calculate_enemy_stats(day_count: int) -> void:
-	enemy_speed = scale_stat(3.0, max_speed,growth_rate, day_count)
-	enemy_damage = scale_stat(10.0, max_damage,growth_rate, day_count)
-	enemy_health = scale_stat(50.0, max_health,growth_rate, day_count)
-
-func scale_stat(start_value: float, max_value: float, passed_growth_rate: float, day_count: int) -> float:
-	return max_value - (max_value - start_value) * exp(passed_growth_rate * day_count)
-
-
-
+	current_enemy_speed = FunctionHelper.logistic_growth(min_enemy_speed, max_speed, growth_rate, day_count)
+	current_enemy_damage = FunctionHelper.logistic_growth(min_enemy_damage, max_damage, growth_rate, day_count)
+	current_enemy_health = FunctionHelper.logistic_growth(min_enemy_health, max_health, growth_rate, day_count)
 
 func print_day_stats(day_count: int) -> void:
 	print("""
@@ -99,7 +95,7 @@ func print_day_stats(day_count: int) -> void:
 	""" % [
 		day_count,
 		timer.wait_time,
-		enemy_speed,
-		enemy_damage,
-		enemy_health
+		current_enemy_speed,
+		current_enemy_damage,
+		current_enemy_health
 	])

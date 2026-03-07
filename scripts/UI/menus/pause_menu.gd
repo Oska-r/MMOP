@@ -1,9 +1,10 @@
 extends Control
 
-@onready var player: CharacterBody3D = get_parent().player
+@onready var player = get_tree().get_first_node_in_group("player")
+@onready var animation_player = $AnimationPlayer
 
 func _ready() -> void:
-	$AnimationPlayer.play("RESET")
+	animation_player.play("RESET")
 	hide()
 
 func _input(_event: InputEvent) -> void:
@@ -15,21 +16,20 @@ func _input(_event: InputEvent) -> void:
 	elif Input.is_action_just_pressed("ui_cancel") and get_tree().paused:
 		resume()
 
+func resume() -> void:
+	get_tree().paused = false
+	animation_player.play_backwards("blur")
+	hide()
+	player.capture_mouse()
+
+func pause() -> void:
+	animation_player.play("blur")
+	player.release_mouse()
+	show()
+	get_tree().paused = true
+
 func _on_resume_pressed() -> void:
 	resume()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
-
-func resume() -> void:
-	get_tree().paused = false
-	$AnimationPlayer.play_backwards("blur")
-	hide()
-	
-	player.capture_mouse()
-
-func pause() -> void:
-	player.release_mouse()
-	get_tree().paused = true
-	show()
-	$AnimationPlayer.play("blur")

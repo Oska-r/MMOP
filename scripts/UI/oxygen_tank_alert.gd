@@ -7,10 +7,10 @@ func _ready() -> void:
 	bbcode_enabled = true
 	text = "[color=#ff0000]Der Sauerstofftank nimmt Schaden![/color]"
 	hide()
-
+	
 	if oxygen_tank and oxygen_tank.has_node("Components/Damageable"):
 		oxygen_tank.get_node("Components/Damageable").took_damage.connect(oxygen_tank_took_damage)
-
+	
 	# Connect timer timeout
 	hide_timer.timeout.connect(_on_hide_timer_timeout)
 

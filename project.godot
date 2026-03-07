@@ -49,6 +49,7 @@ UIHelper="*uid://btmv6j1xic2h6"
 SimpleGrass="*uid://bfq0snth8sj3h"
 GlobalGameState="*uid://dwhqhjdilhcbq"
 SoundManager="*uid://earqa4y18n1j"
+FunctionHelper="*uid://cwtx6v8a2yx62"
 
 [display]
 

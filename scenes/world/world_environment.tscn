@@ -16,10 +16,10 @@ glow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" unique_id=1385874066 node_paths=PackedStringArray("sun_pivot", "moon_pivot")]
 environment = SubResource("Environment_0xm2m")
 script = ExtResource("1_hbh1y")
-moon_max_intensity = 0.02
-sun_pivot = NodePath("SunPivot")
-moon_pivot = NodePath("MoonPivot")
 time = 0.85
+sun_pivot = NodePath("SunPivot")
+moon_max_intensity = 0.02
+moon_pivot = NodePath("MoonPivot")
 
 [node name="SunPivot" type="Node3D" parent="." unique_id=1301585711]
 

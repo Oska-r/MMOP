@@ -1,11 +1,13 @@
 extends Control
 
-@onready var player: CharacterBody3D = get_parent().player
-@export var hotbar: Control
+@onready var player: CharacterBody3D = get_tree().get_first_node_in_group("player")
+
 @onready var chest: Control = $Chest
+@onready var furnace: Control = $Furnace
 @onready var crafting_table: Control = $CraftingTable
 @onready var main_inventory: Control = $MainInventory
-@onready var furnace: Control = $Furnace
+
+@export var hotbar: Control
 
 # row 0 for hotbar, row 5 for chests
 var inventory_items: Array[Array] = [
@@ -17,79 +19,24 @@ var inventory_items: Array[Array] = [
 	[null, null, null, null, null, null, null, null, null, null]
 ]
 
-func get_hotbar_items() -> Array:
-	return inventory_items[0]
-
 func _ready() -> void:
-	load_item_to_inventory(Item_ids.ItemID.LANTERN,0,0, 1)
-	load_item_to_inventory(Item_ids.ItemID.MUSHROOM_SOUP,0,1, 1)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	hide()
 	chest.hide()
 	crafting_table.hide()
 	furnace.hide()
+	
+	load_item_to_inventory(Item_ids.ItemID.LANTERN, 0, 0, 1)
 
 func _input(event) -> void:
 	if event.is_action_pressed("inventory"):
-		player.clear_preview()
 		if visible:
 			close_inventory()
 		else:
+			player.clear_preview()
 			open_inventory()
 
-func drop(item: Item_ids.ItemID) -> void:
-	var target = find_stackable_or_empty(item)
-	if target == Vector2(-1, -1):
-		print("Inventory full!")
-		return
-	load_item_to_inventory(item, int(target.x), int(target.y), 1)
-
-func swap_inventory_slots(originalRow: int, originalIndex: int, targetRow: int, targetIndex: int) -> void:
-	var item_a = inventory_items[originalRow][originalIndex]
-	var item_b = inventory_items[targetRow][targetIndex]
-	
-	# 1. If we are dragging nothing, do nothing
-	if item_a == null:
-		return
-
-	# 2. If target is empty, just move it
-	if item_b == null:
-		load_item_to_inventory(item_a.item_id, targetRow, targetIndex, item_a.count)
-		clear_inventory_slot(originalRow, originalIndex)
-		
-	# 3. If target is the SAME item type, stack them
-	elif item_b.item_id == item_a.item_id:
-		change_count(item_a.count, targetRow, targetIndex)
-		clear_inventory_slot(originalRow, originalIndex)
-		
-	# 4. If target is a DIFFERENT item type, swap them
-	else:
-		# Temporarily hold item_a's data
-		var temp_id = item_a.item_id
-		var temp_count = item_a.count
-		
-		# Move item_b to original slot
-		clear_inventory_slot(originalRow, originalIndex)
-		load_item_to_inventory(item_b.item_id, originalRow, originalIndex, item_b.count)
-		
-		# Move item_a to target slot
-		clear_inventory_slot(targetRow, targetIndex)
-		load_item_to_inventory(temp_id, targetRow, targetIndex, temp_count)
-
-## Removes item (both visually and in code) from the inventory at given row and index.
-func clear_inventory_slot(row: int, index: int) -> void:
-	inventory_items[row][index] = null
-
-	var slot_node = get_slot_node(row, index)
-
-	var icon_node = slot_node.get_node("Item") as TextureRect
-	if icon_node:
-		icon_node.texture = null
-
-	var count_label = slot_node.get_node("Count") as RichTextLabel
-	if count_label:
-		count_label.text = ""
-
+#region item management
 ## Load a item (identified by ItemID) at specified row and specified index with specified count to the inventory.
 func load_item_to_inventory(item_id: Item_ids.ItemID, row: int = 0, index: int = 0, count: int = 1) -> Item:
 	var original_item = inventory_items[row][index]
@@ -149,6 +96,101 @@ func get_slot_node(row: int, index: int) -> Node:
 		path = "MainInventory/InventoryContainer/SlotContainer/row_%d" % row
 	return get_node(path).get_child(index)
 
+func swap_inventory_slots(originalRow: int, originalIndex: int, targetRow: int, targetIndex: int) -> void:
+	var item_a = inventory_items[originalRow][originalIndex]
+	var item_b = inventory_items[targetRow][targetIndex]
+	
+	# 1. If dragging nothing, do nothing
+	if item_a == null:
+		return
+
+	# 2. If target is empty, move it
+	if item_b == null:
+		load_item_to_inventory(item_a.item_id, targetRow, targetIndex, item_a.count)
+		clear_inventory_slot(originalRow, originalIndex)
+		
+	# 3. If target is the same item type, stack them
+	elif item_b.item_id == item_a.item_id:
+		change_count(item_a.count, targetRow, targetIndex)
+		clear_inventory_slot(originalRow, originalIndex)
+		
+	# 4. If target is a different item type, swap them
+	else:
+		# Temporarily hold item_a's data
+		var temp_id = item_a.item_id
+		var temp_count = item_a.count
+		
+		# Move item_b to original slot
+		clear_inventory_slot(originalRow, originalIndex)
+		load_item_to_inventory(item_b.item_id, originalRow, originalIndex, item_b.count)
+		
+		# Move item_a to target slot
+		clear_inventory_slot(targetRow, targetIndex)
+		load_item_to_inventory(temp_id, targetRow, targetIndex, temp_count)
+
+## Removes item (both visually and in code) from the inventory at given row and index.
+func clear_inventory_slot(row: int, index: int) -> void:
+	inventory_items[row][index] = null
+	
+	var slot_node = get_slot_node(row, index)
+	
+	var icon_node = slot_node.get_node("Item") as TextureRect
+	if icon_node:
+		icon_node.texture = null
+	
+	var count_label = slot_node.get_node("Count") as RichTextLabel
+	if count_label:
+		count_label.text = ""
+
+## Drop 1 item anywhere in inventory (used for drops by entities).
+func drop(item: Item_ids.ItemID) -> void:
+	var target = slot_to_put_in(item)
+	if target == Vector2(-1, -1):
+		print("Inventory full!")
+		return
+	load_item_to_inventory(item, int(target.x), int(target.y), 1)
+
+## Returns the total amount of a specific item currently held in the inventory.
+func inventory_contains(target_id: ItemIDs.ItemID) -> Dictionary:
+	var locations = {}
+	for row_index in range(inventory_items.size()):
+		var row = inventory_items[row_index]
+		for slot_index in range(row.size()):
+			var item = row[slot_index]
+			# Now we are comparing int to int (the enum values)
+			if item != null and item.item_id == target_id:
+				var coords = Vector2(row_index, slot_index)
+				locations[coords] = item.count
+	return locations
+
+## Takes the dictionary from inventory_contains and returns the total sum of items.
+func get_total_from_locations(locations: Dictionary) -> int:
+	var sum: int = 0
+	for count in locations.values():
+		sum += count
+	return sum
+
+## Searches for an existing stack of the same ID or the first empty slot.
+func slot_to_put_in(item_id) -> Vector2:
+	var first_empty = Vector2(-1, -1)
+	
+	# Loop through player inventory (Rows 0-4)
+	for r in range(5):
+		for c in range(inventory_items[r].size()):
+			var item = inventory_items[r][c]
+			
+			# If we find the same item, return this coordinate immediately (Stacking)
+			if item != null and item.item_id == item_id:
+				return Vector2(r, c)
+			
+			# If we find an empty slot, remember the FIRST one we saw
+			if item == null and first_empty == Vector2(-1, -1):
+				first_empty = Vector2(r, c)
+				
+	return first_empty
+#endregion
+
+#region opening and closing UIs
 func open_inventory() -> void:
 	hotbar.hide()
 	visible = true
@@ -198,42 +240,7 @@ func open_furnace() -> void:
 func close_furnace() -> void:
 	close_inventory()
 	furnace.hide()
+#endregion
 
-## Returns the total amount of a specific item currently held in the inventory.
-func inventory_contains(target_id: ItemIDs.ItemID) -> Dictionary:
-	var locations = {}
-	for row_index in range(inventory_items.size()):
-		var row = inventory_items[row_index]
-		for slot_index in range(row.size()):
-			var item = row[slot_index]
-			# Now we are comparing int to int (the enum values)
-			if item != null and item.item_id == target_id:
-				var coords = Vector2(row_index, slot_index)
-				locations[coords] = item.count
-	return locations
-
-## Takes the dictionary from inventory_contains and returns the total sum of items.
-func get_total_from_locations(locations: Dictionary) -> int:
-	var sum: int = 0
-	for count in locations.values():
-		sum += count
-	return sum
-
-## Searches for an existing stack of the same ID or the first empty slot.
-func find_stackable_or_empty(item_id) -> Vector2:
-	var first_empty = Vector2(-1, -1)
-	
-	# Loop through player inventory (Rows 0-4)
-	for r in range(5):
-		for c in range(inventory_items[r].size()):
-			var item = inventory_items[r][c]
-			
-			# If we find the same item, return this coordinate immediately (Stacking)
-			if item != null and item.item_id == item_id:
-				return Vector2(r, c)
-			
-			# If we find an empty slot, remember the FIRST one we saw
-			if item == null and first_empty == Vector2(-1, -1):
-				first_empty = Vector2(r, c)
-				
-	return first_empty
+func get_hotbar_items() -> Array:
+	return inventory_items[0]
