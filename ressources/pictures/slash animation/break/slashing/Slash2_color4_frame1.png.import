@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm5uj74mb6k51"
-path="res://.godot/imported/Slash2_color2_frame1.png-b85d3ffaff86b25d5ee3633fbe9bd841.ctex"
+uid="uid://ctsx6tctm0wd3"
+path="res://.godot/imported/Slash2_color4_frame1.png-92892b357c239403f5f992cb4dd8091d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ressources/pictures/slash animation/Slash2_color2_frame1.png"
-dest_files=["res://.godot/imported/Slash2_color2_frame1.png-b85d3ffaff86b25d5ee3633fbe9bd841.ctex"]
+source_file="res://ressources/pictures/slash animation/break/slashing/Slash2_color4_frame1.png"
+dest_files=["res://.godot/imported/Slash2_color4_frame1.png-92892b357c239403f5f992cb4dd8091d.ctex"]
 
 [params]
 

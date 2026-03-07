@@ -22,6 +22,7 @@ func get_hotbar_items() -> Array:
 
 func _ready() -> void:
 	load_item_to_inventory(Item_ids.ItemID.LANTERN,0,0, 1)
+	load_item_to_inventory(Item_ids.ItemID.MUSHROOM_SOUP,0,1, 1)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	hide()
 	chest.hide()

@@ -80,16 +80,6 @@ metadata/_custom_type_script = "uid://dwdabywcheuay"
 transform = Transform3D(2.305, 0, 0, 0, 2.305, 0, 0, 0, 2.305, 0, 0.14937317, 0)
 upgrade_requirements = Array[ExtResource("2_5wiho")]([SubResource("Resource_va0ml"), SubResource("Resource_7mpuy"), SubResource("Resource_fndrv"), SubResource("Resource_7rgu1")])
 
-[node name="OxygenTankLabel" type="Label3D" parent="Oxygentank" unique_id=364488713]
-transform = Transform3D(0.43383947, 0, 0, 0, 0.43383947, 0, 0, 0, 0.43383947, 0, 2.7664297, 0)
-text = "Beschütze!
-↓"
-font_size = 128
-
-[node name="InstructionLabel" type="Label3D" parent="Oxygentank" unique_id=1784416077]
-transform = Transform3D(0.43383938, 0, 0, 0, 0.43383947, 0, 0, 0, 0.43383938, -2.197918, 0.92873853, 0.7419561)
-text = "Drücke Tab um das Inventar zu öffnen"
-
 [node name="CraftingTable" parent="." unique_id=117519311 instance=ExtResource("3_42htb")]
 transform = Transform3D(0.9638027, 0, 0.266616, 0, 1, 0, -0.266616, 0, 0.9638027, 47.197884, 0.5, -47.26444)
 

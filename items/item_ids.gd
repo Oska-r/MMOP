@@ -13,7 +13,8 @@ enum ItemID {
 	CRAFTING_TABLE,
 	MUSHROOM,
 	WALL,
-	LANTERN
+	LANTERN,
+	MUSHROOM_SOUP
 }
 
 const ITEM_REGISTRY := {
@@ -28,7 +29,8 @@ const ITEM_REGISTRY := {
 	ItemID.CRAFTING_TABLE: preload("res://items/inventory_items/crafting_table.tres"),
 	ItemID.MUSHROOM: preload("res://items/inventory_items/mushroom.tres"),
 	ItemID.WALL: preload("res://items/inventory_items/wall.tres"),
-	ItemID.LANTERN: preload("res://items/inventory_items/lantern.tres")
+	ItemID.LANTERN: preload("res://items/inventory_items/lantern.tres"),
+	ItemID.MUSHROOM_SOUP: preload("res://items/inventory_items/mushroom_soup.tres")
 }
 
 static func get_item(id: ItemID) -> Item:

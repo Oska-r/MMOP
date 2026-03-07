@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://30g4r8kqx4u2"]
+
+[ext_resource type="Texture2D" uid="uid://dwsxc6g6kkdog" path="res://ressources/pictures/items/mushroom_soup.png" id="1_ajv0i"]
+[ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="1_utvno"]
+[ext_resource type="AudioStream" uid="uid://dderj0ms12qsg" path="res://ressources/sounds/eating.mp3" id="3_yceo6"]
+
+[resource]
+script = ExtResource("1_utvno")
+name = "Pilzsuppe"
+icon = ExtResource("1_ajv0i")
+sound = ExtResource("3_yceo6")
+item_id = 12
+metadata/_custom_type_script = "uid://dwdabywcheuay"

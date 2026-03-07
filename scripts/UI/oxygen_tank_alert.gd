@@ -14,7 +14,7 @@ func _ready() -> void:
 	# Connect timer timeout
 	hide_timer.timeout.connect(_on_hide_timer_timeout)
 
-func oxygen_tank_took_damage(damage: int, source: Node) -> void:
+func oxygen_tank_took_damage(_damage: int, _source: Node) -> void:
 	show()
 	# Restart timer to always wait 3 seconds from last damage
 	hide_timer.stop()

@@ -276,6 +276,11 @@ func try_to_use_item(item) -> bool:
 func use_selected_item(item) -> bool:
 	if item.scene:
 		return place_block(item)
+	elif item.item_id == ItemIDs.ItemID.MUSHROOM_SOUP:
+		damageable.heal(10)
+		emit_signal("player_health_changed", get_health(), get_max_health())
+		SoundManager.play_sound(item.sound)
+		return true
 	return false
 #endregion
 
@@ -289,7 +294,7 @@ func handle_attack() -> void:
 		if body.is_in_group("damagable_by_player"):
 			DamageSystem.apply_damage(body, damage, self)
 			damage_timer = attack_interval
-			UI.on_attacked()
+			UI.on_attacked(body)
 			#attack_animation()
 
 func attack_animation() -> void:

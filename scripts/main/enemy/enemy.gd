@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Enemy
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var oxygen_tank = get_tree().get_first_node_in_group("oxygen_tank")
@@ -53,6 +54,8 @@ func apply_gravity(delta: float) -> void:
 	else:
 		velocity.y = 0
 
+var last_position
+
 ## Moves the enemy towards the target along the Navigationmap.
 func update_movement() -> void:
 	if player == null:
@@ -65,6 +68,7 @@ func update_movement() -> void:
 	if agent.is_navigation_finished():
 		velocity.x = 0
 		velocity.z = 0
+		$AnimationPlayer.play("Take 001")
 		return
 	
 	if velocity != Vector3.ZERO:

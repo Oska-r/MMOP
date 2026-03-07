@@ -37,29 +37,29 @@ func display_requirements(on: bool) -> void:
 	if tier >= upgrade_requirements.size():
 		requirements_display.text = "Höchste Stufe erreicht"
 		return
-
+	
 	var recipe: CraftingRecipe = upgrade_requirements[tier]
-
+	
 	var tier_text = "Stufe %d" % (tier + 1)
-	var requirements_list := []
-	var has_all_resources := true  # assume player has everything
-
+	var requirements_list = []
+	var has_all_resources = true
+	
 	for item_id in recipe.ingredients.keys():
 		var required_amount = recipe.ingredients[item_id]
-
+		
 		# Get player's current amount
 		var total = 0
 		if is_instance_valid(crafting):
 			var locations = crafting.inventory.inventory_contains(item_id)
 			total = crafting.inventory.get_total_from_locations(locations)
-
+		
 		# If player doesn't have enough, mark it
 		if total < required_amount:
 			has_all_resources = false
-
+		
 		# Get item name
 		var item_name = ItemIDs.get_item_name(item_id)
-
+		
 		# Format as "current / required ItemName"
 		var ingredient_text = "%d / %d %s" % [total, required_amount, item_name]
 		requirements_list.append(ingredient_text)

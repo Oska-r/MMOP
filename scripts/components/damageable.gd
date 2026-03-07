@@ -19,3 +19,9 @@ func take_damage(damage: float, source: Node) -> bool:
 func die(source: Node) -> void:
 	emit_signal("died", source)
 	get_parent().get_parent().queue_free()
+
+func heal(amount: int) -> void:
+	if(health + amount) <= max_health:
+		health += amount
+	else:
+		health = max_health

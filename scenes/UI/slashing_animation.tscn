@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://bw6rj1a2wymft"]
 
-[ext_resource type="Texture2D" uid="uid://cm5uj74mb6k51" path="res://ressources/pictures/slash animation/Slash2_color2_frame1.png" id="1_dwxcv"]
-[ext_resource type="Texture2D" uid="uid://b7n6ucr3d3grl" path="res://ressources/pictures/slash animation/Slash2_color2_frame2.png" id="2_naj18"]
-[ext_resource type="Texture2D" uid="uid://7q3xklcx1apr" path="res://ressources/pictures/slash animation/Slash2_color2_frame3.png" id="3_4a8vk"]
-[ext_resource type="Texture2D" uid="uid://cqophja3wugiw" path="res://ressources/pictures/slash animation/Slash2_color2_frame4.png" id="4_x0qi4"]
-[ext_resource type="Texture2D" uid="uid://4vwnlvtuw2ov" path="res://ressources/pictures/slash animation/Slash2_color2_frame5.png" id="5_lsqdp"]
-[ext_resource type="Texture2D" uid="uid://baafo0xr1861t" path="res://ressources/pictures/slash animation/Slash2_color2_frame6.png" id="6_76614"]
-[ext_resource type="Texture2D" uid="uid://dx1w0cqmydy5f" path="res://ressources/pictures/slash animation/Slash2_color2_frame7.png" id="7_m1tcw"]
+[ext_resource type="Texture2D" uid="uid://cm5uj74mb6k51" path="res://ressources/pictures/slash animation/attack/Slash2_color2_frame1.png" id="1_dwxcv"]
+[ext_resource type="Texture2D" uid="uid://b7n6ucr3d3grl" path="res://ressources/pictures/slash animation/attack/Slash2_color2_frame2.png" id="2_naj18"]
+[ext_resource type="Texture2D" uid="uid://7q3xklcx1apr" path="res://ressources/pictures/slash animation/attack/Slash2_color2_frame3.png" id="3_4a8vk"]
+[ext_resource type="Texture2D" uid="uid://cqophja3wugiw" path="res://ressources/pictures/slash animation/attack/Slash2_color2_frame4.png" id="4_x0qi4"]
+[ext_resource type="Texture2D" uid="uid://4vwnlvtuw2ov" path="res://ressources/pictures/slash animation/attack/Slash2_color2_frame5.png" id="5_lsqdp"]
+[ext_resource type="Texture2D" uid="uid://baafo0xr1861t" path="res://ressources/pictures/slash animation/attack/Slash2_color2_frame6.png" id="6_76614"]
+[ext_resource type="Texture2D" uid="uid://dx1w0cqmydy5f" path="res://ressources/pictures/slash animation/attack/Slash2_color2_frame7.png" id="7_m1tcw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dt5dx"]
 animations = [{
