@@ -16,14 +16,10 @@ Smelted iron: https://www.clker.com/clipart-steel-token.html
 
 Raw Iron: https://www.pascoe.de/wirkstoffe/inhaltsstoffe/zink.html
 
-Furnace: https://www.wannapik.com/vectors/50414
-
-Crafting Table: https://www.flaticon.com/free-icon/crafting_10508075
-
-Mushroom icon: https://creazilla.com/media/clipart/7811379/mushroom
-
 Slashing Animation: https://frostwindz.itch.io/pixel-art-slashes
 
 Slashsound = https://pixabay.com/sound-effects/search/slash/
 
 Hurtsound = https://pixabay.com/de/sound-effects/menschen-male-hurt-sound-95206/
+
+furnace: https://www.cgtrader.com/items/6400267/download-page

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d0mtvvrhmsiw4" path="res://scenes/objects/wall.tscn" id="1_81oie"]
 [ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="1_nsox3"]
-[ext_resource type="Texture2D" uid="uid://ckhwyfmh36bhr" path="res://ressources/materials/grass_noise.tres" id="1_q7s3w"]
+[ext_resource type="Texture2D" uid="uid://by7w2vj0ykmgl" path="res://ressources/pictures/items/wall.png" id="1_q7s3w"]
 
 [resource]
 script = ExtResource("1_nsox3")

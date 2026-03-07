@@ -16,21 +16,8 @@ albedo_color = Color(0.91806, 0.575202, 0.222449, 1)
 radius = 0.445
 height = 1.74
 
-[sub_resource type="BoxMesh" id="BoxMesh_riacy"]
-size = Vector3(0.5, 0.5, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2ck2"]
-transparency = 1
-blend_mode = 1
-no_depth_test = true
-shading_mode = 0
-disable_ambient_light = true
-disable_fog = true
-disable_specular_occlusion = true
-albedo_color = Color(0.99022156, 0.43145245, 0.4681046, 0.3529412)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2hlsy"]
-points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+[sub_resource type="BoxShape3D" id="BoxShape3D_u2d4w"]
+size = Vector3(0.7952881, 0.72094727, 1.8825073)
 
 [node name="Player" type="CharacterBody3D" unique_id=695893652 groups=["player"]]
 script = ExtResource("1_fjrip")
@@ -59,14 +46,9 @@ target_position = Vector3(0, 0, -7)
 [node name="Attack_Area" type="Area3D" parent="Head/Camera3D" unique_id=775839480]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera3D/Attack_Area" unique_id=1386481877]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -1.5)
-mesh = SubResource("BoxMesh_riacy")
-surface_material_override/0 = SubResource("StandardMaterial3D_q2ck2")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Camera3D/Attack_Area" unique_id=1037535722]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1506758, -1.5606861)
-shape = SubResource("ConvexPolygonShape3D_2hlsy")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016906738, 1.3622359, -1.200304)
+shape = SubResource("BoxShape3D_u2d4w")
 
 [node name="SoundEffects" type="Node" parent="." unique_id=1602734604]
 

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" format=3 uid="uid://ck5cubhr2faqu"]
 
-[ext_resource type="Texture2D" uid="uid://bt6pm6ta355bj" path="res://ressources/models/Sauerstofftank/Oxygentank_blue_metal_plate_diff_4k.jpg" id="1_5jifd"]
+[ext_resource type="Texture2D" uid="uid://bf223ioijl2dp" path="res://ressources/pictures/items/lantern.png" id="1_5jifd"]
 [ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="1_35hxr"]
 [ext_resource type="PackedScene" uid="uid://c1cvi5ha62drp" path="res://scenes/objects/lantern.tscn" id="2_gmtl0"]
 

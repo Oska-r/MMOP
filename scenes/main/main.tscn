@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://b5g2llc373ovo" path="res://scripts/UI/menus/day_display.gd" id="7_hujxm"]
 [ext_resource type="AudioStream" uid="uid://chrw4bninhbgo" path="res://ressources/sounds/backgroundMusic.mp3" id="7_trceg"]
 [ext_resource type="Script" uid="uid://blprarf34caql" path="res://scripts/UI/oxygen_tank_alert.gd" id="8_yyfjg"]
-[ext_resource type="PackedScene" uid="uid://bhq5ow250herw" path="res://scenes/main/enemy.tscn" id="9_b1x3f"]
 
 [node name="Main" type="Node3D" unique_id=1623769975 node_paths=PackedStringArray("music_player")]
 script = ExtResource("1_o6xl0")
@@ -20,28 +19,15 @@ worldEnvironment = NodePath("../WorldEnvironment")
 
 [node name="WorldEnvironment" parent="." unique_id=1385874066 instance=ExtResource("4_ouso4")]
 day_length_seconds = 180.0
-
-[node name="UI" parent="." unique_id=2045572628 node_paths=PackedStringArray("player") instance=ExtResource("6_hujxm")]
-anchors_preset = -1
-player = NodePath("../Player")
-
-[node name="Player" parent="." unique_id=1560919245 groups=["damagable_by_enemy"] instance=ExtResource("2_tipki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1936798, 0.65600634, 9.76694)
-
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1099075134]
-stream = ExtResource("7_trceg")
-volume_db = -30.0
-
-[node name="Enemy" parent="." unique_id=1800269208 instance=ExtResource("9_b1x3f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6498747, 2, 0)
+time = 0.05
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2109409807]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
+offset_left = -175.0
+offset_right = 175.0
+offset_bottom = 134.0
 grow_horizontal = 2
 
 [node name="DayDisplay" type="RichTextLabel" parent="VBoxContainer" unique_id=1356159983]
@@ -64,6 +50,17 @@ script = ExtResource("8_yyfjg")
 [node name="HideTimer" type="Timer" parent="VBoxContainer/OxygenTankAlert" unique_id=154033271]
 wait_time = 3.0
 one_shot = true
+
+[node name="UI" parent="." unique_id=2045572628 node_paths=PackedStringArray("player") instance=ExtResource("6_hujxm")]
+anchors_preset = -1
+player = NodePath("../Player")
+
+[node name="Player" parent="." unique_id=1560919245 groups=["damagable_by_enemy"] instance=ExtResource("2_tipki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1936798, 0.65600634, 9.76694)
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1099075134]
+stream = ExtResource("7_trceg")
+volume_db = -30.0
 
 [connection signal="day_started" from="WorldEnvironment" to="World" method="_on_world_environment_day_started"]
 [connection signal="day_started" from="WorldEnvironment" to="VBoxContainer/DayDisplay" method="_on_world_environment_day_started"]

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b84wvv3jxh8r4"]
+
+[ext_resource type="Texture2D" uid="uid://d4ajdujonlkil" path="res://ressources/models/lantern/Lantern_Lantern_LP_Lantern_Mat_BaseColor.png" id="1_b5v4a"]
+
+[resource]
+albedo_texture = ExtResource("1_b5v4a")
+emission_enabled = true
+emission = Color(0.83033526, 0.83033514, 0.83033514, 1)
+emission_energy_multiplier = 3.55

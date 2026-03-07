@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bjj4dy5lh60ll"]
 
 [ext_resource type="Script" uid="uid://bai3hamerk25h" path="res://scripts/UI/menus/main_menu.gd" id="1_qwnig"]
+[ext_resource type="PackedScene" uid="uid://ssjudgktf1oa" path="res://scenes/helper/icon_renderer.tscn" id="2_i77qe"]
 
 [node name="Main_Menu" type="Control" unique_id=1193709992]
 layout_mode = 3
@@ -36,6 +37,8 @@ text = "Start"
 [node name="Quit" type="Button" parent="VBoxContainer" unique_id=582836921]
 layout_mode = 2
 text = "Beenden"
+
+[node name="IconRenderer" parent="." unique_id=1358033596 instance=ExtResource("2_i77qe")]
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

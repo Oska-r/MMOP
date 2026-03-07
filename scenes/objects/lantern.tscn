@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://c1cvi5ha62drp"]
 
-[ext_resource type="Material" uid="uid://dhcdd2kwlnlnd" path="res://ressources/materials/brown_material.tres" id="1_443ya"]
 [ext_resource type="Script" uid="uid://decm1v7kfcixf" path="res://scripts/objects/lantern.gd" id="1_eua1y"]
 [ext_resource type="Script" uid="uid://3f54wqp2pk5k" path="res://scripts/components/damageable.gd" id="3_mf0wr"]
+[ext_resource type="ArrayMesh" uid="uid://dkxk6i8b0rd7y" path="res://ressources/models/lantern/new_array_mesh2.tres" id="4_4pf0t"]
 [ext_resource type="Script" uid="uid://cex520s86u2lf" path="res://scripts/components/loot_table.gd" id="4_8ndn5"]
+[ext_resource type="Material" uid="uid://b84wvv3jxh8r4" path="res://ressources/models/lantern/new_standard_material_3d.tres" id="7_1vkep"]
+[ext_resource type="ArrayMesh" uid="uid://cmxl02eyh33y1" path="res://ressources/models/lantern/new_array_mesh.tres" id="8_1vkep"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bst75"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_bst75"]
-size = Vector3(0.5, 0.5, 0.5)
-
 [node name="Lantern" type="StaticBody3D" unique_id=2023370505 groups=["damagable_by_player"]]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_eua1y")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1620609282]
@@ -19,13 +19,8 @@ light_energy = 6.5
 omni_range = 15.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=449274666]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.2, 0)
+transform = Transform3D(-2.1855694e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.1855694e-08, 0, 0.2, 0)
 shape = SubResource("BoxShape3D_bst75")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2141982822]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
-mesh = SubResource("BoxMesh_bst75")
-surface_material_override/0 = ExtResource("1_443ya")
 
 [node name="Components" type="Node" parent="." unique_id=1871396557]
 
@@ -37,3 +32,14 @@ script = ExtResource("4_8ndn5")
 loot_table = Dictionary[int, float]({
 11: 1.0
 })
+
+[node name="Lantern_Glass" type="MeshInstance3D" parent="." unique_id=1538434073]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("4_4pf0t")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("7_1vkep")
+
+[node name="Lantern" type="MeshInstance3D" parent="." unique_id=1447916149]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("8_1vkep")
+skeleton = NodePath("")
