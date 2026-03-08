@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://b1h3f3q7s2d68"]
+
+[ext_resource type="Texture2D" uid="uid://jluqbhm4xkuo" path="res://ressources/pictures/items/chest.png" id="1_aq0ci"]
+[ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="1_lxi1q"]
+[ext_resource type="PackedScene" uid="uid://dr230symovhoe" path="res://scenes/objects/chest.tscn" id="2_ohy2y"]
+
+[resource]
+script = ExtResource("1_lxi1q")
+name = "Kiste"
+icon = ExtResource("1_aq0ci")
+scene = ExtResource("2_ohy2y")
+item_id = 13
+metadata/_custom_type_script = "uid://dwdabywcheuay"

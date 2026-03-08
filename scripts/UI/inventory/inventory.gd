@@ -142,13 +142,19 @@ func clear_inventory_slot(row: int, index: int) -> void:
 	if count_label:
 		count_label.text = ""
 
-## Drop 1 item anywhere in inventory (used for drops by entities).
-func drop(item: Item_ids.ItemID) -> void:
-	var target = slot_to_put_in(item)
+## Drop a specific number of items anywhere in inventory.
+func drop(item_id: Item_ids.ItemID, amount: int = 1) -> void:
+	# 1. Find the best slot (either an existing stack of this ID or the first empty)
+	var target = slot_to_put_in(item_id)
+	
+	# 2. If no slot is found (Inventory is full and no existing stack exists)
 	if target == Vector2(-1, -1):
-		print("Inventory full!")
+		print("Inventory full! Could not drop items.")
 		return
-	load_item_to_inventory(item, int(target.x), int(target.y), 1)
+	
+	# 3. Load the items. 
+	# If an existing stack is found, load_item_to_inventory calls change_count automatically.
+	load_item_to_inventory(item_id, int(target.x), int(target.y), amount)
 
 ## Returns the total amount of a specific item currently held in the inventory.
 func inventory_contains(target_id: ItemIDs.ItemID) -> Dictionary:

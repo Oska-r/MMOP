@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dslvjdvi41q6q"]
 
 [ext_resource type="Script" uid="uid://b5g2llc373ovo" path="res://scripts/UI/menus/day_display.gd" id="1_7ia6t"]
+[ext_resource type="Script" uid="uid://q15pvb0eqajx" path="res://scenes/UI/displays/top_display.gd" id="1_hcjvu"]
 [ext_resource type="PackedScene" uid="uid://o4b8gmqokcp8" path="res://scenes/UI/displays/oxygen_tank_alert.tscn" id="2_hcjvu"]
 
-[node name="TopDisplay" type="VBoxContainer" unique_id=554564827]
+[node name="VBoxContainer" type="VBoxContainer" unique_id=554564827]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -11,6 +12,7 @@ offset_left = -175.0
 offset_right = 175.0
 offset_bottom = 134.0
 grow_horizontal = 2
+script = ExtResource("1_hcjvu")
 
 [node name="DayDisplay" type="RichTextLabel" parent="." unique_id=760342871]
 custom_minimum_size = Vector2(150, 50)

@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dyfnqsehjocyi" path="res://scripts/objects/chest.gd" id="1_bas4e"]
 [ext_resource type="AudioStream" uid="uid://disxdn4k8w57" path="res://ressources/sounds/UI/open_chest.mp3" id="2_acra8"]
 [ext_resource type="AudioStream" uid="uid://cb7favdb6rgcv" path="res://ressources/sounds/UI/close_chest.mp3" id="3_pev8c"]
+[ext_resource type="Script" uid="uid://3f54wqp2pk5k" path="res://scripts/components/damageable.gd" id="4_nj372"]
+[ext_resource type="Script" uid="uid://cex520s86u2lf" path="res://scripts/components/loot_table.gd" id="5_5vikd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3p4p"]
 resource_name = "Chest Black"
@@ -137,7 +139,7 @@ size = Vector3(1.02, 0.17, 2.005)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pev8c"]
 albedo_color = Color(0.2627451, 0.1882353, 0.09411765, 1)
 
-[node name="Chest" type="StaticBody3D" unique_id=684924033 node_paths=PackedStringArray("open_chest_sound", "close_chest_sound")]
+[node name="Chest" type="StaticBody3D" unique_id=684924033 node_paths=PackedStringArray("open_chest_sound", "close_chest_sound") groups=["damagable_by_player"]]
 script = ExtResource("1_bas4e")
 open_chest_sound = NodePath("OpenChest")
 close_chest_sound = NodePath("CloseChest")
@@ -162,3 +164,14 @@ pitch_scale = 1.8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.032, 0.466, 0.006)
 mesh = SubResource("BoxMesh_acra8")
 surface_material_override/0 = SubResource("StandardMaterial3D_pev8c")
+
+[node name="Components" type="Node" parent="." unique_id=1682685262]
+
+[node name="Damageable" type="Node" parent="Components" unique_id=911803825]
+script = ExtResource("4_nj372")
+
+[node name="LootTable" type="Node" parent="Components" unique_id=1122326701]
+script = ExtResource("5_5vikd")
+loot_table = Dictionary[int, float]({
+13: 1.0
+})

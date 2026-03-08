@@ -17,7 +17,7 @@ radius = 0.445
 height = 1.74
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u2d4w"]
-size = Vector3(0.7952881, 0.72094727, 1.8825073)
+size = Vector3(0.7952881, 0.72094727, 1.6884079)
 
 [node name="Player" type="CharacterBody3D" unique_id=695893652 groups=["player"]]
 script = ExtResource("1_fjrip")
@@ -47,7 +47,7 @@ target_position = Vector3(0, 0, -7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Camera3D/Attack_Area" unique_id=1037535722]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016906738, 1.3622359, -1.200304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016906738, 1.3622359, -1.2973537)
 shape = SubResource("BoxShape3D_u2d4w")
 
 [node name="SoundEffects" type="Node" parent="." unique_id=1602734604]

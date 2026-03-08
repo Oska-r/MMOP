@@ -140,7 +140,7 @@ func calculate_block_spawn_pos() -> Vector3:
 	var collider = place_ray.get_collider()
 	
 	# Only allow placement if the hit object is in the "placable_surface" group
-	if not collider.is_in_group("placable_surface"):
+	if not collider or not collider.is_in_group("placable_surface"):
 		return Vector3.ZERO
 	
 	var hit_position = place_ray.get_collision_point()
@@ -295,7 +295,6 @@ func handle_attack() -> void:
 			DamageSystem.apply_damage(body, damage, self)
 			damage_timer = attack_interval
 			UI.on_attacked(body)
-			#attack_animation()
 
 func attack_animation() -> void:
 	if not is_inside_tree():

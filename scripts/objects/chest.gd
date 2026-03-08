@@ -8,12 +8,26 @@ var is_open: bool = false
 @export var close_chest_sound: AudioStreamPlayer3D
 
 @onready var inventory: Control = get_tree().get_first_node_in_group("inventory")
+@onready var damageable: Node = $Components/Damageable
+@onready var loot_table: Node = $Components/LootTable
 
 func _ready() -> void:
+	damageable.died.connect(_on_died)
 	# Keep your duplication logic
 	for i in range(chest_items.size()):
 		if chest_items[i] is Item:
 			chest_items[i] = chest_items[i].duplicate()
+
+# Source is always player.
+func _on_died(_source: Node) -> void:
+	loot_table.calculate_loot()
+	for i in chest_items.size():
+		var item = chest_items[i]
+		
+		if not item:
+			continue
+		
+		inventory.drop(item.item_id, item.count)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if is_open and (event.is_action_pressed("inventory") or event.is_action_pressed("ui_cancel")):
