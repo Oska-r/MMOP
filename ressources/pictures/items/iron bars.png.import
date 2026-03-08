@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4pijmugb1ier"
-path="res://.godot/imported/Icon.png-721e30895236f210803b8ddef94ac96b.ctex"
+uid="uid://beb18cuwnli4v"
+path="res://.godot/imported/iron bars.png-116f9e018ec58f3dab7ae42f429cbd23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ressources/pictures/Icon.png"
-dest_files=["res://.godot/imported/Icon.png-721e30895236f210803b8ddef94ac96b.ctex"]
+source_file="res://ressources/pictures/items/iron bars.png"
+dest_files=["res://.godot/imported/iron bars.png-116f9e018ec58f3dab7ae42f429cbd23.ctex"]
 
 [params]
 

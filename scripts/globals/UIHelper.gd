@@ -3,6 +3,7 @@ extends Node
 func _ready() -> void:
 	await get_tree().process_frame  # wait until the first frame
 	DisplayServer.window_set_min_size(Vector2i(1070, 600))
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 func _input(event):
 	if event.is_action_pressed("toggle_fullscreen"):

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dlv0tghnokaw3"]
 
 [ext_resource type="Script" uid="uid://m23y5my2egph" path="res://scripts/UI/menus/end_screen.gd" id="1_20kt3"]
+[ext_resource type="AudioStream" uid="uid://dyhiu0mwhs5l7" path="res://ressources/sounds/main menu.mp3" id="2_1ph4j"]
 
 [node name="Game_Over_Screen" type="Control" unique_id=102768040]
 layout_mode = 3
@@ -52,6 +53,10 @@ text = "Main Menu"
 [node name="Beenden" type="Button" parent="VBoxContainer" unique_id=918764775]
 layout_mode = 2
 text = "Beenden"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1978046049]
+stream = ExtResource("2_1ph4j")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Neustart" to="." method="_on_neustart_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button_Main_Menu" to="." method="_on_button_pressed"]

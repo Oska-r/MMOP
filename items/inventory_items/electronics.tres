@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://rumestwin6hg"]
+
+[ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="1_4fbdk"]
+[ext_resource type="Texture2D" uid="uid://cnq4mkb0ryxqo" path="res://ressources/pictures/items/electronics.png" id="1_31ohy"]
+
+[resource]
+script = ExtResource("1_4fbdk")
+name = "Elektrische Bauteile"
+icon = ExtResource("1_31ohy")
+item_id = 15
+metadata/_custom_type_script = "uid://dwdabywcheuay"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bvki2tx2umeef"]
+
+[ext_resource type="Texture2D" uid="uid://beb18cuwnli4v" path="res://ressources/pictures/items/iron bars.png" id="1_fujoj"]
+[ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="1_n34f1"]
+
+[resource]
+script = ExtResource("1_n34f1")
+name = "Eisenstäbe"
+icon = ExtResource("1_fujoj")
+item_id = 14
+metadata/_custom_type_script = "uid://dwdabywcheuay"
