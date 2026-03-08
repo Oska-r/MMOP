@@ -5,7 +5,7 @@ signal day_started(day_count: int)
 @export_category("Time")
 @export var day_length_seconds: float = 180.0
 ## 0 morning | 0.25 noon | 0.75 midnight 
-@export var time: float = 0.0
+@export var time: float = 0.05
 var is_day: bool
 
 @export_category("Sun")
