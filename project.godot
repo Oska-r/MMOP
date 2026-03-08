@@ -53,7 +53,7 @@ FunctionHelper="*uid://cwtx6v8a2yx62"
 
 [display]
 
-window/size/always_on_top=true
+window/size/mode=2
 
 [dotnet]
 

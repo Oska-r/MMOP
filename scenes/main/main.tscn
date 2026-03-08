@@ -13,7 +13,7 @@ script = ExtResource("1_o6xl0")
 
 [node name="TopDisplay" parent="." unique_id=554564827 instance=ExtResource("4_hujxm")]
 
-[node name="UI" parent="." unique_id=2045572628 node_paths=PackedStringArray("player") instance=ExtResource("6_hujxm")]
+[node name="UI" parent="." unique_id=2045572628 node_paths=PackedStringArray("player") groups=["UI"] instance=ExtResource("6_hujxm")]
 anchors_preset = -1
 player = NodePath("../Player")
 

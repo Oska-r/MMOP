@@ -1,11 +1,19 @@
 [gd_scene format=3 uid="uid://cjhvd857e0u7k"]
 
 [ext_resource type="PackedScene" uid="uid://dr1hqhhyvv47c" path="res://scenes/objects/oxygen_tank/oxygen_tank.tscn" id="1_br8mx"]
+[ext_resource type="Script" uid="uid://bmtjonaqm2qjx" path="res://items/crafting/crafting_recipe.gd" id="2_5wiho"]
 [ext_resource type="PackedScene" uid="uid://cxpd0mkp6cky5" path="res://scenes/objects/crafting_table.tscn" id="3_42htb"]
 [ext_resource type="PackedScene" uid="uid://laaa0kfjc0my" path="res://scenes/objects/rocket.tscn" id="4_adh44"]
 [ext_resource type="PackedScene" uid="uid://bkjoqiq310tq5" path="res://scenes/world/island/island.tscn" id="5_adh44"]
 [ext_resource type="PackedScene" uid="uid://dr230symovhoe" path="res://scenes/objects/chest.tscn" id="5_ee6x1"]
 [ext_resource type="Script" uid="uid://dwdabywcheuay" path="res://items/item.gd" id="6_5wiho"]
+
+[sub_resource type="Resource" id="Resource_qdb88"]
+script = ExtResource("2_5wiho")
+ingredients = Dictionary[int, int]({
+1: 4
+})
+metadata/_custom_type_script = "uid://bmtjonaqm2qjx"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ee6x1"]
 
@@ -46,6 +54,7 @@ metadata/_custom_type_script = "uid://dwdabywcheuay"
 
 [node name="Oxygentank" parent="." unique_id=838330149 instance=ExtResource("1_br8mx")]
 transform = Transform3D(2.305, 0, 0, 0, 2.305, 0, 0, 0, 2.305, 0, 0.14937317, 0)
+upgrade_requirements = Array[ExtResource("2_5wiho")]([SubResource("Resource_qdb88")])
 
 [node name="CraftingTable" parent="." unique_id=117519311 instance=ExtResource("3_42htb")]
 transform = Transform3D(0.9638027, 0, 0.266616, 0, 1, 0, -0.266616, 0, 0.9638027, 47.197884, 0.5, -47.26444)

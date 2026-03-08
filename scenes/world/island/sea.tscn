@@ -22,7 +22,7 @@ uv1_triplanar = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_hbor0"]
 material = SubResource("StandardMaterial3D_51whp")
-top_radius = 250.0
+top_radius = 1000.0
 bottom_radius = 0.0
 height = 0.001
 

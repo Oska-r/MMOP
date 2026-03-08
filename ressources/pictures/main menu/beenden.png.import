@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5b70r2fs8xmx"
-path="res://.godot/imported/Startframe.png-4413ebfe895157d04821ed4e36e5491d.ctex"
+uid="uid://ds04g4xul7f3i"
+path="res://.godot/imported/beenden.png-b0690647d55f419ddea35357828fe4d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ressources/pictures/Startframe.png"
-dest_files=["res://.godot/imported/Startframe.png-4413ebfe895157d04821ed4e36e5491d.ctex"]
+source_file="res://ressources/pictures/main menu/beenden.png"
+dest_files=["res://.godot/imported/beenden.png-b0690647d55f419ddea35357828fe4d4.ctex"]
 
 [params]
 

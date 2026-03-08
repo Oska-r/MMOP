@@ -166,9 +166,12 @@ script = ExtResource("1_myx47")
 
 [node name="Blur" type="ColorRect" parent="." unique_id=1461288169]
 material = SubResource("ShaderMaterial_myx47")
-layout_mode = 0
-offset_right = 1150.0
-offset_bottom = 646.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=626011311]

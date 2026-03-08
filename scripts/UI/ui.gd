@@ -5,6 +5,9 @@ extends Control
 
 @onready var center_screen: Control = $CenterScreen
 
+func _ready() -> void:
+	show()
+
 func _on_player_player_health_changed(current_health: float, max_health: float) -> void:
 	health_display.player_health_changed(current_health, max_health)
 

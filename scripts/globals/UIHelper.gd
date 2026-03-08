@@ -8,7 +8,6 @@ func update_health_display(label: Label3D, damageable: Node) -> void:
 	label.text = str(int(round(damageable.health))) + "/" + str(int(round(damageable.max_health)))
 
 func rotate(object: Node, angle: int, target = get_viewport().get_camera_3d()):
-	
 	if target:
 		# Make the label look at the camera
 		object.look_at(target.global_transform.origin, Vector3.UP)

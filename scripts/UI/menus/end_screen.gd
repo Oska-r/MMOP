@@ -3,9 +3,14 @@ extends Control
 @onready var label: Label = get_node("VBoxContainer/Label")
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = false
 	var unit = "Tage" if GlobalGameState.day_count != 1 else "Tag"
-	label.text = "Game Over!\nDu hast %d %s überlebt." % [GlobalGameState.day_count, unit]
+	
+	if not GlobalGameState.won:
+		label.text = "Game Over!\nDu hast %d %s überlebt." % [GlobalGameState.day_count, unit]
+	else:
+		label.text = "Du hast gewonnen! Dafür hast du %d %s gebraucht!" % [GlobalGameState.day_count, unit]
 	visible = true
 
 func _on_restart_pressed() -> void:

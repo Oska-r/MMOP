@@ -14,6 +14,7 @@ var tier: int = 0
 @export var rocket_scene: PackedScene
 
 func _ready() -> void:
+	show()
 	update_oxygen_tank(tier)
 	damageable.died.connect(_on_died)
 	damageable.took_damage.connect(_took_damage)
@@ -101,4 +102,9 @@ func update_oxygen_tank(next_tier: int) -> void:
 
 func spawn_rocket() -> void:
 	var rocket_instance = rocket_scene.instantiate()
-	add_child(rocket_instance)
+	
+	# Add rocket to the same parent as this node (or scene root)
+	get_parent().add_child(rocket_instance)
+	
+	# Match global position and rotation
+	rocket_instance.global_transform = self.global_transform
