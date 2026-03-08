@@ -10,6 +10,12 @@ extends StaticBody3D
 var is_launching = false
 var launch_speed = 15.0
 
+func _ready() -> void:
+	label.hide()
+
+func spawned() -> void:
+	label.show()
+
 func launch_rocket() -> void:
 	GlobalGameState.won = true
 	label.hide()
@@ -27,5 +33,4 @@ func _process(delta: float) -> void:
 		
 		if transform.origin.y > 150:
 			get_viewport().get_tree().change_scene_to_file("res://scenes/UI/menus/end_screen.tscn")
-	
 	

@@ -108,3 +108,4 @@ func spawn_rocket() -> void:
 	
 	# Match global position and rotation
 	rocket_instance.global_transform = self.global_transform
+	rocket_instance.spawned()

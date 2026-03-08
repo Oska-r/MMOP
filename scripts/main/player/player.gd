@@ -102,7 +102,7 @@ func _input(event) -> void:
 			collider.try_craft_current_tier()
 		if collider.has_method("pickup_mushroom"):
 			collider.pickup_mushroom()
-		if collider.has_method("launch_rocket"):
+		if collider.has_method("launch_rocket") and GlobalGameState.won:
 			collider.launch_rocket()
 
 ## Disables (if parameter is false) or enables (if parameter is true) all player input (used for openend UIs).
