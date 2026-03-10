@@ -35,7 +35,7 @@ skeleton = NodePath("")
 
 [node name="Damageable" type="Node" parent="Components" unique_id=863016388]
 script = ExtResource("3_wweuy")
-max_health = 100.0
+max_health = 200.0
 
 [node name="LootTable" type="Node" parent="Components" unique_id=1292478420]
 script = ExtResource("4_tsoic")

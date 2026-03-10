@@ -84,5 +84,5 @@ max_health = 500.0
 script = ExtResource("2_6jkjv")
 loot_table = Dictionary[int, float]({
 2: 0.4,
-5: 0.05
+5: 0.1
 })

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://laaa0kfjc0my" path="res://scenes/objects/rocket.tscn" id="3_1lc3u"]
 [ext_resource type="Script" uid="uid://3f54wqp2pk5k" path="res://scripts/components/damageable.gd" id="3_kkmc3"]
 [ext_resource type="Script" uid="uid://brlk3nbeeodmj" path="res://scripts/components/crafting.gd" id="4_hti3s"]
-[ext_resource type="Script" uid="uid://c3r63pxf6h435" path="res://scripts/components/rotating_label.gd" id="4_kkmc3"]
+[ext_resource type="Script" uid="uid://c3r63pxf6h435" path="res://scripts/components/at_player_looking.gd" id="4_kkmc3"]
 
 [sub_resource type="Resource" id="Resource_qdb88"]
 script = ExtResource("2_qdb88")

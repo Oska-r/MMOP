@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://be0ekd1x7lcxe" path="res://scripts/main/enemy/enemy.gd" id="1_l1lbi"]
 [ext_resource type="Script" uid="uid://3f54wqp2pk5k" path="res://scripts/components/damageable.gd" id="2_s007n"]
 [ext_resource type="Script" uid="uid://cex520s86u2lf" path="res://scripts/components/loot_table.gd" id="3_5wnaa"]
-[ext_resource type="Script" uid="uid://c3r63pxf6h435" path="res://scripts/components/rotating_label.gd" id="4_0xiny"]
+[ext_resource type="Script" uid="uid://c3r63pxf6h435" path="res://scripts/components/at_player_looking.gd" id="4_0xiny"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_s007n"]
 custom_solver_bias = 0.4

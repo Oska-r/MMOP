@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://br3f0ugkmh8vu"]
 
 [ext_resource type="Script" uid="uid://8xewrjn8gbef" path="res://scripts/objects/mushroom.gd" id="1_4s2q7"]
-[ext_resource type="Script" uid="uid://c3r63pxf6h435" path="res://scripts/components/rotating_label.gd" id="2_gh33d"]
+[ext_resource type="Script" uid="uid://c3r63pxf6h435" path="res://scripts/components/at_player_looking.gd" id="2_gh33d"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gh33d"]
 radius = 0.2

@@ -27,6 +27,7 @@ func _ready() -> void:
 	furnace.hide()
 	
 	load_item_to_inventory(Item_ids.ItemID.LANTERN, 0, 0, 1)
+	load_item_to_inventory(Item_ids.ItemID.SPIKES, 0, 1, 3)
 
 func _input(event) -> void:
 	if event.is_action_pressed("inventory"):
