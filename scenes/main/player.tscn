@@ -47,7 +47,7 @@ target_position = Vector3(0, 0, -7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Camera3D/Attack_Area" unique_id=1037535722]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016906738, 1.3622359, -1.4881661)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002734661, 1.3622359, -1.4881661)
 shape = SubResource("BoxShape3D_u2d4w")
 
 [node name="SoundEffects" type="Node" parent="." unique_id=1602734604]

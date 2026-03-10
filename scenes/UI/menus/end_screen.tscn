@@ -48,7 +48,7 @@ text = "Neustarten"
 
 [node name="Button_Main_Menu" type="Button" parent="VBoxContainer" unique_id=2130744306]
 layout_mode = 2
-text = "Main Menu"
+text = "Hauptmenü"
 
 [node name="Beenden" type="Button" parent="VBoxContainer" unique_id=918764775]
 layout_mode = 2
