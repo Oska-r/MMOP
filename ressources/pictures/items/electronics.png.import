@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cnq4mkb0ryxqo"
-path="res://.godot/imported/electronics.png-c8fcc15e70adda19642fc7cc2e8f0283.ctex"
+path="res://.godot/imported/electronics.png-3f89bfb51cf48ffb9c33e46c6c5ef1ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ressources/pictures/Items/electronics.png"
-dest_files=["res://.godot/imported/electronics.png-c8fcc15e70adda19642fc7cc2e8f0283.ctex"]
+source_file="res://ressources/pictures/items/electronics.png"
+dest_files=["res://.godot/imported/electronics.png-3f89bfb51cf48ffb9c33e46c6c5ef1ee.ctex"]
 
 [params]
 
