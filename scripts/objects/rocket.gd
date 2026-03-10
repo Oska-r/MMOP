@@ -17,7 +17,6 @@ func spawned() -> void:
 	label.show()
 
 func launch_rocket() -> void:
-	GlobalGameState.won = true
 	label.hide()
 	oxygen_tank.hide()
 	UI.hide()

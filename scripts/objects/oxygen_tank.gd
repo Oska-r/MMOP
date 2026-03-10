@@ -20,6 +20,7 @@ func _ready() -> void:
 	damageable.took_damage.connect(_took_damage)
 	UIHelper.update_health_display(health_label, damageable)
 	display_requirements(false)
+	GlobalGameState.won = false
 
 func _took_damage(_damage: float, _source: Node) -> void:
 	UIHelper.update_health_display(health_label, damageable)
@@ -102,6 +103,8 @@ func update_oxygen_tank(next_tier: int) -> void:
 
 func spawn_rocket() -> void:
 	var rocket_instance = rocket_scene.instantiate()
+	
+	GlobalGameState.won = true
 	
 	# Add rocket to the same parent as this node (or scene root)
 	get_parent().add_child(rocket_instance)

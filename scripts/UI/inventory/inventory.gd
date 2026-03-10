@@ -26,8 +26,12 @@ func _ready() -> void:
 	crafting_table.hide()
 	furnace.hide()
 	
-	load_item_to_inventory(Item_ids.ItemID.LANTERN, 0, 0, 1)
-	load_item_to_inventory(Item_ids.ItemID.SPIKES, 0, 1, 3)
+	load_item_to_inventory(Item_ids.ItemID.WOOD, 0, 0, 500)
+	load_item_to_inventory(Item_ids.ItemID.STONE, 0, 1, 500)
+	load_item_to_inventory(Item_ids.ItemID.IRON_BARS, 0, 2, 500)
+	load_item_to_inventory(Item_ids.ItemID.SMELTED_IRON, 0, 3, 500)
+	load_item_to_inventory(Item_ids.ItemID.OIL, 0, 4, 500)
+	load_item_to_inventory(Item_ids.ItemID.ELECTRONICS, 0, 5, 500)
 
 func _input(event) -> void:
 	if event.is_action_pressed("inventory"):
