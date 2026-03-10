@@ -320,7 +320,7 @@ func _on_died(_source: Node) -> void:
 	_change_to_end_screen()
 
 func _change_to_end_screen() -> void:
-	get_viewport().get_tree().change_scene_to_file("res://scenes/UI/menus/end_screen.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/UI/menus/end_screen.tscn")
 
 #endregion
 

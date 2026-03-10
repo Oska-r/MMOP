@@ -6,7 +6,7 @@ var gravity: float = 9.8
 var won: bool = false
 
 func reset_day() -> void:
-	day_count = 0
+	day_count = 1
 
 func advance_day() -> void:
 	day_count += 1
