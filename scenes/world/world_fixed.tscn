@@ -76,7 +76,7 @@ item_id = 2
 metadata/_custom_type_script = "uid://dwdabywcheuay"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ifmem"]
-load_path = "res://.godot/imported/iron bars.png-116f9e018ec58f3dab7ae42f429cbd23.ctex"
+load_path = "res://.godot/imported/iron bars.png-a36651f101186579809f9c1bf3e7f0bc.ctex"
 
 [sub_resource type="Resource" id="Resource_n5jhn"]
 script = ExtResource("6_5wiho")

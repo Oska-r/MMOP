@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cbhfactubep3m"
-path="res://.godot/imported/Oxygentank.glb-5d97a88b17a6473f46aa2494d8dad64f.scn"
+path="res://.godot/imported/Oxygentank.glb-b3298a41ba8e4990c0ef6f0621e6567c.scn"
 
 [deps]
 
-source_file="res://ressources/models/sauerstofftank/Oxygentank.glb"
-dest_files=["res://.godot/imported/Oxygentank.glb-5d97a88b17a6473f46aa2494d8dad64f.scn"]
+source_file="res://ressources/models/Sauerstofftank/Oxygentank.glb"
+dest_files=["res://.godot/imported/Oxygentank.glb-b3298a41ba8e4990c0ef6f0621e6567c.scn"]
 
 [params]
 
