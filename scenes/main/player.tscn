@@ -21,6 +21,8 @@ size = Vector3(0.795, 0.721, 2)
 
 [node name="Player" type="CharacterBody3D" unique_id=695893652 groups=["player"]]
 script = ExtResource("1_fjrip")
+damage = 50.0
+attack_interval = 0.8
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=482181851]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
