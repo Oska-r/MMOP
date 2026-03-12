@@ -109,7 +109,7 @@ script = ExtResource("1_4s2q7")
 [node name="Label3D" type="Label3D" parent="." unique_id=1242683970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6133032, 0)
 visible = false
-text = "Dürcke E zum Aufsammeln"
+text = "Drücke E zum Aufsammeln"
 script = ExtResource("2_gh33d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=69014228]

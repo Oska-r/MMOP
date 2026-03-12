@@ -50,8 +50,8 @@ Dieses Dokument enthält eine Übersicht aller Klassen im Godot-Projekt, basiere
   - Node (SoundEffects) mit AudioStreamPlayer-Instanzen
   - Timer (AttackTimer)
   - Node (Components) mit:
-    - Node (Movement) mit `player_movement.gd`
-    - Node (Damageable) mit `damageable.gd`
+	- Node (Movement) mit `player_movement.gd`
+	- Node (Damageable) mit `damageable.gd`
 
 #### Andere Szenen
 - Ähnliche Strukturen für enemy.tscn, objects wie chest.tscn, etc.

@@ -3,15 +3,12 @@
 [ext_resource type="Script" uid="uid://o3eg7vjc47t7" path="res://scripts/main/main.gd" id="1_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://bao028iep5b5x" path="res://scenes/world/world.tscn" id="2_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://scenes/main/player.tscn" id="2_tipki"]
-[ext_resource type="PackedScene" uid="uid://dslvjdvi41q6q" path="res://scenes/UI/displays/top_display.tscn" id="4_hujxm"]
 [ext_resource type="PackedScene" uid="uid://cdhogk0p63hmu" path="res://scenes/world/world_environment.tscn" id="4_ouso4"]
 [ext_resource type="PackedScene" uid="uid://bv7nxdrmt0pwo" path="res://scenes/UI/ui.tscn" id="6_hujxm"]
 [ext_resource type="AudioStream" uid="uid://chrw4bninhbgo" path="res://ressources/sounds/backgroundMusic.mp3" id="7_trceg"]
 
 [node name="Main" type="Node3D" unique_id=1623769975]
 script = ExtResource("1_o6xl0")
-
-[node name="TopDisplay" parent="." unique_id=554564827 instance=ExtResource("4_hujxm")]
 
 [node name="UI" parent="." unique_id=2045572628 node_paths=PackedStringArray("player") groups=["UI"] instance=ExtResource("6_hujxm")]
 anchors_preset = -1
@@ -30,6 +27,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1936798, 0.65600634, 9.766
 stream = ExtResource("7_trceg")
 volume_db = -30.0
 
-[connection signal="day_started" from="WorldEnvironment" to="TopDisplay" method="_on_world_environment_day_started"]
 [connection signal="day_started" from="WorldEnvironment" to="World" method="_on_world_environment_day_started"]
 [connection signal="player_health_changed" from="Player" to="UI" method="_on_player_player_health_changed"]

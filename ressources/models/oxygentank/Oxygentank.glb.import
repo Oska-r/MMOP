@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cc0c65i761qig"
-path="res://.godot/imported/Spikes.glb-0b1bf569d5e207f885ddcc486744aea9.scn"
+uid="uid://cbhfactubep3m"
+path="res://.godot/imported/Oxygentank.glb-e75a87ad0fc0768901adadce0cb2bf94.scn"
 
 [deps]
 
-source_file="res://ressources/models/Spike/Spikes.glb"
-dest_files=["res://.godot/imported/Spikes.glb-0b1bf569d5e207f885ddcc486744aea9.scn"]
+source_file="res://ressources/models/oxygentank/Oxygentank.glb"
+dest_files=["res://.godot/imported/Oxygentank.glb-e75a87ad0fc0768901adadce0cb2bf94.scn"]
 
 [params]
 

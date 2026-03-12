@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ssjudgktf1oa"]
 
 [ext_resource type="Script" uid="uid://bqieswxvc3dup" path="res://scenes/helper/icon_renderer.gd" id="1_4krnv"]
-[ext_resource type="PackedScene" uid="uid://dr230symovhoe" path="res://scenes/objects/chest.tscn" id="2_808ed"]
+[ext_resource type="PackedScene" uid="uid://d2rdqj4qck2i5" path="res://scenes/objects/spikes.tscn" id="2_808ed"]
 
 [node name="IconRenderer" type="Node3D" unique_id=1358033596]
 script = ExtResource("1_4krnv")
@@ -18,5 +18,5 @@ size = 1.05
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport" unique_id=1946511718]
 transform = Transform3D(1, 0, 0, 0, 0.76165146, 0.6479869, 0, -0.6479869, 0.76165146, 0, 5.1976085, 0)
 
-[node name="Chest" parent="SubViewport" unique_id=684924033 instance=ExtResource("2_808ed")]
-transform = Transform3D(-0.288554, 0, 0.29826427, 0, 0.415, 0, -0.29826427, 0, -0.288554, 0, 0, 0)
+[node name="Spikes" parent="." unique_id=1566048860 instance=ExtResource("2_808ed")]
+transform = Transform3D(0.029999997, 0, -0.051961526, 0, 0.06, 0, 0.051961526, 0, 0.029999997, 0.05, 0.09528303, 0)

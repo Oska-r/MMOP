@@ -11,10 +11,12 @@
 [ext_resource type="AudioStream" uid="uid://1o10fnhinqcg" path="res://ressources/sounds/place.mp3" id="9_7rgu1"]
 [ext_resource type="Texture2D" uid="uid://c5d3ocb0qcwda" path="res://ressources/pictures/items/smelted_iron.png" id="10_kxaup"]
 [ext_resource type="Texture2D" uid="uid://beb18cuwnli4v" path="res://ressources/pictures/items/iron bars.png" id="11_n4y3v"]
-[ext_resource type="Texture2D" uid="uid://d1wbujc744yc2" path="res://ressources/pictures/items/Spikes.png" id="12_kxaup"]
-[ext_resource type="PackedScene" uid="uid://d2rdqj4qck2i5" path="res://scenes/objects/items/spikes.tscn" id="13_n4y3v"]
+[ext_resource type="Texture2D" uid="uid://c3qs8l8ims1ub" path="res://ressources/pictures/items/spikes.png" id="12_kxaup"]
+[ext_resource type="PackedScene" uid="uid://d2rdqj4qck2i5" path="res://scenes/objects/spikes.tscn" id="13_n4y3v"]
 [ext_resource type="Texture2D" uid="uid://bf223ioijl2dp" path="res://ressources/pictures/items/lantern.png" id="14_p15kb"]
 [ext_resource type="PackedScene" uid="uid://c1cvi5ha62drp" path="res://scenes/objects/lantern.tscn" id="15_ifmem"]
+[ext_resource type="Texture2D" uid="uid://o30by7r1www7" path="res://ressources/pictures/items/wood_block.png" id="16_n5jhn"]
+[ext_resource type="Texture2D" uid="uid://bcvhy1fxrneyo" path="res://ressources/pictures/items/oil.png" id="17_etyfi"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ee6x1"]
 
@@ -65,7 +67,7 @@ icon = ExtResource("8_1q4oq")
 item_id = 15
 metadata/_custom_type_script = "uid://dwdabywcheuay"
 
-[sub_resource type="Resource" id="Resource_p15kb"]
+[sub_resource type="Resource" id="Resource_6wuw4"]
 resource_local_to_scene = true
 script = ExtResource("6_5wiho")
 name = "Stein"
@@ -76,7 +78,6 @@ item_id = 2
 metadata/_custom_type_script = "uid://dwdabywcheuay"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ifmem"]
-load_path = "res://.godot/imported/iron bars.png-a36651f101186579809f9c1bf3e7f0bc.ctex"
 
 [sub_resource type="Resource" id="Resource_n5jhn"]
 script = ExtResource("6_5wiho")
@@ -142,6 +143,56 @@ icon = ExtResource("8_1q4oq")
 item_id = 15
 metadata/_custom_type_script = "uid://dwdabywcheuay"
 
+[sub_resource type="Resource" id="Resource_r3gv8"]
+resource_local_to_scene = true
+script = ExtResource("6_5wiho")
+name = "Stein"
+icon = ExtResource("8_fndrv")
+count = 500
+sound = ExtResource("9_7rgu1")
+item_id = 2
+metadata/_custom_type_script = "uid://dwdabywcheuay"
+
+[sub_resource type="Resource" id="Resource_pgxv4"]
+script = ExtResource("6_5wiho")
+name = "Holz"
+icon = ExtResource("16_n5jhn")
+count = 500
+item_id = 1
+metadata/_custom_type_script = "uid://dwdabywcheuay"
+
+[sub_resource type="Resource" id="Resource_srp4q"]
+script = ExtResource("6_5wiho")
+name = "Öl"
+icon = ExtResource("17_etyfi")
+count = 500
+item_id = 4
+metadata/_custom_type_script = "uid://dwdabywcheuay"
+
+[sub_resource type="Resource" id="Resource_8nlxw"]
+script = ExtResource("6_5wiho")
+name = "Eisen"
+icon = ExtResource("10_kxaup")
+count = 500
+item_id = 6
+metadata/_custom_type_script = "uid://dwdabywcheuay"
+
+[sub_resource type="Resource" id="Resource_xcw4i"]
+script = ExtResource("6_5wiho")
+name = "Eisenstäbe"
+icon = ExtResource("11_n4y3v")
+count = 500
+item_id = 14
+metadata/_custom_type_script = "uid://dwdabywcheuay"
+
+[sub_resource type="Resource" id="Resource_2batq"]
+script = ExtResource("6_5wiho")
+name = "Elektrische Bauteile"
+icon = ExtResource("8_1q4oq")
+count = 500
+item_id = 15
+metadata/_custom_type_script = "uid://dwdabywcheuay"
+
 [node name="World_fixed" type="Node" unique_id=828041261]
 
 [node name="Oxygentank" parent="." unique_id=838330149 instance=ExtResource("1_br8mx")]
@@ -170,7 +221,7 @@ chest_items = Array[ExtResource("6_5wiho")]([SubResource("Resource_7mpuy"), null
 
 [node name="Chest4" parent="." unique_id=1409898974 instance=ExtResource("5_ee6x1")]
 transform = Transform3D(-0.9925525, 0, 0.121817395, 0, 1, 0, -0.121817395, 0, -0.9925525, 95.100746, 0.5765443, 17.848701)
-chest_items = Array[ExtResource("6_5wiho")]([null, SubResource("Resource_p15kb"), null, null, SubResource("Resource_n5jhn"), null, null, null, null, null])
+chest_items = Array[ExtResource("6_5wiho")]([null, SubResource("Resource_6wuw4"), null, null, SubResource("Resource_n5jhn"), null, null, null, null, null])
 
 [node name="Chest5" parent="." unique_id=1847942647 instance=ExtResource("5_ee6x1")]
 transform = Transform3D(0.2962249, 0, -0.95511824, 0, 1, 0, 0.95511824, 0, 0.2962249, 1.26618, 0.5765443, 78.18155)
@@ -187,3 +238,7 @@ chest_items = Array[ExtResource("6_5wiho")]([null, null, null, SubResource("Reso
 [node name="Electronics3" parent="." unique_id=1157246573 instance=ExtResource("5_ee6x1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.246046, 0.57654524, 33.716103)
 chest_items = Array[ExtResource("6_5wiho")]([SubResource("Resource_to2qn"), null, null, null, SubResource("Resource_112fm"), null, null, null, SubResource("Resource_3u6md"), null])
+
+[node name="Chest2" parent="." unique_id=670818981 instance=ExtResource("5_ee6x1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.143616, 0.5765445, 10.106134)
+chest_items = Array[ExtResource("6_5wiho")]([SubResource("Resource_r3gv8"), SubResource("Resource_pgxv4"), SubResource("Resource_srp4q"), SubResource("Resource_8nlxw"), SubResource("Resource_xcw4i"), SubResource("Resource_2batq"), null, null, null, null])

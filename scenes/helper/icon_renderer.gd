@@ -24,7 +24,7 @@ func capture_now():
 	# 4. Fix the upside-down orientation
 	
 	# 5. Save to a path that definitely exists
-	var path = "res://ressources/pictures/lantern.png"
+	var path = "res://ressources/pictures/icon_from_model.png"
 	var err = img.save_png(path)
 	
 	if err == OK:

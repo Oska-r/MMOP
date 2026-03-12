@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bv7nxdrmt0pwo"]
 
 [ext_resource type="Script" uid="uid://cxs6ms7xuck7p" path="res://scripts/UI/ui.gd" id="1_kiyfy"]
+[ext_resource type="PackedScene" uid="uid://dslvjdvi41q6q" path="res://scenes/UI/displays/top_display.tscn" id="2_35jxk"]
 [ext_resource type="PackedScene" uid="uid://laa6wkcpj3ws" path="res://scenes/UI/inventory/hotbar.tscn" id="2_kiyfy"]
 [ext_resource type="PackedScene" uid="uid://equrnyrs8b8x" path="res://scenes/UI/menus/pause_menu.tscn" id="4_m4jc5"]
 [ext_resource type="PackedScene" uid="uid://cq8sbte51hdu2" path="res://scenes/UI/inventory/inventory.tscn" id="5_a6y2o"]
@@ -16,6 +17,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_kiyfy")
+
+[node name="TopDisplay" parent="." unique_id=554564827 instance=ExtResource("2_35jxk")]
+layout_mode = 1
 
 [node name="CenterScreen" parent="." unique_id=658089674 instance=ExtResource("5_m41qk")]
 layout_mode = 1
