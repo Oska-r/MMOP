@@ -17,6 +17,7 @@ func spawned() -> void:
 	label.show()
 
 func launch_rocket() -> void:
+	player.hide()
 	label.hide()
 	oxygen_tank.hide()
 	UI.hide()

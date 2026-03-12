@@ -33,6 +33,7 @@ var damage_timer: float = 0.0
 signal player_health_changed(current_health: float, max_health: float)
 
 func _ready() -> void:
+	show()
 	attack_Area.visible = false
 	damageable.died.connect(_on_died)
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
