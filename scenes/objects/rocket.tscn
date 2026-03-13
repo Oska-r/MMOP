@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://tgbxgbw01n26" path="res://scripts/objects/rocket.gd" id="1_rwagk"]
 [ext_resource type="Script" uid="uid://c3r63pxf6h435" path="res://scripts/components/at_player_looking.gd" id="2_hnoy1"]
 [ext_resource type="ArrayMesh" uid="uid://du7ghayb4p04x" path="res://ressources/meshs/rocket_mesh.tres" id="3_rwagk"]
+[ext_resource type="AudioStream" uid="uid://b3afcyh483ii" path="res://ressources/sounds/rocket_starting.mp3" id="4_4poij"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4poij"]
 radius = 1.440918
@@ -40,3 +41,7 @@ shape = SubResource("CapsuleShape3D_rwagk")
 [node name="Rocket" type="MeshInstance3D" parent="." unique_id=1576953862]
 mesh = ExtResource("3_rwagk")
 skeleton = NodePath("")
+
+[node name="RocketStartingSound" type="AudioStreamPlayer" parent="." unique_id=1019121966]
+stream = ExtResource("4_4poij")
+volume_db = -10.0

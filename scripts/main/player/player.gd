@@ -51,28 +51,34 @@ func _process(delta) -> void:
 		item_use_cooldown -= delta
 	if damage_timer > 0:
 		damage_timer -= delta
+	
 	if Input.is_action_pressed("prime"):
 		handle_attack()
-	
-	# Check what the interact ray is hitting
-	var collider = null
-	if interact_ray.is_colliding():
-		collider = interact_ray.get_collider()
-	
-	# Handle looking at objects with display_requirements()
+
+	# Raycast once
+	var collider = interact_ray.get_collider() if interact_ray.is_colliding() else null
+
+	# ----- LOOK UI -----
 	if collider != null and collider.has_method("display_requirements"):
 		if current_looked_at != collider:
-			# Player looked at a new object
 			if current_looked_at != null:
 				current_looked_at.display_requirements(false)
-			collider.display_requirements(true)
+			
+			collider.display_requirements(true) # shows "Hold E"
 			current_looked_at = collider
 	else:
-		# Player looked at nothing or a non-interactive object
 		if current_looked_at != null:
 			current_looked_at.display_requirements(false)
 			current_looked_at = null
 
+	# ----- HOLD E INTERACTION -----
+	if collider != null and Input.is_action_pressed("interact_e"):
+		if collider.has_method("try_craft_current_tier"):
+			collider.try_craft_current_tier()
+		if collider.has_method("pickup_mushroom"):
+			collider.pickup_mushroom()
+		if collider.has_method("launch_rocket") and GlobalGameState.won:
+			collider.launch_rocket()
 func drop(item: Item_ids.ItemID) -> void:
 	inventory.drop(item)
 
@@ -93,18 +99,6 @@ func check_interaction() -> void:
 func _input(event) -> void:
 	if event.is_action_pressed("interact"):
 		check_interaction()
-	
-	if event.is_action_pressed("interact_e"):
-		if not interact_ray.is_colliding():
-			return
-		var collider = interact_ray.get_collider()
-		
-		if collider.has_method("try_craft_current_tier"):
-			collider.try_craft_current_tier()
-		if collider.has_method("pickup_mushroom"):
-			collider.pickup_mushroom()
-		if collider.has_method("launch_rocket") and GlobalGameState.won:
-			collider.launch_rocket()
 
 ## Disables (if parameter is false) or enables (if parameter is true) all player input (used for openend UIs).
 func enable_input(enable: bool) -> void:

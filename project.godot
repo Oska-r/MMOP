@@ -38,7 +38,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="MMOP"
+config/name="MOMP"
 run/main_scene="uid://bjj4dy5lh60ll"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://4pijmugb1ier"

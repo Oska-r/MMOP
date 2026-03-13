@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bv7nxdrmt0pwo" path="res://scenes/UI/ui.tscn" id="6_hujxm"]
 [ext_resource type="AudioStream" uid="uid://chrw4bninhbgo" path="res://ressources/sounds/backgroundMusic.mp3" id="7_trceg"]
 
-[node name="Main" type="Node3D" unique_id=1623769975]
+[node name="Main" type="Node3D" unique_id=1623769975 groups=["main"]]
 script = ExtResource("1_o6xl0")
 
 [node name="UI" parent="." unique_id=2045572628 node_paths=PackedStringArray("player") groups=["UI"] instance=ExtResource("6_hujxm")]
