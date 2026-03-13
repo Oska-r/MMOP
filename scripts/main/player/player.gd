@@ -43,6 +43,9 @@ func _ready() -> void:
 
 var current_looked_at: Node = null
 
+var interact_cooldown: float = 0.0
+const INTERACT_COOLDOWN: float = 0.2
+
 func _process(delta) -> void:
 	if dead:
 		return
@@ -51,11 +54,12 @@ func _process(delta) -> void:
 		item_use_cooldown -= delta
 	if damage_timer > 0:
 		damage_timer -= delta
+	if interact_cooldown > 0:
+		interact_cooldown -= delta
 	
 	if Input.is_action_pressed("prime"):
 		handle_attack()
 
-	# Raycast once
 	var collider = interact_ray.get_collider() if interact_ray.is_colliding() else null
 
 	# ----- LOOK UI -----
@@ -63,8 +67,7 @@ func _process(delta) -> void:
 		if current_looked_at != collider:
 			if current_looked_at != null:
 				current_looked_at.display_requirements(false)
-			
-			collider.display_requirements(true) # shows "Hold E"
+			collider.display_requirements(true)
 			current_looked_at = collider
 	else:
 		if current_looked_at != null:
@@ -72,13 +75,15 @@ func _process(delta) -> void:
 			current_looked_at = null
 
 	# ----- HOLD E INTERACTION -----
-	if collider != null and Input.is_action_pressed("interact_e"):
+	if collider != null and Input.is_action_pressed("interact_e") and interact_cooldown <= 0:
+		interact_cooldown = INTERACT_COOLDOWN
 		if collider.has_method("try_craft_current_tier"):
 			collider.try_craft_current_tier()
 		if collider.has_method("pickup_mushroom"):
 			collider.pickup_mushroom()
 		if collider.has_method("launch_rocket") and GlobalGameState.won:
 			collider.launch_rocket()
+
 func drop(item: Item_ids.ItemID) -> void:
 	inventory.drop(item)
 
