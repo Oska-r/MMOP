@@ -63,9 +63,9 @@ icon_alignment = 1
 layout_mode = 2
 icon = ExtResource("4_d1f2i")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=945632127]
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="." unique_id=945632127]
 stream = ExtResource("5_jysfu")
-volume_db = -30.0
+volume_db = -22.0
 autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
