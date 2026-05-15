@@ -10,6 +10,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xgdkv")
 
+[node name="Button" type="Button" parent="." unique_id=1426394344]
+layout_mode = 2
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=991382163]
 layout_mode = 2
 theme_override_constants/separation = 4
