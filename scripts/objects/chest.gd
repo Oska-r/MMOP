@@ -13,7 +13,6 @@ var is_open: bool = false
 
 func _ready() -> void:
 	damageable.died.connect(_on_died)
-	# Keep your duplication logic
 	for i in range(chest_items.size()):
 		if chest_items[i] is Item:
 			chest_items[i] = chest_items[i].duplicate()
@@ -30,10 +29,9 @@ func _on_died(_source: Node) -> void:
 		inventory.drop(item.item_id, item.count)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if is_open and (event.is_action_pressed("inventory") or event.is_action_pressed("ui_cancel")):
+	if is_open and (event.is_action_pressed("inventory") or event.is_action_pressed("ui_cancel") or event.is_action_pressed("close_inventory")):
 		toggle_chest()
 
-## ChatGPT Code for animation.
 func toggle_chest() -> void:
 	is_open = not is_open
 	

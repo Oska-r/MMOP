@@ -30,12 +30,18 @@ func _ready() -> void:
 	load_item_to_inventory(Item_ids.ItemID.SPIKES, 0, 1, 3)
 
 func _input(event) -> void:
+	if GlobalGameState.paused:
+		return
+	
 	if event.is_action_pressed("inventory"):
 		if visible:
 			close_inventory()
 		else:
 			player.clear_preview()
 			open_inventory()
+	
+	if event.is_action_pressed("close_inventory") and visible:
+		close_inventory()
 
 #region item management
 ## Load a item (identified by ItemID) at specified row and specified index with specified count to the inventory.

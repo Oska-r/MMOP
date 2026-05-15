@@ -23,7 +23,7 @@ world_environment = NodePath("../WorldEnvironment")
 [node name="Player" parent="." unique_id=1560919245 groups=["damagable_by_enemy"] instance=ExtResource("2_tipki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1936798, 0.65600634, 9.76694)
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1099075134]
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1099075134 groups=["background_music"]]
 stream = ExtResource("7_trceg")
 volume_db = -30.0
 

@@ -5,6 +5,8 @@ var gravity: float = 9.8
 
 var won: bool = false
 
+var paused: bool = false
+
 func reset_day() -> void:
 	day_count = 1
 

@@ -15,6 +15,7 @@ func _process(_delta: float) -> void:
 	if item and item.scene:
 		player.show_preview(item)
 
+
 func _unhandled_input(_event: InputEvent) -> void:
 	if not player or not player.is_input_enabled():
 		return
@@ -35,6 +36,18 @@ func _unhandled_input(_event: InputEvent) -> void:
 		if item && player.try_to_use_item(item):
 			reduce_item_count(item)
 			update_hotbar_ui()
+	
+	if Input.is_action_pressed("scroll_down"):
+		selected_index += 1
+		if selected_index >= 10:
+			selected_index = 0
+	
+	if Input.is_action_pressed("scroll_up"):
+		selected_index -= 1
+		if selected_index <= -1:
+			selected_index = 9
+	player.clear_preview()
+	update_selection_position()
 
 ## Load a item (identified by ItemID) at specified index with specified count to the hotbar.
 func load_item_to_hotbar(item_id, index := 0, count := 1) -> void:

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cusn8u58ybsc7" path="res://scripts/UI/menus/pause_menu.gd" id="1_myx47"]
 [ext_resource type="Shader" uid="uid://uqbe5rix8ke0" path="res://ressources/shader/pause_menu.gdshader" id="1_n87rw"]
+[ext_resource type="PackedScene" uid="uid://dgypia8m7j1pr" path="res://scenes/UI/options.tscn" id="3_3ty57"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_myx47"]
 shader = ExtResource("1_n87rw")
@@ -154,7 +155,7 @@ _data = {
 &"blur": SubResource("Animation_kukqi")
 }
 
-[node name="PauseMenu" type="Control" unique_id=1913560065]
+[node name="PauseMenu" type="Control" unique_id=1913560065 node_paths=PackedStringArray("options")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -163,6 +164,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_myx47")
+options = NodePath("Options")
 
 [node name="Blur" type="ColorRect" parent="." unique_id=1461288169]
 material = SubResource("ShaderMaterial_myx47")
@@ -200,13 +202,32 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "Fortfahren"
 
+[node name="Options" type="Button" parent="PanelContainer/VBoxContainer" unique_id=44219983]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Optionen"
+
 [node name="Quit" type="Button" parent="PanelContainer/VBoxContainer" unique_id=407802305]
 layout_mode = 2
 size_flags_vertical = 4
 text = "Beenden"
 
+[node name="Options" parent="." unique_id=1116192090 instance=ExtResource("3_3ty57")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.0
+offset_top = -32.0
+offset_right = 223.99963
+offset_bottom = 68.0
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1799889062]
 libraries/ = SubResource("AnimationLibrary_7l7mv")
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

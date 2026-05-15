@@ -19,10 +19,12 @@ func _input(_event: InputEvent) -> void:
 func resume() -> void:
 	get_tree().paused = false
 	animation_player.play_backwards("blur")
+	options.hide()
 	hide()
 	player.capture_mouse()
 
 func pause() -> void:
+	GlobalGameState.paused = true
 	animation_player.play("blur")
 	player.release_mouse()
 	show()
@@ -33,3 +35,8 @@ func _on_resume_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+@export var options: Control
+
+func _on_options_pressed() -> void:
+	options.show()
