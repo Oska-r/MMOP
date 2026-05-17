@@ -213,7 +213,6 @@ size_flags_vertical = 4
 text = "Beenden"
 
 [node name="Options" parent="." unique_id=1116192090 instance=ExtResource("3_3ty57")]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
